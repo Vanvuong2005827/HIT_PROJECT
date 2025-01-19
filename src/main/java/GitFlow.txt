@@ -1,0 +1,9 @@
+- Pull code moi nhat ve nhanh main
+- Tao nhanh moi tu nhanh main: feature/<ten cong viec>
+- Code tren nhanh do
+- Pull code moi nhat ve nhanh main
+- Merge nhanh main voi nhanh hien tai
+- Neu co conflict thi xem xet chon code ben nao hay ca 2
+- Commit and push
+- Tao pull request
+- Review code o pull request de merge sang nhanh main
