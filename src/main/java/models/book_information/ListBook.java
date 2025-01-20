@@ -1,0 +1,33 @@
+package models.book_information;
+
+import api.book_api.ApiBookResponse;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+
+import static api.ApiGet.getApi;
+
+public class ListBook {
+    public ArrayList<Book> getBooks() {
+        ArrayList<Book> books = new ArrayList<>();
+//        for (int i = 1; i <= 2; i++) {
+//            String pageNumber = Integer.toString(i);
+            String pageNumber = "1";
+            String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
+            String jsonData = getApi(apiUrl);
+            if (jsonData != null && !jsonData.isEmpty()) {
+                Gson gson = new Gson();
+                ApiBookResponse apiResponse = gson.fromJson(jsonData, ApiBookResponse.class);
+
+                if (apiResponse != null && apiResponse.getData() != null) {
+                    apiResponse.getData().getItems().forEach(item -> {
+                        books.add(new Book(item.getThumbUrl()));
+                    });
+                }
+            }
+//        }
+        return books;
+    }
+}
+
+
