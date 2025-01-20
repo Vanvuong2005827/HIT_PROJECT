@@ -1,25 +1,25 @@
-package models;
+package models.User;
 
-public class User {
+public class UserAccount {
     private String username;
     private String password;
     private String fullName;
     private Role role;
-    public User() {
+    public UserAccount() {
         username = "";
         password = "";
         fullName = "";
         role = Role.USER;
     }
 
-    public User(String username, String password, String fullName) {
+    public UserAccount(String username, String password, String fullName) {
         this.username = username;
         this.password = password;
         this.fullName = fullName;
         role = Role.USER;
     }
 
-    public User(String username, String password, String fullName, Role role) {
+    public UserAccount(String username, String password, String fullName, Role role) {
         this.username = username;
         this.password = password;
         this.fullName = fullName;

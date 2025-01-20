@@ -1,7 +1,6 @@
 package services;
 
-import models.User;
-import org.bson.Document;
+import models.User.UserAccount;
 
 public class LoginService {
     private UserServices userServices;
@@ -9,7 +8,7 @@ public class LoginService {
         userServices = new UserServices();
     }
     public boolean authenticate(String username, String password) {
-        User user = userServices.getUserByUsername(username);
+        UserAccount user = userServices.getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
             return true;
 
