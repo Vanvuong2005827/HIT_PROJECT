@@ -3,12 +3,30 @@ package screens;
 import services.LoginService;
 import services.UserServices;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
 import static services.LoginService.*;
 public class LoginScreen extends javax.swing.JFrame {
+
+    private void showCustomDialog(String message) {
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Notification");
+        dialog.setSize(300, 150);
+        dialog.setLocationRelativeTo(null);
+        dialog.setLayout(new BorderLayout());
+
+        JLabel label = new JLabel(message, SwingConstants.CENTER);
+        dialog.add(label, BorderLayout.CENTER);
+
+        JButton closeButton = new JButton("Close");
+        closeButton.addActionListener(e -> dialog.dispose());
+        dialog.add(closeButton, BorderLayout.SOUTH);
+
+        dialog.setModal(true);
+        dialog.setVisible(true);
+    }
 
     public LoginScreen() {
         initComponents();
@@ -310,15 +328,19 @@ public class LoginScreen extends javax.swing.JFrame {
             timer.setRepeats(false); // Đảm bảo timer chỉ chạy một lần
             timer.start();
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid username or password");
+//            JOptionPane.showMessageDialog(null, "Invalid username or password");
+            showCustomDialog("Invalid username or password");
         }
 
     }
 
     private void signUpEvent(java.awt.event.ActionEvent evt) {
-//        if (signUpFullnameTextField == null){
-//            JOptionPane.showMessageDialog(null, "Please enter full name");
-//        }
+        if (signUpFullnameTextField == null){
+            JOptionPane.showMessageDialog(null, "Please enter full name");
+            System.out.println("123");
+        }
+
+//        if (s)
     }
 
     private void loginRememberCheckboxActionPerformed(java.awt.event.ActionEvent evt) {

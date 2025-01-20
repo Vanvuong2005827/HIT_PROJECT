@@ -1,6 +1,12 @@
 package services;
 
+import com.google.gson.Gson;
+import models.User;
 import org.bson.Document;
+import org.bson.Document;
+import com.mongodb.client.MongoCollection;
+import javax.print.Doc;
+
 import static DAO.ConnectDB.*;
 public class RegisterService {
     private Document user;
@@ -9,9 +15,8 @@ public class RegisterService {
         userServices = new UserServices();
     }
 
-    public boolean register(String username, String password) {
-        user = new Document("username", username).append("password", password).append("role", "user");
-        if (userServices.isUsernameExists((String) user.get("username"))) {
+    public boolean register(User user) {
+        if (!userServices.isUsernameExists(user.getUsername())) {
             collection.insertOne(user);
             return true;
         } else {

@@ -1,5 +1,6 @@
 package services;
 
+import models.User;
 import org.bson.Document;
 
 import static DAO.ConnectDB.*;
@@ -9,12 +10,13 @@ public class UserServices {
 
 
     public boolean isUsernameExists(String username) {
-        Document found = (Document) collection.find(new Document("username", username)).first();
+        User found = collection.find(new org.bson.Document("username", username)).first();
         return found != null;
+        //true là có username trong DB và ngược lại
     }
 
-    public Document getUserByUsername(String username) {
-        Document found = (Document) collection.find(new Document("username", username)).first();
+    public User getUserByUsername(String username) {
+        User found = collection.find(new org.bson.Document("username", username)).first();
         if (found != null) {
             return found;
         } else {
@@ -23,9 +25,9 @@ public class UserServices {
     }
 
     public String getRoleByUsername(String username) {
-        Document found = (Document) collection.find(new Document("username", username));
+        User found = collection.find(new org.bson.Document("username", username)).first();
         if (found != null) {
-            return found.getString("role");
+            return found.getRole().name();
         } else {
             return null;
         }

@@ -1,7 +1,9 @@
+import models.User;
 import org.bson.Document;
 import screens.LoginScreen;
 import services.LoginService;
 import services.LoginService;
+import services.RegisterService;
 import services.UserServices;
 import DAO.ConnectDB.*;
 
