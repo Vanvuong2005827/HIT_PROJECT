@@ -42,6 +42,7 @@ public class LoginScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
         setBackground(new java.awt.Color(255, 255, 255));
+        setUndecorated(true);
 
         loginMainPanel.setBackground(new java.awt.Color(176, 223, 251));
 

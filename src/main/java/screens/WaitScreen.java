@@ -18,6 +18,7 @@ public class WaitScreen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(176, 223, 251));
 
@@ -35,7 +36,7 @@ public class WaitScreen extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(169, 169, 169)
                                 .addComponent(jLabel2)
-                                .addContainerGap(166, Short.MAX_VALUE))
+                                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

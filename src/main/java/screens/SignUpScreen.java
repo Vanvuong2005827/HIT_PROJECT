@@ -35,6 +35,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpOtherCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         signUpMainPanel.setBackground(new java.awt.Color(176, 223, 251));
 
