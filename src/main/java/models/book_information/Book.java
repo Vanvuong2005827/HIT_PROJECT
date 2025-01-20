@@ -1,4 +1,4 @@
-package models;
+package models.book_information;
 
 public class Book {
     private String thumbnail;
