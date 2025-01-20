@@ -1,10 +1,33 @@
 package screens;
 
+import services.LoginService;
+import services.UserServices;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
-
+import javax.swing.*;
+import static services.LoginService.*;
 public class LoginScreen extends javax.swing.JFrame {
+
+    private void showCustomDialog(String message) {
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Notification");
+        dialog.setSize(300, 150);
+        dialog.setLocationRelativeTo(null);
+        dialog.setLayout(new BorderLayout());
+
+        JLabel label = new JLabel(message, SwingConstants.CENTER);
+        dialog.add(label, BorderLayout.CENTER);
+
+        JButton closeButton = new JButton("Close");
+        closeButton.addActionListener(e -> dialog.dispose());
+        dialog.add(closeButton, BorderLayout.SOUTH);
+
+        dialog.setModal(true);
+        dialog.setVisible(true);
+    }
+
     public LoginScreen() {
         initComponents();
         setLocationRelativeTo(null);
@@ -288,25 +311,36 @@ public class LoginScreen extends javax.swing.JFrame {
     }
 
     private void loginEvent(java.awt.event.ActionEvent evt) {
+        LoginService LoginService = new LoginService();
+        if (LoginService.authenticate(loginUsernameTextField.getText(),loginPasswordTextField.getText())){
+            LoginScreen loginScreen = this;
+            HomeScreen hs = new HomeScreen();
+            WaitScreen ws = new WaitScreen();
+            ws.setVisible(true);
+            loginScreen.setVisible(false);
+            Timer timer = new Timer(4200, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ws.setVisible(false);
+                    hs.setVisible(true);
+                }
+            });
+            timer.setRepeats(false); // Đảm bảo timer chỉ chạy một lần
+            timer.start();
+        } else {
+//            JOptionPane.showMessageDialog(null, "Invalid username or password");
+            showCustomDialog("Invalid username or password");
+        }
 
-        LoginScreen loginScreen = this;
-        HomeScreen hs = new HomeScreen();
-        WaitScreen ws = new WaitScreen();
-        ws.setVisible(true);
-        loginScreen.setVisible(false);
-        Timer timer = new Timer(4200, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ws.setVisible(false);
-                hs.setVisible(true);
-            }
-        });
-        timer.setRepeats(false); // Đảm bảo timer chỉ chạy một lần
-        timer.start();
     }
 
     private void signUpEvent(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        if (signUpFullnameTextField == null){
+            JOptionPane.showMessageDialog(null, "Please enter full name");
+            System.out.println("123");
+        }
+
+//        if (s)
     }
 
     private void loginRememberCheckboxActionPerformed(java.awt.event.ActionEvent evt) {
