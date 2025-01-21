@@ -1,7 +1,14 @@
 
 package screens;
 
+import services.UserServices;
+
+import javax.swing.*;
+import java.util.Objects;
+
 public class SignUpScreen extends javax.swing.JFrame {
+
+    private UserServices userServices = new UserServices();
 
     public SignUpScreen() {
         initComponents();
@@ -238,9 +245,20 @@ public class SignUpScreen extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void signUpConfirmEvent(java.awt.event.MouseEvent evt) {
+        String fullname = signUpFullNameTextField.getText();
+        String yearOfBirth = Objects.requireNonNull(signUpYearOfBirth.getSelectedItem()).toString();
+        String gender = userServices.selectGender(signUpMaleCheckBox.isSelected(), signUpFemaleCheckBox.isSelected(), signUpOtherCheckBox.isSelected());
+        String phoneNumber = signUpPhoneNumberTextField.getText();
+        String Gmail = signUpGmailTextField.getText();
+
+        userServices.updateInformation(LoginScreen.userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
+        LoginScreen.userAccount = null;
+
+
         LoginScreen ls = new LoginScreen();
         this.setVisible(false);
         ls.setVisible(true);
+
     }
 
     private void backEvent(java.awt.event.MouseEvent evt) {
