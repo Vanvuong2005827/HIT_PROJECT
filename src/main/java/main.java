@@ -1,3 +1,4 @@
+import DAO.ConnectDB;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
@@ -8,6 +9,7 @@ import screens.LoginScreen;
 import static DAO.ConnectDB.*;
 public class main {
     public static void main(String[] args) {
+        new ConnectDB();
         LoginScreen lg = new LoginScreen();
         lg.setVisible(true);
     }
