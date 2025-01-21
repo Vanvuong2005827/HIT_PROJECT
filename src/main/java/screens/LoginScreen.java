@@ -274,20 +274,20 @@ public class LoginScreen extends javax.swing.JFrame {
     }
 
     private void loginEvent(java.awt.event.ActionEvent evt) {
-        LoginService loginService = new LoginService();
-        String userName = loginUsernameTextField.getText();
-        String password = loginPasswordTextField.getText();
+//        LoginService loginService = new LoginService();
+//        String userName = loginUsernameTextField.getText();
+//        String password = loginPasswordTextField.getText();
+//
+//        if (userName.isEmpty()){
+//            loginMessageLabel.setText("Please enter your username");
+//            return;
+//        }
+//        if (password.isEmpty()){
+//            loginMessageLabel.setText("Please enter your password");
+//            return;
+//        }
 
-        if (userName.isEmpty()){
-            loginMessageLabel.setText("Please enter your username");
-            return;
-        }
-        if (password.isEmpty()){
-            loginMessageLabel.setText("Please enter your password");
-            return;
-        }
-
-        if (loginService.authenticate(userName,loginPasswordTextField.getText())){
+//        if (loginService.authenticate(userName,loginPasswordTextField.getText())){
             LoginScreen loginScreen = this;
             HomeScreen hs = new HomeScreen();
             WaitScreen ws = new WaitScreen();
@@ -302,9 +302,9 @@ public class LoginScreen extends javax.swing.JFrame {
             });
             timer.setRepeats(false); // Đảm bảo timer chỉ chạy một lần
             timer.start();
-        } else {
-            loginMessageLabel.setText("Invalid username or password");
-        }
+//        } else {
+//            loginMessageLabel.setText("Invalid username or password");
+//        }
 
     }
 
