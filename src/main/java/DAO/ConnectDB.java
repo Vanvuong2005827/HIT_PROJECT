@@ -9,6 +9,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import models.User.UserAccount;
+import models.User.UserInfo;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.pojo.PojoCodecProvider;
@@ -38,5 +39,6 @@ public class ConnectDB {
     public static MongoDatabase db = mongoClient.getDatabase("HITDB");
 
     // Thay đổi kiểu của `collection` để hỗ trợ Pojo
-    public static MongoCollection<UserAccount> collection = db.getCollection("test", UserAccount.class);
+    public static MongoCollection<UserAccount> collection = db.getCollection("UserAccount", UserAccount.class);
+    public static MongoCollection<UserInfo> collectionInfo = db.getCollection("UserInfo", UserInfo.class);
 }

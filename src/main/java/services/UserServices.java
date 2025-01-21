@@ -1,6 +1,7 @@
 package services;
 
 import models.User.UserAccount;
+import models.User.UserInfo;
 
 import static DAO.ConnectDB.*;
 
@@ -30,6 +31,19 @@ public class UserServices {
         } else {
             return null;
         }
+    }
+
+    public void updateInformation(UserAccount user, String fullname, String yearOfBirth, String Gender, String phoneNumber, String email) {
+
+        UserInfo userInfo = new UserInfo(fullname, Integer.parseInt(yearOfBirth), email, phoneNumber, Gender, user);
+        collectionInfo.insertOne(userInfo);
+    }
+
+    public String selectGender(boolean male, boolean female, boolean orther) {
+        if (male) return "male";
+        if (female) return "female";
+        if (orther) return "orther";
+        return "";
     }
 
 }

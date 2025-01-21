@@ -1,6 +1,8 @@
 package screens;
 
+import models.User.UserAccount;
 import services.LoginService;
+import services.RegisterService;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +10,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import static services.LoginService.*;
 public class LoginScreen extends javax.swing.JFrame {
-
+    private LoginService loginService = new LoginService();
+    private RegisterService registerService = new RegisterService();
+    public static UserAccount userAccount;
     public LoginScreen() {
         initComponents();
         setLocationRelativeTo(null);
@@ -274,20 +278,20 @@ public class LoginScreen extends javax.swing.JFrame {
     }
 
     private void loginEvent(java.awt.event.ActionEvent evt) {
-//        LoginService loginService = new LoginService();
-//        String userName = loginUsernameTextField.getText();
-//        String password = loginPasswordTextField.getText();
-//
-//        if (userName.isEmpty()){
-//            loginMessageLabel.setText("Please enter your username");
-//            return;
-//        }
-//        if (password.isEmpty()){
-//            loginMessageLabel.setText("Please enter your password");
-//            return;
-//        }
 
-//        if (loginService.authenticate(userName,loginPasswordTextField.getText())){
+        String userName = loginUsernameTextField.getText();
+        String password = loginPasswordTextField.getText();
+
+        if (userName.isEmpty()){
+            loginMessageLabel.setText("Please enter your username");
+            return;
+        }
+        if (password.isEmpty()){
+            loginMessageLabel.setText("Please enter your password");
+            return;
+        }
+
+        if (loginService.authenticate(userName,loginPasswordTextField.getText())){
             LoginScreen loginScreen = this;
             HomeScreen hs = new HomeScreen();
             WaitScreen ws = new WaitScreen();
@@ -302,13 +306,46 @@ public class LoginScreen extends javax.swing.JFrame {
             });
             timer.setRepeats(false); // Đảm bảo timer chỉ chạy một lần
             timer.start();
-//        } else {
-//            loginMessageLabel.setText("Invalid username or password");
-//        }
+        } else {
+            loginMessageLabel.setText("Invalid username or password");
+        }
 
     }
 
     private void signUpEvent(java.awt.event.MouseEvent evt) {
+        String userName = signUpUsernameTextField.getText();
+        String password = signUpPasswordTextField.getText();
+        String reEnterPassword = signUpReEnterPasswordTextField.getText();
+
+        if (userName.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please enter your username");
+            return;
+        }
+
+        if (password.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please enter your password");
+            return;
+        }
+
+        if (reEnterPassword.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please reenter your password");
+            return;
+        }
+
+        if (!password.equals(reEnterPassword)){
+            JOptionPane.showMessageDialog(this, "Passwords do not match");
+            return;
+        }
+
+       userAccount = new UserAccount(userName, password);
+        if (!registerService.register(userAccount)){
+            JOptionPane.showMessageDialog(this, "Username already exists");
+            return;
+        } else {
+            JOptionPane.showMessageDialog(this, "Registration Successful, please enter full infomations");
+        }
+
+
         SignUpScreen su = new SignUpScreen();
         this.setVisible(false);
         su.setVisible(true);

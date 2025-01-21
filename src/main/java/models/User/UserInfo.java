@@ -1,49 +1,51 @@
 package models.User;
 
+import org.bson.types.ObjectId;
+
 import java.util.Date;
 
 public class UserInfo {
-    private UserAccount account;
-    private Date Birthday;
+    private ObjectId id;
+    private String fullName;
+    private int Birthday;
     private String Email;
     private String PhoneNumber;
-    private Sex Sex;
+    private String Sex;
 
     public UserInfo() {
-        Birthday = null;
+        fullName = "";
+        Birthday = 0;
         Email = null;
         PhoneNumber = null;
-        account = null;
         Sex = null;
     }
 
-    public UserInfo(UserAccount account, Date Birthday, String Email, String PhoneNumber, Sex sex) {
-        this.account = account;
+    public UserInfo(String fullName ,int Birthday, String Email, String PhoneNumber, String sex, UserAccount userAccount) {
+        this.id = userAccount.getId();
         this.Birthday = Birthday;
         this.Email = Email;
         this.PhoneNumber = PhoneNumber;
         this.Sex = sex;
+        this.fullName = fullName;
     }
 
-    public UserAccount getAccount() {
-        return account;
+    public ObjectId getId() {
+        return id;
     }
 
-    public void setAccount(UserAccount account) {
-        this.account = account;
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
-    public Date getBirthday() {
+    public int getBirthday() {
         return Birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(int birthday) {
         Birthday = birthday;
     }
 
-    public String getEmail() {
-        return Email;
-    }
+    public String getEmail() { return Email; }
 
     public void setEmail(String email) {
         Email = email;
@@ -57,13 +59,20 @@ public class UserInfo {
         PhoneNumber = phoneNumber;
     }
 
-    public Sex getSex(){
+    public String getSex(){
         return Sex;
     }
 
-    public void setSex(Sex sex){
+    public void setSex(String sex){
         Sex = sex;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
 }
