@@ -19,6 +19,8 @@ import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.book_information.ListBook;
 
+import static commons.BookPanel.customBookPanel;
+
 public class HomePage extends javax.swing.JFrame {
 
     public HomePage() {
@@ -40,12 +42,16 @@ public class HomePage extends javax.swing.JFrame {
         homeStyleLabel = new javax.swing.JLabel();
         homeStyleScrollPane = new javax.swing.JScrollPane();
         homeStyleMainPanel = new javax.swing.JPanel();
-        homeAllBookLabel = new javax.swing.JLabel();
-        homeAllBookScrollPane = new javax.swing.JScrollPane();
-        homeAllBookGridPanel = new javax.swing.JPanel();
-        homeAllBookShow = new javax.swing.JLabel();
+        homeNewBookLabel = new javax.swing.JLabel();
+        homeNewBookScrollPane = new javax.swing.JScrollPane();
+        homeNewBookGridPanel = new javax.swing.JPanel();
+        homeNewBookShow = new javax.swing.JLabel();
         homeStyleShow = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        homeCommingSoonBookShow = new javax.swing.JLabel();
+        homeCommingSoonBookScrollPane = new javax.swing.JScrollPane();
+        homeCommingSoonBookGridPanel1 = new javax.swing.JPanel();
+        homeCommingSoonBookLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SignUp");
@@ -75,29 +81,47 @@ public class HomePage extends javax.swing.JFrame {
         homeStyleMainPanel.addMouseListener(dragScrollListenerStyleScroll);
         homeStyleMainPanel.addMouseMotionListener(dragScrollListenerStyleScroll);
 
-        homeAllBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        homeAllBookLabel.setText("Tất cả truyện");
+        homeNewBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        homeNewBookLabel.setText("Truyện mới");
 
-        homeAllBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        homeAllBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        homeAllBookScrollPane.setBorder(null);
+        homeNewBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        homeNewBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        homeNewBookScrollPane.setBorder(null);
 
-        homeAllBookGridPanel.setBackground(new java.awt.Color(176, 223, 251));
-        homeAllBookGridPanel.setLayout(new java.awt.GridBagLayout());
+        homeNewBookGridPanel.setBackground(new java.awt.Color(176, 223, 251));
+        homeNewBookGridPanel.setLayout(new java.awt.GridBagLayout());
 
-        homeAllBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
-        homeAllBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
+        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
+        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
 
-        homeAllBookScrollPane.setViewportView(homeAllBookGridPanel);
+        homeNewBookScrollPane.setViewportView(homeNewBookGridPanel);
 
-        homeAllBookShow.setForeground(new java.awt.Color(102, 102, 102));
-        homeAllBookShow.setText(" Thêm >");
+        homeNewBookShow.setForeground(new java.awt.Color(102, 102, 102));
+        homeNewBookShow.setText(" Thêm >");
 
         homeStyleShow.setForeground(new java.awt.Color(102, 102, 102));
         homeStyleShow.setText("Thêm >");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Đề xuất");
+
+        homeCommingSoonBookShow.setForeground(new java.awt.Color(102, 102, 102));
+        homeCommingSoonBookShow.setText(" Thêm >");
+
+        homeNewBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        homeNewBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        homeCommingSoonBookScrollPane.setBorder(null);
+
+        homeCommingSoonBookGridPanel1.setBackground(new java.awt.Color(176, 223, 251));
+        homeCommingSoonBookGridPanel1.setLayout(new java.awt.GridBagLayout());
+
+        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
+        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
+
+        homeCommingSoonBookScrollPane.setViewportView(homeCommingSoonBookGridPanel1);
+
+        homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        homeCommingSoonBookLabel.setText("Sắp ra mắt");
 
         javax.swing.GroupLayout homeMainPanelLayout = new javax.swing.GroupLayout(homeMainPanel);
         homeMainPanel.setLayout(homeMainPanelLayout);
@@ -111,7 +135,7 @@ public class HomePage extends javax.swing.JFrame {
                                                 .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(homeMainPanelLayout.createSequentialGroup()
                                                                 .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(homeAllBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(homeNewBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, homeMainPanelLayout.createSequentialGroup()
                                                                                         .addComponent(homeStyleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,10 +149,18 @@ public class HomePage extends javax.swing.JFrame {
                                                                                         .addComponent(homeBellNotifications, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                                 .addGap(0, 6, Short.MAX_VALUE))
                                                         .addGroup(homeMainPanelLayout.createSequentialGroup()
-                                                                .addComponent(homeAllBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(homeNewBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(homeAllBookShow, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addContainerGap())))
+                                                                .addComponent(homeNewBookShow, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addContainerGap())
+                                        .addGroup(homeMainPanelLayout.createSequentialGroup()
+                                                .addComponent(homeCommingSoonBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(homeMainPanelLayout.createSequentialGroup()
+                                                .addComponent(homeCommingSoonBookLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(homeCommingSoonBookShow)
+                                                .addGap(12, 12, 12))))
                         .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(homeMainPanelLayout.createSequentialGroup()
                                         .addContainerGap()
@@ -144,24 +176,30 @@ public class HomePage extends javax.swing.JFrame {
                                                 .addComponent(homeSearchLabel)
                                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(homeBellNotifications, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(199, 199, 199)
+                                .addGap(212, 212, 212)
+                                .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(homeNewBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(homeNewBookShow))
+                                .addGap(18, 18, 18)
+                                .addComponent(homeNewBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(homeCommingSoonBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(homeCommingSoonBookShow))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(homeCommingSoonBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(homeStyleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(homeStyleShow))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(homeStyleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(homeAllBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(homeAllBookShow))
-                                .addGap(18, 18, 18)
-                                .addComponent(homeAllBookScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(552, Short.MAX_VALUE))
+                                .addContainerGap(534, Short.MAX_VALUE))
                         .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(homeMainPanelLayout.createSequentialGroup()
                                         .addGap(58, 58, 58)
                                         .addComponent(homePageViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(671, Short.MAX_VALUE)))
+                                        .addContainerGap(696, Short.MAX_VALUE)))
         );
 
         homeStyleScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -197,12 +235,14 @@ public class HomePage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
-    public void processData(){
+
+    public void processData() {
         // Need fix
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
             protected Void doInBackground() {
-                processAllBookPicture();
+                processNewBookPicture();
+                processCommingSoonBookPicture();
                 processPageViewBookPicture();
                 processStyleBookPircture();
                 return null;
@@ -216,7 +256,7 @@ public class HomePage extends javax.swing.JFrame {
         worker.execute();
     }
 
-    public void processAllBookPicture(){
+    public void processNewBookPicture() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
@@ -225,46 +265,57 @@ public class HomePage extends javax.swing.JFrame {
         ListBook lb = new ListBook();
         ArrayList<Book> books = lb.getBooksTruyenMoi();
 
-        int totalPanels = books.size();
-        int columns = 2;
+        Font customFont1 = new Font("Segoe UI", Font.BOLD, 12);
+        Font customFont2 = new Font("Segoe UI", Font.BOLD, 10);
+
+        String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
+
+        int totalPanels = books.size() / 2;
+        int columns = 3;
 
         for (int i = 0; i < totalPanels; i++) {
-            JPanel panel = new JPanel(new BorderLayout());
-            panel.setBackground(new Color(100 + (i * 20) % 155, 150, 200));
-            panel.setPreferredSize(new Dimension(195, 250));
-            String baseUrlAllBook = "https://img.otruyenapi.com/uploads/comics/";
-            String posterPathAllBook = books.get(i).getThumbnail();
-            String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
-
-            try {
-                URL urlAllbook = new URL(fullUrlAllBook);
-                Image imageAllBook = ImageIO.read(urlAllbook);
-
-                Image resizedImageAllBook = imageAllBook.getScaledInstance(195, 250, Image.SCALE_SMOOTH);
-
-                JLabel jLabel1 = new JLabel(new ImageIcon(resizedImageAllBook));
-                jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-                jLabel1.setVerticalAlignment(SwingConstants.CENTER);
-                panel.add(jLabel1, BorderLayout.CENTER);
-            } catch (IOException e) {
-                e.printStackTrace();
-                JLabel errorLabel = new JLabel("Không thể tải ảnh!");
-                errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                panel.add(errorLabel, BorderLayout.CENTER);
-            }
-
+            JPanel panel = customBookPanel(i, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
             gbc.gridx = i % columns;
             gbc.gridy = i / columns;
 
-            homeAllBookGridPanel.add(panel, gbc);
+            homeNewBookGridPanel.add(panel, gbc);
         }
-        homeAllBookGridPanel.revalidate();
-        homeAllBookGridPanel.repaint();
-        homeAllBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
-        homeAllBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
+        homeNewBookGridPanel.revalidate();
+        homeNewBookGridPanel.repaint();
+        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
+        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
-    public void processStyleBookPircture(){
+    public void processCommingSoonBookPicture() {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.insets = new Insets(5, 5, 5, 5);
+
+        ListBook lb = new ListBook();
+        ArrayList<Book> books = lb.getBooksSapRaMat();
+
+        String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
+        Font customFont1 = new Font("Segoe UI", Font.BOLD, 12);
+        Font customFont2 = new Font("Segoe UI", Font.BOLD, 10);
+
+        int totalPanels = books.size() / 2;
+        int columns = 3;
+
+        for (int i = 0; i < totalPanels; i++) {
+            JPanel panel = customBookPanel(i, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
+            gbc.gridx = i % columns;
+            gbc.gridy = i / columns;
+
+            homeCommingSoonBookGridPanel1.add(panel, gbc);
+        }
+        homeCommingSoonBookGridPanel1.revalidate();
+        homeCommingSoonBookGridPanel1.repaint();
+        homeCommingSoonBookGridPanel1.addMouseListener(dragScrollListenerMainScroll);
+        homeCommingSoonBookGridPanel1.addMouseMotionListener(dragScrollListenerMainScroll);
+    }
+
+    public void processStyleBookPircture() {
         GridBagConstraints gbc2 = new GridBagConstraints();
         gbc2.fill = GridBagConstraints.BOTH;
         gbc2.weighty = 1.0;
@@ -284,7 +335,7 @@ public class HomePage extends javax.swing.JFrame {
                 URL urlStyle = new URL(fullUrlStyle);
                 Image imageStyle = ImageIO.read(urlStyle);
 
-                Image resizedImageStyleBook = imageStyle.getScaledInstance(170, 150,Image.SCALE_SMOOTH);
+                Image resizedImageStyleBook = imageStyle.getScaledInstance(170, 150, Image.SCALE_SMOOTH);
 
                 JLabel jLabel1 = new JLabel(new ImageIcon(resizedImageStyleBook));
                 jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -305,13 +356,13 @@ public class HomePage extends javax.swing.JFrame {
         homeStyleMainPanel.repaint();
     }
 
-    public void processPageViewBookPicture(){
+    public void processPageViewBookPicture() {
         ListBook lb = new ListBook();
         ColorMain cl = new ColorMain();
         ArrayList<Book> books = lb.getBooksHoanThanh();
         ArrayList<Color> colors = cl.getColorMain();
 
-        for(int i = 0; i < books.size(); i++){
+        for (int i = 0; i < books.size(); i++) {
             // Panel chính
             JPanel panel = new JPanel(new BorderLayout(10, 10));
             Color cusColor = colors.get(i);
@@ -322,14 +373,14 @@ public class HomePage extends javax.swing.JFrame {
             String baseUrlAllBook = "https://img.otruyenapi.com/uploads/comics/";
             String posterPathAllBook = books.get(i).getThumbnail();
             String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
-            try{
+            try {
                 URL urlAllbook = new URL(fullUrlAllBook);
                 Image imageAllBook = ImageIO.read(urlAllbook);
                 Image resizedImageAllBook = imageAllBook.getScaledInstance(120, 169, Image.SCALE_SMOOTH);
                 JLabel jLabel1 = new JLabel(new ImageIcon(resizedImageAllBook));
 
                 panel.add(jLabel1, BorderLayout.WEST);
-            }  catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
                 JLabel errorLabel = new JLabel("Không thể tải ảnh!");
                 errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -339,12 +390,12 @@ public class HomePage extends javax.swing.JFrame {
             // Phan text ben phai
             JPanel mainTextPanel = new JPanel();
             mainTextPanel.setBackground(cusColor);
-            mainTextPanel.setPreferredSize(new Dimension(320,160));
+            mainTextPanel.setPreferredSize(new Dimension(320, 160));
 
             // Panel chua text
             JPanel textPanel = new JPanel(new GridLayout(4, 1, 5, 5)); // 2 hàng, 1 cột
             textPanel.setBackground(cusColor);
-            textPanel.setPreferredSize(new Dimension(288,158));
+            textPanel.setPreferredSize(new Dimension(288, 158));
 
             // Xu ly updateLast
             String inputDateTime = books.get(i).getUpdatedAt();
@@ -368,7 +419,7 @@ public class HomePage extends javax.swing.JFrame {
             JTextArea categoryArea = new JTextArea(categories.toString());
 
             // Cấu hình text area
-            emptyPanel.setSize(new Dimension(50,1));
+            emptyPanel.setSize(new Dimension(50, 1));
             emptyPanel.setBackground(cusColor);
 
             titleArea.setFont(customFont);
@@ -415,7 +466,7 @@ public class HomePage extends javax.swing.JFrame {
         homePageViewPanel.repaint();
     }
 
-    public JPanel homePanel(){
+    public JPanel homePanel() {
         return homePanel;
     }
 
@@ -436,7 +487,7 @@ public class HomePage extends javax.swing.JFrame {
             int newX = viewPosition.x + deltaX;
 
 
-            int totalWidth = 130*100;
+            int totalWidth = 130 * 100;
             if (totalWidth < homeStyleScrollPane.getWidth()) totalWidth = homeStyleScrollPane.getWidth();
             int panelWidth = totalWidth;
             int viewportWidth = viewport.getWidth();
@@ -476,13 +527,17 @@ public class HomePage extends javax.swing.JFrame {
         }
     };
     // Variables declaration - do not modify
-    private javax.swing.JPanel homeAllBookGridPanel;
-    private javax.swing.JLabel homeAllBookLabel;
-    private javax.swing.JScrollPane homeAllBookScrollPane;
-    private javax.swing.JLabel homeAllBookShow;
     private javax.swing.JLabel homeBellNotifications;
+    private javax.swing.JPanel homeCommingSoonBookGridPanel1;
+    private javax.swing.JLabel homeCommingSoonBookLabel;
+    private javax.swing.JScrollPane homeCommingSoonBookScrollPane;
+    private javax.swing.JLabel homeCommingSoonBookShow;
     private javax.swing.JPanel homeMainPanel;
     private javax.swing.JScrollPane homeMainScrollPane;
+    private javax.swing.JPanel homeNewBookGridPanel;
+    private javax.swing.JLabel homeNewBookLabel;
+    private javax.swing.JScrollPane homeNewBookScrollPane;
+    private javax.swing.JLabel homeNewBookShow;
     private javax.swing.JPanel homePageViewPanel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JLabel homeSearchLabel;
