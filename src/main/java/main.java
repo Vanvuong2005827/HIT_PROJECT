@@ -11,5 +11,4 @@ public class main {
         LoginScreen lg = new LoginScreen();
         lg.setVisible(true);
     }
-
 }
