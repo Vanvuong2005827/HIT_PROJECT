@@ -2,9 +2,10 @@
 package screens;
 
 
+import java.io.File;
 
 public class WaitScreen extends javax.swing.JFrame {
-
+    private String basePath = new File("").getAbsolutePath();
 
     public WaitScreen() {
         initComponents();
@@ -22,7 +23,7 @@ public class WaitScreen extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(176, 223, 251));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\boyzs\\Desktop\\Java\\Design\\ui_design\\src\\main\\java\\assets\\No Brain Waiting GIF by Sappy Seals.gif")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\No Brain Waiting GIF by Sappy Seals.gif")); // NOI18N
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
