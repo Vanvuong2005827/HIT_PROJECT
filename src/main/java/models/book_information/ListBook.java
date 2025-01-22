@@ -69,6 +69,23 @@ public class ListBook {
 //        }
         return books;
     }
+
+    public ArrayList<Book> getBooksTheLoai(){
+        ArrayList<Book> books = new ArrayList<>();
+        String apiUrl = "https://otruyenapi.com/v1/api/the-loai";
+        String jsonData = getApi(apiUrl);
+        if (jsonData != null && !jsonData.isEmpty()) {
+            Gson gson = new Gson();
+            ApiBookResponse apiResponse = gson.fromJson(jsonData, ApiBookResponse.class);
+
+            if (apiResponse != null && apiResponse.getData() != null) {
+                apiResponse.getData().getItems().forEach(item -> {
+                    books.add(new Book(item.getName()));
+                });
+            }
+        }
+        return books;
+    }
 }
 
 
