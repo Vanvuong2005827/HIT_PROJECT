@@ -241,10 +241,10 @@ public class HomePage extends javax.swing.JFrame {
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
             protected Void doInBackground() {
-                processStyleBookPircture();
                 processNewBookPicture();
                 processCommingSoonBookPicture();
                 processPageViewBookPicture();
+                processStyleBookPircture();
                 return null;
             }
 
@@ -318,32 +318,38 @@ public class HomePage extends javax.swing.JFrame {
     public void processStyleBookPircture() {
         GridBagConstraints gbc2 = new GridBagConstraints();
         gbc2.fill = GridBagConstraints.BOTH;
-        gbc2.insets = new Insets(5, 5, 10, 10);
+        gbc2.weighty = 1.0;
+        gbc2.insets = new Insets(5, 5, 5, 15);
 
-        ListBook lb = new ListBook();
-        ArrayList<Book> books = lb.getBooksTheLoai();
-        ColorMain cl = new ColorMain();
-        ArrayList<Color> colors = cl.getColorMain();
+        int totalPanels2 = 10;
 
-        int totalColor = colors.size();
-
-        int totalPanels2 = books.size();
-        int rows = 2;
-
-        for (int i = 0; i < totalPanels2/2-1; i++) {
+        for (int i = 0; i < totalPanels2; i++) {
             JPanel panel = new JPanel(new BorderLayout());
-            int indexColor = i;
-            if (indexColor >= totalColor) indexColor %= totalColor;
-            panel.setBackground(colors.get(indexColor));
-            panel.setPreferredSize(new Dimension(100, 50));
+            panel.setBackground(new Color(100 + (i * 20) % 155, 150, 200));
+            panel.setPreferredSize(new Dimension(170, 150));
+            String baseUrlStyleBook = "https://image.tmdb.org/t/p/w500";
+            String posterPathStyleBook = "/d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg";
+            String fullUrlStyle = baseUrlStyleBook + posterPathStyleBook;
 
-            JLabel label1 = new JLabel(books.get(i).getName());
-            label1.setFont(new Font("Segoe UI", Font.BOLD, 14));
-            label1.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(label1, BorderLayout.CENTER);
+            try {
+                URL urlStyle = new URL(fullUrlStyle);
+                Image imageStyle = ImageIO.read(urlStyle);
 
-            gbc2.gridx = i / rows;
-            gbc2.gridy = i % rows;
+                Image resizedImageStyleBook = imageStyle.getScaledInstance(170, 150, Image.SCALE_SMOOTH);
+
+                JLabel jLabel1 = new JLabel(new ImageIcon(resizedImageStyleBook));
+                jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+                jLabel1.setVerticalAlignment(SwingConstants.CENTER);
+                panel.add(jLabel1);
+            } catch (IOException e) {
+                e.printStackTrace();
+                JLabel errorLabel = new JLabel("Không thể tải ảnh!");
+                errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                panel.add(errorLabel, BorderLayout.CENTER);
+            }
+
+            gbc2.gridx = i;
+            gbc2.gridy = 1;
             homeStyleMainPanel.add(panel, gbc2);
         }
         homeStyleMainPanel.revalidate();
@@ -513,13 +519,11 @@ public class HomePage extends javax.swing.JFrame {
             Point viewPosition = viewport.getViewPosition();
             int deltaY = origin.y - e.getY();
 
-            int maxScrollHeight = 1430;
-
             int newY = viewPosition.y + deltaY / SCROLL_SPEED;
 
-            newY = Math.max(0, Math.min(newY, maxScrollHeight));
+            newY = Math.max(0, Math.min(newY, homeMainPanel.getHeight() - viewport.getHeight()));
 
-            viewport.setViewPosition(new Point(viewPosition.x, newY));
+            viewport.setViewPosition(new Point(0, newY));
         }
     };
     // Variables declaration - do not modify
