@@ -18,6 +18,10 @@ public class Book {
         this.category = category;
     }
 
+    public Book(String name){
+        this.name = name;
+    }
+
     public String getThumbnail() {
         return thumbnail;
     }
