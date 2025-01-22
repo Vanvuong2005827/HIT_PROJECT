@@ -1,6 +1,7 @@
 
 package screens;
 
+import commons.CheckRegex;
 import services.UserServices;
 
 import javax.swing.*;
@@ -252,10 +253,21 @@ public class SignUpScreen extends javax.swing.JFrame {
         String gender = userServices.selectGender(signUpMaleCheckBox.isSelected(), signUpFemaleCheckBox.isSelected(), signUpOtherCheckBox.isSelected());
         String phoneNumber = signUpPhoneNumberTextField.getText();
         String Gmail = signUpGmailTextField.getText();
+        if (!CheckRegex.checkValidEmail(Gmail)) {
+            JOptionPane.showMessageDialog(null, "This email does not exist");
+            return;
+        }
+
+        if (!CheckRegex.checkValidPhoneNumber(phoneNumber)) {
+            JOptionPane.showMessageDialog(null, "This phone number is invalid");
+            return;
+        }
+
 
         userServices.updateInformation(LoginScreen.userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
         LoginScreen.userAccount = null;
 
+        JOptionPane.showMessageDialog(null, "Sign Up Successful");
 
         LoginScreen ls = new LoginScreen();
         this.setVisible(false);

@@ -1,5 +1,6 @@
 package screens;
 
+import commons.CheckRegex;
 import models.User.UserAccount;
 import services.LoginService;
 import services.RegisterService;
@@ -339,13 +340,25 @@ public class LoginScreen extends javax.swing.JFrame {
             return;
         }
 
-       userAccount = new UserAccount(userName, password);
+        if (!CheckRegex.checkValidUserName(userName)){
+            JOptionPane.showMessageDialog(this, "username chỉ chứa 8-20 ký tự, a-z, A-Z, 0-9. Không có kí tự _, . ở đầu/cuối");
+            return;
+        }
+
+        if (!CheckRegex.checkValidPassword(password)){
+            JOptionPane.showMessageDialog(this, "password chỉ chữatối thiểu 8 ký tự, ít nhất 1 chữ cái in hoa, 1 chữ cái in thường, 1 chữ số và 1 ký tự đặc biệt.");
+            return;
+        }
+
+        userAccount = new UserAccount(userName, password);
         if (!registerService.register(userAccount)){
             JOptionPane.showMessageDialog(this, "Username already exists");
             return;
         } else {
             JOptionPane.showMessageDialog(this, "Registration Successful, please enter full infomations");
         }
+
+
 
 
         SignUpScreen su = new SignUpScreen();
