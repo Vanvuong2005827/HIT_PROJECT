@@ -43,13 +43,14 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpAge = new javax.swing.JLabel();
         signUpConfirmButton = new javax.swing.JButton();
         signUpOtherCheckBox = new javax.swing.JCheckBox();
+        signUpMessageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         signUpMainPanel.setBackground(new java.awt.Color(176, 223, 251));
 
-        signUpGif.setIcon(new javax.swing.ImageIcon(basePath+ "\\src\\main\\java\\assets\\angry-2498_256.gif")); // NOI18N
+        signUpGif.setIcon(new javax.swing.ImageIcon("C:\\Users\\boyzs\\Desktop\\Java\\Design\\ui_design\\src\\main\\java\\assets\\angry-2498_256.gif")); // NOI18N
 
         signUpBackButton.setBackground(new java.awt.Color(176, 223, 251));
         signUpBackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -142,6 +143,8 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
 
+        signUpMessageLabel.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout signUpMainPanelLayout = new javax.swing.GroupLayout(signUpMainPanel);
         signUpMainPanel.setLayout(signUpMainPanelLayout);
         signUpMainPanelLayout.setHorizontalGroup(
@@ -159,36 +162,39 @@ public class SignUpScreen extends javax.swing.JFrame {
                                         .addGroup(signUpMainPanelLayout.createSequentialGroup()
                                                 .addGap(17, 17, 17)
                                                 .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(signUpGamailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(signUpPhoneNumberLabel)
-                                                        .addComponent(signUpGenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(signUpBornYearLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(signUpFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(signUpLine2)
-                                                        .addComponent(signUpLine1)
-                                                        .addComponent(signUpLine3)
-                                                        .addComponent(signUpFullNameTextField)
-                                                        .addComponent(signUpGmailTextField)
-                                                        .addComponent(signUpPhoneNumberTextField)
                                                         .addGroup(signUpMainPanelLayout.createSequentialGroup()
-                                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(signUpYearOfBirth, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(signUpMainPanelLayout.createSequentialGroup()
-                                                                                .addComponent(signUpMaleCheckBox)
-                                                                                .addGap(36, 36, 36)
-                                                                                .addComponent(signUpFemaleCheckBox)))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                 .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(signUpAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signUpMainPanelLayout.createSequentialGroup()
-                                                                                .addComponent(signUpOtherCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGap(9, 9, 9))))))
+                                                                        .addComponent(signUpGamailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(signUpPhoneNumberLabel)
+                                                                        .addComponent(signUpGenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(signUpBornYearLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(signUpFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(signUpLine2)
+                                                                        .addComponent(signUpLine1)
+                                                                        .addComponent(signUpLine3)
+                                                                        .addComponent(signUpFullNameTextField)
+                                                                        .addComponent(signUpGmailTextField)
+                                                                        .addComponent(signUpPhoneNumberTextField)
+                                                                        .addGroup(signUpMainPanelLayout.createSequentialGroup()
+                                                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                        .addComponent(signUpYearOfBirth, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addGroup(signUpMainPanelLayout.createSequentialGroup()
+                                                                                                .addComponent(signUpMaleCheckBox)
+                                                                                                .addGap(36, 36, 36)
+                                                                                                .addComponent(signUpFemaleCheckBox)))
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                        .addComponent(signUpAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signUpMainPanelLayout.createSequentialGroup()
+                                                                                                .addComponent(signUpOtherCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addGap(9, 9, 9))))))
+                                                        .addComponent(signUpMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(signUpMainPanelLayout.createSequentialGroup()
                                                 .addGap(76, 76, 76)
                                                 .addComponent(signUpConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(55, Short.MAX_VALUE))
+                                .addContainerGap(44, Short.MAX_VALUE))
         );
         signUpMainPanelLayout.setVerticalGroup(
                 signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +205,9 @@ public class SignUpScreen extends javax.swing.JFrame {
                                         .addComponent(signUpHeaderLabel))
                                 .addGap(5, 5, 5)
                                 .addComponent(signUpGif, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
+                                .addGap(19, 19, 19)
+                                .addComponent(signUpMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(signUpFullNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(signUpFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -253,21 +261,36 @@ public class SignUpScreen extends javax.swing.JFrame {
         String gender = userServices.selectGender(signUpMaleCheckBox.isSelected(), signUpFemaleCheckBox.isSelected(), signUpOtherCheckBox.isSelected());
         String phoneNumber = signUpPhoneNumberTextField.getText();
         String Gmail = signUpGmailTextField.getText();
+
+        if (fullname.isEmpty()){
+            signUpMessageLabel.setText("Please enter your full name");
+            return;
+        }
+        if (yearOfBirth.equals("0")){
+            signUpMessageLabel.setText("Please choose your year of born");
+            return;
+        }
+        if (phoneNumber.isEmpty()){
+            signUpMessageLabel.setText("Please enter your phone number");
+            return;
+        }
+        if (Gmail.isEmpty()){
+            signUpMessageLabel.setText("Please enter your email");
+            return;
+        }
         if (!CheckRegex.checkValidEmail(Gmail)) {
-            JOptionPane.showMessageDialog(null, "This email does not exist");
+            signUpMessageLabel.setText("This email does not exist");
             return;
         }
 
         if (!CheckRegex.checkValidPhoneNumber(phoneNumber)) {
-            JOptionPane.showMessageDialog(null, "This phone number is invalid");
+            signUpMessageLabel.setText("This phone number is invalid");
             return;
         }
 
 
         userServices.updateInformation(LoginScreen.userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
         LoginScreen.userAccount = null;
-
-        JOptionPane.showMessageDialog(null, "Sign Up Successful");
 
         LoginScreen ls = new LoginScreen();
         this.setVisible(false);
@@ -304,6 +327,7 @@ public class SignUpScreen extends javax.swing.JFrame {
     private javax.swing.JTextField signUpLine3;
     private javax.swing.JPanel signUpMainPanel;
     private javax.swing.JCheckBox signUpMaleCheckBox;
+    private javax.swing.JLabel signUpMessageLabel;
     private javax.swing.JCheckBox signUpOtherCheckBox;
     private javax.swing.JLabel signUpPhoneNumberLabel;
     private javax.swing.JTextField signUpPhoneNumberTextField;

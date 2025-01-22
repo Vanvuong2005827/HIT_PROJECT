@@ -43,6 +43,7 @@ public class LoginScreen extends javax.swing.JFrame {
         signUpReEnterPasswordLabel1 = new javax.swing.JLabel();
         signUpReEnterPasswordLabel2 = new javax.swing.JLabel();
         signUpReEnterPasswordTextField = new javax.swing.JPasswordField();
+        signUpMessageLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -182,6 +183,8 @@ public class LoginScreen extends javax.swing.JFrame {
         signUpReEnterPasswordLabel2.setForeground(new java.awt.Color(102, 102, 102));
         signUpReEnterPasswordLabel2.setText("Password");
 
+        signUpMessageLabel.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout loginSignUpPanelLayout = new javax.swing.GroupLayout(loginSignUpPanel);
         loginSignUpPanel.setLayout(loginSignUpPanelLayout);
         loginSignUpPanelLayout.setHorizontalGroup(
@@ -189,32 +192,38 @@ public class LoginScreen extends javax.swing.JFrame {
                         .addGroup(loginSignUpPanelLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addGroup(loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(signUpPasswordLabel)
+                                        .addComponent(signUpMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(loginSignUpPanelLayout.createSequentialGroup()
                                                 .addGroup(loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(signUpPasswordLabel)
                                                         .addGroup(loginSignUpPanelLayout.createSequentialGroup()
-                                                                .addComponent(signUpReEnterPasswordLabel1)
+                                                                .addGap(59, 59, 59)
+                                                                .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(loginSignUpPanelLayout.createSequentialGroup()
+                                                                .addGroup(loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(loginSignUpPanelLayout.createSequentialGroup()
+                                                                                .addComponent(signUpReEnterPasswordLabel1)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(signUpReEnterPasswordLabel2))
+                                                                        .addComponent(signUpUsernameLabel))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(signUpReEnterPasswordLabel2))
-                                                        .addComponent(signUpUsernameLabel))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(signUpUsernameTextField)
-                                                        .addComponent(signUpPasswordTextField)
-                                                        .addComponent(signUpReEnterPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(loginSignUpPanelLayout.createSequentialGroup()
-                                                .addGap(59, 59, 59)
-                                                .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(41, Short.MAX_VALUE))
+                                                                .addGroup(loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(signUpUsernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                                                        .addComponent(signUpPasswordTextField)
+                                                                        .addComponent(signUpReEnterPasswordTextField))))
+                                                .addGap(0, 35, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         loginSignUpPanelLayout.setVerticalGroup(
                 loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(loginSignUpPanelLayout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addGroup(loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(signUpUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(signUpUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                                .addContainerGap(22, Short.MAX_VALUE)
+                                .addComponent(signUpMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(signUpUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(signUpUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(loginSignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(signUpPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(signUpPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -234,7 +243,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Welcom to my comic");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(basePath+ "\\src\\main\\java\\assets\\a-book-114_256.gif")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\boyzs\\Desktop\\Java\\JAVA_SWING_PROJECT\\pet_project\\src\\main\\java\\assets\\a-book-114_256.gif")); // NOI18N
 
         javax.swing.GroupLayout loginMainPanelLayout = new javax.swing.GroupLayout(loginMainPanel);
         loginMainPanel.setLayout(loginMainPanelLayout);
@@ -321,49 +330,44 @@ public class LoginScreen extends javax.swing.JFrame {
         String reEnterPassword = signUpReEnterPasswordTextField.getText();
 
         if (userName.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please enter your username");
+            signUpMessageLabel.setText("Please enter your username");
             return;
         }
 
         if (password.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please enter your password");
+            signUpMessageLabel.setText("Please enter your password");
             return;
         }
 
         if (reEnterPassword.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please reenter your password");
+            signUpMessageLabel.setText("Please reenter your password");
             return;
         }
 
         if (!password.equals(reEnterPassword)){
-            JOptionPane.showMessageDialog(this, "Passwords do not match");
+            signUpMessageLabel.setText("Passwords do not match");
             return;
         }
 
         if (!CheckRegex.checkValidUserName(userName)){
-            JOptionPane.showMessageDialog(this, "username chỉ chứa 8-20 ký tự, a-z, A-Z, 0-9. Không có kí tự _, . ở đầu/cuối");
+            signUpMessageLabel.setText("Username must 8-20 length (a-z, A-Z, 0-9). No char _, . in first/last");
             return;
         }
 
         if (!CheckRegex.checkValidPassword(password)){
-            JOptionPane.showMessageDialog(this, "password chỉ chữatối thiểu 8 ký tự, ít nhất 1 chữ cái in hoa, 1 chữ cái in thường, 1 chữ số và 1 ký tự đặc biệt.");
+            signUpMessageLabel.setText("Password at least 8 chars, 1 uppercase, 1 lowercase, 1 number.");
             return;
         }
 
         userAccount = new UserAccount(userName, password);
         if (!registerService.register(userAccount)){
-            JOptionPane.showMessageDialog(this, "Username already exists");
+            signUpMessageLabel.setText("Username already exists");
             return;
         } else {
-            JOptionPane.showMessageDialog(this, "Registration Successful, please enter full infomations");
+            SignUpScreen su = new SignUpScreen();
+            this.setVisible(false);
+            su.setVisible(true);
         }
-
-
-
-
-        SignUpScreen su = new SignUpScreen();
-        this.setVisible(false);
-        su.setVisible(true);
     }
 
     private void loginRememberCheckboxActionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,8 +391,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JLabel loginUsernameLabel;
     private javax.swing.JTextField loginUsernameTextField;
     private javax.swing.JButton signUpButton;
-    private javax.swing.JLabel signUpFullnamLabel;
-    private javax.swing.JTextField signUpFullnameTextField;
+    private javax.swing.JLabel signUpMessageLabel;
     private javax.swing.JLabel signUpPasswordLabel;
     private javax.swing.JPasswordField signUpPasswordTextField;
     private javax.swing.JLabel signUpReEnterPasswordLabel1;
