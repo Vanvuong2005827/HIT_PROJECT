@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class BookPanel {
-    public static JPanel customBookPanel(int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, Font customFont2) {
+public class BookGrid3ColPanel {
+    public static JPanel customBookGrid3(int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, Font customFont2) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBackground(cusColor);

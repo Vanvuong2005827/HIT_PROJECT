@@ -1,12 +1,14 @@
 
-package screens.pages;
+package screens.home_screen_pages;
 
-import javax.swing.ImageIcon;
+import screens.HomeScreen;
+
 import javax.swing.JPanel;
 
 public class FavouritePage extends javax.swing.JFrame {
-
-    public FavouritePage() {
+    HomeScreen homeScreen;
+    public FavouritePage(HomeScreen hs) {
+        homeScreen = hs;
         initComponents();
     }
 
@@ -53,7 +55,7 @@ public class FavouritePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    public JPanel recentPanel(){
+    public JPanel favouritePanel(){
         return jPanel1;
     }
 

@@ -1,18 +1,16 @@
 
-package screens.pages;
+package screens.home_screen_pages;
 
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import screens.HomeScreen;
+
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
 
 
 public class RecentPage extends javax.swing.JFrame {
+    HomeScreen homeScreen;
 
-
-    public RecentPage() {
+    public RecentPage(HomeScreen hs) {
+        homeScreen = hs;
         initComponents();
     }
 

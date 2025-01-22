@@ -5,25 +5,24 @@
 package screens;
 
 import java.awt.Color;
-import screens.pages.HomePage;
-import javax.swing.JPanel;
-import screens.pages.AccountPage;
-import screens.pages.FavouritePage;
-import screens.pages.RecentPage;
+import screens.home_screen_pages.HomePage;
+import screens.home_screen_pages.AccountPage;
+import screens.home_screen_pages.FavouritePage;
+import screens.home_screen_pages.RecentPage;
 
 public class HomeScreen extends javax.swing.JFrame {
 
     public HomeScreen() {
         initComponents();
         setLocationRelativeTo(null);
-        HomePage hp = new HomePage();
-        RecentPage rp = new RecentPage();
-        FavouritePage fp = new FavouritePage();
-        AccountPage ap = new AccountPage();
-        jTabbedPane1.addTab("Home", hp.homePanel());
-        jTabbedPane1.addTab("Recent", rp.recentPanel());
-        jTabbedPane1.addTab("Favourite", fp.recentPanel());
-        jTabbedPane1.addTab("Profile", ap.recentPanel());
+        HomePage hp = new HomePage(this);
+        RecentPage rp = new RecentPage(this);
+        FavouritePage fp = new FavouritePage(this);
+        AccountPage ap = new AccountPage(this);
+        jTabbedPane1.addTab("Trang chủ", hp.homePanel());
+        jTabbedPane1.addTab("Lịch sử", rp.recentPanel());
+        jTabbedPane1.addTab("Yêu thích", fp.favouritePanel());
+        jTabbedPane1.addTab("Tài khoản", ap.accountPanel());
         Color customColor = new Color(51,204,255);
         jTabbedPane1.setBackgroundAt(0, customColor); // Tab "Home" có nền đỏ
         jTabbedPane1.setBackgroundAt(1, customColor); // Tab "Recent" có nền xanh
@@ -34,30 +33,44 @@ public class HomeScreen extends javax.swing.JFrame {
         jTabbedPane1.setForegroundAt(1, Color.WHITE); // Màu chữ của tab "Recent"
         jTabbedPane1.setForegroundAt(2, Color.WHITE);
         jTabbedPane1.setForegroundAt(3, Color.WHITE);
-    }
 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(176, 223, 251));
+
+        jTabbedPane1.setBackground(new java.awt.Color(176, 223, 251));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -65,6 +78,7 @@ public class HomeScreen extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration
 }

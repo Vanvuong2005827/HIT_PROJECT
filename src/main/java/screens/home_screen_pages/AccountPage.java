@@ -1,22 +1,17 @@
 
-package screens.pages;
+package screens.home_screen_pages;
 
-import java.awt.BorderLayout;
-import java.awt.Image;
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+
+import screens.HomeScreen;
 import screens.LoginScreen;
 
 public class AccountPage extends javax.swing.JFrame {
-
+    HomeScreen homeScreen;
     private String basePath = new File("").getAbsolutePath();
-    public AccountPage() {
+    public AccountPage(HomeScreen hs) {
+        homeScreen = hs;
         initComponents();
     }
 
@@ -275,7 +270,7 @@ public class AccountPage extends javax.swing.JFrame {
 
 
 
-    public JPanel recentPanel(){
+    public JPanel accountPanel(){
         return jPanel1;
     }
 
