@@ -4,11 +4,13 @@ package screens;
 import services.UserServices;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.Objects;
 
 public class SignUpScreen extends javax.swing.JFrame {
 
     private UserServices userServices = new UserServices();
+    private String basePath = new File("").getAbsolutePath();
 
     public SignUpScreen() {
         initComponents();
@@ -46,7 +48,7 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         signUpMainPanel.setBackground(new java.awt.Color(176, 223, 251));
 
-        signUpGif.setIcon(new javax.swing.ImageIcon("C:\\Users\\boyzs\\Desktop\\Java\\Design\\ui_design\\src\\main\\java\\assets\\angry-2498_256.gif")); // NOI18N
+        signUpGif.setIcon(new javax.swing.ImageIcon(basePath+ "\\src\\main\\java\\assets\\angry-2498_256.gif")); // NOI18N
 
         signUpBackButton.setBackground(new java.awt.Color(176, 223, 251));
         signUpBackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

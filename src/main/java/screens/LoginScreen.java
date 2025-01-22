@@ -7,12 +7,14 @@ import services.RegisterService;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.*;
 import static services.LoginService.*;
 public class LoginScreen extends javax.swing.JFrame {
     private LoginService loginService = new LoginService();
     private RegisterService registerService = new RegisterService();
     public static UserAccount userAccount;
+    private String basePath = new File("").getAbsolutePath();
     public LoginScreen() {
         initComponents();
         setLocationRelativeTo(null);
@@ -231,7 +233,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Welcom to my comic");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\boyzs\\Desktop\\Java\\JAVA_SWING_PROJECT\\pet_project\\src\\main\\java\\assets\\a-book-114_256.gif")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(basePath+ "\\src\\main\\java\\assets\\a-book-114_256.gif")); // NOI18N
 
         javax.swing.GroupLayout loginMainPanelLayout = new javax.swing.GroupLayout(loginMainPanel);
         loginMainPanel.setLayout(loginMainPanelLayout);
