@@ -19,7 +19,7 @@ import models.book_information.ListBook;
 import screens.HomeScreen;
 import screens.MoreBookScreen;
 
-import static commons.BookGrid3ColPanel.customBookGrid3;
+import static commons.customBookGridPanel.customBookGrid3;
 
 public class HomePage extends javax.swing.JFrame {
     HomeScreen homeScreen;
@@ -427,24 +427,28 @@ public class HomePage extends javax.swing.JFrame {
             titleArea.setBackground(cusColor);
             titleArea.setWrapStyleWord(true);
             titleArea.setLineWrap(true);
+            titleArea.setFocusable(false);
             titleArea.setEditable(false);
 
             statusArea.setFont(customFont);
             statusArea.setBackground(cusColor);
             statusArea.setLineWrap(true);
             statusArea.setWrapStyleWord(true);
+            statusArea.setFocusable(false);
             statusArea.setEditable(false);
 
             updatedAtArea.setFont(customFont);
             updatedAtArea.setBackground(cusColor);
             updatedAtArea.setLineWrap(true);
             updatedAtArea.setWrapStyleWord(true);
+            updatedAtArea.setFocusable(false);
             updatedAtArea.setEditable(false);
 
             categoryArea.setFont(customFont);
             categoryArea.setBackground(cusColor);
             categoryArea.setLineWrap(true);
             categoryArea.setWrapStyleWord(true);
+            categoryArea.setFocusable(false);
             categoryArea.setEditable(false);
 
             // Add vao phan chua text

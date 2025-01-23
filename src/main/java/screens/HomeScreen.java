@@ -11,8 +11,10 @@ import screens.home_screen_pages.FavouritePage;
 import screens.home_screen_pages.RecentPage;
 
 public class HomeScreen extends javax.swing.JFrame {
+    LoginScreen loginScreen;
 
-    public HomeScreen() {
+    public HomeScreen(LoginScreen ls) {
+        loginScreen = ls;
         initComponents();
         setLocationRelativeTo(null);
         HomePage hp = new HomePage(this);
@@ -34,6 +36,11 @@ public class HomeScreen extends javax.swing.JFrame {
         jTabbedPane1.setForegroundAt(2, Color.WHITE);
         jTabbedPane1.setForegroundAt(3, Color.WHITE);
 
+    }
+
+    public void backToLogin(){
+        loginScreen.setVisible(true);
+        this.setVisible(false);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
