@@ -14,6 +14,7 @@ public class BookDetails {
     private String thumbUrl;
     private List<BookCategory> category;
     private String updatedAt;
+    private List<BookChapterLastest> chaptersLatest;
     private List<BookChapter> chapters;
 
     // Getters, Setters và hàm để lấy URL đầy đủ của chapter
@@ -79,6 +80,14 @@ public class BookDetails {
 
     public void setChapters(List<BookChapter> chaptersLatest) {
         this.chapters = chaptersLatest;
+    }
+
+    public List<BookChapterLastest> getChaptersLatest() {
+        return chaptersLatest;
+    }
+
+    public void setChaptersLatest(List<BookChapterLastest> chaptersLatest) {
+        this.chaptersLatest = chaptersLatest;
     }
 
     // Tạo danh sách URL đầy đủ cho chapters

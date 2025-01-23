@@ -242,9 +242,7 @@ public class AccountPage extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void logoutEvent(java.awt.event.MouseEvent evt) {
-        this.setVisible(false);
-        LoginScreen lg = new LoginScreen();
-        lg.setVisible(true);
+        homeScreen.backToLogin();
     }
 
     private void changeNameEvent(java.awt.event.MouseEvent evt) {

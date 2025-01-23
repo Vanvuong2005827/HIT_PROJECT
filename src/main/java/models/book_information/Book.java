@@ -9,13 +9,15 @@ public class Book {
     private String updatedAt;
     private String thumbnail;
     private List<BookCategory> category;
+    private List<BookChapterLastest> chapterLastests;
 
-    public Book(String name, String status, String updatedAt, String thumbnail, List<BookCategory> category) {
+    public Book(String name, String status, String updatedAt, String thumbnail, List<BookCategory> category, List<BookChapterLastest> chapterLastests) {
         this.name = name;
         this.status = status;
         this.updatedAt = updatedAt;
         this.thumbnail = thumbnail;
         this.category = category;
+        this.chapterLastests = chapterLastests;
     }
 
     public Book(String name){
@@ -60,5 +62,13 @@ public class Book {
 
     public void setCategory(List<BookCategory> category) {
         this.category = category;
+    }
+
+    public List<BookChapterLastest> getChapterLastests() {
+        return chapterLastests;
+    }
+
+    public void setChapterLastests(List<BookChapterLastest> chapterLastests) {
+        this.chapterLastests = chapterLastests;
     }
 }

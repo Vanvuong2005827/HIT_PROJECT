@@ -1,17 +1,24 @@
 package screens.more_book_pages;
 
+import commons.ColorMain;
+import models.book_information.Book;
+import models.book_information.ListBook;
 import screens.MoreBookScreen;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import static commons.customBookGridPanel.customBookGrid1;
 
 public class NewBookPage extends javax.swing.JFrame {
     MoreBookScreen moreBookScreen;
     public NewBookPage(MoreBookScreen m) {
         moreBookScreen = m;
         initComponents();
+        processNewBook();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -19,7 +26,7 @@ public class NewBookPage extends javax.swing.JFrame {
 
         newBookMainPanel = new javax.swing.JPanel();
         newBookScrollPane = new javax.swing.JScrollPane();
-        newBookPanel = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -30,13 +37,10 @@ public class NewBookPage extends javax.swing.JFrame {
         newBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         newBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        newBookPanel.setBackground(new java.awt.Color(176, 223, 251));
-        newBookPanel.setLayout(new java.awt.GridBagLayout());
+        mainPanel.setBackground(new java.awt.Color(176, 223, 251));
 
-        newBookPanel.addMouseListener(dragScrollListenerMainScroll);
-        newBookPanel.addMouseMotionListener(dragScrollListenerMainScroll);
-
-        newBookScrollPane.setViewportView(newBookPanel);
+        mainPanel.setLayout(new java.awt.GridBagLayout());
+        newBookScrollPane.setViewportView(mainPanel);
 
         javax.swing.GroupLayout newBookMainPanelLayout = new javax.swing.GroupLayout(newBookMainPanel);
         newBookMainPanel.setLayout(newBookMainPanelLayout);
@@ -46,7 +50,9 @@ public class NewBookPage extends javax.swing.JFrame {
         );
         newBookMainPanelLayout.setVerticalGroup(
                 newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(newBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookMainPanelLayout.createSequentialGroup()
+                                .addComponent(newBookScrollPane)
+                                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -62,6 +68,30 @@ public class NewBookPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
+
+    public void processNewBook(){
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+
+        ListBook lb = new ListBook();
+        ArrayList<Book> books = lb.getBooksTruyenMoi();
+        Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
+        String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
+        Color cusColor = mainPanel.getBackground();
+
+
+        for(int i = 0; i < books.size() - 1; i++){
+            JPanel childPanel = customBookGrid1(i, 400, 190, 114, 187, books, cusColor, baseUrl, customFont1, false);
+            gbc.gridx = 1;
+            gbc.gridy = i;
+            mainPanel.add(childPanel, gbc);
+        }
+        mainPanel.revalidate();
+        mainPanel.repaint();
+        mainPanel.addMouseListener(dragScrollListenerMainScroll);
+        mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
+    }
 
     public JPanel newBookPanel(){
         return newBookMainPanel;
@@ -84,7 +114,7 @@ public class NewBookPage extends javax.swing.JFrame {
 
             int newY = viewPosition.y + deltaY / SCROLL_SPEED;
 
-            int maxScrollHeight = 1430;
+            int maxScrollHeight = 400 * 24;
 
             newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
@@ -94,7 +124,7 @@ public class NewBookPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify
     private javax.swing.JPanel newBookMainPanel;
-    private javax.swing.JPanel newBookPanel;
+    private javax.swing.JPanel mainPanel;
     private javax.swing.JScrollPane newBookScrollPane;
     // End of variables declaration
 }
