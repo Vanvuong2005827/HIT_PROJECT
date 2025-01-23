@@ -1,9 +1,9 @@
-package api.book_api;
+package api.one_book_api;
 
-public class ApiBookResponse {
+public class ApiOneBookResponse {
     private String status;
     private String message;
-    private ApiBookData data;
+    private ApiOneBookData data;
 
     // Getters và Setters
     public String getStatus() {
@@ -22,11 +22,11 @@ public class ApiBookResponse {
         this.message = message;
     }
 
-    public ApiBookData getData() {
+    public ApiOneBookData getData() {
         return data;
     }
 
-    public void setData(ApiBookData data) {
+    public void setData(ApiOneBookData data) {
         this.data = data;
     }
 }

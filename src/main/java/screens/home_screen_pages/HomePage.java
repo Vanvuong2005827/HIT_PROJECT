@@ -15,7 +15,7 @@ import javax.swing.*;
 import commons.ColorMain;
 import models.book_information.Book;
 import models.book_information.BookCategory;
-import models.book_information.ListBook;
+import models.GetAllBook;
 import screens.HomeScreen;
 import screens.MoreBookScreen;
 
@@ -271,7 +271,7 @@ public class HomePage extends javax.swing.JFrame {
         gbc.weightx = 1.0;
         gbc.insets = new Insets(5, 5, 5, 5);
 
-        ListBook lb = new ListBook();
+        GetAllBook lb = new GetAllBook();
         ArrayList<Book> books = lb.getBooksTruyenMoi();
 
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 12);
@@ -301,7 +301,7 @@ public class HomePage extends javax.swing.JFrame {
         gbc.weightx = 1.0;
         gbc.insets = new Insets(5, 5, 5, 5);
 
-        ListBook lb = new ListBook();
+        GetAllBook lb = new GetAllBook();
         ArrayList<Book> books = lb.getBooksSapRaMat();
 
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
@@ -329,7 +329,7 @@ public class HomePage extends javax.swing.JFrame {
         gbc2.fill = GridBagConstraints.BOTH;
         gbc2.insets = new Insets(5, 5, 10, 10);
 
-        ListBook lb = new ListBook();
+        GetAllBook lb = new GetAllBook();
         ArrayList<Book> books = lb.getBooksTheLoai();
         ColorMain cl = new ColorMain();
         ArrayList<Color> colors = cl.getColorMain();
@@ -358,7 +358,7 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     public void processPageViewBookPicture() {
-        ListBook lb = new ListBook();
+        GetAllBook lb = new GetAllBook();
         ColorMain cl = new ColorMain();
         ArrayList<Book> books = lb.getBooksHoanThanh();
         ArrayList<Color> colors = cl.getColorMain();

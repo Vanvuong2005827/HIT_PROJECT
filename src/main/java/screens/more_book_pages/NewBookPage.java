@@ -1,8 +1,7 @@
 package screens.more_book_pages;
 
-import commons.ColorMain;
 import models.book_information.Book;
-import models.book_information.ListBook;
+import models.GetAllBook;
 import screens.MoreBookScreen;
 
 import javax.swing.*;
@@ -74,7 +73,7 @@ public class NewBookPage extends javax.swing.JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
 
-        ListBook lb = new ListBook();
+        GetAllBook lb = new GetAllBook();
         ArrayList<Book> books = lb.getBooksTruyenMoi();
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";

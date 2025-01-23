@@ -1,7 +1,7 @@
 package screens.more_book_pages;
 
 import models.book_information.Book;
-import models.book_information.ListBook;
+import models.GetAllBook;
 
 import javax.swing.*;
 import java.awt.*;
@@ -71,7 +71,7 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
 
-        ListBook lb = new ListBook();
+        GetAllBook lb = new GetAllBook();
         ArrayList<Book> books = lb.getBooksSapRaMat();
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";

@@ -1,10 +1,12 @@
-package models.book_information;
+package api.all_book_api;
 
 import com.google.gson.annotations.SerializedName;
+import models.book_information.BookCategory;
+import models.book_information.BookChapterLastest;
 
 import java.util.List;
 
-public class BookDetails {
+public class ApiAllBookJson {
     @SerializedName("_id")
     private String id;
     private String name;
@@ -15,7 +17,6 @@ public class BookDetails {
     private List<BookCategory> category;
     private String updatedAt;
     private List<BookChapterLastest> chaptersLatest;
-    private List<BookChapter> chapters;
 
     // Getters, Setters và hàm để lấy URL đầy đủ của chapter
     public String getId() {
@@ -74,13 +75,6 @@ public class BookDetails {
         this.updatedAt = updatedAt;
     }
 
-    public List<BookChapter> getChapters() {
-        return chapters;
-    }
-
-    public void setChapters(List<BookChapter> chaptersLatest) {
-        this.chapters = chaptersLatest;
-    }
 
     public List<BookChapterLastest> getChaptersLatest() {
         return chaptersLatest;
@@ -88,12 +82,5 @@ public class BookDetails {
 
     public void setChaptersLatest(List<BookChapterLastest> chaptersLatest) {
         this.chaptersLatest = chaptersLatest;
-    }
-
-    // Tạo danh sách URL đầy đủ cho chapters
-    public List<String> getChapterUrls() {
-        return chapters.stream()
-                .map(chapter -> "https://otruyenapi.com/v1/api/truyen-tranh/" + slug)
-                .toList();
     }
 }
