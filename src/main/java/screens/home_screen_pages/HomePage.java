@@ -1,36 +1,35 @@
 
-package screens.pages;
+package screens.home_screen_pages;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 import commons.ColorMain;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.book_information.ListBook;
+import screens.HomeScreen;
+import screens.MoreBookScreen;
 
-import static commons.BookPanel.customBookPanel;
+import static commons.BookGrid3ColPanel.customBookGrid3;
 
 public class HomePage extends javax.swing.JFrame {
-
-    public HomePage() {
+    HomeScreen homeScreen;
+    public HomePage(HomeScreen hs) {
+        homeScreen = hs;
         initComponents();
         processData();
         setLocationRelativeTo(null);
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         homePanel = new javax.swing.JPanel();
@@ -91,22 +90,35 @@ public class HomePage extends javax.swing.JFrame {
         homeNewBookGridPanel.setBackground(new java.awt.Color(176, 223, 251));
         homeNewBookGridPanel.setLayout(new java.awt.GridBagLayout());
 
-        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
-        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
 
         homeNewBookScrollPane.setViewportView(homeNewBookGridPanel);
 
         homeNewBookShow.setForeground(new java.awt.Color(102, 102, 102));
         homeNewBookShow.setText(" Thêm >");
+        homeNewBookShow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moreBookEvent(evt);
+            }
+        });
 
         homeStyleShow.setForeground(new java.awt.Color(102, 102, 102));
         homeStyleShow.setText("Thêm >");
+        homeStyleShow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moreBookEvent3(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Đề xuất");
 
         homeCommingSoonBookShow.setForeground(new java.awt.Color(102, 102, 102));
         homeCommingSoonBookShow.setText(" Thêm >");
+        homeCommingSoonBookShow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moreBookEvent2(evt);
+            }
+        });
 
         homeNewBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         homeNewBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -114,9 +126,6 @@ public class HomePage extends javax.swing.JFrame {
 
         homeCommingSoonBookGridPanel1.setBackground(new java.awt.Color(176, 223, 251));
         homeCommingSoonBookGridPanel1.setLayout(new java.awt.GridBagLayout());
-
-        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
-        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
 
         homeCommingSoonBookScrollPane.setViewportView(homeCommingSoonBookGridPanel1);
 
@@ -274,7 +283,7 @@ public class HomePage extends javax.swing.JFrame {
         int columns = 3;
 
         for (int i = 0; i < totalPanels; i++) {
-            JPanel panel = customBookPanel(i, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
+            JPanel panel = customBookGrid3(i, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
             gbc.gridx = i % columns;
             gbc.gridy = i / columns;
 
@@ -303,7 +312,7 @@ public class HomePage extends javax.swing.JFrame {
         int columns = 3;
 
         for (int i = 0; i < totalPanels; i++) {
-            JPanel panel = customBookPanel(i, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
+            JPanel panel = customBookGrid3(i, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
             gbc.gridx = i % columns;
             gbc.gridy = i / columns;
 
@@ -460,6 +469,24 @@ public class HomePage extends javax.swing.JFrame {
 
     public JPanel homePanel() {
         return homePanel;
+    }
+
+    private void moreBookEvent(java.awt.event.MouseEvent evt) {
+        MoreBookScreen mb = new MoreBookScreen(homeScreen, 0);
+        mb.setVisible(true);
+        homeScreen.setVisible(false);
+    }
+
+    private void moreBookEvent2(java.awt.event.MouseEvent evt) {
+        MoreBookScreen mb = new MoreBookScreen(homeScreen, 1);
+        mb.setVisible(true);
+        homeScreen.setVisible(false);
+    }
+
+    private void moreBookEvent3(java.awt.event.MouseEvent evt) {
+        MoreBookScreen mb = new MoreBookScreen(homeScreen, 4);
+        mb.setVisible(true);
+        homeScreen.setVisible(false);
     }
 
     MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
