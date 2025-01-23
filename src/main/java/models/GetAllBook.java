@@ -1,13 +1,16 @@
-package models.book_information;
+package models;
 
-import api.book_api.ApiBookResponse;
+import api.all_book_api.ApiAllBookResponse;
+import api.one_book_api.ApiOneBookJson;
+import api.one_book_api.ApiOneBookResponse;
 import com.google.gson.Gson;
+import models.book_information.Book;
 
 import java.util.ArrayList;
 
 import static api.ApiGet.getApi;
 
-public class ListBook {
+public class GetAllBook {
     public ArrayList<Book> getBooksTruyenMoi() {
         ArrayList<Book> books = new ArrayList<>();
 //        for (int i = 1; i <= 2; i++) {
@@ -17,11 +20,11 @@ public class ListBook {
             String jsonData = getApi(apiUrl);
             if (jsonData != null && !jsonData.isEmpty()) {
                 Gson gson = new Gson();
-                ApiBookResponse apiResponse = gson.fromJson(jsonData, ApiBookResponse.class);
+                ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
                 if (apiResponse != null && apiResponse.getData() != null) {
                     apiResponse.getData().getItems().forEach(item -> {
-                        books.add(new Book(item.getName(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        books.add(new Book(item.getName(),item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
                     });
                 }
             }
@@ -37,11 +40,11 @@ public class ListBook {
         String jsonData = getApi(apiUrl);
         if (jsonData != null && !jsonData.isEmpty()) {
             Gson gson = new Gson();
-            ApiBookResponse apiResponse = gson.fromJson(jsonData, ApiBookResponse.class);
+            ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
             if (apiResponse != null && apiResponse.getData() != null) {
                 apiResponse.getData().getItems().forEach(item -> {
-                    books.add(new Book(item.getName(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                    books.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
                 });
             }
         }
@@ -58,11 +61,11 @@ public class ListBook {
         String jsonData = getApi(apiUrl);
         if (jsonData != null && !jsonData.isEmpty()) {
             Gson gson = new Gson();
-            ApiBookResponse apiResponse = gson.fromJson(jsonData, ApiBookResponse.class);
+            ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
             if (apiResponse != null && apiResponse.getData() != null) {
                 apiResponse.getData().getItems().forEach(item -> {
-                    books.add(new Book(item.getName(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                    books.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
                 });
             }
         }
@@ -78,11 +81,11 @@ public class ListBook {
         String jsonData = getApi(apiUrl);
         if (jsonData != null && !jsonData.isEmpty()) {
             Gson gson = new Gson();
-            ApiBookResponse apiResponse = gson.fromJson(jsonData, ApiBookResponse.class);
+            ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
             if (apiResponse != null && apiResponse.getData() != null) {
                 apiResponse.getData().getItems().forEach(item -> {
-                    books.add(new Book(item.getName(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                    books.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
                 });
             }
         }
@@ -96,7 +99,7 @@ public class ListBook {
         String jsonData = getApi(apiUrl);
         if (jsonData != null && !jsonData.isEmpty()) {
             Gson gson = new Gson();
-            ApiBookResponse apiResponse = gson.fromJson(jsonData, ApiBookResponse.class);
+            ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
             if (apiResponse != null && apiResponse.getData() != null) {
                 apiResponse.getData().getItems().forEach(item -> {
@@ -105,6 +108,22 @@ public class ListBook {
             }
         }
         return books;
+    }
+
+    public Book getBooksTheoTen(String tenTruyen){
+        Book book = null;
+        String apiUrl = "https://otruyenapi.com/v1/api/truyen-tranh/" + tenTruyen;
+        String jsonData = getApi(apiUrl);
+        if (jsonData != null && !jsonData.isEmpty()) {
+            Gson gson = new Gson();
+            ApiOneBookResponse apiResponse = gson.fromJson(jsonData, ApiOneBookResponse.class);
+
+            if (apiResponse != null && apiResponse.getData() != null) {
+                ApiOneBookJson b = apiResponse.getData().getItem();
+                book = new Book(b.getName(),b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getAuthor(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
+            }
+        }
+        return book;
     }
 }
 
