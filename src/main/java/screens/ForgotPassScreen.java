@@ -6,6 +6,7 @@ import models.User.UserInfo;
 import services.ForgetPasswordService;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import static commons.CurrentUser.*;
 public class ForgotPassScreen extends javax.swing.JFrame {
@@ -35,6 +36,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         forgotPassConfirmButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        forgotPassWatingLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -126,14 +128,15 @@ public class ForgotPassScreen extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(forgorPassMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(forgorPassMainPanelLayout.createSequentialGroup()
-                                                                .addGroup(forgorPassMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(forgotPassCodeTextField)
-                                                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(forgorPassMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                        .addComponent(forgotPassCodeTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
                                                                 .addGap(18, 18, 18)
                                                                 .addComponent(forgotPassGetCodeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                         .addGroup(forgorPassMainPanelLayout.createSequentialGroup()
                                                                 .addComponent(forgotPassConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                                                .addGap(0, 0, Short.MAX_VALUE))
+                                                        .addComponent(forgotPassWatingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(forgorPassMainPanelLayout.createSequentialGroup()
                                                 .addComponent(forgotPassUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,9 +187,11 @@ public class ForgotPassScreen extends javax.swing.JFrame {
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, forgorPassMainPanelLayout.createSequentialGroup()
                                                                 .addGap(41, 41, 41)
                                                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(46, 46, 46)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(forgotPassWatingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
                                 .addComponent(forgotPassConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(253, 253, 253))
+                                .addGap(228, 228, 228))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,7 +228,8 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         }
 
         if (!CheckRegex.checkValidEmail(email)){
-            forgotPassShowMessage.setText("email address is not valid");
+            forgotPassShowMessage.setText("Email address is not valid");
+            return;
         }
 
         UserAccount userAccount1 = userServices.getUserByUsername(username);
@@ -233,13 +239,28 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         } else {
             UserInfo userInfo1 = userServices.getUserInfoByUserAccount(userAccount1);
             if (!userInfo1.getEmail().equals(email)){
-                forgotPassShowMessage.setText("Email address does not match to the username account");
+                forgotPassShowMessage.setText("Email address does not match");
                 return;
             }
         }
         try {
-            AnsCode = forgetPasswordService.getCode(email);
-            JOptionPane.showMessageDialog(rootPane, "Code had been sent, please check your email box");
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    forgotPassWatingLabel.setText("Sending...");
+                    forgotPassWatingLabel.setForeground(Color.gray);
+                    AnsCode = forgetPasswordService.getCode(email);
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    forgotPassWatingLabel.setText("Code had been sent, please check your email");
+                    forgotPassWatingLabel.setForeground(Color.gray);
+                }
+            };
+
+            worker.execute();
         } catch (Exception e) {
             e.printStackTrace();
             forgotPassShowMessage.setText("An error occurred while generating ans code");
@@ -289,6 +310,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
     private javax.swing.JLabel forgotPassShowMessage;
     private javax.swing.JLabel forgotPassUsernameLabel;
     private javax.swing.JTextField forgotPassUsernameTextField;
+    private javax.swing.JLabel forgotPassWatingLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField2;
