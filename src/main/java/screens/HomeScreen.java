@@ -5,27 +5,33 @@
 package screens;
 
 import java.awt.Color;
+
 import screens.home_screen_pages.HomePage;
 import screens.home_screen_pages.AccountPage;
 import screens.home_screen_pages.FavouritePage;
 import screens.home_screen_pages.RecentPage;
 
+import javax.swing.*;
+
 public class HomeScreen extends javax.swing.JFrame {
     LoginScreen loginScreen;
-
-    public HomeScreen(LoginScreen ls) {
+    WaitScreen waitScreen;
+    HomeScreen homeScreen = this;
+    HomePage hp = new HomePage(this);
+    RecentPage rp = new RecentPage(this);
+    FavouritePage fp = new FavouritePage(this);
+    AccountPage ap = new AccountPage(this);
+    public HomeScreen(LoginScreen ls, WaitScreen ws) {
         loginScreen = ls;
+        waitScreen = ws;
         initComponents();
         setLocationRelativeTo(null);
-        HomePage hp = new HomePage(this);
-        RecentPage rp = new RecentPage(this);
-        FavouritePage fp = new FavouritePage(this);
-        AccountPage ap = new AccountPage(this);
+        processData();
         jTabbedPane1.addTab("Trang chủ", hp.homePanel());
         jTabbedPane1.addTab("Lịch sử", rp.recentPanel());
         jTabbedPane1.addTab("Yêu thích", fp.favouritePanel());
         jTabbedPane1.addTab("Tài khoản", ap.accountPanel());
-        Color customColor = new Color(51,204,255);
+        Color customColor = new Color(51, 204, 255);
         jTabbedPane1.setBackgroundAt(0, customColor); // Tab "Home" có nền đỏ
         jTabbedPane1.setBackgroundAt(1, customColor); // Tab "Recent" có nền xanh
         jTabbedPane1.setBackgroundAt(2, customColor);
@@ -38,7 +44,25 @@ public class HomeScreen extends javax.swing.JFrame {
 
     }
 
-    public void backToLogin(){
+    public void processData() {
+        SwingWorker<Void, Void> worker = new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() {
+                hp.processHomePageData();
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                homeScreen.setVisible(true);
+                waitScreen.setVisible(false);
+            }
+        };
+
+        worker.execute();
+    }
+
+    public void backToLogin() {
         loginScreen.setVisible(true);
         this.setVisible(false);
     }

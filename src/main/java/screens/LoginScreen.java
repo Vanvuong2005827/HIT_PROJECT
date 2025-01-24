@@ -12,6 +12,7 @@ import java.io.File;
 import javax.swing.*;
 import static services.LoginService.*;
 public class LoginScreen extends javax.swing.JFrame {
+    LoginScreen loginScreen = this;
     private LoginService loginService = new LoginService();
     private RegisterService registerService = new RegisterService();
     public static UserAccount userAccount;
@@ -304,20 +305,11 @@ public class LoginScreen extends javax.swing.JFrame {
         }
 
         if (loginService.authenticate(userName,loginPasswordTextField.getText())){
-            LoginScreen loginScreen = this;
-            HomeScreen hs = new HomeScreen(this);
             WaitScreen ws = new WaitScreen();
             ws.setVisible(true);
             loginScreen.setVisible(false);
-            Timer timer = new Timer(4200, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    ws.setVisible(false);
-                    hs.setVisible(true);
-                }
-            });
-            timer.setRepeats(false); // Đảm bảo timer chỉ chạy một lần
-            timer.start();
+            HomeScreen hs = new HomeScreen(this, ws);
+
         } else {
             loginMessageLabel.setText("Invalid username or password");
         }

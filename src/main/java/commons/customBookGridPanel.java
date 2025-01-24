@@ -117,7 +117,7 @@ public class customBookGridPanel {
         // Xu ly chapter lastest
         String chapterLatest = "";
         if (!isCompleted)
-            chapterLatest = books.get(index).getChapterLastests().get(0).getFilename();
+            chapterLatest = "Need Fix";
 
         // Them vao area
         titleArea = new JTextArea(books.get(index).getName());

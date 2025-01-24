@@ -3,6 +3,7 @@ package screens.more_book_pages;
 import models.book_information.Book;
 import models.GetAllBook;
 import screens.MoreBookScreen;
+import screens.WaitScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,6 @@ public class NewBookPage extends javax.swing.JFrame {
     public NewBookPage(MoreBookScreen m) {
         moreBookScreen = m;
         initComponents();
-        processNewBook();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">

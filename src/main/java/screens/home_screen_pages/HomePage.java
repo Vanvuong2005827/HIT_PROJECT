@@ -18,15 +18,16 @@ import models.book_information.BookCategory;
 import models.GetAllBook;
 import screens.HomeScreen;
 import screens.MoreBookScreen;
+import screens.WaitScreen;
 
 import static commons.customBookGridPanel.customBookGrid3;
 
 public class HomePage extends javax.swing.JFrame {
     HomeScreen homeScreen;
+
     public HomePage(HomeScreen hs) {
         homeScreen = hs;
         initComponents();
-        processData();
         setLocationRelativeTo(null);
     }
 
@@ -245,24 +246,11 @@ public class HomePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    public void processData() {
-        // Need fix
-        SwingWorker<Void, Void> worker = new SwingWorker<>() {
-            @Override
-            protected Void doInBackground() {
-                processStyleBookPircture();
-                processNewBookPicture();
-                processCommingSoonBookPicture();
-                processPageViewBookPicture();
-                return null;
-            }
-
-            @Override
-            protected void done() {
-            }
-        };
-
-        worker.execute();
+    public void processHomePageData() {
+        processStyleBookPircture();
+        processNewBookPicture();
+        processCommingSoonBookPicture();
+        processPageViewBookPicture();
     }
 
     public void processNewBookPicture() {
@@ -339,7 +327,7 @@ public class HomePage extends javax.swing.JFrame {
         int rows = 2;
 
 
-        for (int i = 0; i < totalPanels2/2-1; i++) {
+        for (int i = 0; i < totalPanels2 / 2 - 1; i++) {
             JPanel panel = new JPanel(new BorderLayout());
             int indexColor = i;
             if (indexColor >= totalColor) indexColor %= totalColor;
@@ -476,21 +464,24 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     private void moreBookEvent(java.awt.event.MouseEvent evt) {
-        MoreBookScreen mb = new MoreBookScreen(homeScreen, 0);
-        mb.setVisible(true);
+        WaitScreen ws = new WaitScreen();
+        ws.setVisible(true);
         homeScreen.setVisible(false);
+        MoreBookScreen mb = new MoreBookScreen(homeScreen, 0, ws);
     }
 
     private void moreBookEvent2(java.awt.event.MouseEvent evt) {
-        MoreBookScreen mb = new MoreBookScreen(homeScreen, 1);
-        mb.setVisible(true);
+        WaitScreen ws = new WaitScreen();
+        ws.setVisible(true);
         homeScreen.setVisible(false);
+        MoreBookScreen mb = new MoreBookScreen(homeScreen, 1, ws);
     }
 
     private void moreBookEvent3(java.awt.event.MouseEvent evt) {
-        MoreBookScreen mb = new MoreBookScreen(homeScreen, 4);
-        mb.setVisible(true);
+        WaitScreen ws = new WaitScreen();
+        ws.setVisible(true);
         homeScreen.setVisible(false);
+        MoreBookScreen mb = new MoreBookScreen(homeScreen, 3, ws);
     }
 
     MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {

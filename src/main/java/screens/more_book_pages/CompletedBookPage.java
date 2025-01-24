@@ -15,7 +15,6 @@ public class CompletedBookPage extends javax.swing.JFrame {
 
     public CompletedBookPage() {
         initComponents();
-        completedBookProcess();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -66,7 +65,7 @@ public class CompletedBookPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    public void completedBookProcess(){
+    public void processCompletedBook(){
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
