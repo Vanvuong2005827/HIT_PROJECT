@@ -244,7 +244,6 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             e.printStackTrace();
             forgotPassShowMessage.setText("An error occured while generating ans code");
         }
-
     }
 
     private void confirmEvent(java.awt.event.MouseEvent evt) {
