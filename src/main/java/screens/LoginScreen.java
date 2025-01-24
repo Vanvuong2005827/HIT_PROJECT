@@ -2,20 +2,12 @@ package screens;
 
 import commons.CheckRegex;
 import models.User.UserAccount;
-import models.User.UserInfo;
-import services.LoginService;
-import services.RegisterService;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.*;
 
 import static commons.CurrentUser.*;
 
 public class LoginScreen extends javax.swing.JFrame {
-    LoginScreen loginScreen = this;
-
     private String basePath = new File("").getAbsolutePath();
 
     public LoginScreen() {
@@ -23,9 +15,7 @@ public class LoginScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
         loginMainPanel = new javax.swing.JPanel();
         loginLoginTabbed = new javax.swing.JTabbedPane();
         loginLoginPanel = new javax.swing.JPanel();
@@ -65,11 +55,11 @@ public class LoginScreen extends javax.swing.JFrame {
 
         loginLoginPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        loginUsernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        loginUsernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14));
         loginUsernameLabel.setForeground(new java.awt.Color(102, 102, 102));
         loginUsernameLabel.setText("Username");
 
-        loginPasswordLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        loginPasswordLabel.setFont(new java.awt.Font("Segoe UI", 0, 14));
         loginPasswordLabel.setForeground(new java.awt.Color(102, 102, 102));
         loginPasswordLabel.setText("Password");
 
@@ -92,7 +82,7 @@ public class LoginScreen extends javax.swing.JFrame {
         });
 
         loginButton.setBackground(new java.awt.Color(176, 223, 251));
-        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("LOGIN");
         loginButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -159,16 +149,16 @@ public class LoginScreen extends javax.swing.JFrame {
 
         loginSignUpPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        signUpUsernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        signUpUsernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14));
         signUpUsernameLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpUsernameLabel.setText("Username");
 
-        signUpPasswordLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        signUpPasswordLabel.setFont(new java.awt.Font("Segoe UI", 0, 14));
         signUpPasswordLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpPasswordLabel.setText("Password");
 
         signUpButton.setBackground(new java.awt.Color(176, 223, 251));
-        signUpButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        signUpButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
         signUpButton.setForeground(new java.awt.Color(255, 255, 255));
         signUpButton.setText("Sign Up");
         signUpButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -178,11 +168,11 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
 
-        signUpReEnterPasswordLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        signUpReEnterPasswordLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14));
         signUpReEnterPasswordLabel1.setForeground(new java.awt.Color(102, 102, 102));
         signUpReEnterPasswordLabel1.setText("Re-enter");
 
-        signUpReEnterPasswordLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        signUpReEnterPasswordLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14));
         signUpReEnterPasswordLabel2.setForeground(new java.awt.Color(102, 102, 102));
         signUpReEnterPasswordLabel2.setText("Password");
 
@@ -242,11 +232,11 @@ public class LoginScreen extends javax.swing.JFrame {
 
         loginLoginTabbed.addTab("SIGN UP", loginSignUpPanel);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Welcom to my comic");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\a-book-114_256.gif")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\a-book-114_256.gif"));
 
         javax.swing.GroupLayout loginMainPanelLayout = new javax.swing.GroupLayout(loginMainPanel);
         loginMainPanel.setLayout(loginMainPanelLayout);
@@ -283,7 +273,7 @@ public class LoginScreen extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
 
     private void forgotPassEvent(java.awt.event.MouseEvent evt) {
@@ -372,7 +362,6 @@ public class LoginScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    // Variables declaration - do not modify
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loginButton;
@@ -397,5 +386,4 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JPasswordField signUpReEnterPasswordTextField;
     private javax.swing.JLabel signUpUsernameLabel;
     private javax.swing.JTextField signUpUsernameTextField;
-    // End of variables declaration
 }

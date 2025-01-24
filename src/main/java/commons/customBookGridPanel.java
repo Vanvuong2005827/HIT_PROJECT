@@ -47,7 +47,6 @@ public class customBookGridPanel {
             categories.append(x.getName());
         }
 
-        // Details
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
         textPanel.setBackground(panel.getBackground());
@@ -80,7 +79,6 @@ public class customBookGridPanel {
         childPanel.setBackground(cusColor);
         childPanel.setPreferredSize(new java.awt.Dimension(panelWidth, panelHeight));
 
-        // Xu ly anh
         String baseUrlAllBook = baseUrl;
         String posterPathAllBook = books.get(index).getThumbnail();
         String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
@@ -99,13 +97,11 @@ public class customBookGridPanel {
         imgLabel.setBackground(cusColor);
         imgLabel.setForeground(cusColor);
 
-        // Xu ly update at
         String inputDateTime = books.get(index).getUpdatedAt();
         LocalDateTime dateTime = LocalDateTime.parse(inputDateTime.substring(0, 19));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
         String updateAt = dateTime.format(formatter);
 
-        // Xu ly category
         StringBuilder categories = new StringBuilder();
         for (BookCategory x : books.get(index).getCategory()) {
             if (categories.length() > 0) {
@@ -114,12 +110,10 @@ public class customBookGridPanel {
             categories.append(x.getName());
         }
 
-        // Xu ly chapter lastest
-        String chapterLatest = "";
+        String chapterLatest = "Completed";
         if (!isCompleted)
-            chapterLatest = "Need Fix";
+            chapterLatest = books.get(index).getChapterLastests().get(0).getFilename();
 
-        // Them vao area
         titleArea = new JTextArea(books.get(index).getName());
         statusArea = new JTextArea("Status: " + books.get(index).getStatus());
         updateAtArea = new JTextArea("Last update: " + updateAt);

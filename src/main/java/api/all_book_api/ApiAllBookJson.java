@@ -18,7 +18,6 @@ public class ApiAllBookJson {
     private String updatedAt;
     private List<BookChapterLastest> chaptersLatest;
 
-    // Getters, Setters và hàm để lấy URL đầy đủ của chapter
     public String getId() {
         return id;
     }
@@ -74,7 +73,6 @@ public class ApiAllBookJson {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 
     public List<BookChapterLastest> getChaptersLatest() {
         return chaptersLatest;

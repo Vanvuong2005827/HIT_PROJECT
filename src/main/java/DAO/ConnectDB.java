@@ -21,7 +21,6 @@ public class ConnectDB {
             .version(ServerApiVersion.V1)
             .build();
 
-    // Cấu hình Codec để hỗ trợ Pojo
     public static CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
 
     public static MongoClientSettings settings = MongoClientSettings.builder()
@@ -35,10 +34,8 @@ public class ConnectDB {
 
     public static MongoClient mongoClient = MongoClients.create(settings);
 
-    // Truy cập cơ sở dữ liệu
     public static MongoDatabase db = mongoClient.getDatabase("HITDB");
 
-    // Thay đổi kiểu của `collection` để hỗ trợ Pojo
     public static MongoCollection<UserAccount> collection = db.getCollection("UserAccount", UserAccount.class);
     public static MongoCollection<UserInfo> collectionInfo = db.getCollection("UserInfo", UserInfo.class);
 }

@@ -3,14 +3,14 @@ package models.User;
 import org.bson.types.ObjectId;
 
 public class UserAccount {
-    private ObjectId id; // ID của tài liệu
+    private ObjectId id;
     private String username;
     private String password;
 
     private Role role;
 
     public UserAccount() {
-        id = null; // ID mặc định là null cho tài liệu mới
+        id = null;
         username = "";
         password = "";
 
@@ -31,7 +31,6 @@ public class UserAccount {
         this.role = role;
     }
 
-    // Getter và Setter cho ID
     public ObjectId getId() {
         return id;
     }
@@ -48,8 +47,6 @@ public class UserAccount {
         return role;
     }
 
-
-
     public String getPassword() {
         return password;
     }
@@ -61,8 +58,6 @@ public class UserAccount {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 
     public void setRole(Role role) {
         this.role = role;

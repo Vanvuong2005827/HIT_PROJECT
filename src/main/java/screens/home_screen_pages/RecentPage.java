@@ -14,7 +14,6 @@ public class RecentPage extends javax.swing.JFrame {
         initComponents();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -46,41 +45,11 @@ public class RecentPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
-    // MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
-//            private Point origin;
-//
-//            @Override
-//            public void mousePressed(MouseEvent e) {
-//                origin = e.getPoint(); // Vị trí ban đầu khi nhấn chuột
-//            }
-//
-//            @Override
-//            public void mouseDragged(MouseEvent e) {
-//                JViewport viewport = jScrollPane1.getViewport();
-//                Point viewPosition = viewport.getViewPosition(); // Vị trí hiện tại của viewport
-//                int deltaX = origin.x - e.getX(); // Tính khoảng cách kéo ngang
-//                int deltaY = origin.y - e.getY(); // Tính khoảng cách kéo dọc
-//
-//                // Tính vị trí mới của viewport
-//                int newX = viewPosition.x + deltaX;
-//                int newY = viewPosition.y + deltaY;
-//
-//                // Cần fix giới hạn kéo theo các panel con
-//                // Đảm bảo không cuộn vượt quá giới hạn
-////                newX = Math.max(0, Math.min(newX, homeMainPanel.getWidth() - viewport.getWidth()));
-//                newY = Math.max(0, Math.min(newY, jPanel1.getHeight() - viewport.getHeight()));
-//
-//                // Cập nhật vị trí viewport
-//
-//                viewport.setViewPosition(new Point(0, newY));
-//            }
-//        };
     public JPanel recentPanel(){
         return jPanel1;
     }
-    // Variables declaration - do not modify
+
     private javax.swing.JPanel jPanel1;
-    // End of variables declaration
 }

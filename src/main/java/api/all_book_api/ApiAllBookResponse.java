@@ -5,7 +5,6 @@ public class ApiAllBookResponse {
     private String message;
     private ApiAllBookData data;
 
-    // Getters và Setters
     public String getStatus() {
         return status;
     }

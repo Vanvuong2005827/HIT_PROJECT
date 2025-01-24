@@ -20,7 +20,6 @@ public class SignUpScreen extends javax.swing.JFrame {
     }
 
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         signUpMainPanel = new javax.swing.JPanel();
@@ -51,10 +50,10 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         signUpMainPanel.setBackground(new java.awt.Color(176, 223, 251));
 
-        signUpGif.setIcon(new javax.swing.ImageIcon("C:\\Users\\boyzs\\Desktop\\Java\\Design\\ui_design\\src\\main\\java\\assets\\angry-2498_256.gif")); // NOI18N
+        signUpGif.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\angry-2498_256.gif"));
 
         signUpBackButton.setBackground(new java.awt.Color(176, 223, 251));
-        signUpBackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        signUpBackButton.setFont(new java.awt.Font("Segoe UI", 1, 24));
         signUpBackButton.setText("<");
         signUpBackButton.setBorder(null);
         signUpBackButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,27 +62,27 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
 
-        signUpFullNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpFullNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpFullNameLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpFullNameLabel.setText("Full name :");
 
-        signUpHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        signUpHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 20));
         signUpHeaderLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpHeaderLabel.setText("Account Information");
 
-        signUpBornYearLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpBornYearLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpBornYearLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpBornYearLabel.setText("Year of birth :");
 
-        signUpGenderLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpGenderLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpGenderLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpGenderLabel.setText("Gender :");
 
-        signUpPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpPhoneNumberLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpPhoneNumberLabel.setText("Phone Number :");
 
-        signUpGamailLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpGamailLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpGamailLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpGamailLabel.setText("Gmail : ");
 
@@ -124,7 +123,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpFemaleCheckBox.setBorder(null);
 
         signUpConfirmButton.setBackground(new java.awt.Color(176, 223, 251));
-        signUpConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        signUpConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 24));
         signUpConfirmButton.setForeground(new java.awt.Color(102, 102, 102));
         signUpConfirmButton.setText("Confirm");
         signUpConfirmButton.setBorder(null);
@@ -254,7 +253,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     private void signUpConfirmEvent(java.awt.event.MouseEvent evt) {
         String fullname = signUpFullNameTextField.getText().trim();
@@ -310,7 +309,6 @@ public class SignUpScreen extends javax.swing.JFrame {
     }
 
 
-    // Variables declaration - do not modify
     private javax.swing.JLabel signUpAge;
     private javax.swing.JButton signUpBackButton;
     private javax.swing.JLabel signUpBornYearLabel;
@@ -333,5 +331,4 @@ public class SignUpScreen extends javax.swing.JFrame {
     private javax.swing.JLabel signUpPhoneNumberLabel;
     private javax.swing.JTextField signUpPhoneNumberTextField;
     private javax.swing.JComboBox<String> signUpYearOfBirth;
-    // End of variables declaration
 }
