@@ -18,12 +18,6 @@ public class CheckRegex {
         return matcher.matches();
     }
 
-
-//    no _ or . at the end
-//    allowed characters a-zA-Z0-9
-//    no __ or _. or ._ or .. inside
-//    no _ or . at the beginning
-//    username is 8-20 characters long
     public static boolean checkValidUserName(String username) {
         String USERNAME_PATTERN = Patterns.USERNAME_PATTERN;
         Pattern pattern = Pattern.compile(USERNAME_PATTERN);
@@ -31,7 +25,6 @@ public class CheckRegex {
         return matcher.matches();
     }
 
-//    tối thiểu 8 ký tự, ít nhất 1 chữ cái in hoa, 1 chữ cái in thường, 1 chữ số và 1 ký tự đặc biệt.
     public static boolean checkValidPassword(String password) {
         String PASSWORD_PATTERN = Patterns.PASSWORD_PATTERN;
         Pattern pattern = Pattern.compile(PASSWORD_PATTERN);

@@ -3,7 +3,6 @@ package screens.more_book_pages;
 import models.book_information.Book;
 import models.GetAllBook;
 import screens.MoreBookScreen;
-import screens.WaitScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +19,6 @@ public class NewBookPage extends javax.swing.JFrame {
         initComponents();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         newBookMainPanel = new javax.swing.JPanel();
@@ -66,7 +64,7 @@ public class NewBookPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     public void processNewBook(){
         GridBagConstraints gbc = new GridBagConstraints();
@@ -121,9 +119,7 @@ public class NewBookPage extends javax.swing.JFrame {
         }
     };
 
-    // Variables declaration - do not modify
     private javax.swing.JPanel newBookMainPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JScrollPane newBookScrollPane;
-    // End of variables declaration
 }

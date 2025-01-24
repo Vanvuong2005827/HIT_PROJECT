@@ -12,7 +12,6 @@ public class FavouritePage extends javax.swing.JFrame {
         initComponents();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -53,14 +52,12 @@ public class FavouritePage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     public JPanel favouritePanel(){
         return jPanel1;
     }
 
-    // Variables declaration - do not modify
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    // End of variables declaration
 }

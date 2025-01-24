@@ -12,7 +12,6 @@ public class WaitScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -23,7 +22,7 @@ public class WaitScreen extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(176, 223, 251));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\No Brain Waiting GIF by Sappy Seals.gif")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\No Brain Waiting GIF by Sappy Seals.gif"));
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -54,11 +53,8 @@ public class WaitScreen extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
-
-    // Variables declaration - do not modify
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    // End of variables declaration
 }

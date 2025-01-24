@@ -28,7 +28,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
         jTabbedPane1.setBackgroundAt(1, customColor);
         jTabbedPane1.setBackgroundAt(2, customColor);
         jTabbedPane1.setBackgroundAt(3, customColor);
-        // Thay đổi màu chữ của các tab
+
         jTabbedPane1.setForegroundAt(0, Color.WHITE);
         jTabbedPane1.setForegroundAt(1, Color.WHITE);
         jTabbedPane1.setForegroundAt(2, Color.WHITE);
@@ -36,7 +36,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
 
         jTabbedPane1.setSelectedIndex(indexTabbed);
     }
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
@@ -50,7 +50,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(176, 223, 251));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel1.setText("  <");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -87,7 +87,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     public void processAllData(){
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
@@ -114,9 +114,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
         this.setVisible(false);
     }
 
-    // Variables declaration - do not modify
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel mainPanel;
-    // End of variables declaration
 }

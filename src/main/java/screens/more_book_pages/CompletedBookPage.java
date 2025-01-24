@@ -17,7 +17,6 @@ public class CompletedBookPage extends javax.swing.JFrame {
         initComponents();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         completedBookMainPanel = new javax.swing.JPanel();
@@ -63,7 +62,7 @@ public class CompletedBookPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     public void processCompletedBook(){
         GridBagConstraints gbc = new GridBagConstraints();
@@ -118,10 +117,8 @@ public class CompletedBookPage extends javax.swing.JFrame {
         }
     };
 
-    // Variables declaration - do not modify
     private javax.swing.JPanel completedBookMainPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JScrollPane completedBookScrollPane;
-    // End of variables declaration
 }
 

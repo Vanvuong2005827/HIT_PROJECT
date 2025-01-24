@@ -8,7 +8,6 @@ public class StyleBookPage extends javax.swing.JFrame {
         initComponents();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         styleBookMainPanel = new javax.swing.JPanel();
@@ -41,14 +40,11 @@ public class StyleBookPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     public JPanel styleBookPanel(){
         return styleBookMainPanel;
     }
 
-
-    // Variables declaration - do not modify
     private javax.swing.JPanel styleBookMainPanel;
-    // End of variables declaration
 }

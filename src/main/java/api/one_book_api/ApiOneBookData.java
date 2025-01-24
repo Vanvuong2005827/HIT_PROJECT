@@ -1,7 +1,5 @@
 package api.one_book_api;
 
-import java.util.List;
-
 public class ApiOneBookData {
     ApiOneBookJson item;
 

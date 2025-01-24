@@ -17,7 +17,6 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         initComponents();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         commingSoonBookMainPanel = new javax.swing.JPanel();
@@ -63,7 +62,7 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     public void processCommingSoonBook(){
         GridBagConstraints gbc = new GridBagConstraints();
@@ -118,9 +117,7 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         }
     };
 
-    // Variables declaration - do not modify
     private javax.swing.JPanel commingSoonBookMainPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JScrollPane commingSoonBookScrollPane;
-    // End of variables declaration
 }

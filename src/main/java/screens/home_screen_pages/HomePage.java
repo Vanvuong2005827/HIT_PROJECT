@@ -1,4 +1,3 @@
-
 package screens.home_screen_pages;
 
 import java.awt.*;
@@ -13,7 +12,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import commons.ColorMain;
-import models.User.UserInfo;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.GetAllBook;
@@ -33,7 +31,6 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         homePanel = new javax.swing.JPanel();
         homeMainScrollPane = new javax.swing.JScrollPane();
         homeMainPanel = new javax.swing.JPanel();
@@ -64,14 +61,13 @@ public class HomePage extends javax.swing.JFrame {
         homePageViewPanel.setLayout(new java.awt.CardLayout());
         CardLayout cardLayout = (CardLayout) homePageViewPanel.getLayout();
         Timer timer = new Timer(4000, e -> {
-            // Chuyển sang panel tiếp theo
             cardLayout.next(homePageViewPanel);
         });
         timer.start();
 
         homeSearchLabel.setText("Tìm kiếm");
 
-        homeStyleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        homeStyleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeStyleLabel.setText("Thể Loại");
 
         homeStyleScrollPane.setBorder(null);
@@ -82,7 +78,7 @@ public class HomePage extends javax.swing.JFrame {
         homeStyleMainPanel.addMouseListener(dragScrollListenerStyleScroll);
         homeStyleMainPanel.addMouseMotionListener(dragScrollListenerStyleScroll);
 
-        homeNewBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        homeNewBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeNewBookLabel.setText("Truyện mới");
 
         homeNewBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -111,7 +107,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel1.setText("Đề xuất");
 
         homeCommingSoonBookShow.setForeground(new java.awt.Color(102, 102, 102));
@@ -131,7 +127,7 @@ public class HomePage extends javax.swing.JFrame {
 
         homeCommingSoonBookScrollPane.setViewportView(homeCommingSoonBookGridPanel1);
 
-        homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeCommingSoonBookLabel.setText("Sắp ra mắt");
 
         javax.swing.GroupLayout homeMainPanelLayout = new javax.swing.GroupLayout(homeMainPanel);
@@ -245,7 +241,7 @@ public class HomePage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     public void processHomePageData() {
         processStyleBookPircture();
@@ -353,13 +349,11 @@ public class HomePage extends javax.swing.JFrame {
         ArrayList<Color> colors = cl.getColorMain();
 
         for (int i = 0; i < books.size(); i++) {
-            // Panel chính
             JPanel panel = new JPanel(new BorderLayout(10, 10));
             Color cusColor = colors.get(i);
             Font customFont = new Font("Segoe UI", Font.BOLD, 13);
             panel.setBackground(cusColor);
 
-            // Gen ảnh
             String baseUrlAllBook = "https://img.otruyenapi.com/uploads/comics/";
             String posterPathAllBook = books.get(i).getThumbnail();
             String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
@@ -377,17 +371,14 @@ public class HomePage extends javax.swing.JFrame {
                 panel.add(errorLabel, BorderLayout.CENTER);
             }
 
-            // Phan text ben phai
             JPanel mainTextPanel = new JPanel();
             mainTextPanel.setBackground(cusColor);
             mainTextPanel.setPreferredSize(new Dimension(320, 160));
 
-            // Panel chua text
-            JPanel textPanel = new JPanel(new GridLayout(4, 1, 5, 5)); // 2 hàng, 1 cột
+            JPanel textPanel = new JPanel(new GridLayout(4, 1, 5, 5));
             textPanel.setBackground(cusColor);
             textPanel.setPreferredSize(new Dimension(288, 158));
 
-            // Xu ly updateLast
             String inputDateTime = books.get(i).getUpdatedAt();
             LocalDateTime dateTime = LocalDateTime.parse(inputDateTime.substring(0, 19));
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
@@ -401,14 +392,12 @@ public class HomePage extends javax.swing.JFrame {
                 categories.append(x.getName());
             }
 
-            // Cac text area
             JPanel emptyPanel = new JPanel();
             JTextArea titleArea = new JTextArea(books.get(i).getName());
             JTextArea statusArea = new JTextArea("Status: " + books.get(i).getStatus());
             JTextArea updatedAtArea = new JTextArea("Last update: " + updateAt);
             JTextArea categoryArea = new JTextArea(categories.toString());
 
-            // Cấu hình text area
             emptyPanel.setSize(new Dimension(50, 1));
             emptyPanel.setBackground(cusColor);
 
@@ -440,18 +429,15 @@ public class HomePage extends javax.swing.JFrame {
             categoryArea.setFocusable(false);
             categoryArea.setEditable(false);
 
-            // Add vao phan chua text
             textPanel.add(titleArea);
             textPanel.add(statusArea);
             textPanel.add(updatedAtArea);
             textPanel.add(categoryArea);
 
-            // Add vao panel ben phai
             mainTextPanel.add(emptyPanel);
             mainTextPanel.add(textPanel, BorderLayout.CENTER);
             mainTextPanel.add(emptyPanel);
 
-            // Add vao panel chinh
             panel.add(mainTextPanel, BorderLayout.CENTER);
 
             homePageViewPanel.add(panel);
@@ -485,13 +471,8 @@ public class HomePage extends javax.swing.JFrame {
         MoreBookScreen mb = new MoreBookScreen(homeScreen, 3, ws);
     }
 
-    private void getUserInfor(){
-
-    }
-
     MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
         private Point origin;
-
         @Override
         public void mousePressed(MouseEvent e) {
             origin = e.getPoint();
@@ -505,7 +486,6 @@ public class HomePage extends javax.swing.JFrame {
 
             int newX = viewPosition.x + deltaX;
 
-
             int totalWidth = 130 * 100;
             if (totalWidth < homeStyleScrollPane.getWidth()) totalWidth = homeStyleScrollPane.getWidth();
             int panelWidth = totalWidth;
@@ -517,7 +497,6 @@ public class HomePage extends javax.swing.JFrame {
             if (newX > panelWidth - viewportWidth) {
                 newX = panelWidth - viewportWidth;
             }
-
 
             viewport.setViewPosition(new Point(newX, 0));
         }
@@ -547,7 +526,7 @@ public class HomePage extends javax.swing.JFrame {
             viewport.setViewPosition(new Point(viewPosition.x, newY));
         }
     };
-    // Variables declaration - do not modify
+
     private javax.swing.JLabel homeBellNotifications;
     private javax.swing.JPanel homeCommingSoonBookGridPanel1;
     private javax.swing.JLabel homeCommingSoonBookLabel;
@@ -567,5 +546,4 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JScrollPane homeStyleScrollPane;
     private javax.swing.JLabel homeStyleShow;
     private javax.swing.JLabel jLabel1;
-    // End of variables declaration
 }

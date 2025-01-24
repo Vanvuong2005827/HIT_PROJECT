@@ -1,4 +1,3 @@
-
 package screens.home_screen_pages;
 
 import java.io.File;
@@ -21,9 +20,7 @@ public class AccountPage extends javax.swing.JFrame {
         accountStatusAccountLabel.setText("active");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         accountTTTKLabel = new javax.swing.JLabel();
@@ -49,38 +46,38 @@ public class AccountPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.revalidate(); // Làm mới JPanel
+        jPanel1.revalidate();
         jPanel1.repaint();
         jPanel1.setBackground(new java.awt.Color(176, 223, 251));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\user.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\user.png"));
 
-        accountTTTKLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        accountTTTKLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         accountTTTKLabel.setText("Thông tin tài khoản");
 
-        accountNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
 
-        accountGmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountGmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
 
-        accountPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
 
-        accountUsernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountUsernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
 
-        accountStatusAccountLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountStatusAccountLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14));
         jLabel5.setText("Gmail: ");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14));
         jLabel6.setText("Phone Number: ");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14));
         jLabel7.setText("Username: ");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14));
         jLabel8.setText("Account status: ");
 
-        accountChangePassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountChangePassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         accountChangePassLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountChangePassLabel.setText("Đổi mật khẩu                                          ->");
         accountChangePassLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,7 +88,7 @@ public class AccountPage extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
 
-        accountForgotPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountForgotPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         accountForgotPassLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountForgotPassLabel.setText("Quên mật khẩu?                                     ->");
         accountForgotPassLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,7 +99,7 @@ public class AccountPage extends javax.swing.JFrame {
 
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
 
-        accountNightModeLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountNightModeLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         accountNightModeLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountNightModeLabel.setText("Đổi màu nền                                           ->");
         accountNightModeLabel.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -113,7 +110,7 @@ public class AccountPage extends javax.swing.JFrame {
 
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
 
-        accountRemoveLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountRemoveLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         accountRemoveLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountRemoveLabel.setText("Xóa tài khoản                                         ->");
         accountRemoveLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,7 +120,7 @@ public class AccountPage extends javax.swing.JFrame {
         });
 
         accountLogoutButton.setBackground(new java.awt.Color(204, 255, 255));
-        accountLogoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        accountLogoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
         accountLogoutButton.setText("ĐĂNG XUẤT");
         accountLogoutButton.setBorder(null);
         accountLogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,7 +129,7 @@ public class AccountPage extends javax.swing.JFrame {
             }
         });
 
-        accountChangeNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        accountChangeNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         accountChangeNameLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountChangeNameLabel.setText("Đổi tên hiện thị                                       ->");
         accountChangeNameLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -245,7 +242,7 @@ public class AccountPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     private void logoutEvent(java.awt.event.MouseEvent evt) {
         homeScreen.backToLogin();
@@ -278,7 +275,6 @@ public class AccountPage extends javax.swing.JFrame {
         return jPanel1;
     }
 
-    // Variables declaration - do not modify
     private javax.swing.JLabel accountChangeNameLabel;
     private javax.swing.JLabel accountChangePassLabel;
     private javax.swing.JLabel accountForgotPassLabel;
@@ -301,5 +297,4 @@ public class AccountPage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    // End of variables declaration
 }

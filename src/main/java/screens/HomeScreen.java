@@ -6,7 +6,6 @@ package screens;
 
 import java.awt.Color;
 
-import models.User.UserInfo;
 import screens.home_screen_pages.HomePage;
 import screens.home_screen_pages.AccountPage;
 import screens.home_screen_pages.FavouritePage;
@@ -33,13 +32,13 @@ public class HomeScreen extends javax.swing.JFrame {
         jTabbedPane1.addTab("Yêu thích", fp.favouritePanel());
         jTabbedPane1.addTab("Tài khoản", ap.accountPanel());
         Color customColor = new Color(51, 204, 255);
-        jTabbedPane1.setBackgroundAt(0, customColor); // Tab "Home" có nền đỏ
-        jTabbedPane1.setBackgroundAt(1, customColor); // Tab "Recent" có nền xanh
+        jTabbedPane1.setBackgroundAt(0, customColor);
+        jTabbedPane1.setBackgroundAt(1, customColor);
         jTabbedPane1.setBackgroundAt(2, customColor);
         jTabbedPane1.setBackgroundAt(3, customColor);
         // Thay đổi màu chữ của các tab
-        jTabbedPane1.setForegroundAt(0, Color.WHITE); // Màu chữ của tab "Home"
-        jTabbedPane1.setForegroundAt(1, Color.WHITE); // Màu chữ của tab "Recent"
+        jTabbedPane1.setForegroundAt(0, Color.WHITE);
+        jTabbedPane1.setForegroundAt(1, Color.WHITE);
         jTabbedPane1.setForegroundAt(2, Color.WHITE);
         jTabbedPane1.setForegroundAt(3, Color.WHITE);
 
@@ -68,7 +67,6 @@ public class HomeScreen extends javax.swing.JFrame {
         this.setVisible(false);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -106,11 +104,8 @@ public class HomeScreen extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
-
-    // Variables declaration - do not modify
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    // End of variables declaration
 }

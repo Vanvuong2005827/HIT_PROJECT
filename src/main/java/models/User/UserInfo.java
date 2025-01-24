@@ -2,8 +2,6 @@ package models.User;
 
 import org.bson.types.ObjectId;
 
-import java.util.Date;
-
 public class UserInfo {
     private ObjectId id;
     private String fullName;
