@@ -25,6 +25,9 @@ public class UserServices {
     }
 
     public UserInfo getUserInfoByUserAccount(UserAccount userAccount) {
+        if (userAccount == null) {
+            return new UserInfo();
+        }
         UserInfo found = collectionInfo.find(new org.bson.Document("_id", userAccount.getId())).first();
         if (found != null) {
             return found;

@@ -294,8 +294,8 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void loginEvent(java.awt.event.ActionEvent evt) {
 
-        String userName = loginUsernameTextField.getText();
-        String password = loginPasswordTextField.getText();
+        String userName = loginUsernameTextField.getText().trim();
+        String password = loginPasswordTextField.getText().trim();
 
         if (userName.isEmpty()) {
             loginMessageLabel.setText("Please enter your username");

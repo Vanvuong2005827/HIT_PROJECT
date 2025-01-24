@@ -1,8 +1,14 @@
 package screens;
 
-import java.io.File;
+import models.User.UserAccount;
+import models.User.UserInfo;
+import services.ForgetPasswordService;
 
+import javax.swing.*;
+import java.io.File;
+import static commons.CurrentUser.*;
 public class ForgotPassScreen extends javax.swing.JFrame {
+    private String AnsCode;
     private String basePath = new File("").getAbsolutePath();
     public ForgotPassScreen() {
         initComponents();
@@ -94,7 +100,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\boyzs\\Desktop\\Java\\JAVA_SWING_PROJECT\\pet_project\\src\\main\\java\\assets\\christmas-tree-15498_256.gif")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\christmas-tree-15498_256.gif")); // NOI18N
 
         javax.swing.GroupLayout forgorPassMainPanelLayout = new javax.swing.GroupLayout(forgorPassMainPanel);
         forgorPassMainPanel.setLayout(forgorPassMainPanelLayout);
@@ -203,9 +209,8 @@ public class ForgotPassScreen extends javax.swing.JFrame {
     }
 
     private void getCodeEvent(java.awt.event.MouseEvent evt) {
-        String email = forgotPassEmailTextField.getText();
-        String username = forgotPassUsernameTextField.getText();
-        String code = forgotPassCodeTextField.getText();
+        String email = forgotPassEmailTextField.getText().trim();
+        String username = forgotPassUsernameTextField.getText().trim();
 
         if (username.isEmpty()){
             forgotPassShowMessage.setText("Please enter your username");
@@ -215,27 +220,60 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             forgotPassShowMessage.setText("Please enter your email address");
             return;
         }
+
+        UserAccount userAccount1 = userServices.getUserByUsername(username);
+        if (userAccount1 == null){
+            JOptionPane.showMessageDialog(rootPane, "Username not found");
+            return;
+        } else {
+            UserInfo userInfo1 = userServices.getUserInfoByUserAccount(userAccount1);
+            if (!userInfo1.getEmail().equals(email)){
+                JOptionPane.showMessageDialog(rootPane, "Email address does not match to the username account");
+                return;
+            }
+        }
+        try {
+            AnsCode = forgetPasswordService.getCode(email);
+            JOptionPane.showMessageDialog(rootPane, "Code had been sent, please check your email box");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "An error occured while generating ans code");
+        }
+
+
+
 
 
     }
 
     private void confirmEvent(java.awt.event.MouseEvent evt) {
-        String email = forgotPassEmailTextField.getText();
-        String username = forgotPassUsernameTextField.getText();
-        String code = forgotPassCodeTextField.getText();
+        String email = forgotPassEmailTextField.getText().trim();
+        String username = forgotPassUsernameTextField.getText().trim();
+        String code = forgotPassCodeTextField.getText().trim();
+
 
         if (username.isEmpty()){
             forgotPassShowMessage.setText("Please enter your username");
             return;
         }
+
         if (email.isEmpty()){
             forgotPassShowMessage.setText("Please enter your email address");
             return;
         }
+
         if (code.isEmpty()){
             forgotPassShowMessage.setText("Please enter the code sent to your email");
             return;
         }
+
+        if (AnsCode.equals(code)){
+            JOptionPane.showMessageDialog(null, "Chuyển Sang Màn Hình Nhập Mật Khẩu Mới");
+        } else {
+            JOptionPane.showMessageDialog(null, "sai code");
+        }
+
+
     }
 
 
