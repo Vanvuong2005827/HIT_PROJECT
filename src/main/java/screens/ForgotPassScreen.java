@@ -1,5 +1,6 @@
 package screens;
 
+import commons.CheckRegex;
 import models.User.UserAccount;
 import models.User.UserInfo;
 import services.ForgetPasswordService;
@@ -219,6 +220,10 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         if (email.isEmpty()){
             forgotPassShowMessage.setText("Please enter your email address");
             return;
+        }
+
+        if (!CheckRegex.checkValidEmail(email)){
+            forgotPassShowMessage.setText("email address is not valid");
         }
 
         UserAccount userAccount1 = userServices.getUserByUsername(username);

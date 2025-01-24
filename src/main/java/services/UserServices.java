@@ -51,10 +51,10 @@ public class UserServices {
         collectionInfo.insertOne(userInfo);
     }
 
-    public String selectGender(boolean male, boolean female, boolean orther) {
+    public String selectGender(boolean male, boolean female, boolean other) {
         if (male) return "male";
         if (female) return "female";
-        if (orther) return "orther";
+        if (other) return "other";
         return "";
     }
 
