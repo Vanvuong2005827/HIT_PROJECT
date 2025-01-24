@@ -12,8 +12,8 @@ public class ForgetPasswordService {
         int randomNum = rand.nextInt(999999);
         String to = gmail;
         String from = "wu.kongv1999@gmail.com";
-        final String username = "wu.kongv1999@gmail.com"; // App Password
-        final String password = "jldp onmx roho qytx";    // App Password
+        final String username = "wu.kongv1999@gmail.com";
+        final String password = "jldp onmx roho qytx";
         String host = "smtp.gmail.com";
 
         Properties props = new Properties();

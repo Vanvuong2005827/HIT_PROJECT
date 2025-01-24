@@ -242,7 +242,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Code had been sent, please check your email box");
         } catch (Exception e) {
             e.printStackTrace();
-            forgotPassShowMessage.setText("An error occured while generating ans code");
+            forgotPassShowMessage.setText("An error occurred while generating ans code");
         }
     }
 
