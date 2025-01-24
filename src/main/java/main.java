@@ -18,10 +18,5 @@ public class main {
         new ConnectDB();
         LoginScreen lg = new LoginScreen();
         lg.setVisible(true);
-
-
-        //dùng thử ở đây nhé ku
-        ForgetPasswordService fps = new ForgetPasswordService();
-        fps.getCode("vanvuong2005827@gmail.com");
     }
 }
