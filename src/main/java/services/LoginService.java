@@ -3,7 +3,7 @@ package services;
 import models.User.UserAccount;
 
 public class LoginService {
-    private UserServices userServices;
+    private final UserServices userServices;
     public LoginService() {
         userServices = new UserServices();
     }

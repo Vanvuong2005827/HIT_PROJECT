@@ -24,6 +24,15 @@ public class UserServices {
         }
     }
 
+    public UserInfo getUserInfoByUserAccount(UserAccount userAccount) {
+        UserInfo found = collectionInfo.find(new org.bson.Document("_id", userAccount.getId())).first();
+        if (found != null) {
+            return found;
+        } else {
+            return new UserInfo();
+        }
+    }
+
     public String getRoleByUsername(String username) {
         UserAccount found = collection.find(new org.bson.Document("username", username)).first();
         if (found != null) {
