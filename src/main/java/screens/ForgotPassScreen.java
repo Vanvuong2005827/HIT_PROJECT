@@ -1,5 +1,6 @@
 package screens;
 
+import commons.CheckRegex;
 import models.User.UserAccount;
 import models.User.UserInfo;
 import services.ForgetPasswordService;
@@ -221,6 +222,10 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             return;
         }
 
+        if (!CheckRegex.checkValidEmail(email)){
+            forgotPassShowMessage.setText("email address is not valid");
+        }
+
         UserAccount userAccount1 = userServices.getUserByUsername(username);
         if (userAccount1 == null){
             forgotPassShowMessage.setText("Username not found");
@@ -239,7 +244,6 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             e.printStackTrace();
             forgotPassShowMessage.setText("An error occured while generating ans code");
         }
-
     }
 
     private void confirmEvent(java.awt.event.MouseEvent evt) {
