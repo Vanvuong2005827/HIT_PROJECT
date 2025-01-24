@@ -5,17 +5,16 @@ import models.User.UserAccount;
 import services.LoginService;
 import services.RegisterService;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.*;
-import static services.LoginService.*;
+
+import static commons.CurrentUser.*;
+
 public class LoginScreen extends javax.swing.JFrame {
     LoginScreen loginScreen = this;
-    private LoginService loginService = new LoginService();
-    private RegisterService registerService = new RegisterService();
-    public static UserAccount userAccount;
+
     private String basePath = new File("").getAbsolutePath();
     public LoginScreen() {
         initComponents();
@@ -305,6 +304,12 @@ public class LoginScreen extends javax.swing.JFrame {
         }
 
         if (loginService.authenticate(userName,loginPasswordTextField.getText())){
+
+            userAccount = userServices.getUserByUsername(userName);
+            userInfo = userServices.getUserInfoByUserAccount(userAccount);
+
+            LoginScreen loginScreen = this;
+
             WaitScreen ws = new WaitScreen();
             ws.setVisible(true);
             loginScreen.setVisible(false);

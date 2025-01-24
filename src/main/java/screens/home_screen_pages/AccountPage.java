@@ -5,7 +5,9 @@ import java.io.File;
 import javax.swing.JPanel;
 
 import screens.HomeScreen;
-import screens.LoginScreen;
+
+import static commons.CurrentUser.userAccount;
+import static commons.CurrentUser.userInfo;
 
 public class AccountPage extends javax.swing.JFrame {
     HomeScreen homeScreen;
@@ -13,6 +15,10 @@ public class AccountPage extends javax.swing.JFrame {
     public AccountPage(HomeScreen hs) {
         homeScreen = hs;
         initComponents();
+        accountGmailLabel.setText(userInfo.getEmail());
+        accountPhoneNumberLabel.setText(userInfo.getPhoneNumber());
+        accountUsernameLabel.setText(userAccount.getUsername());
+        accountStatusAccountLabel.setText("active");
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">

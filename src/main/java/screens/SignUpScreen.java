@@ -4,9 +4,10 @@ package screens;
 import commons.CheckRegex;
 import services.UserServices;
 
-import javax.swing.*;
 import java.io.File;
 import java.util.Objects;
+
+import static commons.CurrentUser.userAccount;
 
 public class SignUpScreen extends javax.swing.JFrame {
 
@@ -289,8 +290,8 @@ public class SignUpScreen extends javax.swing.JFrame {
         }
 
 
-        userServices.updateInformation(LoginScreen.userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
-        LoginScreen.userAccount = null;
+        userServices.updateInformation(userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
+        userAccount = null;
 
         LoginScreen ls = new LoginScreen();
         this.setVisible(false);
