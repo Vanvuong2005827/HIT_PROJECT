@@ -2,6 +2,7 @@ package screens;
 
 import commons.CheckRegex;
 import models.User.UserAccount;
+import models.User.UserInfo;
 import services.LoginService;
 import services.RegisterService;
 
@@ -16,10 +17,12 @@ public class LoginScreen extends javax.swing.JFrame {
     LoginScreen loginScreen = this;
 
     private String basePath = new File("").getAbsolutePath();
+
     public LoginScreen() {
         initComponents();
         setLocationRelativeTo(null);
     }
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
@@ -294,21 +297,19 @@ public class LoginScreen extends javax.swing.JFrame {
         String userName = loginUsernameTextField.getText();
         String password = loginPasswordTextField.getText();
 
-        if (userName.isEmpty()){
+        if (userName.isEmpty()) {
             loginMessageLabel.setText("Please enter your username");
             return;
         }
-        if (password.isEmpty()){
+        if (password.isEmpty()) {
             loginMessageLabel.setText("Please enter your password");
             return;
         }
 
-        if (loginService.authenticate(userName,loginPasswordTextField.getText())){
-
+        if (loginService.authenticate(userName, loginPasswordTextField.getText())) {
+            LoginScreen loginScreen = this;
             userAccount = userServices.getUserByUsername(userName);
             userInfo = userServices.getUserInfoByUserAccount(userAccount);
-
-            LoginScreen loginScreen = this;
 
             WaitScreen ws = new WaitScreen();
             ws.setVisible(true);
@@ -326,38 +327,38 @@ public class LoginScreen extends javax.swing.JFrame {
         String password = signUpPasswordTextField.getText();
         String reEnterPassword = signUpReEnterPasswordTextField.getText();
 
-        if (userName.isEmpty()){
+        if (userName.isEmpty()) {
             signUpMessageLabel.setText("Please enter your username");
             return;
         }
 
-        if (password.isEmpty()){
+        if (password.isEmpty()) {
             signUpMessageLabel.setText("Please enter your password");
             return;
         }
 
-        if (reEnterPassword.isEmpty()){
+        if (reEnterPassword.isEmpty()) {
             signUpMessageLabel.setText("Please reenter your password");
             return;
         }
 
-        if (!password.equals(reEnterPassword)){
+        if (!password.equals(reEnterPassword)) {
             signUpMessageLabel.setText("Passwords do not match");
             return;
         }
 
-        if (!CheckRegex.checkValidUserName(userName)){
+        if (!CheckRegex.checkValidUserName(userName)) {
             signUpMessageLabel.setText("Username must 8-20 length (a-z, A-Z, 0-9). No char _, . in first/last");
             return;
         }
 
-        if (!CheckRegex.checkValidPassword(password)){
+        if (!CheckRegex.checkValidPassword(password)) {
             signUpMessageLabel.setText("Password at least 8 chars, 1 uppercase, 1 lowercase, 1 number.");
             return;
         }
 
         userAccount = new UserAccount(userName, password);
-        if (!registerService.register(userAccount)){
+        if (!registerService.register(userAccount)) {
             signUpMessageLabel.setText("Username already exists");
             return;
         } else {

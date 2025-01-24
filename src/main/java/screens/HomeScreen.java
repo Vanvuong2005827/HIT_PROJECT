@@ -6,6 +6,7 @@ package screens;
 
 import java.awt.Color;
 
+import models.User.UserInfo;
 import screens.home_screen_pages.HomePage;
 import screens.home_screen_pages.AccountPage;
 import screens.home_screen_pages.FavouritePage;

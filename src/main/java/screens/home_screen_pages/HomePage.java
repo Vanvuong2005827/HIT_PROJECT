@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import commons.ColorMain;
+import models.User.UserInfo;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.GetAllBook;
@@ -482,6 +483,10 @@ public class HomePage extends javax.swing.JFrame {
         ws.setVisible(true);
         homeScreen.setVisible(false);
         MoreBookScreen mb = new MoreBookScreen(homeScreen, 3, ws);
+    }
+
+    private void getUserInfor(){
+
     }
 
     MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
