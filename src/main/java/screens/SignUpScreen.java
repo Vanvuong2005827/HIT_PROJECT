@@ -257,11 +257,11 @@ public class SignUpScreen extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void signUpConfirmEvent(java.awt.event.MouseEvent evt) {
-        String fullname = signUpFullNameTextField.getText();
-        String yearOfBirth = Objects.requireNonNull(signUpYearOfBirth.getSelectedItem()).toString();
+        String fullname = signUpFullNameTextField.getText().trim();
+        String yearOfBirth = Objects.requireNonNull(signUpYearOfBirth.getSelectedItem()).toString().trim();
         String gender = userServices.selectGender(signUpMaleCheckBox.isSelected(), signUpFemaleCheckBox.isSelected(), signUpOtherCheckBox.isSelected());
-        String phoneNumber = signUpPhoneNumberTextField.getText();
-        String Gmail = signUpGmailTextField.getText();
+        String phoneNumber = signUpPhoneNumberTextField.getText().trim();
+        String Gmail = signUpGmailTextField.getText().trim();
 
         if (fullname.isEmpty()){
             signUpMessageLabel.setText("Please enter your full name");
