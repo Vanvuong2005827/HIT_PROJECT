@@ -223,12 +223,12 @@ public class ForgotPassScreen extends javax.swing.JFrame {
 
         UserAccount userAccount1 = userServices.getUserByUsername(username);
         if (userAccount1 == null){
-            JOptionPane.showMessageDialog(rootPane, "Username not found");
+            forgotPassShowMessage.setText("Username not found");
             return;
         } else {
             UserInfo userInfo1 = userServices.getUserInfoByUserAccount(userAccount1);
             if (!userInfo1.getEmail().equals(email)){
-                JOptionPane.showMessageDialog(rootPane, "Email address does not match to the username account");
+                forgotPassShowMessage.setText("Email address does not match to the username account");
                 return;
             }
         }
@@ -237,12 +237,8 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Code had been sent, please check your email box");
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(rootPane, "An error occured while generating ans code");
+            forgotPassShowMessage.setText("An error occured while generating ans code");
         }
-
-
-
-
 
     }
 
@@ -270,7 +266,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         if (AnsCode.equals(code)){
             JOptionPane.showMessageDialog(null, "Chuyển Sang Màn Hình Nhập Mật Khẩu Mới");
         } else {
-            JOptionPane.showMessageDialog(null, "sai code");
+            forgotPassShowMessage.setText("Code error");
         }
 
 
