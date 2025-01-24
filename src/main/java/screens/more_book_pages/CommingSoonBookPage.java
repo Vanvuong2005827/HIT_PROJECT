@@ -15,7 +15,6 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
 
     public CommingSoonBookPage() {
         initComponents();
-        processCommingSoonBookProcess();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -66,7 +65,7 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    public void processCommingSoonBookProcess(){
+    public void processCommingSoonBook(){
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;

@@ -72,26 +72,6 @@ public class GetAllBook {
 //        }
         return books;
     }
-    public ArrayList<Book> getBooksDangPhatHanh() {
-        ArrayList<Book> books = new ArrayList<>();
-//        for (int i = 1; i <= 2; i++) {
-//            String pageNumber = Integer.toString(i);
-        String pageNumber = "1";
-        String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/dang-phat-hanh?page=" + pageNumber;
-        String jsonData = getApi(apiUrl);
-        if (jsonData != null && !jsonData.isEmpty()) {
-            Gson gson = new Gson();
-            ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
-
-            if (apiResponse != null && apiResponse.getData() != null) {
-                apiResponse.getData().getItems().forEach(item -> {
-                    books.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                });
-            }
-        }
-//        }
-        return books;
-    }
 
     public ArrayList<Book> getBooksTheLoai(){
         ArrayList<Book> books = new ArrayList<>();

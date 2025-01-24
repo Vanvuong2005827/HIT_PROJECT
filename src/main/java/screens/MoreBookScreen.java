@@ -2,23 +2,25 @@ package screens;
 
 import screens.more_book_pages.*;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class MoreBookScreen extends javax.swing.JFrame {
     HomeScreen homeScreen;
-    public MoreBookScreen(HomeScreen hs, int indexTabbed) {
+    WaitScreen waitScreen;
+    MoreBookScreen moreBookScreen = this;
+    NewBookPage np = new NewBookPage(this);
+    CommingSoonBookPage cp = new CommingSoonBookPage();
+    CompletedBookPage cdp = new CompletedBookPage();
+    StyleBookPage sp = new StyleBookPage();
+    public MoreBookScreen(HomeScreen hs, int indexTabbed, WaitScreen ws) {
+        waitScreen = ws;
         homeScreen = hs;
         initComponents();
         setLocationRelativeTo(null);
-        NewBookPage np = new NewBookPage(this);
-        CommingSoonBookPage cp = new CommingSoonBookPage();
-        ReleaseBookPage rp = new ReleaseBookPage();
-        CompletedBookPage cdp = new CompletedBookPage();
-        StyleBookPage sp = new StyleBookPage();
-
+        processAllData();
         jTabbedPane1.addTab("Truyện mới", np.newBookPanel());
         jTabbedPane1.addTab("Sắp ra mắt", cp.commingSoonBookPanel());
-        jTabbedPane1.addTab("Đang phát hành", rp.releaseBookPanel());
         jTabbedPane1.addTab("Hoàn thành", cdp.completedBookPanel());
         jTabbedPane1.addTab("Thể loại", sp.styleBookPanel());
         Color customColor = new Color(51,204,255);
@@ -26,13 +28,11 @@ public class MoreBookScreen extends javax.swing.JFrame {
         jTabbedPane1.setBackgroundAt(1, customColor);
         jTabbedPane1.setBackgroundAt(2, customColor);
         jTabbedPane1.setBackgroundAt(3, customColor);
-        jTabbedPane1.setBackgroundAt(4, customColor);
         // Thay đổi màu chữ của các tab
         jTabbedPane1.setForegroundAt(0, Color.WHITE);
         jTabbedPane1.setForegroundAt(1, Color.WHITE);
         jTabbedPane1.setForegroundAt(2, Color.WHITE);
         jTabbedPane1.setForegroundAt(3, Color.WHITE);
-        jTabbedPane1.setForegroundAt(4, Color.WHITE);
 
         jTabbedPane1.setSelectedIndex(indexTabbed);
     }
@@ -88,6 +88,26 @@ public class MoreBookScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
+
+    public void processAllData(){
+        SwingWorker<Void, Void> worker = new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() {
+                np.processNewBook();
+                cp.processCommingSoonBook();
+                cdp.processCompletedBook();
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                moreBookScreen.setVisible(true);
+                waitScreen.setVisible(false);
+            }
+        };
+
+        worker.execute();
+    }
 
     public void backEvent(java.awt.event.MouseEvent evt){
         homeScreen.setVisible(true);
