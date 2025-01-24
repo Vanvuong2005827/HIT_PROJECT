@@ -13,14 +13,15 @@ public class UserInfo {
     private String Sex;
 
     public UserInfo() {
-        fullName = "";
+        fullName = "(none)";
         Birthday = 0;
-        Email = null;
-        PhoneNumber = null;
-        Sex = null;
+        Email = "(none)";
+        PhoneNumber = "(none)";
+        Sex = "(none)";
     }
 
     public UserInfo(String fullName ,int Birthday, String Email, String PhoneNumber, String sex, UserAccount userAccount) {
+        this();
         this.id = userAccount.getId();
         this.Birthday = Birthday;
         this.Email = Email;
