@@ -2,6 +2,10 @@ package services;
 
 import models.User.UserAccount;
 
+import java.util.prefs.Preferences;
+
+import static commons.CurrentUser.pref;
+
 public class LoginService {
     private final UserServices userServices;
     public LoginService() {
@@ -16,6 +20,13 @@ public class LoginService {
             return false;
         }
     }
+
+    public void saveUser(String username, String password) {
+        pref.put("username", username);
+        pref.put("password", password);
+        System.out.println("Saved");
+    }
+
 }
 
 
