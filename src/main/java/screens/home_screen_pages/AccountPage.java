@@ -3,6 +3,7 @@ package screens.home_screen_pages;
 import java.io.File;
 import javax.swing.JPanel;
 
+import models.User.UserInfo;
 import screens.HomeScreen;
 
 import static commons.CurrentUser.userAccount;
@@ -10,10 +11,11 @@ import static commons.CurrentUser.userInfo;
 
 public class AccountPage extends javax.swing.JFrame {
     HomeScreen homeScreen;
-    private String basePath = new File("").getAbsolutePath();
+    private final String basePath = new File("").getAbsolutePath();
     public AccountPage(HomeScreen hs) {
         homeScreen = hs;
         initComponents();
+        accountNameLabel.setText(userInfo.getFullName());
         accountGmailLabel.setText(userInfo.getEmail());
         accountPhoneNumberLabel.setText(userInfo.getPhoneNumber());
         accountUsernameLabel.setText(userAccount.getUsername());
@@ -246,6 +248,8 @@ public class AccountPage extends javax.swing.JFrame {
 
     private void logoutEvent(java.awt.event.MouseEvent evt) {
         homeScreen.backToLogin();
+        userAccount = null;
+        userInfo = new UserInfo();
     }
 
     private void changeNameEvent(java.awt.event.MouseEvent evt) {
