@@ -7,6 +7,8 @@ import services.LoginService;
 import services.RegisterService;
 import services.UserServices;
 
+import java.util.prefs.Preferences;
+
 public class CurrentUser {
     public static LoginService loginService = new LoginService();
     public static RegisterService registerService = new RegisterService();
@@ -14,4 +16,5 @@ public class CurrentUser {
     public static UserAccount userAccount;
     public static UserInfo userInfo = new UserInfo();
     public static ForgetPasswordService forgetPasswordService = new ForgetPasswordService();
+    public static Preferences pref = Preferences.userRoot().node("rememberMe");
 }
