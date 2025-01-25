@@ -109,10 +109,12 @@ public class customBookGridPanel {
             }
             categories.append(x.getName());
         }
-
-        String chapterLatest = "Completed";
-        if (!isCompleted)
+        String chapterLatest = "";
+        try{
             chapterLatest = books.get(index).getChapterLastests().get(0).getFilename();
+        } catch(Exception e) {
+            chapterLatest = "Chưa có chap mới";
+        }
 
         titleArea = new JTextArea(books.get(index).getName());
         statusArea = new JTextArea("Status: " + books.get(index).getStatus());
