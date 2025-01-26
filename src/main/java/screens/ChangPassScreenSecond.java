@@ -7,7 +7,8 @@ public class ChangPassScreenSecond extends javax.swing.JFrame {
     JFrame previousFrame;
     private String basePath = new File("").getAbsolutePath();
 
-    public ChangPassScreenSecond() {
+    public ChangPassScreenSecond(JFrame jf) {
+        previousFrame = jf;
         initComponents();
     }
 
