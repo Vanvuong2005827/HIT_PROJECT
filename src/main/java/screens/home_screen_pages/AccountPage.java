@@ -1,8 +1,11 @@
 package screens.home_screen_pages;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JPanel;
 
+import commons.IconUser;
 import models.User.UserInfo;
 import screens.ChangPassScreen;
 import screens.ForgotPassScreen;
@@ -25,6 +28,7 @@ public class AccountPage extends javax.swing.JFrame {
     }
 
     private void initComponents() {
+
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         accountTTTKLabel = new javax.swing.JLabel();
@@ -50,38 +54,38 @@ public class AccountPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.revalidate();
+        jPanel1.revalidate(); // Làm mới JPanel
         jPanel1.repaint();
         jPanel1.setBackground(new java.awt.Color(176, 223, 251));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\user.png"));
+        jLabel2.setIcon(new javax.swing.ImageIcon(basePath + getRandomIconUser())); // NOI18N
 
-        accountTTTKLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        accountTTTKLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         accountTTTKLabel.setText("Thông tin tài khoản");
 
-        accountNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        accountGmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountGmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        accountPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        accountUsernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountUsernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        accountStatusAccountLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountStatusAccountLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Gmail: ");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Phone Number: ");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Username: ");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Account status: ");
 
-        accountChangePassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountChangePassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         accountChangePassLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountChangePassLabel.setText("Đổi mật khẩu                                          ->");
         accountChangePassLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,7 +96,7 @@ public class AccountPage extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
 
-        accountForgotPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountForgotPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         accountForgotPassLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountForgotPassLabel.setText("Quên mật khẩu?                                     ->");
         accountForgotPassLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,7 +107,7 @@ public class AccountPage extends javax.swing.JFrame {
 
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
 
-        accountNightModeLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountNightModeLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         accountNightModeLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountNightModeLabel.setText("Đổi màu nền                                           ->");
         accountNightModeLabel.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -114,7 +118,7 @@ public class AccountPage extends javax.swing.JFrame {
 
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
 
-        accountRemoveLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountRemoveLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         accountRemoveLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountRemoveLabel.setText("Xóa tài khoản                                         ->");
         accountRemoveLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,7 +128,7 @@ public class AccountPage extends javax.swing.JFrame {
         });
 
         accountLogoutButton.setBackground(new java.awt.Color(204, 255, 255));
-        accountLogoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        accountLogoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         accountLogoutButton.setText("ĐĂNG XUẤT");
         accountLogoutButton.setBorder(null);
         accountLogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,7 +137,7 @@ public class AccountPage extends javax.swing.JFrame {
             }
         });
 
-        accountChangeNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        accountChangeNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         accountChangeNameLabel.setForeground(new java.awt.Color(102, 102, 102));
         accountChangeNameLabel.setText("Đổi tên hiện thị                                       ->");
         accountChangeNameLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,14 +162,14 @@ public class AccountPage extends javax.swing.JFrame {
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel8)
+                                                                        .addComponent(jLabel7)
                                                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                                                 .addGap(2, 2, 2)
                                                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                         .addComponent(jLabel5)
-                                                                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel8)
-                                                                        .addComponent(jLabel7))
+                                                                                        .addComponent(jLabel2))))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                                         .addComponent(accountUsernameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
@@ -193,45 +197,48 @@ public class AccountPage extends javax.swing.JFrame {
                                 .addComponent(accountTTTKLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(53, 53, 53)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(accountNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(accountGmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(accountPhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel6))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(accountUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(accountStatusAccountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel8))
-                                .addGap(106, 106, 106)
-                                .addComponent(accountChangeNameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(accountChangePassLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(accountForgotPassLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(accountNightModeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(accountRemoveLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                                .addComponent(accountLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(accountNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel5)
+                                                        .addComponent(accountGmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(accountPhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel6))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(accountUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel7))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(accountStatusAccountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel8))
+                                                .addGap(106, 106, 106)
+                                                .addComponent(accountChangeNameLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(accountChangePassLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(accountForgotPassLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(accountNightModeLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(accountRemoveLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                                                .addComponent(accountLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(89, 89, 89))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -278,7 +285,13 @@ public class AccountPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-
+    private String getRandomIconUser(){
+        IconUser iconUser = new IconUser();
+        ArrayList<String> icons = iconUser.getIconUser();
+        Random random = new Random();
+        String randomIcon = icons.get(random.nextInt(icons.size()));
+        return randomIcon;
+    }
 
 
     public JPanel accountPanel(){
