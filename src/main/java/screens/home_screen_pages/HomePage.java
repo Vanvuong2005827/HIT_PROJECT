@@ -8,6 +8,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.concurrent.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -257,7 +258,7 @@ public class HomePage extends javax.swing.JFrame {
         gbc.insets = new Insets(5, 5, 5, 5);
 
         GetAllBook lb = new GetAllBook();
-        ArrayList<Book> books = lb.getBooksTruyenMoi();
+        ArrayList<Book> books = lb.getBooksTruyenMoi(1);
 
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 12);
         Font customFont2 = new Font("Segoe UI", Font.BOLD, 10);
@@ -267,15 +268,36 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels = books.size() / 2;
         int columns = 3;
 
-        for (int i = 0; i < totalPanels; i++) {
-            JPanel panel = customBookGrid3(i, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
-            gbc.gridx = i % columns;
-            gbc.gridy = i / columns;
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
-            homeNewBookGridPanel.add(panel, gbc);
+        for (int i = 0; i < totalPanels; i++) {
+            int index = i;
+            Callable<JPanel> task = () -> {
+                return customBookGrid3(index, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
+            };
+            futures.add(executor.submit(task));
         }
-        homeNewBookGridPanel.revalidate();
-        homeNewBookGridPanel.repaint();
+
+        for (int i = 0; i < futures.size(); i++) {
+            try {
+                JPanel panel = futures.get(i).get();
+                final int x = i % columns;
+                final int y = i / columns;
+                SwingUtilities.invokeLater(() -> {
+                    GridBagConstraints gbcPanel = (GridBagConstraints) gbc.clone();
+                    gbcPanel.gridx = x;
+                    gbcPanel.gridy = y;
+                    homeNewBookGridPanel.add(panel, gbcPanel);
+                    homeNewBookGridPanel.revalidate();
+                    homeNewBookGridPanel.repaint();
+                });
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
         homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
         homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
@@ -287,7 +309,7 @@ public class HomePage extends javax.swing.JFrame {
         gbc.insets = new Insets(5, 5, 5, 5);
 
         GetAllBook lb = new GetAllBook();
-        ArrayList<Book> books = lb.getBooksSapRaMat();
+        ArrayList<Book> books = lb.getBooksSapRaMat(1);
 
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 12);
@@ -296,15 +318,37 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels = books.size() / 2;
         int columns = 3;
 
-        for (int i = 0; i < totalPanels; i++) {
-            JPanel panel = customBookGrid3(i, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
-            gbc.gridx = i % columns;
-            gbc.gridy = i / columns;
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
-            homeCommingSoonBookGridPanel1.add(panel, gbc);
+        for (int i = 0; i < totalPanels; i++) {
+            int index = i;
+            Callable<JPanel> task = () -> {
+                return customBookGrid3(index, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
+            };
+            futures.add(executor.submit(task));
         }
-        homeCommingSoonBookGridPanel1.revalidate();
-        homeCommingSoonBookGridPanel1.repaint();
+
+        for (int i = 0; i < futures.size(); i++) {
+            try {
+                JPanel panel = futures.get(i).get();
+                final int x = i % columns;
+                final int y = i / columns;
+                SwingUtilities.invokeLater(() -> {
+                    GridBagConstraints gbcPanel = (GridBagConstraints) gbc.clone();
+                    gbcPanel.gridx = x;
+                    gbcPanel.gridy = y;
+                    homeCommingSoonBookGridPanel1.add(panel, gbcPanel);
+                    homeCommingSoonBookGridPanel1.revalidate();
+                    homeCommingSoonBookGridPanel1.repaint();
+                });
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
+
         homeCommingSoonBookGridPanel1.addMouseListener(dragScrollListenerMainScroll);
         homeCommingSoonBookGridPanel1.addMouseMotionListener(dragScrollListenerMainScroll);
     }
@@ -323,127 +367,141 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels2 = books.size();
         int rows = 2;
 
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
         for (int i = 0; i < totalPanels2 / 2 - 1; i++) {
-            JPanel panel = new JPanel(new BorderLayout());
-            int indexColor = i;
-            if (indexColor >= totalColor) indexColor %= totalColor;
-            panel.setBackground(colors.get(indexColor));
-            panel.setPreferredSize(new Dimension(100, 50));
-            JLabel label1 = new JLabel(books.get(i).getName());
-            label1.setFont(new Font("Segoe UI", Font.BOLD, 14));
-            label1.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(label1, BorderLayout.CENTER);
-            gbc2.gridx = i / rows;
-            gbc2.gridy = i % rows;
-            homeStyleMainPanel.add(panel, gbc2);
+            int index = i;
+            Callable<JPanel> task = () -> {
+                JPanel panel = new JPanel(new BorderLayout());
+                int indexColor = index;
+                if (indexColor >= totalColor) indexColor %= totalColor;
+                panel.setBackground(colors.get(indexColor));
+                panel.setPreferredSize(new Dimension(100, 50));
+                JLabel label1 = new JLabel(books.get(index).getName());
+                label1.setFont(new Font("Segoe UI", Font.BOLD, 14));
+                label1.setHorizontalAlignment(JLabel.CENTER);
+                panel.add(label1, BorderLayout.CENTER);
+                return panel;
+            };
+            futures.add(executor.submit(task));
         }
-        homeStyleMainPanel.revalidate();
-        homeStyleMainPanel.repaint();
+
+        for (int i = 0; i < futures.size(); i++) {
+            try {
+                JPanel panel = futures.get(i).get();
+                final int x = i / rows;
+                final int y = i % rows;
+                SwingUtilities.invokeLater(() -> {
+                    GridBagConstraints gbcPanel = (GridBagConstraints) gbc2.clone();
+                    gbcPanel.gridx = x;
+                    gbcPanel.gridy = y;
+                    homeStyleMainPanel.add(panel, gbcPanel);
+                    homeStyleMainPanel.revalidate();
+                    homeStyleMainPanel.repaint();
+                });
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
     }
 
     public void processPageViewBookPicture() {
         GetAllBook lb = new GetAllBook();
         ColorMain cl = new ColorMain();
-        ArrayList<Book> books = lb.getBooksHoanThanh();
+        ArrayList<Book> books = lb.getBooksHoanThanh(1);
         ArrayList<Color> colors = cl.getColorMain();
 
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        ArrayList<Future<JPanel>> futures = new ArrayList<>();
+
         for (int i = 0; i < books.size(); i++) {
-            JPanel panel = new JPanel(new BorderLayout(10, 10));
-            Color cusColor = colors.get(i);
-            Font customFont = new Font("Segoe UI", Font.BOLD, 13);
-            panel.setBackground(cusColor);
+            int index = i;
+            Callable<JPanel> task = () -> {
+                JPanel panel = new JPanel(new BorderLayout(10, 10));
+                Color cusColor = colors.get(index % colors.size());
+                Font customFont = new Font("Segoe UI", Font.BOLD, 13);
+                panel.setBackground(cusColor);
 
-            String baseUrlAllBook = "https://img.otruyenapi.com/uploads/comics/";
-            String posterPathAllBook = books.get(i).getThumbnail();
-            String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
-            try {
-                URL urlAllbook = new URL(fullUrlAllBook);
-                Image imageAllBook = ImageIO.read(urlAllbook);
-                Image resizedImageAllBook = imageAllBook.getScaledInstance(120, 169, Image.SCALE_SMOOTH);
-                JLabel jLabel1 = new JLabel(new ImageIcon(resizedImageAllBook));
+                String baseUrlAllBook = "https://img.otruyenapi.com/uploads/comics/";
+                String posterPathAllBook = books.get(index).getThumbnail();
+                String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
 
-                panel.add(jLabel1, BorderLayout.WEST);
-            } catch (IOException e) {
-                e.printStackTrace();
-                JLabel errorLabel = new JLabel("Không thể tải ảnh!");
-                errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                panel.add(errorLabel, BorderLayout.CENTER);
-            }
-
-            JPanel mainTextPanel = new JPanel();
-            mainTextPanel.setBackground(cusColor);
-            mainTextPanel.setPreferredSize(new Dimension(320, 160));
-
-            JPanel textPanel = new JPanel(new GridLayout(4, 1, 5, 5));
-            textPanel.setBackground(cusColor);
-            textPanel.setPreferredSize(new Dimension(288, 158));
-
-            String inputDateTime = books.get(i).getUpdatedAt();
-            LocalDateTime dateTime = LocalDateTime.parse(inputDateTime.substring(0, 19));
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
-            String updateAt = dateTime.format(formatter);
-
-            StringBuilder categories = new StringBuilder();
-            for (BookCategory x : books.get(i).getCategory()) {
-                if (categories.length() > 0) {
-                    categories.append(", ");
+                try {
+                    URL urlAllbook = new URL(fullUrlAllBook);
+                    Image imageAllBook = ImageIO.read(urlAllbook);
+                    Image resizedImageAllBook = imageAllBook.getScaledInstance(120, 169, Image.SCALE_SMOOTH);
+                    JLabel jLabel1 = new JLabel(new ImageIcon(resizedImageAllBook));
+                    panel.add(jLabel1, BorderLayout.WEST);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JLabel errorLabel = new JLabel("Không thể tải ảnh!");
+                    errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    panel.add(errorLabel, BorderLayout.CENTER);
                 }
-                categories.append(x.getName());
-            }
 
-            JPanel emptyPanel = new JPanel();
-            JTextArea titleArea = new JTextArea(books.get(i).getName());
-            JTextArea statusArea = new JTextArea("Status: " + books.get(i).getStatus());
-            JTextArea updatedAtArea = new JTextArea("Last update: " + updateAt);
-            JTextArea categoryArea = new JTextArea(categories.toString());
+                JPanel mainTextPanel = new JPanel();
+                mainTextPanel.setBackground(cusColor);
+                mainTextPanel.setPreferredSize(new Dimension(320, 160));
 
-            emptyPanel.setSize(new Dimension(50, 1));
-            emptyPanel.setBackground(cusColor);
+                JPanel textPanel = new JPanel(new GridLayout(4, 1, 5, 5));
+                textPanel.setBackground(cusColor);
+                textPanel.setPreferredSize(new Dimension(288, 158));
 
-            titleArea.setFont(customFont);
-            titleArea.setBackground(cusColor);
-            titleArea.setWrapStyleWord(true);
-            titleArea.setLineWrap(true);
-            titleArea.setFocusable(false);
-            titleArea.setEditable(false);
+                String inputDateTime = books.get(index).getUpdatedAt();
+                LocalDateTime dateTime = LocalDateTime.parse(inputDateTime.substring(0, 19));
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
+                String updateAt = dateTime.format(formatter);
 
-            statusArea.setFont(customFont);
-            statusArea.setBackground(cusColor);
-            statusArea.setLineWrap(true);
-            statusArea.setWrapStyleWord(true);
-            statusArea.setFocusable(false);
-            statusArea.setEditable(false);
+                StringBuilder categories = new StringBuilder();
+                for (BookCategory x : books.get(index).getCategory()) {
+                    if (categories.length() > 0) {
+                        categories.append(", ");
+                    }
+                    categories.append(x.getName());
+                }
 
-            updatedAtArea.setFont(customFont);
-            updatedAtArea.setBackground(cusColor);
-            updatedAtArea.setLineWrap(true);
-            updatedAtArea.setWrapStyleWord(true);
-            updatedAtArea.setFocusable(false);
-            updatedAtArea.setEditable(false);
+                JTextArea titleArea = new JTextArea(books.get(index).getName());
+                JTextArea statusArea = new JTextArea("Status: " + books.get(index).getStatus());
+                JTextArea updatedAtArea = new JTextArea("Last update: " + updateAt);
+                JTextArea categoryArea = new JTextArea(categories.toString());
 
-            categoryArea.setFont(customFont);
-            categoryArea.setBackground(cusColor);
-            categoryArea.setLineWrap(true);
-            categoryArea.setWrapStyleWord(true);
-            categoryArea.setFocusable(false);
-            categoryArea.setEditable(false);
+                JTextArea[] textAreas = {titleArea, statusArea, updatedAtArea, categoryArea};
+                for (JTextArea textArea : textAreas) {
+                    textArea.setFont(customFont);
+                    textArea.setBackground(cusColor);
+                    textArea.setWrapStyleWord(true);
+                    textArea.setLineWrap(true);
+                    textArea.setFocusable(false);
+                    textArea.setEditable(false);
+                    textPanel.add(textArea);
+                }
 
-            textPanel.add(titleArea);
-            textPanel.add(statusArea);
-            textPanel.add(updatedAtArea);
-            textPanel.add(categoryArea);
+                mainTextPanel.add(textPanel, BorderLayout.CENTER);
+                panel.add(mainTextPanel, BorderLayout.CENTER);
 
-            mainTextPanel.add(emptyPanel);
-            mainTextPanel.add(textPanel, BorderLayout.CENTER);
-            mainTextPanel.add(emptyPanel);
+                return panel;
+            };
 
-            panel.add(mainTextPanel, BorderLayout.CENTER);
-
-            homePageViewPanel.add(panel);
+            futures.add(executor.submit(task));
         }
-        homePageViewPanel.revalidate();
-        homePageViewPanel.repaint();
+
+        for (Future<JPanel> future : futures) {
+            try {
+                JPanel panel = future.get();
+                SwingUtilities.invokeLater(() -> {
+                    homePageViewPanel.add(panel);
+                    homePageViewPanel.revalidate();
+                    homePageViewPanel.repaint();
+                });
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
     }
 
     public JPanel homePanel() {

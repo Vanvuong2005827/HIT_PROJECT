@@ -7,16 +7,139 @@ import com.google.gson.Gson;
 import models.book_information.Book;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 import static api.ApiGet.getApi;
 
 public class GetAllBook {
-    public ArrayList<Book> getBooksTruyenMoi() {
+    public ArrayList<Book> getBooksTruyenMoi(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
-//        for (int i = 1; i <= 2; i++) {
-//            String pageNumber = Integer.toString(i);
-            String pageNumber = "1";
-            String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
+        int totalPages = numberPage;
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        List<Future<ArrayList<Book>>> futures = new ArrayList<>();
+        for (int i = 1; i <= totalPages; i++) {
+            int page = i;
+            Callable<ArrayList<Book>> task = () -> {
+                ArrayList<Book> pageBooks = new ArrayList<>();
+                String pageNumber = Integer.toString(page);
+                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        });
+                    }
+                }
+                return pageBooks;
+            };
+
+            futures.add(executor.submit(task));
+        }
+
+        for (Future<ArrayList<Book>> future : futures) {
+            try {
+                books.addAll(future.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
+        return books;
+    }
+
+    public ArrayList<Book> getBooksHoanThanh(int numberPage) {
+        ArrayList<Book> books = new ArrayList<>();
+        int totalPages = numberPage;
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        List<Future<ArrayList<Book>>> futures = new ArrayList<>();
+        for (int i = 1; i <= totalPages; i++) {
+            int page = i;
+            Callable<ArrayList<Book>> task = () -> {
+                ArrayList<Book> pageBooks = new ArrayList<>();
+                String pageNumber = Integer.toString(page);
+                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/hoan-thanh?page=" + pageNumber;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        });
+                    }
+                }
+                return pageBooks;
+            };
+
+            futures.add(executor.submit(task));
+        }
+
+        for (Future<ArrayList<Book>> future : futures) {
+            try {
+                books.addAll(future.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
+        return books;
+    }
+
+    public ArrayList<Book> getBooksSapRaMat(int numberPage) {
+        ArrayList<Book> books = new ArrayList<>();
+        int totalPages = numberPage;
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        List<Future<ArrayList<Book>>> futures = new ArrayList<>();
+        for (int i = 1; i <= totalPages; i++) {
+            int page = i;
+            Callable<ArrayList<Book>> task = () -> {
+                ArrayList<Book> pageBooks = new ArrayList<>();
+                String pageNumber = Integer.toString(page);
+                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/sap-ra-mat?page=" + pageNumber;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        });
+                    }
+                }
+                return pageBooks;
+            };
+
+            futures.add(executor.submit(task));
+        }
+
+        for (Future<ArrayList<Book>> future : futures) {
+            try {
+                books.addAll(future.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
+        return books;
+    }
+
+    public ArrayList<Book> getBooksTheLoai() {
+        ArrayList<Book> books = new ArrayList<>();
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        List<Future<ArrayList<Book>>> futures = new ArrayList<>();
+        Callable<ArrayList<Book>> task = () -> {
+            ArrayList<Book> pageBooks = new ArrayList<>();
+            String apiUrl = "https://otruyenapi.com/v1/api/the-loai";
             String jsonData = getApi(apiUrl);
             if (jsonData != null && !jsonData.isEmpty()) {
                 Gson gson = new Gson();
@@ -24,73 +147,29 @@ public class GetAllBook {
 
                 if (apiResponse != null && apiResponse.getData() != null) {
                     apiResponse.getData().getItems().forEach(item -> {
-                        books.add(new Book(item.getName(),item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        pageBooks.add(new Book(item.getName()));
                     });
                 }
             }
-//        }
-        return books;
-    }
-    public ArrayList<Book> getBooksHoanThanh() {
-        ArrayList<Book> books = new ArrayList<>();
-//        for (int i = 1; i <= 2; i++) {
-//            String pageNumber = Integer.toString(i);
-        String pageNumber = "1";
-        String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/hoan-thanh?page=" + pageNumber;
-        String jsonData = getApi(apiUrl);
-        if (jsonData != null && !jsonData.isEmpty()) {
-            Gson gson = new Gson();
-            ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+            return pageBooks;
+        };
 
-            if (apiResponse != null && apiResponse.getData() != null) {
-                apiResponse.getData().getItems().forEach(item -> {
-                    books.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                });
+        futures.add(executor.submit(task));
+
+
+        for (Future<ArrayList<Book>> future : futures) {
+            try {
+                books.addAll(future.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
             }
         }
-//        }
+
+        executor.shutdown();
         return books;
     }
 
-    public ArrayList<Book> getBooksSapRaMat() {
-        ArrayList<Book> books = new ArrayList<>();
-//        for (int i = 1; i <= 2; i++) {
-//            String pageNumber = Integer.toString(i);
-        String pageNumber = "1";
-        String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/sap-ra-mat?page=" + pageNumber;
-        String jsonData = getApi(apiUrl);
-        if (jsonData != null && !jsonData.isEmpty()) {
-            Gson gson = new Gson();
-            ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
-
-            if (apiResponse != null && apiResponse.getData() != null) {
-                apiResponse.getData().getItems().forEach(item -> {
-                    books.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                });
-            }
-        }
-//        }
-        return books;
-    }
-
-    public ArrayList<Book> getBooksTheLoai(){
-        ArrayList<Book> books = new ArrayList<>();
-        String apiUrl = "https://otruyenapi.com/v1/api/the-loai";
-        String jsonData = getApi(apiUrl);
-        if (jsonData != null && !jsonData.isEmpty()) {
-            Gson gson = new Gson();
-            ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
-
-            if (apiResponse != null && apiResponse.getData() != null) {
-                apiResponse.getData().getItems().forEach(item -> {
-                    books.add(new Book(item.getName()));
-                });
-            }
-        }
-        return books;
-    }
-
-    public Book getBooksTheoTen(String tenTruyen){
+    public Book getBooksTheoTen(String tenTruyen) {
         Book book = null;
         String apiUrl = "https://otruyenapi.com/v1/api/truyen-tranh/" + tenTruyen;
         String jsonData = getApi(apiUrl);
@@ -100,7 +179,7 @@ public class GetAllBook {
 
             if (apiResponse != null && apiResponse.getData() != null) {
                 ApiOneBookJson b = apiResponse.getData().getItem();
-                book = new Book(b.getName(),b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getAuthor(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
+                book = new Book(b.getName(), b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getAuthor(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
             }
         }
         return book;
