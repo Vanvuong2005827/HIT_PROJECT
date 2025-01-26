@@ -9,7 +9,7 @@ import java.awt.*;
 import java.io.File;
 import static commons.CurrentUser.*;
 public class ForgotPassScreen extends javax.swing.JFrame {
-    private String AnsCode;
+    private String AnsCode = "";
     private String basePath = new File("").getAbsolutePath();
     private JFrame previousFrame;
     public ForgotPassScreen(JFrame jf) {
@@ -288,6 +288,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         }
 
         if (AnsCode.equals(code)){
+            userAccount = userServices.getUserByUsername(username);
             ChangPassScreenSecond changPassScreenSecond = new ChangPassScreenSecond(previousFrame);
             changPassScreenSecond.setVisible(true);
             this.setVisible(false);
