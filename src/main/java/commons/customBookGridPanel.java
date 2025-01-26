@@ -21,7 +21,6 @@ public class customBookGridPanel {
         String baseUrlAllBook = baseUrl;
         String posterPathAllBook = books.get(index).getThumbnail();
         String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
-        System.out.println(fullUrlAllBook);
         try {
             URL urlAllbook = new URL(fullUrlAllBook);
             Image imageAllBook = ImageIO.read(urlAllbook);

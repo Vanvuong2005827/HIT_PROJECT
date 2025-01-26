@@ -232,7 +232,7 @@ public class ChangPassScreen extends javax.swing.JFrame {
             forgetPasswordService.ChangePassword(userAccount.getUsername(), reEnterPass);
             previousFrame.setVisible(true);
             this.setVisible(false);
-            JOptionPane.showMessageDialog(this, "Đổi Mật Khẩu Thành Công!");
+
         }
 
     }

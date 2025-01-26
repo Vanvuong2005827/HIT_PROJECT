@@ -185,7 +185,7 @@ public class ChangPassScreenSecond extends javax.swing.JFrame {
             userAccount = null;
             previousFrame.setVisible(true);
             this.setVisible(false);
-            JOptionPane.showMessageDialog(this, "Đổi Mật Khẩu Thành Công!");
+
         }
 
     }
