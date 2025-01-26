@@ -198,7 +198,6 @@ public class ChangPassScreen extends javax.swing.JFrame {
         previousFrame.setVisible(true);
         this.setVisible(false);
     }
-
     private void confirmEvent(java.awt.event.MouseEvent evt) {
         String oldPass = changePassOldPassTextField.getText();
         String newPass = changePassNewPassTextField.getText();
