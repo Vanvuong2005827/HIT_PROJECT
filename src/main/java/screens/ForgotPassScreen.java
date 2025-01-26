@@ -288,8 +288,8 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         }
 
         if (AnsCode.equals(code)){
-            ChangPassScreen changPassScreen = new ChangPassScreen(previousFrame);
-            changPassScreen.setVisible(true);
+            ChangPassScreenSecond changPassScreenSecond = new ChangPassScreenSecond(previousFrame);
+            changPassScreenSecond.setVisible(true);
             this.setVisible(false);
         } else {
             forgotPassShowMessage.setText("Code error");
