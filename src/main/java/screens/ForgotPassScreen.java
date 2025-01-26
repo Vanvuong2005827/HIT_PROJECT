@@ -11,7 +11,9 @@ import static commons.CurrentUser.*;
 public class ForgotPassScreen extends javax.swing.JFrame {
     private String AnsCode;
     private String basePath = new File("").getAbsolutePath();
-    public ForgotPassScreen() {
+    private JFrame previousFrame;
+    public ForgotPassScreen(JFrame jf) {
+        previousFrame = jf;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -207,8 +209,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
     }
 
     private void backEvent(java.awt.event.MouseEvent evt) {
-        LoginScreen loginScreen = new LoginScreen();
-        loginScreen.setVisible(true);
+        previousFrame.setVisible(true);
         this.setVisible(false);
     }
 
@@ -287,7 +288,8 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         }
 
         if (AnsCode.equals(code)){
-            JOptionPane.showMessageDialog(null, "Chuyển Sang Màn Hình Nhập Mật Khẩu Mới");
+            previousFrame.setVisible(true);
+            this.setVisible(false);
         } else {
             forgotPassShowMessage.setText("Code error");
         }
