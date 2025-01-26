@@ -3,6 +3,9 @@ package screens;
 import javax.swing.*;
 import java.io.File;
 
+import static commons.CurrentUser.forgetPasswordService;
+import static commons.CurrentUser.userAccount;
+
 public class ChangPassScreenSecond extends javax.swing.JFrame {
     JFrame previousFrame;
     private String basePath = new File("").getAbsolutePath();
@@ -161,17 +164,30 @@ public class ChangPassScreenSecond extends javax.swing.JFrame {
     }
 
     private void confirmEvent(java.awt.event.MouseEvent evt) {
-        String newPass = changePassNewPassTextField.getText();
-        String reEnterPass = changePassReEnterPassTextField.getText();
+        String newPass = changePassNewPassTextField.getText().trim();
+        String reEnterPass = changePassReEnterPassTextField.getText().trim();
 
         if (newPass.isEmpty()){
             changePassShowMessageLabel.setText("Xin mời nhập mật khẩu mới");
             return;
         }
+
+        if (reEnterPass.isEmpty()){
+            changePassShowMessageLabel.setText("Xin mời nhập lại mật khẩu mới");
+            return;
+        }
+
         if (!newPass.equals(reEnterPass)){
             changePassShowMessageLabel.setText("Mật khẩu nhập lại không khớp");
             return;
+        } else {
+            forgetPasswordService.ChangePassword(userAccount.getUsername(), reEnterPass);
+            userAccount = null;
+            previousFrame.setVisible(true);
+            this.setVisible(false);
+
         }
+
     }
 
     private javax.swing.JPanel changPassPanel;

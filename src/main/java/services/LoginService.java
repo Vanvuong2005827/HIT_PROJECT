@@ -15,7 +15,6 @@ public class LoginService {
         UserAccount user = userServices.getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
             return true;
-
         } else {
             return false;
         }

@@ -1,10 +1,15 @@
 package services;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
+import javax.swing.*;
 import java.util.Properties;
 import java.util.Random;
+
+import static DAO.ConnectDB.collection;
 
 public class ForgetPasswordService {
     public String getCode(String gmail){
@@ -42,5 +47,16 @@ public class ForgetPasswordService {
             throw new RuntimeException(e);
         }
         return String.valueOf(randomNum);
+    }
+
+    public void ChangePassword(String username, String newpassword){
+        try {
+            collection.updateOne(
+                    Filters.eq("username", username),
+                    Updates.set("password", newpassword)
+            );
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + ": Error while updating password");
+        }
     }
 }
