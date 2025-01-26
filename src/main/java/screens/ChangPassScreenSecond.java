@@ -10,6 +10,7 @@ public class ChangPassScreenSecond extends javax.swing.JFrame {
     public ChangPassScreenSecond(JFrame jf) {
         previousFrame = jf;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     private void initComponents() {
