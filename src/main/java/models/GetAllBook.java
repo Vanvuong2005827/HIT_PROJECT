@@ -17,6 +17,7 @@ public class GetAllBook {
 //            String pageNumber = Integer.toString(i);
             String pageNumber = "1";
             String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
+            //System.out.println(apiUrl);
             String jsonData = getApi(apiUrl);
             if (jsonData != null && !jsonData.isEmpty()) {
                 Gson gson = new Gson();

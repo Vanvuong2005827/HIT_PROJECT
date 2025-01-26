@@ -3,6 +3,9 @@ package screens;
 import javax.swing.*;
 import java.io.File;
 
+import static commons.CurrentUser.forgetPasswordService;
+import static commons.CurrentUser.userAccount;
+
 public class ChangPassScreen extends javax.swing.JFrame {
     JFrame previousFrame;
     private String basePath = new File("").getAbsolutePath();
@@ -199,9 +202,9 @@ public class ChangPassScreen extends javax.swing.JFrame {
         this.setVisible(false);
     }
     private void confirmEvent(java.awt.event.MouseEvent evt) {
-        String oldPass = changePassOldPassTextField.getText();
-        String newPass = changePassNewPassTextField.getText();
-        String reEnterPass = changePassReEnterPassTextField.getText();
+        String oldPass = changePassOldPassTextField.getText().trim();
+        String newPass = changePassNewPassTextField.getText().trim();
+        String reEnterPass = changePassReEnterPassTextField.getText().trim();
 
         if (oldPass.isEmpty()){
             changePassShowMessageLabel.setText("Xin mời nhập mật khẩu cũ");
@@ -211,10 +214,27 @@ public class ChangPassScreen extends javax.swing.JFrame {
             changePassShowMessageLabel.setText("Xin mời nhập mật khẩu mới");
             return;
         }
+
+        if (reEnterPass.isEmpty()){
+            changePassShowMessageLabel.setText("Xin mời nhập lại mật khẩu mới");
+            return;
+        }
+
         if (!newPass.equals(reEnterPass)){
             changePassShowMessageLabel.setText("Mật khẩu nhập lại không khớp");
             return;
         }
+
+        if (!userAccount.getPassword().equals(oldPass)){
+            changePassShowMessageLabel.setText("Mật khẩu cũ không khớp vui lòng nhập lại");
+            return;
+        } else {
+            forgetPasswordService.ChangePassword(userAccount.getUsername(), reEnterPass);
+            previousFrame.setVisible(true);
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(this, "Đổi Mật Khẩu Thành Công!");
+        }
+
     }
 
     private void forgotPassEvent(java.awt.event.MouseEvent evt) {
