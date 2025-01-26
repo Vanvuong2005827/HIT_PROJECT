@@ -290,7 +290,7 @@ public class LoginScreen extends JFrame {
 
 
     private void forgotPassEvent(MouseEvent evt) {
-        ForgotPassScreen fg = new ForgotPassScreen();
+        ForgotPassScreen fg = new ForgotPassScreen(this);
         this.setVisible(false);
         fg.setVisible(true);
     }

@@ -4,6 +4,8 @@ import java.io.File;
 import javax.swing.JPanel;
 
 import models.User.UserInfo;
+import screens.ChangPassScreen;
+import screens.ForgotPassScreen;
 import screens.HomeScreen;
 
 import static commons.CurrentUser.userAccount;
@@ -257,11 +259,15 @@ public class AccountPage extends javax.swing.JFrame {
     }
 
     private void changePassEvent(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
+        ChangPassScreen cp = new ChangPassScreen(homeScreen);
+        cp.setVisible(true);
+        homeScreen.setVisible(false);
     }
 
     private void forgotPassEvent(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
+        ForgotPassScreen fg = new ForgotPassScreen(homeScreen);
+        fg.setVisible(true);
+        homeScreen.setVisible(false);
     }
 
     private void changeThemeEvent(java.awt.event.KeyEvent evt) {
