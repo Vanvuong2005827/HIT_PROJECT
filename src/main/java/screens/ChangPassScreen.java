@@ -228,7 +228,7 @@ public class ChangPassScreen extends javax.swing.JFrame {
             changePassShowMessageLabel.setText("Mật khẩu cũ không khớp vui lòng nhập lại");
             return;
         } else {
-            forgetPasswordService.ChangePassword(userAccount.getUsername(), reEnterPass);
+            forgetPasswordService.ChangePassword(userAccount, reEnterPass);
             previousFrame.setVisible(true);
             this.setVisible(false);
 

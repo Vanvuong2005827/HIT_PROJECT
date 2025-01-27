@@ -181,7 +181,7 @@ public class ChangPassScreenSecond extends javax.swing.JFrame {
             changePassShowMessageLabel.setText("Mật khẩu nhập lại không khớp");
             return;
         } else {
-            forgetPasswordService.ChangePassword(userAccount.getUsername(), reEnterPass);
+            forgetPasswordService.ChangePassword(userAccount, reEnterPass);
             userAccount = null;
             previousFrame.setVisible(true);
             this.setVisible(false);
