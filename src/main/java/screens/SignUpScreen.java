@@ -386,8 +386,6 @@ public class SignUpScreen extends javax.swing.JFrame {
         }
 
 
-
-
         try {
             SwingWorker<Void, Void> worker = new SwingWorker<>() {
                 @Override

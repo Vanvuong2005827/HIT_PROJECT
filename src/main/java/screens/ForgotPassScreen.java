@@ -242,6 +242,11 @@ public class ForgotPassScreen extends javax.swing.JFrame {
                 return;
             }
         }
+
+        if (Count != 60){
+            return;
+        }
+
         try {
             SwingWorker<Void, Void> worker = new SwingWorker<>() {
                 @Override
@@ -256,6 +261,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
                 protected void done() {
                     forgotPassWatingLabel.setText("Code had been sent, please check your email");
                     forgotPassWatingLabel.setForeground(Color.gray);
+                    waitToSendCode();
                 }
             };
 
@@ -264,6 +270,19 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             e.printStackTrace();
             forgotPassShowMessage.setText("An error occurred while generating ans code");
         }
+    }
+
+    private void waitToSendCode() {
+        Timer timer = new Timer(1000, e -> {
+            if (Count > 0) {
+                Count--; // Giảm Count mỗi giây
+                forgotPassWatingLabel.setText("Resend in: " + Count + "s");
+            } else {
+                ((Timer) e.getSource()).stop();
+                Count = 60;
+            }
+        });
+        timer.start();
     }
 
     private void confirmEvent(java.awt.event.MouseEvent evt) {
@@ -316,4 +335,5 @@ public class ForgotPassScreen extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private int Count = 60;
 }
