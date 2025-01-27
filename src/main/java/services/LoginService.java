@@ -4,6 +4,7 @@ import models.User.UserAccount;
 
 import java.util.prefs.Preferences;
 
+import static commons.CurrentUser.encryptorService;
 import static commons.CurrentUser.pref;
 
 public class LoginService {
@@ -13,7 +14,7 @@ public class LoginService {
     }
     public boolean authenticate(String username, String password) {
         UserAccount user = userServices.getUserByUsername(username);
-        if (user != null && user.getPassword().equals(password)) {
+        if (user != null && encryptorService.checkPassword(password ,user.getPassword())) {
             return true;
         } else {
             return false;
