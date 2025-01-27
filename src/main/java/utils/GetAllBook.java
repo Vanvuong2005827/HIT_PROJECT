@@ -174,7 +174,7 @@ public class GetAllBook {
     }
 
     public Book getBooksTheoTen(String tenTruyen) {
-        Book book = null;
+        Book book = new Book();
         String apiUrl = "https://otruyenapi.com/v1/api/truyen-tranh/" + tenTruyen;
         String jsonData = getApi(apiUrl);
         if (jsonData != null && !jsonData.isEmpty()) {
@@ -183,7 +183,7 @@ public class GetAllBook {
 
             if (apiResponse != null && apiResponse.getData() != null) {
                 ApiOneBookJson b = apiResponse.getData().getItem();
-                book = new Book(b.getName(), b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getAuthor(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
+                book = new Book(b.getName(), b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
             }
         }
         return book;

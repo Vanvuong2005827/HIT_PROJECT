@@ -15,8 +15,10 @@ public class Book {
     private List<BookChapterLastest> chapterLastests;
 
     private String content;
-    private List<BookAuthor> author;
     private List<ApiChapterSeverData> chapters;
+
+    public Book() {
+    }
 
     public Book(String name, String slug, String status, String updatedAt, String thumbnail, List<BookCategory> category, List<BookChapterLastest> chapterLastests) {
         this.name = name;
@@ -27,13 +29,12 @@ public class Book {
         this.category = category;
         this.chapterLastests = chapterLastests;
     }
-    public Book(String name, String slug, String content, String status, String thumbnail, List<BookAuthor> author, List<BookCategory> category, List<ApiChapterSeverData> chapters, String updatedAt) {
+    public Book(String name, String slug, String content, String status, String thumbnail, List<BookCategory> category, List<ApiChapterSeverData> chapters, String updatedAt) {
         this.name = name;
         this.slug = slug;
         this.content = content;
         this.status = status;
         this.thumbnail = thumbnail;
-        this.author = author;
         this.category = category;
         this.chapters = chapters;
         this.updatedAt = updatedAt;
@@ -103,14 +104,6 @@ public class Book {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public List<BookAuthor> getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(List<BookAuthor> author) {
-        this.author = author;
     }
 
     public List<ApiChapterSeverData> getChapters() {

@@ -3,6 +3,7 @@ package utils;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import screens.OneBookScreen;
+import screens.WaitScreen;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -67,12 +68,30 @@ public class customBookGridPanel {
 
         panel.add(textPanel);
         panel.addMouseListener(new MouseAdapter() {
+            GetAllBook getBook = new GetAllBook();
             @Override
             public void mouseClicked(MouseEvent e) {
                 SwingUtilities.invokeLater(() -> {
-                    OneBookScreen oneBookScreen = new OneBookScreen(previousScreen); // Truyền thông tin sách vào
-                    oneBookScreen.setVisible(true);
-                    previousScreen.setVisible(false);
+                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                        Book curBook = new Book();
+                        WaitScreen ws = new WaitScreen();
+                        @Override
+                        protected Void doInBackground() {
+                            ws.setVisible(true);
+                            previousScreen.setVisible(false);
+                            curBook = getBook.getBooksTheoTen(books.get(index).getSlug());
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook); // Truyền thông tin sách vào
+                            oneBookScreen.setVisible(true);
+                            ws.setVisible(false);
+                        }
+                    };
+
+                    worker.execute();
                 });
             }
             @Override
@@ -246,12 +265,30 @@ public class customBookGridPanel {
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         childPanel.addMouseListener(new MouseAdapter() {
+            GetAllBook getBook = new GetAllBook();
             @Override
             public void mouseClicked(MouseEvent e) {
                 SwingUtilities.invokeLater(() -> {
-                    OneBookScreen oneBookScreen = new OneBookScreen(previousScreen); // Truyền thông tin sách vào
-                    oneBookScreen.setVisible(true);
-                    previousScreen.setVisible(false);
+                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                        Book curBook = new Book();
+                        WaitScreen ws = new WaitScreen();
+                        @Override
+                        protected Void doInBackground() {
+                            ws.setVisible(true);
+                            previousScreen.setVisible(false);
+                            curBook = getBook.getBooksTheoTen(books.get(index).getSlug());
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook); // Truyền thông tin sách vào
+                            oneBookScreen.setVisible(true);
+                            ws.setVisible(false);
+                        }
+                    };
+
+                    worker.execute();
                 });
             }
             @Override

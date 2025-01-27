@@ -1,5 +1,8 @@
 package screens;
 
+import models.book_information.Book;
+import models.book_information.BookCategory;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Image;
@@ -10,9 +13,19 @@ import javax.swing.*;
 
 public class OneBookScreen extends javax.swing.JFrame {
     JFrame previousScreen;
+    OneBookScreen oneBookScreen = this;
+    Book curBook;
+    String fullUrl = "https://img.otruyenapi.com/uploads/comics/";
+    String name;
+    String status;
+    String content;
+    StringBuilder categories = new StringBuilder();
+    StringBuilder authors = new StringBuilder();
 
-    public OneBookScreen(JFrame ps) {
+    public OneBookScreen(JFrame ps, Book book) {
         previousScreen = ps;
+        curBook = book;
+        processData();
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -25,7 +38,6 @@ public class OneBookScreen extends javax.swing.JFrame {
         oneBookTabbed = new javax.swing.JTabbedPane();
         oneBookInforPanel = new javax.swing.JPanel();
         oneBookNameTextArea = new javax.swing.JTextArea();
-        oneBookDescriptionTextArea = new javax.swing.JTextArea();
         oneBookStatusLabel = new javax.swing.JLabel();
         oneBookAuthorTextArea = new javax.swing.JTextArea();
         oneBookCategoryTextArea = new javax.swing.JTextArea();
@@ -39,7 +51,6 @@ public class OneBookScreen extends javax.swing.JFrame {
 
         oneBookMainPanel.setBackground(new java.awt.Color(176, 223, 251));
         oneBookMainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        String fullUrl = "https://img.otruyenapi.com/uploads/comics/tu-linh-su-thien-tai-cua-hoc-vien-thumb.jpg";
         try {
             URL urlAllbook = new URL(fullUrl);
             Image imageAllBook = ImageIO.read(urlAllbook);
@@ -58,34 +69,41 @@ public class OneBookScreen extends javax.swing.JFrame {
 
         oneBookInforPanel.setBackground(new java.awt.Color(176, 223, 251));
 
+        oneBookNameTextArea.setBackground(new java.awt.Color(176, 223, 251));
+        oneBookNameTextArea.setWrapStyleWord(true);
+        oneBookNameTextArea.setLineWrap(true);
         oneBookNameTextArea.setEditable(false);
         oneBookNameTextArea.setColumns(20);
-        oneBookNameTextArea.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        oneBookNameTextArea.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        oneBookNameTextArea.setForeground(new java.awt.Color(102,102,102));
         oneBookNameTextArea.setRows(5);
         oneBookNameTextArea.setFocusable(false);
 
-        oneBookDescriptionTextArea.setEditable(false);
-        oneBookDescriptionTextArea.setColumns(20);
-        oneBookDescriptionTextArea.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        oneBookDescriptionTextArea.setRows(5);
-        oneBookDescriptionTextArea.setFocusable(false);
+        oneBookStatusLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        oneBookStatusLabel.setForeground(new java.awt.Color(102,102,102));
 
-        oneBookStatusLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
+        oneBookAuthorTextArea.setBackground(new java.awt.Color(176, 223, 251));
+        oneBookAuthorTextArea.setWrapStyleWord(true);
+        oneBookAuthorTextArea.setLineWrap(true);
         oneBookAuthorTextArea.setEditable(false);
         oneBookAuthorTextArea.setColumns(20);
-        oneBookAuthorTextArea.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        oneBookAuthorTextArea.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        oneBookAuthorTextArea.setForeground(new java.awt.Color(102,102,102));
         oneBookAuthorTextArea.setRows(5);
         oneBookAuthorTextArea.setFocusable(false);
 
+        oneBookCategoryTextArea.setBackground(new java.awt.Color(176, 223, 251));
+        oneBookCategoryTextArea.setWrapStyleWord(true);
+        oneBookCategoryTextArea.setLineWrap(true);
         oneBookCategoryTextArea.setEditable(false);
         oneBookCategoryTextArea.setColumns(20);
-        oneBookCategoryTextArea.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        oneBookCategoryTextArea.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        oneBookCategoryTextArea.setForeground(new java.awt.Color(102,102,102));
         oneBookCategoryTextArea.setRows(5);
         oneBookCategoryTextArea.setFocusable(false);
 
         oneBookStartReadButton.setBackground(new java.awt.Color(204, 255, 204));
-        oneBookStartReadButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        oneBookStartReadButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
         oneBookStartReadButton.setText("Bắt đầu đọc");
         oneBookStartReadButton.setBorder(null);
         oneBookStartReadButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,37 +117,37 @@ public class OneBookScreen extends javax.swing.JFrame {
         oneBookInforPanelLayout.setHorizontalGroup(
                 oneBookInforPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(oneBookInforPanelLayout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(oneBookInforPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(oneBookDescriptionTextArea)
                                         .addGroup(oneBookInforPanelLayout.createSequentialGroup()
-                                                .addComponent(oneBookStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                        .addComponent(oneBookAuthorTextArea)
-                                        .addComponent(oneBookCategoryTextArea)
-                                        .addComponent(oneBookNameTextArea))
+                                                .addContainerGap()
+                                                .addGroup(oneBookInforPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(oneBookAuthorTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                                                        .addComponent(oneBookCategoryTextArea)
+                                                        .addComponent(oneBookNameTextArea)))
+                                        .addGroup(oneBookInforPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(oneBookStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())
-                        .addGroup(oneBookInforPanelLayout.createSequentialGroup()
-                                .addGap(68, 68, 68)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, oneBookInforPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(oneBookStartReadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(65, Short.MAX_VALUE))
+                                .addGap(61, 61, 61))
         );
         oneBookInforPanelLayout.setVerticalGroup(
                 oneBookInforPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(oneBookInforPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(oneBookNameTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oneBookDescriptionTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(34, 34, 34)
                                 .addComponent(oneBookStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oneBookAuthorTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(oneBookCategoryTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                .addComponent(oneBookAuthorTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(oneBookCategoryTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
                                 .addComponent(oneBookStartReadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(79, Short.MAX_VALUE))
+                                .addGap(68, 68, 68))
         );
 
         oneBookTabbed.addTab("Thông tin truyện", oneBookInforPanel);
@@ -190,6 +208,12 @@ public class OneBookScreen extends javax.swing.JFrame {
                         .addComponent(oneBookPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+
+        oneBookNameTextArea.setText(name);
+        oneBookStatusLabel.setText("Trạng thái: " + status);
+        oneBookAuthorTextArea.setText("Tác giả: " + authors.toString());
+        oneBookCategoryTextArea.setText(categories.toString());
+
         pack();
     }
 
@@ -202,12 +226,25 @@ public class OneBookScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
+    public void processData(){
+        fullUrl = fullUrl + curBook.getThumbnail();
+        name = curBook.getName();
+        content = curBook.getContent();
+        status = curBook.getStatus();
+
+        for (BookCategory x : curBook.getCategory()) {
+            if (categories.length() > 0) {
+                categories.append(", ");
+            }
+            categories.append(x.getName());
+        }
+        authors.append("Đang cập nhật");
+    }
 
     private javax.swing.JTextArea oneBookAuthorTextArea;
     private javax.swing.JLabel oneBookBackLabel;
     private javax.swing.JTextArea oneBookCategoryTextArea;
     private javax.swing.JPanel oneBookChapterPanel;
-    private javax.swing.JTextArea oneBookDescriptionTextArea;
     private javax.swing.JLabel oneBookImgLabel;
     private javax.swing.JPanel oneBookInforPanel;
     private javax.swing.JLayeredPane oneBookMainPanel;
