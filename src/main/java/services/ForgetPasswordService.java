@@ -10,6 +10,7 @@ import java.util.Properties;
 import java.util.Random;
 
 import static DAO.ConnectDB.collection;
+import static commons.CurrentUser.encryptorService;
 
 public class ForgetPasswordService {
     public String getCode(String gmail){
@@ -53,7 +54,7 @@ public class ForgetPasswordService {
         try {
             collection.updateOne(
                     Filters.eq("username", username),
-                    Updates.set("password", newpassword)
+                    Updates.set("password", encryptorService.hasing(newpassword))
             );
         } catch (Exception e) {
             System.out.println(e.getMessage() + ": Error while updating password");

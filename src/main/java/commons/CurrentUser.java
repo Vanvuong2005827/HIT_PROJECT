@@ -2,10 +2,7 @@ package commons;
 
 import models.User.UserAccount;
 import models.User.UserInfo;
-import services.ForgetPasswordService;
-import services.LoginService;
-import services.RegisterService;
-import services.UserServices;
+import services.*;
 
 import java.util.prefs.Preferences;
 
@@ -17,4 +14,5 @@ public class CurrentUser {
     public static UserInfo userInfo = new UserInfo();
     public static ForgetPasswordService forgetPasswordService = new ForgetPasswordService();
     public static Preferences pref = Preferences.userRoot().node("rememberMe");
+    public static EncryptorService encryptorService = new EncryptorService();
 }
