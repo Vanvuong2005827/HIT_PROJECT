@@ -86,7 +86,7 @@ public class NewBookPage extends javax.swing.JFrame {
         for (int i = 0; i < totalBooks; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                return customBookGrid1(index, 400, 190, 114, 187, books, cusColor, baseUrl, customFont1, false);
+                return customBookGrid1(moreBookScreen, index, 400, 190, 114, 187, books, cusColor, baseUrl, customFont1, mainPanel);
             };
             futures.add(executor.submit(task));
         }

@@ -93,7 +93,7 @@ public class customBookGridPanel {
         });
         return panel;
     }
-    public static JPanel customBookGrid1(int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, boolean isCompleted) {
+    public static JPanel customBookGrid1(JFrame previousScreen, int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, JPanel panelMain) {
         JPanel childPanel = new JPanel();
 
         JTextArea categoriesArea;
@@ -245,7 +245,31 @@ public class customBookGridPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+        childPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                SwingUtilities.invokeLater(() -> {
+                    OneBookScreen oneBookScreen = new OneBookScreen(previousScreen); // Truyền thông tin sách vào
+                    oneBookScreen.setVisible(true);
+                    previousScreen.setVisible(false);
+                });
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(childPanel, e, panelMain));
+            }
 
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(childPanel, e, panelMain));
+            }
+        });
+        childPanel.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(childPanel, e, panelMain));
+            }
+        });
         return childPanel;
     }
 }

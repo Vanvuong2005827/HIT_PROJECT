@@ -10,8 +10,8 @@ public class MoreBookScreen extends javax.swing.JFrame {
     WaitScreen waitScreen;
     MoreBookScreen moreBookScreen = this;
     NewBookPage np = new NewBookPage(this);
-    CommingSoonBookPage cp = new CommingSoonBookPage();
-    CompletedBookPage cdp = new CompletedBookPage();
+    CommingSoonBookPage cp = new CommingSoonBookPage(this);
+    CompletedBookPage cdp = new CompletedBookPage(this);
     StyleBookPage sp = new StyleBookPage();
     public MoreBookScreen(HomeScreen hs, int indexTabbed, WaitScreen ws) {
         waitScreen = ws;
