@@ -382,32 +382,51 @@ public class SignUpScreen extends javax.swing.JFrame {
             return;
         }
 
+        if (Count != 60){
+            return;
+        }
+
+
+
 
         try {
             SwingWorker<Void, Void> worker = new SwingWorker<>() {
                 @Override
                 protected Void doInBackground() {
-                    signUpMessageLabel.setText("Sending...");
-                    signUpMessageLabel.setForeground(Color.gray);
+                    signUpMessageLabel.setText("");
+                    signUpSendingLabel.setText("Sending...");
+                    signUpSendingLabel.setForeground(Color.gray);
                     AnsCode = forgetPasswordService.getCode(Gmail);
                     return null;
                 }
 
                 @Override
                 protected void done() {
-                    signUpMessageLabel.setText("Code had been sent, please check your email");
-                    signUpMessageLabel.setForeground(Color.gray);
+                    signUpSendingLabel.setText("Code had been sent, please check your email");
+                    signUpSendingLabel.setForeground(Color.gray);
+                    waitToSendCode();
                 }
             };
 
             worker.execute();
         } catch (Exception e) {
             e.printStackTrace();
-            signUpMessageLabel.setText("An error occurred while generating ans code");
+            signUpSendingLabel.setText("An error occurred while generating ans code");
         }
+    }
 
 
-
+    private void waitToSendCode() {
+        Timer timer = new Timer(1000, e -> {
+            if (Count > 0) {
+                Count--; // Giảm Count mỗi giây
+                signUpSendingLabel.setText("Resend in: " + Count + "s");
+            } else {
+                ((Timer) e.getSource()).stop();
+                Count = 60;
+            }
+        });
+        timer.start();
     }
 
     private javax.swing.JLabel signUpAge;
@@ -437,5 +456,6 @@ public class SignUpScreen extends javax.swing.JFrame {
     private javax.swing.JTextField signUpPhoneNumberTextField;
     private javax.swing.JLabel signUpSendingLabel;
     private javax.swing.JComboBox<String> signUpYearOfBirth;
-    private String AnsCode;
+    private String AnsCode = "";
+    private int Count = 60;
 }
