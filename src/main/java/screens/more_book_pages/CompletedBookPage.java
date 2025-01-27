@@ -8,11 +8,13 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.concurrent.*;
 
 import static commons.customBookGridPanel.customBookGrid1;
 
 public class CompletedBookPage extends javax.swing.JFrame {
 
+    int totalBooks;
     public CompletedBookPage() {
         initComponents();
     }
@@ -70,20 +72,39 @@ public class CompletedBookPage extends javax.swing.JFrame {
         gbc.weightx = 1.0;
 
         GetAllBook lb = new GetAllBook();
-        ArrayList<Book> books = lb.getBooksHoanThanh();
+        ArrayList<Book> books = lb.getBooksHoanThanh(2);
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
         Color cusColor = mainPanel.getBackground();
 
-
-        for(int i = 0; i < books.size() - 1; i++){
-            JPanel childPanel = customBookGrid1(i, 400, 190, 114, 187, books, cusColor, baseUrl, customFont1, true);
-            gbc.gridx = 1;
-            gbc.gridy = i;
-            mainPanel.add(childPanel, gbc);
+        totalBooks = books.size();
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
+        ArrayList<Future<JPanel>> futures = new ArrayList<>();
+        for (int i = 0; i < totalBooks; i++) {
+            int index = i;
+            Callable<JPanel> task = () -> {
+                return customBookGrid1(index, 400, 190, 114, 187, books, cusColor, baseUrl, customFont1, false);
+            };
+            futures.add(executor.submit(task));
         }
-        mainPanel.revalidate();
-        mainPanel.repaint();
+        for (int i = 0; i < futures.size(); i++) {
+            try {
+                JPanel panel = futures.get(i).get();
+                final int x = 1;
+                final int y = i;
+                SwingUtilities.invokeLater(() -> {
+                    GridBagConstraints gbcPanel = (GridBagConstraints) gbc.clone();
+                    gbcPanel.gridx = x;
+                    gbcPanel.gridy = y;
+                    mainPanel.add(panel, gbcPanel);
+                    mainPanel.revalidate();
+                    mainPanel.repaint();
+                });
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
         mainPanel.addMouseListener(dragScrollListenerMainScroll);
         mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
@@ -109,7 +130,7 @@ public class CompletedBookPage extends javax.swing.JFrame {
 
             int newY = viewPosition.y + deltaY / SCROLL_SPEED;
 
-            int maxScrollHeight = 400 * 24;
+            int maxScrollHeight = 400 * totalBooks;
 
             newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
