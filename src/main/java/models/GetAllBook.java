@@ -16,7 +16,8 @@ public class GetAllBook {
     public ArrayList<Book> getBooksTruyenMoi(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
         int totalPages = numberPage;
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         for (int i = 1; i <= totalPages; i++) {
             int page = i;
@@ -56,7 +57,8 @@ public class GetAllBook {
     public ArrayList<Book> getBooksHoanThanh(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
         int totalPages = numberPage;
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         for (int i = 1; i <= totalPages; i++) {
             int page = i;
@@ -96,7 +98,8 @@ public class GetAllBook {
     public ArrayList<Book> getBooksSapRaMat(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
         int totalPages = numberPage;
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         for (int i = 1; i <= totalPages; i++) {
             int page = i;
@@ -135,7 +138,8 @@ public class GetAllBook {
 
     public ArrayList<Book> getBooksTheLoai() {
         ArrayList<Book> books = new ArrayList<>();
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         Callable<ArrayList<Book>> task = () -> {
             ArrayList<Book> pageBooks = new ArrayList<>();

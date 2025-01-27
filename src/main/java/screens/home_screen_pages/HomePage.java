@@ -268,7 +268,8 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels = books.size() / 2;
         int columns = 3;
 
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
         for (int i = 0; i < totalPanels; i++) {
@@ -318,7 +319,8 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels = books.size() / 2;
         int columns = 3;
 
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
         for (int i = 0; i < totalPanels; i++) {
@@ -367,7 +369,8 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels2 = books.size();
         int rows = 2;
 
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
         for (int i = 0; i < totalPanels2 / 2 - 1; i++) {
@@ -414,7 +417,8 @@ public class HomePage extends javax.swing.JFrame {
         ArrayList<Book> books = lb.getBooksHoanThanh(1);
         ArrayList<Color> colors = cl.getColorMain();
 
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        int maxThreads = 80;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
         for (int i = 0; i < books.size(); i++) {
