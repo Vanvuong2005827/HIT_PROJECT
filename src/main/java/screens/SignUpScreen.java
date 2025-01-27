@@ -1,8 +1,7 @@
 
 package screens;
 
-import commons.CheckRegex;
-import services.UserServices;
+import utils.CheckRegex;
 
 import javax.swing.*;
 import java.awt.*;

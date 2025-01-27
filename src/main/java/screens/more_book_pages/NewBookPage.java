@@ -1,7 +1,7 @@
 package screens.more_book_pages;
 
 import models.book_information.Book;
-import models.GetAllBook;
+import utils.GetAllBook;
 import screens.MoreBookScreen;
 
 import javax.swing.*;
@@ -11,8 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import static commons.customBookGridPanel.customBookGrid1;
-import static commons.customBookGridPanel.customBookGrid3;
+import static utils.customBookGridPanel.customBookGrid1;
 
 public class NewBookPage extends javax.swing.JFrame {
     MoreBookScreen moreBookScreen;
@@ -87,7 +86,7 @@ public class NewBookPage extends javax.swing.JFrame {
         for (int i = 0; i < totalBooks; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                return customBookGrid1(index, 400, 190, 114, 187, books, cusColor, baseUrl, customFont1, false);
+                return customBookGrid1(moreBookScreen, index, 400, 190, 114, 187, books, cusColor, baseUrl, customFont1, mainPanel);
             };
             futures.add(executor.submit(task));
         }

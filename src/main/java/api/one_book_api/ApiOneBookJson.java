@@ -2,7 +2,6 @@ package api.one_book_api;
 
 import api.one_book_api.chapter_api.ApiChapterSeverData;
 import com.google.gson.annotations.SerializedName;
-import models.book_information.BookAuthor;
 import models.book_information.BookCategory;
 
 import java.util.List;
@@ -16,7 +15,6 @@ public class ApiOneBookJson {
     private String status;
     @SerializedName("thumb_url")
     private String thumbUrl;
-    private List<BookAuthor> author;
     private List<BookCategory> category;
     private List<ApiChapterSeverData> chapters;
     private String updatedAt;
@@ -67,14 +65,6 @@ public class ApiOneBookJson {
 
     public void setThumbUrl(String thumbUrl) {
         this.thumbUrl = thumbUrl;
-    }
-
-    public List<BookAuthor> getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(List<BookAuthor> author) {
-        this.author = author;
     }
 
     public List<BookCategory> getCategory() {

@@ -1,4 +1,6 @@
-package commons;
+package utils;
+
+import commons.Patterns;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
