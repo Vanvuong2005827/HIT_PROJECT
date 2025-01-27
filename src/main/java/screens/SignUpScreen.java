@@ -4,14 +4,15 @@ package screens;
 import commons.CheckRegex;
 import services.UserServices;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.util.Objects;
 
-import static commons.CurrentUser.userAccount;
+import static commons.CurrentUser.*;
 
 public class SignUpScreen extends javax.swing.JFrame {
 
-    private UserServices userServices = new UserServices();
     private String basePath = new File("").getAbsolutePath();
 
     public SignUpScreen() {
@@ -306,7 +307,10 @@ public class SignUpScreen extends javax.swing.JFrame {
         pack();
     }
 
+
+
     private void signUpConfirmEvent(java.awt.event.MouseEvent evt) {
+
         String fullname = signUpFullNameTextField.getText().trim();
         String yearOfBirth = Objects.requireNonNull(signUpYearOfBirth.getSelectedItem()).toString().trim();
         String gender = userServices.selectGender(signUpMaleCheckBox.isSelected(), signUpFemaleCheckBox.isSelected(), signUpOtherCheckBox.isSelected());
@@ -339,6 +343,14 @@ public class SignUpScreen extends javax.swing.JFrame {
             return;
         }
 
+        if (signUpGmailCodeTextField.getText().trim().isEmpty()) {
+            signUpMessageLabel.setText("Please sign your email code");
+            return;
+        }
+
+        if (!AnsCode.equals(signUpGmailCodeTextField.getText().trim())){
+            signUpMessageLabel.setText("Wrong code");
+        }
 
         userServices.updateInformation(userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
         userAccount = null;
@@ -360,7 +372,44 @@ public class SignUpScreen extends javax.swing.JFrame {
     }
 
     private void sendCodeEvent(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
+        String Gmail = signUpGmailTextField.getText().trim();
+
+        if (Gmail.isEmpty()){
+            signUpMessageLabel.setText("Please enter your email");
+            return;
+        }
+
+        if (!CheckRegex.checkValidEmail(Gmail)) {
+            signUpMessageLabel.setText("This email does not exist");
+            return;
+        }
+
+
+        try {
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    signUpMessageLabel.setText("Sending...");
+                    signUpMessageLabel.setForeground(Color.gray);
+                    AnsCode = forgetPasswordService.getCode(Gmail);
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    signUpMessageLabel.setText("Code had been sent, please check your email");
+                    signUpMessageLabel.setForeground(Color.gray);
+                }
+            };
+
+            worker.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            signUpMessageLabel.setText("An error occurred while generating ans code");
+        }
+
+
+
     }
 
     private javax.swing.JLabel signUpAge;
@@ -390,4 +439,5 @@ public class SignUpScreen extends javax.swing.JFrame {
     private javax.swing.JTextField signUpPhoneNumberTextField;
     private javax.swing.JLabel signUpSendingLabel;
     private javax.swing.JComboBox<String> signUpYearOfBirth;
+    private String AnsCode;
 }
