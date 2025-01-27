@@ -3,8 +3,7 @@ package screens;
 import javax.swing.*;
 import java.io.File;
 
-import static commons.CurrentUser.forgetPasswordService;
-import static commons.CurrentUser.userAccount;
+import static commons.CurrentUser.*;
 
 public class ChangPassScreen extends javax.swing.JFrame {
     JFrame previousFrame;
@@ -225,11 +224,11 @@ public class ChangPassScreen extends javax.swing.JFrame {
             return;
         }
 
-        if (!userAccount.getPassword().equals(oldPass)){
+        if (!encryptorService.checkPassword(oldPass ,userAccount.getPassword())) {
             changePassShowMessageLabel.setText("Mật khẩu cũ không khớp vui lòng nhập lại");
             return;
         } else {
-            forgetPasswordService.ChangePassword(userAccount.getUsername(), reEnterPass);
+            forgetPasswordService.ChangePassword(userAccount, reEnterPass);
             previousFrame.setVisible(true);
             this.setVisible(false);
 

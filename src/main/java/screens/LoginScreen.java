@@ -364,7 +364,7 @@ public class LoginScreen extends JFrame {
             signUpMessageLabel.setText("Password at least 8 chars, 1 uppercase, 1 lowercase, 1 number.");
             return;
         }
-
+        password = encryptorService.hasing(password);
         userAccount = new UserAccount(userName, password);
         if (!registerService.register(userAccount)) {
             signUpMessageLabel.setText("Username already exists");

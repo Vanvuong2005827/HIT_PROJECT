@@ -4,12 +4,14 @@ import com.mongodb.client.model.Updates;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
+import models.User.UserAccount;
 
 import javax.swing.*;
 import java.util.Properties;
 import java.util.Random;
 
 import static DAO.ConnectDB.collection;
+import static commons.CurrentUser.*;
 
 public class ForgetPasswordService {
     public String getCode(String gmail){
@@ -49,12 +51,13 @@ public class ForgetPasswordService {
         return String.valueOf(randomNum);
     }
 
-    public void ChangePassword(String username, String newpassword){
+    public void ChangePassword(UserAccount user, String newpassword){
         try {
             collection.updateOne(
-                    Filters.eq("username", username),
-                    Updates.set("password", newpassword)
+                    Filters.eq("username", user.getUsername()),
+                    Updates.set("password", encryptorService.hasing(newpassword))
             );
+            userAccount = userServices.getUserByUsername(user.getUsername());
         } catch (Exception e) {
             System.out.println(e.getMessage() + ": Error while updating password");
         }

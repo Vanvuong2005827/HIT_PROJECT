@@ -1,5 +1,6 @@
 package screens.home_screen_pages;
 
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
@@ -24,7 +25,9 @@ public class AccountPage extends javax.swing.JFrame {
         accountGmailLabel.setText(userInfo.getEmail());
         accountPhoneNumberLabel.setText(userInfo.getPhoneNumber());
         accountUsernameLabel.setText(userAccount.getUsername());
-        accountStatusAccountLabel.setText("active");
+        accountStatusAccountLabel.setText("ACTIVE");
+        accountStatusAccountLabel.setForeground(new Color(4, 148, 43));
+        accountStatusAccountLabel.setFont(new Font("Verdana", Font.BOLD, 15));
     }
 
     private void initComponents() {
