@@ -1,6 +1,6 @@
 package screens;
 
-import commons.CheckRegex;
+import utils.CheckRegex;
 import models.User.UserAccount;
 import models.User.UserInfo;
 

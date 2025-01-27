@@ -1,4 +1,4 @@
-package models;
+package utils;
 
 import api.all_book_api.ApiAllBookResponse;
 import api.one_book_api.ApiOneBookJson;

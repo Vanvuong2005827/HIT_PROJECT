@@ -1,7 +1,7 @@
 package screens.more_book_pages;
 
 import models.book_information.Book;
-import models.GetAllBook;
+import utils.GetAllBook;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import static commons.customBookGridPanel.customBookGrid1;
+import static utils.customBookGridPanel.customBookGrid1;
 
 public class CommingSoonBookPage extends javax.swing.JFrame {
     int totalBooks;

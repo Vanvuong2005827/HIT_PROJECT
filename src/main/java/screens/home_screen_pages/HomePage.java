@@ -15,12 +15,12 @@ import javax.swing.*;
 import commons.ColorMain;
 import models.book_information.Book;
 import models.book_information.BookCategory;
-import models.GetAllBook;
+import utils.GetAllBook;
 import screens.HomeScreen;
 import screens.MoreBookScreen;
 import screens.WaitScreen;
 
-import static commons.customBookGridPanel.customBookGrid3;
+import static utils.customBookGridPanel.customBookGrid3;
 
 public class HomePage extends javax.swing.JFrame {
     HomeScreen homeScreen;
@@ -275,7 +275,7 @@ public class HomePage extends javax.swing.JFrame {
         for (int i = 0; i < totalPanels; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                return customBookGrid3(index, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
+                return customBookGrid3(homeScreen, index, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2, homeNewBookGridPanel);
             };
             futures.add(executor.submit(task));
         }
@@ -326,7 +326,7 @@ public class HomePage extends javax.swing.JFrame {
         for (int i = 0; i < totalPanels; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                return customBookGrid3(index, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2);
+                return customBookGrid3(homeScreen, index, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2, homeCommingSoonBookGridPanel1);
             };
             futures.add(executor.submit(task));
         }

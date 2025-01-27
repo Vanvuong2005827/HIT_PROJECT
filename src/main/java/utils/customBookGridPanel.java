@@ -1,11 +1,15 @@
-package commons;
+package utils;
 
 import models.book_information.Book;
 import models.book_information.BookCategory;
+import screens.OneBookScreen;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -13,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class customBookGridPanel {
-    public static JPanel customBookGrid3(int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, Font customFont2) {
+    public static JPanel customBookGrid3(JFrame previousScreen, int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, Font customFont2, JPanel panelMain) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBackground(cusColor);
@@ -62,6 +66,31 @@ public class customBookGridPanel {
         textPanel.add(categoriesArea);
 
         panel.add(textPanel);
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                SwingUtilities.invokeLater(() -> {
+                    OneBookScreen oneBookScreen = new OneBookScreen(previousScreen); // Truyền thông tin sách vào
+                    oneBookScreen.setVisible(true);
+                    previousScreen.setVisible(false);
+                });
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, panelMain));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, panelMain));
+            }
+        });
+        panel.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, panelMain));
+            }
+        });
         return panel;
     }
     public static JPanel customBookGrid1(int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, boolean isCompleted) {
