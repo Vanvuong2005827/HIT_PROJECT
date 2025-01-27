@@ -62,13 +62,14 @@ public class HomePage extends javax.swing.JFrame {
         homePageViewPanel.setLayout(new java.awt.CardLayout());
         CardLayout cardLayout = (CardLayout) homePageViewPanel.getLayout();
         Timer timer = new Timer(4000, e -> {
+            // Chuyển sang panel tiếp theo
             cardLayout.next(homePageViewPanel);
         });
         timer.start();
 
         homeSearchLabel.setText("Tìm kiếm");
 
-        homeStyleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        homeStyleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         homeStyleLabel.setText("Thể Loại");
 
         homeStyleScrollPane.setBorder(null);
@@ -79,7 +80,7 @@ public class HomePage extends javax.swing.JFrame {
         homeStyleMainPanel.addMouseListener(dragScrollListenerStyleScroll);
         homeStyleMainPanel.addMouseMotionListener(dragScrollListenerStyleScroll);
 
-        homeNewBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        homeNewBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         homeNewBookLabel.setText("Truyện mới");
 
         homeNewBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -89,6 +90,8 @@ public class HomePage extends javax.swing.JFrame {
         homeNewBookGridPanel.setBackground(new java.awt.Color(176, 223, 251));
         homeNewBookGridPanel.setLayout(new java.awt.GridBagLayout());
 
+        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
+        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
 
         homeNewBookScrollPane.setViewportView(homeNewBookGridPanel);
 
@@ -108,7 +111,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Đề xuất");
 
         homeCommingSoonBookShow.setForeground(new java.awt.Color(102, 102, 102));
@@ -126,9 +129,12 @@ public class HomePage extends javax.swing.JFrame {
         homeCommingSoonBookGridPanel1.setBackground(new java.awt.Color(176, 223, 251));
         homeCommingSoonBookGridPanel1.setLayout(new java.awt.GridBagLayout());
 
+        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
+        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
+
         homeCommingSoonBookScrollPane.setViewportView(homeCommingSoonBookGridPanel1);
 
-        homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         homeCommingSoonBookLabel.setText("Sắp ra mắt");
 
         javax.swing.GroupLayout homeMainPanelLayout = new javax.swing.GroupLayout(homeMainPanel);
@@ -168,7 +174,7 @@ public class HomePage extends javax.swing.JFrame {
                                                 .addComponent(homeCommingSoonBookLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(homeCommingSoonBookShow)
-                                                .addGap(12, 12, 12))))
+                                                .addGap(20, 20, 20))))
                         .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(homeMainPanelLayout.createSequentialGroup()
                                         .addContainerGap()
@@ -220,7 +226,7 @@ public class HomePage extends javax.swing.JFrame {
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
                 homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(homeMainScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                        .addComponent(homeMainScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
         );
         homePanelLayout.setVerticalGroup(
                 homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +240,9 @@ public class HomePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(homePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(homePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
