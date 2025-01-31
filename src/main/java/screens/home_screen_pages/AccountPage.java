@@ -80,13 +80,13 @@ public class AccountPage extends javax.swing.JFrame {
         jLabel5.setText("Gmail: ");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Phone Number: ");
+        jLabel6.setText("Số điện thoại: ");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Username: ");
+        jLabel7.setText("Tài khoản: ");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Account status: ");
+        jLabel8.setText("Trạng thái: ");
 
         accountChangePassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         accountChangePassLabel.setForeground(new java.awt.Color(102, 102, 102));

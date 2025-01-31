@@ -85,7 +85,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         forgotPassShowMessage.setForeground(new java.awt.Color(255, 0, 51));
 
         forgotPassUsernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        forgotPassUsernameLabel.setText("Username");
+        forgotPassUsernameLabel.setText("Tài khoản");
 
         forgotPassUsernameTextField.setBackground(new java.awt.Color(176, 223, 251));
         forgotPassUsernameTextField.setFont(new java.awt.Font("Segoe UI", 0, 14));
@@ -218,27 +218,27 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         String username = forgotPassUsernameTextField.getText().trim();
 
         if (username.isEmpty()){
-            forgotPassShowMessage.setText("Please enter your username");
+            forgotPassShowMessage.setText("Mời nhập tên tài khoản");
             return;
         }
         if (email.isEmpty()){
-            forgotPassShowMessage.setText("Please enter your email address");
+            forgotPassShowMessage.setText("Mời nhập email");
             return;
         }
 
         if (!CheckRegex.checkValidEmail(email)){
-            forgotPassShowMessage.setText("Email address is not valid");
+            forgotPassShowMessage.setText("Email không hợp lệ");
             return;
         }
 
         UserAccount userAccount1 = userServices.getUserByUsername(username);
         if (userAccount1 == null){
-            forgotPassShowMessage.setText("Username not found");
+            forgotPassShowMessage.setText("Không tìm thấy tài khoản");
             return;
         } else {
             UserInfo userInfo1 = userServices.getUserInfoByUserAccount(userAccount1);
             if (!userInfo1.getEmail().equals(email)){
-                forgotPassShowMessage.setText("Email address does not match");
+                forgotPassShowMessage.setText("Email không trùng khớp");
                 return;
             }
         }
@@ -251,7 +251,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             SwingWorker<Void, Void> worker = new SwingWorker<>() {
                 @Override
                 protected Void doInBackground() {
-                    forgotPassWatingLabel.setText("Sending...");
+                    forgotPassWatingLabel.setText("Đang gửi...");
                     forgotPassWatingLabel.setForeground(Color.gray);
                     AnsCode = forgetPasswordService.getCode(email);
                     return null;
@@ -259,7 +259,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
 
                 @Override
                 protected void done() {
-                    forgotPassWatingLabel.setText("Code had been sent, please check your email");
+                    forgotPassWatingLabel.setText("Mã đã được gửi, vui lòng kiểm tra email");
                     forgotPassWatingLabel.setForeground(Color.gray);
                     waitToSendCode();
                 }
@@ -275,8 +275,8 @@ public class ForgotPassScreen extends javax.swing.JFrame {
     private void waitToSendCode() {
         Timer timer = new Timer(1000, e -> {
             if (Count > 0) {
-                Count--; // Giảm Count mỗi giây
-                forgotPassWatingLabel.setText("Resend in: " + Count + "s");
+                Count--;
+                forgotPassWatingLabel.setText("Gửi lại trong: " + Count + "s");
             } else {
                 ((Timer) e.getSource()).stop();
                 Count = 60;
@@ -292,17 +292,17 @@ public class ForgotPassScreen extends javax.swing.JFrame {
 
 
         if (username.isEmpty()){
-            forgotPassShowMessage.setText("Please enter your username");
+            forgotPassShowMessage.setText("Mời nhập tên tài khoản");
             return;
         }
 
         if (email.isEmpty()){
-            forgotPassShowMessage.setText("Please enter your email address");
+            forgotPassShowMessage.setText("Mời nhập email");
             return;
         }
 
         if (code.isEmpty()){
-            forgotPassShowMessage.setText("Please enter the code sent to your email");
+            forgotPassShowMessage.setText("Mời nhập mã xác thực");
             return;
         }
 
@@ -312,7 +312,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
             changPassScreenSecond.setVisible(true);
             this.setVisible(false);
         } else {
-            forgotPassShowMessage.setText("Code error");
+            forgotPassShowMessage.setText("Mã không hợp lệ");
         }
 
 

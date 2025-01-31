@@ -81,7 +81,7 @@ public class ChangPassScreen extends javax.swing.JFrame {
 
         changePassConfirmButton.setBackground(new java.awt.Color(204, 255, 204));
         changePassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        changePassConfirmButton.setText("Confirm");
+        changePassConfirmButton.setText("Xác nhận");
         changePassConfirmButton.setBorder(null);
         changePassConfirmButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,7 +90,7 @@ public class ChangPassScreen extends javax.swing.JFrame {
         });
 
         changePassForgotPassLabel.setForeground(new java.awt.Color(102, 102, 102));
-        changePassForgotPassLabel.setText("Forgot password?");
+        changePassForgotPassLabel.setText("Quên mật khẩu?");
         changePassForgotPassLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 forgotPassEvent(evt);
