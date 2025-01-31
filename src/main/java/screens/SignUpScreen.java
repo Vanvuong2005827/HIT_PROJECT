@@ -69,23 +69,23 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         signUpFullNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         signUpFullNameLabel.setForeground(new java.awt.Color(102, 102, 102));
-        signUpFullNameLabel.setText("Full name :");
+        signUpFullNameLabel.setText("Họ tên :");
 
         signUpHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         signUpHeaderLabel.setForeground(new java.awt.Color(102, 102, 102));
-        signUpHeaderLabel.setText("Account Information");
+        signUpHeaderLabel.setText("Thông tin tài khoản");
 
         signUpBornYearLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         signUpBornYearLabel.setForeground(new java.awt.Color(102, 102, 102));
-        signUpBornYearLabel.setText("Year of birth :");
+        signUpBornYearLabel.setText("Năm sinh :");
 
         signUpGenderLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         signUpGenderLabel.setForeground(new java.awt.Color(102, 102, 102));
-        signUpGenderLabel.setText("Gender :");
+        signUpGenderLabel.setText("Giới tính :");
 
         signUpPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         signUpPhoneNumberLabel.setForeground(new java.awt.Color(102, 102, 102));
-        signUpPhoneNumberLabel.setText("Phone Number :");
+        signUpPhoneNumberLabel.setText("Số điện thoại :");
 
         signUpGamailLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         signUpGamailLabel.setForeground(new java.awt.Color(102, 102, 102));
@@ -119,18 +119,18 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         signUpMaleCheckBox.setBackground(new java.awt.Color(176, 223, 251));
         signUpMaleCheckBox.setForeground(new java.awt.Color(102, 102, 102));
-        signUpMaleCheckBox.setText("Male");
+        signUpMaleCheckBox.setText("Nam");
         signUpMaleCheckBox.setBorder(null);
 
         signUpFemaleCheckBox.setBackground(new java.awt.Color(176, 223, 251));
         signUpFemaleCheckBox.setForeground(new java.awt.Color(102, 102, 102));
-        signUpFemaleCheckBox.setText("Female");
+        signUpFemaleCheckBox.setText("Nữ");
         signUpFemaleCheckBox.setBorder(null);
 
         signUpConfirmButton.setBackground(new java.awt.Color(176, 223, 251));
         signUpConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         signUpConfirmButton.setForeground(new java.awt.Color(102, 102, 102));
-        signUpConfirmButton.setText("Confirm");
+        signUpConfirmButton.setText("Xác nhận");
         signUpConfirmButton.setBorder(null);
         signUpConfirmButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -140,7 +140,7 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         signUpOtherCheckBox.setBackground(new java.awt.Color(176, 223, 251));
         signUpOtherCheckBox.setForeground(new java.awt.Color(102, 102, 102));
-        signUpOtherCheckBox.setText("Other");
+        signUpOtherCheckBox.setText("Khác");
         signUpOtherCheckBox.setBorder(null);
         signUpOtherCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,13 +189,14 @@ public class SignUpScreen extends javax.swing.JFrame {
                                                 .addGap(17, 17, 17)
                                                 .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(signUpMainPanelLayout.createSequentialGroup()
-                                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                         .addComponent(signUpGamailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(signUpPhoneNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(signUpGenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(signUpBornYearLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(signUpPhoneNumberLabel)
                                                                         .addComponent(signUpFullNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(signUpGamailCodeLabel))
+                                                                        .addComponent(signUpGamailCodeLabel)
+                                                                        .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                                .addComponent(signUpGenderLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                .addComponent(signUpBornYearLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                         .addComponent(signUpLine2)
@@ -217,18 +218,17 @@ public class SignUpScreen extends javax.swing.JFrame {
                                                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signUpMainPanelLayout.createSequentialGroup()
                                                                                                 .addComponent(signUpOtherCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                 .addGap(9, 9, 9))))))
-                                                        .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(signUpMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGroup(signUpMainPanelLayout.createSequentialGroup()
-                                                                        .addGap(136, 136, 136)
-                                                                        .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                                .addComponent(signUpSendingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGroup(signUpMainPanelLayout.createSequentialGroup()
-                                                                                        .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                .addComponent(signUpLine4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addComponent(signUpGmailCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                        .addGap(18, 18, 18)
-                                                                                        .addComponent(signUpButtonSendCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                                        .addComponent(signUpMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(signUpMainPanelLayout.createSequentialGroup()
+                                                                .addGap(136, 136, 136)
+                                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(signUpSendingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(signUpMainPanelLayout.createSequentialGroup()
+                                                                                .addGroup(signUpMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                        .addComponent(signUpLine4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(signUpGmailCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(signUpButtonSendCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                                         .addGroup(signUpMainPanelLayout.createSequentialGroup()
                                                 .addGap(76, 76, 76)
                                                 .addComponent(signUpConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -315,38 +315,38 @@ public class SignUpScreen extends javax.swing.JFrame {
         String Gmail = signUpGmailTextField.getText().trim();
 
         if (fullname.isEmpty()){
-            signUpMessageLabel.setText("Please enter your full name");
+            signUpMessageLabel.setText("Xin mời nhập họ tên");
             return;
         }
         if (yearOfBirth.equals("0")){
-            signUpMessageLabel.setText("Please choose your year of born");
+            signUpMessageLabel.setText("Xin mời nhập năm sinh");
             return;
         }
         if (phoneNumber.isEmpty()){
-            signUpMessageLabel.setText("Please enter your phone number");
+            signUpMessageLabel.setText("Xin mời nhập số điện thoại");
             return;
         }
         if (Gmail.isEmpty()){
-            signUpMessageLabel.setText("Please enter your email");
+            signUpMessageLabel.setText("Xin mời nhập email");
             return;
         }
         if (!CheckRegex.checkValidEmail(Gmail)) {
-            signUpMessageLabel.setText("This email does not exist");
+            signUpMessageLabel.setText("Email không tồn tại");
             return;
         }
 
         if (!CheckRegex.checkValidPhoneNumber(phoneNumber)) {
-            signUpMessageLabel.setText("This phone number is invalid");
+            signUpMessageLabel.setText("Số điện thoại không hợp lệ");
             return;
         }
 
         if (signUpGmailCodeTextField.getText().trim().isEmpty()) {
-            signUpMessageLabel.setText("Please sign your email code");
+            signUpMessageLabel.setText("Mời nhập mã xác thực");
             return;
         }
 
         if (!AnsCode.equals(signUpGmailCodeTextField.getText().trim())){
-            signUpMessageLabel.setText("Wrong code");
+            signUpMessageLabel.setText("Mã xác thực không đúng");
         }
 
         userServices.updateInformation(userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
@@ -372,12 +372,12 @@ public class SignUpScreen extends javax.swing.JFrame {
         String Gmail = signUpGmailTextField.getText().trim();
 
         if (Gmail.isEmpty()){
-            signUpMessageLabel.setText("Please enter your email");
+            signUpMessageLabel.setText("Xin mời nhập email");
             return;
         }
 
         if (!CheckRegex.checkValidEmail(Gmail)) {
-            signUpMessageLabel.setText("This email does not exist");
+            signUpMessageLabel.setText("Email không tồn tại");
             return;
         }
 
@@ -391,7 +391,7 @@ public class SignUpScreen extends javax.swing.JFrame {
                 @Override
                 protected Void doInBackground() {
                     signUpMessageLabel.setText("");
-                    signUpSendingLabel.setText("Sending...");
+                    signUpSendingLabel.setText("Đang gửi...");
                     signUpSendingLabel.setForeground(Color.gray);
                     AnsCode = forgetPasswordService.getCode(Gmail);
                     return null;
@@ -399,7 +399,7 @@ public class SignUpScreen extends javax.swing.JFrame {
 
                 @Override
                 protected void done() {
-                    signUpSendingLabel.setText("Code had been sent, please check your email");
+                    signUpSendingLabel.setText("Mã đã được gửi, vui lòng kiểm tra email");
                     signUpSendingLabel.setForeground(Color.gray);
                     waitToSendCode();
                 }
@@ -416,8 +416,8 @@ public class SignUpScreen extends javax.swing.JFrame {
     private void waitToSendCode() {
         Timer timer = new Timer(1000, e -> {
             if (Count > 0) {
-                Count--; // Giảm Count mỗi giây
-                signUpSendingLabel.setText("Resend in: " + Count + "s");
+                Count--;
+                signUpSendingLabel.setText("Gửi lại trong: " + Count + "s");
             } else {
                 ((Timer) e.getSource()).stop();
                 Count = 60;

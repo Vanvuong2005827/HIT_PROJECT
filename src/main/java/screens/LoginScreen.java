@@ -48,7 +48,7 @@ public class LoginScreen extends JFrame {
         jLabel2 = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login");
+        setTitle("Đăng nhập");
         setBackground(new Color(255, 255, 255));
         setUndecorated(true);
 
@@ -64,14 +64,14 @@ public class LoginScreen extends JFrame {
 
         loginUsernameLabel.setFont(new Font("Segoe UI", 0, 14));
         loginUsernameLabel.setForeground(new Color(102, 102, 102));
-        loginUsernameLabel.setText("Username");
+        loginUsernameLabel.setText("Tài khoản");
 
         loginPasswordLabel.setFont(new Font("Segoe UI", 0, 14));
         loginPasswordLabel.setForeground(new Color(102, 102, 102));
-        loginPasswordLabel.setText("Password");
+        loginPasswordLabel.setText("Mật khẩu");
 
         loginForgotPassLabel.setForeground(new Color(102, 102, 102));
-        loginForgotPassLabel.setText("Forgot Password");
+        loginForgotPassLabel.setText("Quên mật khẩu");
         loginForgotPassLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 forgotPassEvent(evt);
@@ -80,7 +80,7 @@ public class LoginScreen extends JFrame {
 
         loginRememberCheckbox.setBackground(new Color(255, 255, 255));
         loginRememberCheckbox.setForeground(new Color(102, 102, 102));
-        loginRememberCheckbox.setText("Remember me");
+        loginRememberCheckbox.setText("Nhớ tài khoản");
         loginRememberCheckbox.setBorder(null);
         loginRememberCheckbox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -91,7 +91,7 @@ public class LoginScreen extends JFrame {
         loginButton.setBackground(new Color(176, 223, 251));
         loginButton.setFont(new Font("Segoe UI", 1, 18));
         loginButton.setForeground(new Color(255, 255, 255));
-        loginButton.setText("LOGIN");
+        loginButton.setText("ĐĂNG NHẬP");
         loginButton.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -152,22 +152,22 @@ public class LoginScreen extends JFrame {
                                 .addContainerGap(130, Short.MAX_VALUE))
         );
 
-        loginLoginTabbed.addTab("LOGIN", loginLoginPanel);
+        loginLoginTabbed.addTab("ĐĂNG NHẬP", loginLoginPanel);
 
         loginSignUpPanel.setBackground(new Color(255, 255, 255));
 
         signUpUsernameLabel.setFont(new Font("Segoe UI", 0, 14));
         signUpUsernameLabel.setForeground(new Color(102, 102, 102));
-        signUpUsernameLabel.setText("Username");
+        signUpUsernameLabel.setText("Tài khoản");
 
         signUpPasswordLabel.setFont(new Font("Segoe UI", 0, 14));
         signUpPasswordLabel.setForeground(new Color(102, 102, 102));
-        signUpPasswordLabel.setText("Password");
+        signUpPasswordLabel.setText("Mật khẩu");
 
         signUpButton.setBackground(new Color(176, 223, 251));
         signUpButton.setFont(new Font("Segoe UI", 1, 18));
         signUpButton.setForeground(new Color(255, 255, 255));
-        signUpButton.setText("Sign Up");
+        signUpButton.setText("ĐĂNG KÍ");
         signUpButton.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
         signUpButton.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -177,11 +177,11 @@ public class LoginScreen extends JFrame {
 
         signUpReEnterPasswordLabel1.setFont(new Font("Segoe UI", 0, 14));
         signUpReEnterPasswordLabel1.setForeground(new Color(102, 102, 102));
-        signUpReEnterPasswordLabel1.setText("Re-enter");
+        signUpReEnterPasswordLabel1.setText("Nhập lại");
 
         signUpReEnterPasswordLabel2.setFont(new Font("Segoe UI", 0, 14));
         signUpReEnterPasswordLabel2.setForeground(new Color(102, 102, 102));
-        signUpReEnterPasswordLabel2.setText("Password");
+        signUpReEnterPasswordLabel2.setText("mật khẩu");
 
         signUpMessageLabel.setForeground(new Color(255, 51, 51));
 
@@ -237,7 +237,7 @@ public class LoginScreen extends JFrame {
                                 .addGap(125, 125, 125))
         );
 
-        loginLoginTabbed.addTab("SIGN UP", loginSignUpPanel);
+        loginLoginTabbed.addTab("ĐĂNG KÍ", loginSignUpPanel);
 
         jLabel1.setFont(new Font("Segoe UI", 1, 24));
         jLabel1.setForeground(new Color(255, 255, 255));
@@ -301,11 +301,11 @@ public class LoginScreen extends JFrame {
         String password = loginPasswordTextField.getText().trim();
 
         if (userName.isEmpty()) {
-            loginMessageLabel.setText("Please enter your username");
+            loginMessageLabel.setText("Xin mời nhập tên tài khoản");
             return;
         }
         if (password.isEmpty()) {
-            loginMessageLabel.setText("Please enter your password");
+            loginMessageLabel.setText("Xin mời nhập mật khẩu");
             return;
         }
 
@@ -325,7 +325,7 @@ public class LoginScreen extends JFrame {
             HomeScreen hs = new HomeScreen(this, ws);
 
         } else {
-            loginMessageLabel.setText("Invalid username or password");
+            loginMessageLabel.setText("Sai tên đăng nhập hoặc mật khẩu");
         }
 
     }
@@ -336,38 +336,38 @@ public class LoginScreen extends JFrame {
         String reEnterPassword = signUpReEnterPasswordTextField.getText();
 
         if (userName.isEmpty()) {
-            signUpMessageLabel.setText("Please enter your username");
+            signUpMessageLabel.setText("Xin mời nhập tên tài khoản");
             return;
         }
 
         if (password.isEmpty()) {
-            signUpMessageLabel.setText("Please enter your password");
+            signUpMessageLabel.setText("Xin mời nhập mật khẩu");
             return;
         }
 
         if (reEnterPassword.isEmpty()) {
-            signUpMessageLabel.setText("Please reenter your password");
+            signUpMessageLabel.setText("Xin mời nhập lại mật khẩu");
             return;
         }
 
         if (!password.equals(reEnterPassword)) {
-            signUpMessageLabel.setText("Passwords do not match");
+            signUpMessageLabel.setText("Mật khẩu không khớp");
             return;
         }
 
         if (!CheckRegex.checkValidUserName(userName)) {
-            signUpMessageLabel.setText("Username must 8-20 length (a-z, A-Z, 0-9). No char _, . in first/last");
+            signUpMessageLabel.setText("Tài khoản phải dài 8-20 (a-z, A-Z, 0-9). Không có kí tự _, . ở đầu/cuối");
             return;
         }
 
         if (!CheckRegex.checkValidPassword(password)) {
-            signUpMessageLabel.setText("Password at least 8 chars, 1 uppercase, 1 lowercase, 1 number.");
+            signUpMessageLabel.setText("Mật khẩu ít nhất 8 kí tự, 1 in hoa, 1 in thường, 1 số.");
             return;
         }
         password = encryptorService.hasing(password);
         userAccount = new UserAccount(userName, password);
         if (!registerService.register(userAccount)) {
-            signUpMessageLabel.setText("Username already exists");
+            signUpMessageLabel.setText("Tài khoản đã tồn tại");
             return;
         } else {
             SignUpScreen su = new SignUpScreen();
