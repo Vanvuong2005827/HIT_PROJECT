@@ -1,4 +1,4 @@
-package api.one_book_api.chapter_api;
+package api.chapter_api;
 
 import java.util.List;
 

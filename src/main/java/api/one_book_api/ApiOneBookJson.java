@@ -1,6 +1,6 @@
 package api.one_book_api;
 
-import api.one_book_api.chapter_api.ApiChapterSeverData;
+import api.chapter_api.ApiChapterSeverData;
 import com.google.gson.annotations.SerializedName;
 import models.book_information.BookCategory;
 

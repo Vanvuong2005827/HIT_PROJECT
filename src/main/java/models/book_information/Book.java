@@ -1,7 +1,7 @@
 package models.book_information;
 
 
-import api.one_book_api.chapter_api.ApiChapterSeverData;
+import api.chapter_api.ApiChapterSeverData;
 
 import java.util.List;
 
