@@ -34,7 +34,7 @@ public class GetAllBook {
 
                     if (apiResponse != null && apiResponse.getData() != null) {
                         apiResponse.getData().getItems().forEach(item -> {
-                            pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
                         });
                     }
                 }
@@ -75,7 +75,7 @@ public class GetAllBook {
 
                     if (apiResponse != null && apiResponse.getData() != null) {
                         apiResponse.getData().getItems().forEach(item -> {
-                            pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
                         });
                     }
                 }
@@ -116,7 +116,7 @@ public class GetAllBook {
 
                     if (apiResponse != null && apiResponse.getData() != null) {
                         apiResponse.getData().getItems().forEach(item -> {
-                            pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
                         });
                     }
                 }
@@ -185,7 +185,7 @@ public class GetAllBook {
 
             if (apiResponse != null && apiResponse.getData() != null) {
                 ApiOneBookJson b = apiResponse.getData().getItem();
-                book = new Book(b.getName(), b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
+                book = new Book(b.getId(), b.getName(), b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
             }
         }
         return book;
