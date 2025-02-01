@@ -13,11 +13,14 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.*;
+
+import static utils.customBookGridPanel.resizeImage;
 
 public class ChapterScreen extends JFrame {
     GetChapters getChapter = new GetChapters();
@@ -150,9 +153,11 @@ public class ChapterScreen extends JFrame {
         String preUrl = chapter.getChapter_path() + "/";
         totalChapters = chapter.getChapter_image().size();
 
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JLabel>> futures = new ArrayList<>();
+
+        ImageIO.setUseCache(false);
 
         for (ChapterImage x : chapter.getChapter_image()) {
             final String fullUrl = baseUrl + preUrl + x.getImage_file();
@@ -163,22 +168,21 @@ public class ChapterScreen extends JFrame {
                     URL url = new URL(fullUrl);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestProperty("User-Agent", "Mozilla/5.0");
-                    connection.setConnectTimeout(5000);
-                    connection.setReadTimeout(5000);
+                    connection.setConnectTimeout(4000);
+                    connection.setReadTimeout(4000);
                     connection.connect();
 
-                    BufferedImage originalImage = ImageIO.read(connection.getInputStream());
-                    connection.disconnect();
 
-                    if (originalImage == null) {
-                        throw new IOException("Invalid image data: " + fullUrl);
+                    try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream())) {
+                        BufferedImage originalImage = ImageIO.read(in);
+                        if (originalImage == null) {
+                            throw new IOException("Invalid image data: " + fullUrl);
+                        }
+
+                        BufferedImage resizedImage = resizeImage(originalImage, 450, originalImage.getHeight());
+                        imageLabel = new JLabel(new ImageIcon(resizedImage));
                     }
-
-                    int newWidth = 450;
-                    int newHeight = (int) ((double) newWidth / originalImage.getWidth() * originalImage.getHeight());
-                    Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-
-                    imageLabel = new JLabel(new ImageIcon(scaledImage));
+                    connection.disconnect();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
