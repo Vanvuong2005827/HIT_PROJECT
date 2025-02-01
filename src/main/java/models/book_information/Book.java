@@ -6,6 +6,7 @@ import api.chapter_api.ApiChapterSeverData;
 import java.util.List;
 
 public class Book {
+    private String id;
     private String name;
     private String slug;
     private String status;
@@ -20,7 +21,8 @@ public class Book {
     public Book() {
     }
 
-    public Book(String name, String slug, String status, String updatedAt, String thumbnail, List<BookCategory> category, List<BookChapterLastest> chapterLastests) {
+    public Book(String id, String name, String slug, String status, String updatedAt, String thumbnail, List<BookCategory> category, List<BookChapterLastest> chapterLastests) {
+        this.id = id;
         this.name = name;
         this.slug = slug;
         this.status = status;
@@ -29,7 +31,8 @@ public class Book {
         this.category = category;
         this.chapterLastests = chapterLastests;
     }
-    public Book(String name, String slug, String content, String status, String thumbnail, List<BookCategory> category, List<ApiChapterSeverData> chapters, String updatedAt) {
+    public Book(String id, String name, String slug, String content, String status, String thumbnail, List<BookCategory> category, List<ApiChapterSeverData> chapters, String updatedAt) {
+        this.id = id;
         this.name = name;
         this.slug = slug;
         this.content = content;
@@ -38,6 +41,14 @@ public class Book {
         this.category = category;
         this.chapters = chapters;
         this.updatedAt = updatedAt;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Book(String name){this.name = name;}
