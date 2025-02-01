@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import static DAO.ConnectDB.collectionHistory;
 import static commons.CurrentUser.bookService;
 import static commons.CurrentUser.userAccount;
 import static utils.customBookGridPanel.customChapterPanel;
+import static utils.customBookGridPanel.resizeImage;
 
 public class OneBookScreen extends javax.swing.JFrame {
     JFrame previousScreen;
@@ -68,11 +70,9 @@ public class OneBookScreen extends javax.swing.JFrame {
         oneBookMainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         try {
             URL urlAllbook = new URL(fullUrl);
-            Image imageAllBook = ImageIO.read(urlAllbook);
-
-            Image resizedImageAllBook = imageAllBook.getScaledInstance(450, 600, Image.SCALE_SMOOTH);
-
-            oneBookImgLabel = new JLabel(new ImageIcon(resizedImageAllBook));
+            BufferedImage originalImage = ImageIO.read(urlAllbook);
+            BufferedImage resizedImage = resizeImage(originalImage, 450, 600);
+            oneBookImgLabel = new JLabel(new ImageIcon(resizedImage));
         } catch (IOException e) {
             e.printStackTrace();
             JLabel errorLabel = new JLabel("Không thể tải ảnh!");

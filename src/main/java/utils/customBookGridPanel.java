@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -29,13 +30,14 @@ public class customBookGridPanel {
         String baseUrlAllBook = baseUrl;
         String posterPathAllBook = books.get(index).getThumbnail();
         String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
+        ImageIO.setUseCache(false);
         try {
             URL urlAllbook = new URL(fullUrlAllBook);
-            Image imageAllBook = ImageIO.read(urlAllbook);
+            BufferedImage originalImage = ImageIO.read(urlAllbook);
 
-            Image resizedImageAllBook = imageAllBook.getScaledInstance(imgWidth, imgHeight, Image.SCALE_SMOOTH);
+            BufferedImage resizedImage = resizeImage(originalImage, imgWidth, imgHeight);
 
-            JLabel jLabel1 = new JLabel(new ImageIcon(resizedImageAllBook));
+            JLabel jLabel1 = new JLabel(new ImageIcon(resizedImage));
 
             panel.add(jLabel1);
         } catch (IOException e) {
@@ -140,12 +142,14 @@ public class customBookGridPanel {
         String posterPathAllBook = books.get(index).getThumbnail();
         String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
 
-
+        ImageIO.setUseCache(false);
         try {
             URL urlAllbook = new URL(fullUrlAllBook);
-            Image imageAllBook = ImageIO.read(urlAllbook);
-            Image resizedImageAllBook = imageAllBook.getScaledInstance(imgWidth, imgHeight, Image.SCALE_SMOOTH);
-            imgLabel = new JLabel(new ImageIcon(resizedImageAllBook));
+            BufferedImage originalImage = ImageIO.read(urlAllbook);
+
+            BufferedImage resizedImage = resizeImage(originalImage, imgWidth, imgHeight);
+
+            imgLabel = new JLabel(new ImageIcon(resizedImage));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -440,4 +444,13 @@ public class customBookGridPanel {
             }
         });
     }
+    public static BufferedImage resizeImage(BufferedImage originalImage, int width, int height) {
+        BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = resizedImage.createGraphics();
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2d.drawImage(originalImage, 0, 0, width, height, null);
+        g2d.dispose();
+        return resizedImage;
+    }
+
 }

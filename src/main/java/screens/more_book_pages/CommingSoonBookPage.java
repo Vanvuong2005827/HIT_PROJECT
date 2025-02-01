@@ -80,7 +80,7 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         Color cusColor = mainPanel.getBackground();
 
         totalBooks = books.size();
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
         for (int i = 0; i < totalBooks; i++) {

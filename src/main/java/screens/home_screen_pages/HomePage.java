@@ -276,7 +276,7 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels = books.size() / 2;
         int columns = 3;
 
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
@@ -327,7 +327,7 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels = books.size() / 2;
         int columns = 3;
 
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
@@ -377,7 +377,7 @@ public class HomePage extends javax.swing.JFrame {
         int totalPanels2 = books.size();
         int rows = 2;
 
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
@@ -425,7 +425,7 @@ public class HomePage extends javax.swing.JFrame {
         ArrayList<Book> books = lb.getBooksHoanThanh(1);
         ArrayList<Color> colors = cl.getColorMain();
 
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
