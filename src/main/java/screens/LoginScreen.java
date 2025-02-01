@@ -1,5 +1,6 @@
 package screens;
 
+import models.User.UserIP;
 import utils.CheckRegex;
 import models.User.UserAccount;
 
@@ -11,6 +12,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 import static commons.CurrentUser.*;
 
@@ -296,16 +301,30 @@ public class LoginScreen extends JFrame {
     }
 
     private void loginEvent(ActionEvent evt) {
+        UserIP userIP = new UserIP();
+        try {
+            InetAddress localhost = InetAddress.getLocalHost();
+            userIP = userServices.getUserIPByIP(localhost.getHostAddress());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         String userName = loginUsernameTextField.getText().trim();
         String password = loginPasswordTextField.getText().trim();
-
         if (userName.isEmpty()) {
             loginMessageLabel.setText("Xin mời nhập tên tài khoản");
             return;
         }
         if (password.isEmpty()) {
             loginMessageLabel.setText("Xin mời nhập mật khẩu");
+            return;
+        }
+
+        if (userIP.getTime().isAfter(LocalDateTime.now())) {
+            Duration duration = Duration.between(LocalDateTime.now(), userIP.getTime());
+            long minutes = duration.toMinutes();
+            long seconds = duration.getSeconds() % 60;
+            loginMessageLabel.setText("Thử lại sau: " + minutes + " phút " + seconds + " giây");
             return;
         }
 
@@ -326,6 +345,11 @@ public class LoginScreen extends JFrame {
 
         } else {
             loginMessageLabel.setText("Sai tên đăng nhập hoặc mật khẩu");
+            cnt++;
+            if (cnt == 5) {
+                userServices.plusTime(userIP,5);
+                cnt = 0;
+            }
         }
 
     }
@@ -404,4 +428,5 @@ public class LoginScreen extends JFrame {
     private JPasswordField signUpReEnterPasswordTextField;
     private JLabel signUpUsernameLabel;
     private JTextField signUpUsernameTextField;
+    private int cnt = 0;
 }

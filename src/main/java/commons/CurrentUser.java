@@ -4,6 +4,7 @@ import models.User.UserAccount;
 import models.User.UserInfo;
 import services.*;
 
+import java.net.InetAddress;
 import java.util.prefs.Preferences;
 
 public class CurrentUser {
