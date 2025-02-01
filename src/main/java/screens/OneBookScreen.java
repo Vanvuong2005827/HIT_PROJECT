@@ -286,7 +286,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         for(int i = 0; i < chapters.size(); i++){
             String title = chapters.get(i).getFilename();
             String chapterNumber = "Chapter: " + chapters.get(i).getChapter_name();
-            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, chapters.get(i), title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel));
+            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, chapters.get(i), title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel, curBook));
             oneBookChapterMainPanel.revalidate();
             oneBookChapterMainPanel.repaint();
         }

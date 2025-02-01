@@ -340,7 +340,7 @@ public class customBookGridPanel {
         return childPanel;
     }
 
-    public static JPanel customChapterPanel(JFrame previousScreen,AllChapters chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain){
+    public static JPanel customChapterPanel(JFrame previousScreen,AllChapters chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain, Book curBook){
         JPanel childPanel = new JPanel();
 
         childPanel.setBackground(cusColor);
