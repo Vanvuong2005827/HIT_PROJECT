@@ -117,7 +117,7 @@ public class CompletedBookPage extends javax.swing.JFrame {
 
     MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
-        private final int SCROLL_SPEED = 10;
+        private final int SCROLL_SPEED = 1;
 
         @Override
         public void mousePressed(MouseEvent e) {
@@ -130,7 +130,7 @@ public class CompletedBookPage extends javax.swing.JFrame {
             Point viewPosition = viewport.getViewPosition();
             int deltaY = origin.y - e.getY();
 
-            int newY = viewPosition.y + deltaY / SCROLL_SPEED;
+            int newY = viewPosition.y + deltaY * SCROLL_SPEED;
 
             int maxScrollHeight = 400 * totalBooks;
 

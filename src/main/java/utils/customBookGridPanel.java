@@ -177,7 +177,8 @@ public class customBookGridPanel {
         titleArea.setWrapStyleWord(true);
         titleArea.setLineWrap(true);
         titleArea.setFocusable(false);
-        titleArea.setEditable(false);
+        titleArea.setHighlighter(null);
+        titleArea.setCursor(Cursor.getDefaultCursor());
         titleArea.setColumns(20);
         titleArea.setRows(5);
 
@@ -187,6 +188,8 @@ public class customBookGridPanel {
         updateAtArea.setWrapStyleWord(true);
         updateAtArea.setFocusable(false);
         updateAtArea.setEditable(false);
+        updateAtArea.setHighlighter(null);
+        updateAtArea.setCursor(Cursor.getDefaultCursor());
         updateAtArea.setColumns(20);
         updateAtArea.setRows(5);
 
@@ -196,6 +199,8 @@ public class customBookGridPanel {
         statusArea.setWrapStyleWord(true);
         statusArea.setFocusable(false);
         statusArea.setEditable(false);
+        statusArea.setHighlighter(null);
+        statusArea.setCursor(Cursor.getDefaultCursor());
         statusArea.setColumns(20);
         statusArea.setRows(5);
 
@@ -205,6 +210,8 @@ public class customBookGridPanel {
         categoriesArea.setWrapStyleWord(true);
         categoriesArea.setFocusable(false);
         categoriesArea.setEditable(false);
+        categoriesArea.setHighlighter(null);
+        categoriesArea.setCursor(Cursor.getDefaultCursor());
         categoriesArea.setColumns(20);
         categoriesArea.setRows(5);
 
@@ -214,8 +221,16 @@ public class customBookGridPanel {
         chapterLastestArea.setWrapStyleWord(true);
         chapterLastestArea.setFocusable(false);
         chapterLastestArea.setEditable(false);
+        chapterLastestArea.setHighlighter(null);
+        chapterLastestArea.setCursor(Cursor.getDefaultCursor());
         chapterLastestArea.setColumns(20);
         chapterLastestArea.setRows(5);
+
+        fixDragable(titleArea, childPanel);
+        fixDragable(updateAtArea, childPanel);
+        fixDragable(statusArea, childPanel);
+        fixDragable(categoriesArea, childPanel);
+        fixDragable(chapterLastestArea, childPanel);
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
@@ -308,5 +323,25 @@ public class customBookGridPanel {
             }
         });
         return childPanel;
+    }
+
+    private static void fixDragable(JTextArea textArea, JPanel childPanel){
+        textArea.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                childPanel.dispatchEvent(SwingUtilities.convertMouseEvent(textArea, e, childPanel));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                childPanel.dispatchEvent(SwingUtilities.convertMouseEvent(textArea, e, childPanel));
+            }
+        });
+        textArea.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                childPanel.dispatchEvent(SwingUtilities.convertMouseEvent(textArea, e, childPanel));
+            }
+        });
     }
 }
