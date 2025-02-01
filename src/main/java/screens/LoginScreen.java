@@ -353,7 +353,6 @@ public class LoginScreen extends JFrame {
                 cnt = 0;
             }
         }
-
     }
 
     private void signUpEvent(MouseEvent evt) {
