@@ -3,6 +3,7 @@ package utils;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.chapter_information.Chapters;
+import screens.ChapterScreen;
 import screens.OneBookScreen;
 import screens.WaitScreen;
 
@@ -328,7 +329,7 @@ public class customBookGridPanel {
         JPanel childPanel = new JPanel();
 
         childPanel.setBackground(cusColor);
-        childPanel.setPreferredSize(new java.awt.Dimension(432, 60));
+        childPanel.setPreferredSize(new java.awt.Dimension(432, 70));
 
         JLabel titleArea = new JLabel(title);
         JLabel chapterNumberLabel = new JLabel(chapterNumber);
@@ -357,7 +358,7 @@ public class customBookGridPanel {
                                 .addComponent(titleArea, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(19, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         childPanel.addMouseListener(new MouseAdapter() {
             GetAllBook getBook = new GetAllBook();
@@ -365,6 +366,9 @@ public class customBookGridPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
+                ChapterScreen cs = new ChapterScreen();
+                cs.setVisible(true);
+                previousScreen.setVisible(false);
 //                SwingUtilities.invokeLater(() -> {
 //                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
 //                        Book curBook = new Book();
