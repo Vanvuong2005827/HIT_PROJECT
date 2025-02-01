@@ -14,6 +14,7 @@ import models.User.UserAccount;
 import models.User.UserHistoryBooks;
 import models.User.UserIP;
 import models.User.UserInfo;
+import models.book_information.Book;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.pojo.PojoCodecProvider;
@@ -44,6 +45,7 @@ public class ConnectDB {
     public static MongoCollection<UserInfo> collectionInfo = db.getCollection("UserInfo", UserInfo.class);
     public static MongoCollection<UserIP> collectionIp = db.getCollection("UserIP", UserIP.class);
     public static MongoCollection<UserHistoryBooks> collectionHistory = db.getCollection("UserHistoryBooks", UserHistoryBooks.class);
+    public static MongoCollection<Book> collectionBook = db.getCollection("Book", Book.class);
 //    static {
 //        collectionHistory.createIndex(
 //                Indexes.ascending("userId", "bookId"),

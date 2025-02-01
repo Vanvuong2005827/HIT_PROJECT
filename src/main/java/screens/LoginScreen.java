@@ -345,6 +345,8 @@ public class LoginScreen extends JFrame {
             loginScreen.setVisible(false);
             HomeScreen hs = new HomeScreen(this, ws);
 
+
+
         } else {
             loginMessageLabel.setText("Sai tên đăng nhập hoặc mật khẩu");
             cnt++;

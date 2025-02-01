@@ -260,7 +260,8 @@ public class OneBookScreen extends javax.swing.JFrame {
 
     private void startReadEvent(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-        bookService.StorageBookToUser(curBook);
+        bookService.InsertBookToDB(curBook);
+        bookService.StorageBookToUser(curBook.getId());
     }
 
     public void processBookInfoData(){
