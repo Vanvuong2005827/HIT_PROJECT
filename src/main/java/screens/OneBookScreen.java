@@ -3,14 +3,13 @@ package screens;
 import models.User.UserHistoryBooks;
 import models.book_information.Book;
 import models.book_information.BookCategory;
-import models.chapter_information.Chapters;
+import models.chapter_information.AllChapters;
 import org.bson.types.ObjectId;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -25,7 +24,7 @@ public class OneBookScreen extends javax.swing.JFrame {
     JFrame previousScreen;
     OneBookScreen oneBookScreen = this;
     Book curBook;
-    ArrayList<Chapters> chapters = new ArrayList<>();
+    ArrayList<AllChapters> chapters = new ArrayList<>();
     String fullUrl = "https://img.otruyenapi.com/uploads/comics/";
     String name;
     String status;
@@ -33,7 +32,7 @@ public class OneBookScreen extends javax.swing.JFrame {
     StringBuilder categories = new StringBuilder();
     StringBuilder authors = new StringBuilder();
 
-    public OneBookScreen(JFrame ps, Book book, ArrayList<Chapters> chapter) {
+    public OneBookScreen(JFrame ps, Book book, ArrayList<AllChapters> chapter) {
         previousScreen = ps;
         curBook = book;
         chapters = chapter;
@@ -287,7 +286,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         for(int i = 0; i < chapters.size(); i++){
             String title = chapters.get(i).getFilename();
             String chapterNumber = "Chapter: " + chapters.get(i).getChapter_name();
-            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel));
+            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, chapters.get(i), title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel));
             oneBookChapterMainPanel.revalidate();
             oneBookChapterMainPanel.repaint();
         }

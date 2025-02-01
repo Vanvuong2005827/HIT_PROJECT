@@ -2,7 +2,8 @@ package utils;
 
 import models.book_information.Book;
 import models.book_information.BookCategory;
-import models.chapter_information.Chapters;
+import models.chapter_information.AllChapters;
+import models.chapter_information.Chapter;
 import screens.ChapterScreen;
 import screens.OneBookScreen;
 import screens.WaitScreen;
@@ -14,7 +15,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -79,7 +79,7 @@ public class customBookGridPanel {
                 SwingUtilities.invokeLater(() -> {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         Book curBook = new Book();
-                        ArrayList<Chapters> chapters = new ArrayList<>();
+                        ArrayList<AllChapters> chapters = new ArrayList<>();
                         WaitScreen ws = new WaitScreen();
 
                         @Override
@@ -297,7 +297,7 @@ public class customBookGridPanel {
                 SwingUtilities.invokeLater(() -> {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         Book curBook = new Book();
-                        ArrayList<Chapters> chapters = new ArrayList<>();
+                        ArrayList<AllChapters> chapters = new ArrayList<>();
                         WaitScreen ws = new WaitScreen();
 
                         @Override
@@ -340,7 +340,7 @@ public class customBookGridPanel {
         return childPanel;
     }
 
-    public static JPanel customChapterPanel(JFrame previousScreen, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain){
+    public static JPanel customChapterPanel(JFrame previousScreen,AllChapters chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain){
         JPanel childPanel = new JPanel();
 
         childPanel.setBackground(cusColor);
@@ -376,39 +376,30 @@ public class customBookGridPanel {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         childPanel.addMouseListener(new MouseAdapter() {
-            GetAllBook getBook = new GetAllBook();
-            GetChapters getChapters = new GetChapters();
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                ChapterScreen cs = new ChapterScreen();
-                cs.setVisible(true);
-                previousScreen.setVisible(false);
-//                SwingUtilities.invokeLater(() -> {
-//                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
-//                        Book curBook = new Book();
-//                        ArrayList<Chapters> chapters = new ArrayList<>();
-//                        WaitScreen ws = new WaitScreen();
-//
-//                        @Override
-//                        protected Void doInBackground() {
-////                            ws.setVisible(true);
-////                            previousScreen.setVisible(false);
-////                            curBook = getBook.getBooksTheoTen(books.get(index).getSlug());
-////                            chapters = getChapters.getListChapters(curBook);
-//                            return null;
-//                        }
-//
-//                        @Override
-//                        protected void done() {
-//                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters); // Truyền thông tin sách vào
-//                            oneBookScreen.setVisible(true);
-//                            ws.setVisible(false);
-//                        }
-//                    };
-//
-//                    worker.execute();
-//                });
+                SwingUtilities.invokeLater(() -> {
+                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                        WaitScreen ws = new WaitScreen();
+                        ChapterScreen cs;
+                        @Override
+                        protected Void doInBackground() {
+                            ws.setVisible(true);
+                            previousScreen.setVisible(false);
+                            cs = new ChapterScreen(previousScreen, chapters);
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            cs.setVisible(true);
+                            ws.setVisible(false);
+                        }
+                    };
+
+                    worker.execute();
+                });
             }
 
             @Override
