@@ -1,10 +1,12 @@
 package utils;
 
 import api.all_book_api.ApiAllBookResponse;
+import api.chapter_api.ApiListChapterJson;
 import api.one_book_api.ApiOneBookJson;
 import api.one_book_api.ApiOneBookResponse;
 import com.google.gson.Gson;
 import models.book_information.Book;
+import models.chapter_information.Chapters;
 
 import java.util.ArrayList;
 import java.util.List;

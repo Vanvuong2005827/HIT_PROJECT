@@ -2,19 +2,24 @@ package screens;
 
 import models.book_information.Book;
 import models.book_information.BookCategory;
+import models.chapter_information.Chapters;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Image;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import static utils.customBookGridPanel.customChapterPanel;
 
 public class OneBookScreen extends javax.swing.JFrame {
     JFrame previousScreen;
     OneBookScreen oneBookScreen = this;
     Book curBook;
+    ArrayList<Chapters> chapters = new ArrayList<>();
     String fullUrl = "https://img.otruyenapi.com/uploads/comics/";
     String name;
     String status;
@@ -22,11 +27,13 @@ public class OneBookScreen extends javax.swing.JFrame {
     StringBuilder categories = new StringBuilder();
     StringBuilder authors = new StringBuilder();
 
-    public OneBookScreen(JFrame ps, Book book) {
+    public OneBookScreen(JFrame ps, Book book, ArrayList<Chapters> chapter) {
         previousScreen = ps;
         curBook = book;
-        processData();
+        chapters = chapter;
+        processBookInfoData();
         initComponents();
+        processBookChapterData();
         setLocationRelativeTo(null);
     }
 
@@ -43,7 +50,10 @@ public class OneBookScreen extends javax.swing.JFrame {
         oneBookCategoryTextArea = new javax.swing.JTextArea();
         oneBookStartReadButton = new javax.swing.JButton();
         oneBookChapterPanel = new javax.swing.JPanel();
+        oneBookChapterScroll = new javax.swing.JScrollPane();
+        oneBookChapterMainPanel = new javax.swing.JPanel();
         oneBookBackLabel = new javax.swing.JLabel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -154,15 +164,35 @@ public class OneBookScreen extends javax.swing.JFrame {
 
         oneBookChapterPanel.setBackground(new java.awt.Color(176, 223, 251));
 
+        oneBookChapterScroll.setBackground(new java.awt.Color(176, 223, 251));
+        oneBookChapterScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        oneBookChapterScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        oneBookChapterScroll.setBorder(null);
+
+        oneBookChapterMainPanel.setBackground(new java.awt.Color(176, 223, 251));
+
+        javax.swing.GroupLayout oneBookChapterMainPanelLayout = new javax.swing.GroupLayout(oneBookChapterMainPanel);
+        oneBookChapterMainPanel.setLayout(oneBookChapterMainPanelLayout);
+        oneBookChapterMainPanelLayout.setHorizontalGroup(
+                oneBookChapterMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 456, Short.MAX_VALUE)
+        );
+        oneBookChapterMainPanelLayout.setVerticalGroup(
+                oneBookChapterMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 443, Short.MAX_VALUE)
+        );
+
+        oneBookChapterScroll.setViewportView(oneBookChapterMainPanel);
+
         javax.swing.GroupLayout oneBookChapterPanelLayout = new javax.swing.GroupLayout(oneBookChapterPanel);
         oneBookChapterPanel.setLayout(oneBookChapterPanelLayout);
         oneBookChapterPanelLayout.setHorizontalGroup(
                 oneBookChapterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 450, Short.MAX_VALUE)
+                        .addComponent(oneBookChapterScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
         oneBookChapterPanelLayout.setVerticalGroup(
                 oneBookChapterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 435, Short.MAX_VALUE)
+                        .addComponent(oneBookChapterScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
         );
 
         oneBookTabbed.addTab("Chương", oneBookChapterPanel);
@@ -226,7 +256,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    public void processData(){
+    public void processBookInfoData(){
         fullUrl = fullUrl + curBook.getThumbnail();
         name = curBook.getName();
         content = curBook.getContent();
@@ -240,11 +270,54 @@ public class OneBookScreen extends javax.swing.JFrame {
         }
         authors.append("Đang cập nhật");
     }
+    public void processBookChapterData(){
+        Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
+        Color cusColor = Color.WHITE;
+
+        oneBookChapterMainPanel.setLayout(new BoxLayout(oneBookChapterMainPanel, BoxLayout.Y_AXIS));
+
+        for(int i = 0; i < chapters.size(); i++){
+            String title = chapters.get(i).getFilename();
+            String chapterNumber = "Chapter: " + chapters.get(i).getChapter_name();
+            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel));
+            oneBookChapterMainPanel.revalidate();
+            oneBookChapterMainPanel.repaint();
+        }
+        oneBookChapterMainPanel.addMouseListener(dragScrollListenerMainScroll);
+        oneBookChapterMainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
+    }
+
+    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+        private Point origin;
+        private final int SCROLL_SPEED = 10;
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            origin = e.getPoint();
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            JViewport viewport = oneBookChapterScroll.getViewport();
+            Point viewPosition = viewport.getViewPosition();
+            int deltaY = origin.y - e.getY();
+
+            int newY = viewPosition.y + deltaY / SCROLL_SPEED;
+
+            int maxScrollHeight = chapters.size() * 80;
+
+            newY = Math.max(0, Math.min(newY, maxScrollHeight));
+
+            viewport.setViewPosition(new Point(viewPosition.x, newY));
+        }
+    };
 
     private javax.swing.JTextArea oneBookAuthorTextArea;
     private javax.swing.JLabel oneBookBackLabel;
     private javax.swing.JTextArea oneBookCategoryTextArea;
+    private javax.swing.JPanel oneBookChapterMainPanel;
     private javax.swing.JPanel oneBookChapterPanel;
+    private javax.swing.JScrollPane oneBookChapterScroll;
     private javax.swing.JLabel oneBookImgLabel;
     private javax.swing.JPanel oneBookInforPanel;
     private javax.swing.JLayeredPane oneBookMainPanel;

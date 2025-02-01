@@ -2,6 +2,7 @@ package utils;
 
 import models.book_information.Book;
 import models.book_information.BookCategory;
+import models.chapter_information.Chapters;
 import screens.OneBookScreen;
 import screens.WaitScreen;
 
@@ -12,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -69,23 +71,28 @@ public class customBookGridPanel {
         panel.add(textPanel);
         panel.addMouseListener(new MouseAdapter() {
             GetAllBook getBook = new GetAllBook();
+            GetChapters getChapters = new GetChapters();
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         Book curBook = new Book();
+                        ArrayList<Chapters> chapters = new ArrayList<>();
                         WaitScreen ws = new WaitScreen();
+
                         @Override
                         protected Void doInBackground() {
                             ws.setVisible(true);
                             previousScreen.setVisible(false);
                             curBook = getBook.getBooksTheoTen(books.get(index).getSlug());
+                            chapters = getChapters.getListChapters(curBook);
                             return null;
                         }
 
                         @Override
                         protected void done() {
-                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook); // Truyền thông tin sách vào
+                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters); // Truyền thông tin sách vào
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
                         }
@@ -94,6 +101,7 @@ public class customBookGridPanel {
                     worker.execute();
                 });
             }
+
             @Override
             public void mousePressed(MouseEvent e) {
                 panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, panelMain));
@@ -112,6 +120,7 @@ public class customBookGridPanel {
         });
         return panel;
     }
+
     public static JPanel customBookGrid1(JFrame previousScreen, int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, JPanel panelMain) {
         JPanel childPanel = new JPanel();
 
@@ -129,7 +138,6 @@ public class customBookGridPanel {
         String baseUrlAllBook = baseUrl;
         String posterPathAllBook = books.get(index).getThumbnail();
         String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
-
 
 
         try {
@@ -160,9 +168,9 @@ public class customBookGridPanel {
             categories.append(x.getName());
         }
         String chapterLatest = "";
-        try{
+        try {
             chapterLatest = books.get(index).getChapterLastests().get(0).getFilename();
-        } catch(Exception e) {
+        } catch (Exception e) {
             chapterLatest = "Chưa có chap mới";
         }
 
@@ -266,23 +274,28 @@ public class customBookGridPanel {
         );
         childPanel.addMouseListener(new MouseAdapter() {
             GetAllBook getBook = new GetAllBook();
+            GetChapters getChapters = new GetChapters();
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         Book curBook = new Book();
+                        ArrayList<Chapters> chapters = new ArrayList<>();
                         WaitScreen ws = new WaitScreen();
+
                         @Override
                         protected Void doInBackground() {
                             ws.setVisible(true);
                             previousScreen.setVisible(false);
                             curBook = getBook.getBooksTheoTen(books.get(index).getSlug());
+                            chapters = getChapters.getListChapters(curBook);
                             return null;
                         }
 
                         @Override
                         protected void done() {
-                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook); // Truyền thông tin sách vào
+                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters); // Truyền thông tin sách vào
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
                         }
@@ -291,6 +304,94 @@ public class customBookGridPanel {
                     worker.execute();
                 });
             }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(childPanel, e, panelMain));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(childPanel, e, panelMain));
+            }
+        });
+        childPanel.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(childPanel, e, panelMain));
+            }
+        });
+        return childPanel;
+    }
+
+    public static JPanel customChapterPanel(JFrame previousScreen, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain){
+        JPanel childPanel = new JPanel();
+
+        childPanel.setBackground(cusColor);
+        childPanel.setPreferredSize(new java.awt.Dimension(432, 60));
+
+        JLabel titleArea = new JLabel(title);
+        JLabel chapterNumberLabel = new JLabel(chapterNumber);
+
+        JSeparator jSeparator1 = new javax.swing.JSeparator();
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout childPanelLayout = new javax.swing.GroupLayout(childPanel);
+        childPanel.setLayout(childPanelLayout);
+        childPanelLayout.setHorizontalGroup(
+                childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(childPanelLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(chapterNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(titleArea, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                                        .addComponent(jSeparator1))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        childPanelLayout.setVerticalGroup(
+                childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(childPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(chapterNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(titleArea, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        childPanel.addMouseListener(new MouseAdapter() {
+            GetAllBook getBook = new GetAllBook();
+            GetChapters getChapters = new GetChapters();
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+//                SwingUtilities.invokeLater(() -> {
+//                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
+//                        Book curBook = new Book();
+//                        ArrayList<Chapters> chapters = new ArrayList<>();
+//                        WaitScreen ws = new WaitScreen();
+//
+//                        @Override
+//                        protected Void doInBackground() {
+////                            ws.setVisible(true);
+////                            previousScreen.setVisible(false);
+////                            curBook = getBook.getBooksTheoTen(books.get(index).getSlug());
+////                            chapters = getChapters.getListChapters(curBook);
+//                            return null;
+//                        }
+//
+//                        @Override
+//                        protected void done() {
+//                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters); // Truyền thông tin sách vào
+//                            oneBookScreen.setVisible(true);
+//                            ws.setVisible(false);
+//                        }
+//                    };
+//
+//                    worker.execute();
+//                });
+            }
+
             @Override
             public void mousePressed(MouseEvent e) {
                 panelMain.dispatchEvent(SwingUtilities.convertMouseEvent(childPanel, e, panelMain));
