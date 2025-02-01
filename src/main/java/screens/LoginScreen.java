@@ -1,6 +1,8 @@
 package screens;
 
+import models.User.UserHistoryBooks;
 import models.User.UserIP;
+import models.book_information.Book;
 import utils.CheckRegex;
 import models.User.UserAccount;
 
@@ -16,6 +18,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static commons.CurrentUser.*;
 
@@ -336,12 +339,13 @@ public class LoginScreen extends JFrame {
                 loginService.saveUser(userName, password);
             }
 
-
             LoginScreen loginScreen = this;
             WaitScreen ws = new WaitScreen();
             ws.setVisible(true);
             loginScreen.setVisible(false);
             HomeScreen hs = new HomeScreen(this, ws);
+
+
 
         } else {
             loginMessageLabel.setText("Sai tên đăng nhập hoặc mật khẩu");
@@ -351,7 +355,6 @@ public class LoginScreen extends JFrame {
                 cnt = 0;
             }
         }
-
     }
 
     private void signUpEvent(MouseEvent evt) {

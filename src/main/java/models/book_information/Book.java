@@ -2,11 +2,12 @@ package models.book_information;
 
 
 import api.chapter_api.ApiChapterSeverData;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 
 public class Book {
-    private String id;
+    private ObjectId id;
     private String name;
     private String slug;
     private String status;
@@ -22,7 +23,7 @@ public class Book {
     }
 
     public Book(String id, String name, String slug, String status, String updatedAt, String thumbnail, List<BookCategory> category, List<BookChapterLastest> chapterLastests) {
-        this.id = id;
+        this.id = new ObjectId(id);
         this.name = name;
         this.slug = slug;
         this.status = status;
@@ -32,7 +33,7 @@ public class Book {
         this.chapterLastests = chapterLastests;
     }
     public Book(String id, String name, String slug, String content, String status, String thumbnail, List<BookCategory> category, List<ApiChapterSeverData> chapters, String updatedAt) {
-        this.id = id;
+        this.id = new ObjectId(id);
         this.name = name;
         this.slug = slug;
         this.content = content;
@@ -43,11 +44,11 @@ public class Book {
         this.updatedAt = updatedAt;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
