@@ -1,8 +1,10 @@
 package screens;
 
+import models.User.UserHistoryBooks;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.chapter_information.Chapters;
+import org.bson.types.ObjectId;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -13,6 +15,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import static DAO.ConnectDB.collectionHistory;
+import static commons.CurrentUser.bookService;
+import static commons.CurrentUser.userAccount;
 import static utils.customBookGridPanel.customChapterPanel;
 
 public class OneBookScreen extends javax.swing.JFrame {
@@ -254,6 +260,7 @@ public class OneBookScreen extends javax.swing.JFrame {
 
     private void startReadEvent(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
+        bookService.StorageBookToUser(curBook);
     }
 
     public void processBookInfoData(){

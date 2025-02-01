@@ -7,5 +7,6 @@ public class main {
         new ConnectDB();
         LoginScreen lg = new LoginScreen();
         lg.setVisible(true);
+
     }
 }

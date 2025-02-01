@@ -1,6 +1,8 @@
 package screens;
 
+import models.User.UserHistoryBooks;
 import models.User.UserIP;
+import models.book_information.Book;
 import utils.CheckRegex;
 import models.User.UserAccount;
 
@@ -16,6 +18,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static commons.CurrentUser.*;
 
@@ -335,7 +338,6 @@ public class LoginScreen extends JFrame {
             if (loginRememberCheckbox.isSelected()) {
                 loginService.saveUser(userName, password);
             }
-
 
             LoginScreen loginScreen = this;
             WaitScreen ws = new WaitScreen();
