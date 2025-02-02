@@ -20,7 +20,7 @@ import screens.HomeScreen;
 import screens.MoreBookScreen;
 import screens.WaitScreen;
 
-import static utils.customBookGridPanel.customBookGrid3;
+import static utils.CustomBookGridPanel.customBookGrid3;
 
 public class HomePage extends javax.swing.JFrame {
     HomeScreen homeScreen;
@@ -90,9 +90,6 @@ public class HomePage extends javax.swing.JFrame {
         homeNewBookGridPanel.setBackground(new java.awt.Color(176, 223, 251));
         homeNewBookGridPanel.setLayout(new java.awt.GridBagLayout());
 
-        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
-        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
-
         homeNewBookScrollPane.setViewportView(homeNewBookGridPanel);
 
         homeNewBookShow.setForeground(new java.awt.Color(102, 102, 102));
@@ -128,9 +125,6 @@ public class HomePage extends javax.swing.JFrame {
 
         homeCommingSoonBookGridPanel1.setBackground(new java.awt.Color(176, 223, 251));
         homeCommingSoonBookGridPanel1.setLayout(new java.awt.GridBagLayout());
-
-        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
-        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
 
         homeCommingSoonBookScrollPane.setViewportView(homeCommingSoonBookGridPanel1);
 
@@ -574,26 +568,63 @@ public class HomePage extends javax.swing.JFrame {
 
     MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
-        private final int SCROLL_SPEED = 10;
+        private final double SCROLL_FACTOR = 1.5;
+        private final int MAX_DELTA = 80;
+        private int velocity = 0;
+        private Timer inertiaTimer;
 
         @Override
         public void mousePressed(MouseEvent e) {
             origin = e.getPoint();
+            if (inertiaTimer != null && inertiaTimer.isRunning()) {
+                inertiaTimer.stop();
+            }
         }
 
         @Override
         public void mouseDragged(MouseEvent e) {
+            if (origin == null) return;
+
             JViewport viewport = homeMainScrollPane.getViewport();
             Point viewPosition = viewport.getViewPosition();
+
             int deltaY = origin.y - e.getY();
+            deltaY = (int) Math.signum(deltaY) * Math.min(MAX_DELTA, Math.abs((int) (deltaY * SCROLL_FACTOR)));
 
+            velocity = deltaY;
+
+            int newY = viewPosition.y + deltaY;
             int maxScrollHeight = 1430;
-
-            int newY = viewPosition.y + deltaY / SCROLL_SPEED;
 
             newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
-            viewport.setViewPosition(new Point(viewPosition.x, newY));
+            int finalNewY = newY;
+            SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
+        }
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            origin = null;
+            applyInertia();
+        }
+        private void applyInertia() {
+            inertiaTimer = new Timer(16, event -> {
+                if (Math.abs(velocity) < 1) {
+                    ((Timer) event.getSource()).stop();
+                    return;
+                }
+
+                JViewport viewport = homeMainScrollPane.getViewport();
+                Point viewPosition = viewport.getViewPosition();
+                int newY = viewPosition.y + velocity;
+                int maxScrollHeight = 1430;
+                newY = Math.max(0, Math.min(newY, maxScrollHeight));
+
+                int finalNewY = newY;
+                SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
+
+                velocity *= 0.9;
+            });
+            inertiaTimer.start();
         }
     };
 
