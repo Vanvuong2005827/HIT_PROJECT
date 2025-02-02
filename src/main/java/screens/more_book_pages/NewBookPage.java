@@ -119,7 +119,7 @@ public class NewBookPage extends javax.swing.JFrame {
 
     MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
-        private final double SCROLL_FACTOR = 1.5;
+        private final double SCROLL_FACTOR = 1.0;
         private final int MAX_DELTA = 80;
         private int velocity = 0;
         private Timer inertiaTimer;

@@ -211,7 +211,7 @@ public class ChapterScreen extends JFrame {
 
     MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
-        private final double SCROLL_FACTOR = 2.0;
+        private final double SCROLL_FACTOR = 1.0;
         private final int MAX_DELTA = 80;
         private int velocity = 0;
         private Timer inertiaTimer;
