@@ -36,43 +36,43 @@ public class ChapterScreen extends JFrame {
     }
     private void initComponents() {
 
-        mainPanel = new JPanel();
-        chapterPanelLayeded = new JLayeredPane();
-        chapterBackLabel = new JLabel();
-        chapterScrollPane = new JScrollPane();
-        chapterImgLabel = new JPanel();
-        chapterNameLabel = new JLabel();
-        chapterNext = new JLabel();
-        chapterPrevious = new JLabel();
+        mainPanel = new javax.swing.JPanel();
+        chapterPanelLayeded = new javax.swing.JLayeredPane();
+        chapterBackLabel = new javax.swing.JLabel();
+        chapterScrollPane = new javax.swing.JScrollPane();
+        chapterImgLabel = new javax.swing.JPanel();
+        chapterNameLabel = new javax.swing.JLabel();
+        chapterNext = new javax.swing.JLabel();
+        chapterPrevious = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        mainPanel.setBackground(new Color(176, 223, 251));
+        mainPanel.setBackground(new java.awt.Color(176, 223, 251));
 
-        chapterPanelLayeded.setLayout(new AbsoluteLayout());
+        chapterPanelLayeded.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        chapterBackLabel.setFont(new Font("Segoe UI", 1, 24)); // NOI18N
+        chapterBackLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         chapterBackLabel.setText("<");
-        chapterBackLabel.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
+        chapterBackLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backEvent(evt);
             }
         });
-        chapterPanelLayeded.add(chapterBackLabel, new AbsoluteConstraints(10, 10, 30, 30));
+        chapterPanelLayeded.add(chapterBackLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, 30));
 
         chapterScrollPane.setBorder(null);
 
-        chapterImgLabel.setBackground(new Color(176, 223, 251));
+        chapterImgLabel.setBackground(new java.awt.Color(176, 223, 251));
 
-        GroupLayout chapterImgLabelLayout = new GroupLayout(chapterImgLabel);
+        javax.swing.GroupLayout chapterImgLabelLayout = new javax.swing.GroupLayout(chapterImgLabel);
         chapterImgLabel.setLayout(chapterImgLabelLayout);
         chapterImgLabelLayout.setHorizontalGroup(
-                chapterImgLabelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                chapterImgLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGap(0, 450, Short.MAX_VALUE)
         );
         chapterImgLabelLayout.setVerticalGroup(
-                chapterImgLabelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                chapterImgLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGap(0, 710, Short.MAX_VALUE)
         );
 
@@ -81,49 +81,49 @@ public class ChapterScreen extends JFrame {
         chapterScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         chapterScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        chapterPanelLayeded.add(chapterScrollPane, new AbsoluteConstraints(0, 50, 450, 680));
+        chapterPanelLayeded.add(chapterScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 450, 680));
 
-        chapterNameLabel.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
-        chapterPanelLayeded.add(chapterNameLabel, new AbsoluteConstraints(180, 760, 90, 20));
+        chapterNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chapterPanelLayeded.add(chapterNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 760, 90, 20));
 
-        chapterNext.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+        chapterNext.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         chapterNext.setText("Trang sau");
-        chapterNext.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
+        chapterNext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nextEvent(evt);
             }
         });
-        chapterPanelLayeded.add(chapterNext, new AbsoluteConstraints(290, 740, 90, 60));
+        chapterPanelLayeded.add(chapterNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 740, 90, 60));
 
-        chapterPrevious.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+        chapterPrevious.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         chapterPrevious.setText("Trang trước");
-        chapterPrevious.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
+        chapterPrevious.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 previousEvent(evt);
             }
         });
-        chapterPanelLayeded.add(chapterPrevious, new AbsoluteConstraints(60, 740, 100, 60));
+        chapterPanelLayeded.add(chapterPrevious, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 740, 100, 60));
 
-        GroupLayout mainPanelLayout = new GroupLayout(mainPanel);
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
-                mainPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(chapterPanelLayeded)
         );
         mainPanelLayout.setVerticalGroup(
-                mainPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(chapterPanelLayeded)
         );
 
-        GroupLayout layout = new GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(mainPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(mainPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
