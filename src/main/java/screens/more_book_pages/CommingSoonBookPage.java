@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import static utils.customBookGridPanel.customBookGrid1;
+import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class CommingSoonBookPage extends javax.swing.JFrame {
     MoreBookScreen moreBookScreen;
@@ -117,26 +117,63 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
 
     MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
-        private final int SCROLL_SPEED = 1;
+        private final double SCROLL_FACTOR = 1.5;
+        private final int MAX_DELTA = 80;
+        private int velocity = 0;
+        private Timer inertiaTimer;
 
         @Override
         public void mousePressed(MouseEvent e) {
             origin = e.getPoint();
+            if (inertiaTimer != null && inertiaTimer.isRunning()) {
+                inertiaTimer.stop();
+            }
         }
 
         @Override
         public void mouseDragged(MouseEvent e) {
+            if (origin == null) return;
+
             JViewport viewport = commingSoonBookScrollPane.getViewport();
             Point viewPosition = viewport.getViewPosition();
+
             int deltaY = origin.y - e.getY();
+            deltaY = (int) Math.signum(deltaY) * Math.min(MAX_DELTA, Math.abs((int) (deltaY * SCROLL_FACTOR)));
 
-            int newY = viewPosition.y + deltaY * SCROLL_SPEED;
+            velocity = deltaY;
 
+            int newY = viewPosition.y + deltaY;
             int maxScrollHeight = 400 * totalBooks;
 
             newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
-            viewport.setViewPosition(new Point(viewPosition.x, newY));
+            int finalNewY = newY;
+            SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
+        }
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            origin = null;
+            applyInertia();
+        }
+        private void applyInertia() {
+            inertiaTimer = new Timer(16, event -> {
+                if (Math.abs(velocity) < 1) {
+                    ((Timer) event.getSource()).stop();
+                    return;
+                }
+
+                JViewport viewport = commingSoonBookScrollPane.getViewport();
+                Point viewPosition = viewport.getViewPosition();
+                int newY = viewPosition.y + velocity;
+                int maxScrollHeight = 400 * totalBooks;
+                newY = Math.max(0, Math.min(newY, maxScrollHeight));
+
+                int finalNewY = newY;
+                SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
+
+                velocity *= 0.9;
+            });
+            inertiaTimer.start();
         }
     };
 

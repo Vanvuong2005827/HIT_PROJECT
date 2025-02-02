@@ -3,7 +3,6 @@ package utils;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.chapter_information.AllChapters;
-import models.chapter_information.Chapter;
 import screens.ChapterScreen;
 import screens.OneBookScreen;
 import screens.WaitScreen;
@@ -21,7 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class customBookGridPanel {
+public class CustomBookGridPanel {
     public static JPanel customBookGrid3(JFrame previousScreen, int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, Font customFont2, JPanel panelMain) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
