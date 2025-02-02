@@ -5,6 +5,8 @@ import screens.more_book_pages.*;
 import javax.swing.*;
 import java.awt.*;
 
+import static commons.ColorMain.colorMain;
+
 public class MoreBookScreen extends javax.swing.JFrame {
     HomeScreen homeScreen;
     WaitScreen waitScreen;
@@ -23,11 +25,10 @@ public class MoreBookScreen extends javax.swing.JFrame {
         jTabbedPane1.addTab("Sắp ra mắt", cp.commingSoonBookPanel());
         jTabbedPane1.addTab("Hoàn thành", cdp.completedBookPanel());
         jTabbedPane1.addTab("Thể loại", sp.styleBookPanel());
-        Color customColor = new Color(51,204,255);
-        jTabbedPane1.setBackgroundAt(0, customColor);
-        jTabbedPane1.setBackgroundAt(1, customColor);
-        jTabbedPane1.setBackgroundAt(2, customColor);
-        jTabbedPane1.setBackgroundAt(3, customColor);
+        jTabbedPane1.setBackgroundAt(0, colorMain);
+        jTabbedPane1.setBackgroundAt(1, colorMain);
+        jTabbedPane1.setBackgroundAt(2, colorMain);
+        jTabbedPane1.setBackgroundAt(3, colorMain);
 
         jTabbedPane1.setForegroundAt(0, Color.WHITE);
         jTabbedPane1.setForegroundAt(1, Color.WHITE);
@@ -46,9 +47,9 @@ public class MoreBookScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        mainPanel.setBackground(new java.awt.Color(176, 223, 251));
+        mainPanel.setBackground(colorMain);
 
-        jTabbedPane1.setBackground(new java.awt.Color(176, 223, 251));
+        jTabbedPane1.setBackground(colorMain);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel1.setText("  <");

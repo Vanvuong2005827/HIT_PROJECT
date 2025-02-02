@@ -20,6 +20,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import static commons.CurrentUser.bookService;
+
 public class CustomBookGridPanel {
     public static JPanel customBookGrid3(JFrame previousScreen, int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, Font customFont2, JPanel panelMain) {
         JPanel panel = new JPanel();
@@ -391,6 +393,8 @@ public class CustomBookGridPanel {
                             ws.setVisible(true);
                             previousScreen.setVisible(false);
                             cs = new ChapterScreen(previousScreen, chapters);
+                            bookService.insertBookToDB(curBook);
+                            bookService.storageBookToUser(curBook.getId());
                             return null;
                         }
 

@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
+import static commons.ColorMain.colorMain;
 import static utils.CustomBookGridPanel.resizeImage;
 
 public class ChapterScreen extends JFrame {
@@ -46,11 +47,11 @@ public class ChapterScreen extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        mainPanel.setBackground(new java.awt.Color(176, 223, 251));
+        mainPanel.setBackground(colorMain);
 
         chapterPanelLayeded.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        chapterBackLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        chapterBackLabel.setFont(new java.awt.Font("Segoe UI", 1, 24));
         chapterBackLabel.setText("<");
         chapterBackLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -61,7 +62,7 @@ public class ChapterScreen extends JFrame {
 
         chapterScrollPane.setBorder(null);
 
-        chapterImgLabel.setBackground(new java.awt.Color(176, 223, 251));
+        chapterImgLabel.setBackground(colorMain);
 
         javax.swing.GroupLayout chapterImgLabelLayout = new javax.swing.GroupLayout(chapterImgLabel);
         chapterImgLabel.setLayout(chapterImgLabelLayout);
@@ -81,10 +82,10 @@ public class ChapterScreen extends JFrame {
 
         chapterPanelLayeded.add(chapterScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 450, 680));
 
-        chapterNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chapterNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         chapterPanelLayeded.add(chapterNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 760, 90, 20));
 
-        chapterNext.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chapterNext.setFont(new java.awt.Font("Segoe UI", 1, 14));
         chapterNext.setText("Trang sau");
         chapterNext.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,7 +94,7 @@ public class ChapterScreen extends JFrame {
         });
         chapterPanelLayeded.add(chapterNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 740, 90, 60));
 
-        chapterPrevious.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chapterPrevious.setFont(new java.awt.Font("Segoe UI", 1, 14));
         chapterPrevious.setText("Trang trước");
         chapterPrevious.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

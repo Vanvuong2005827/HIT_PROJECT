@@ -5,6 +5,8 @@ import screens.HomeScreen;
 
 import javax.swing.JPanel;
 
+import static commons.ColorMain.colorMain;
+
 public class FavouritePage extends javax.swing.JFrame {
     HomeScreen homeScreen;
     public FavouritePage(HomeScreen hs) {
@@ -19,7 +21,7 @@ public class FavouritePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(176, 223, 251));
+        jPanel1.setBackground(colorMain);
 
         jLabel1.setText("jLabel1");
 
