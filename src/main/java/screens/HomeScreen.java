@@ -12,6 +12,8 @@ import screens.home_screen_pages.FavouritePage;
 import screens.home_screen_pages.RecentPage;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class HomeScreen extends javax.swing.JFrame {
     LoginScreen loginScreen;
@@ -41,7 +43,7 @@ public class HomeScreen extends javax.swing.JFrame {
         jTabbedPane1.setForegroundAt(1, Color.WHITE);
         jTabbedPane1.setForegroundAt(2, Color.WHITE);
         jTabbedPane1.setForegroundAt(3, Color.WHITE);
-
+        changeTab();
     }
 
     public void processData() {
@@ -65,6 +67,37 @@ public class HomeScreen extends javax.swing.JFrame {
     public void backToLogin() {
         loginScreen.setVisible(true);
         this.setVisible(false);
+    }
+
+    public void changeTab() {
+        jTabbedPane1.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int selectedIndex = jTabbedPane1.getSelectedIndex();
+                if (selectedIndex == 1){
+                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                        @Override
+                        protected Void doInBackground() {
+//                            waitScreen.setVisible(true);
+//                            homeScreen.setVisible(false);
+                            rp.processRecentBook();
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+//                            homeScreen.setVisible(true);
+//                            waitScreen.setVisible(false);
+                        }
+                    };
+
+                    worker.execute();
+                }
+                else if (selectedIndex == 2){
+                 // Favourite
+                }
+            }
+        });
     }
 
     private void initComponents() {
