@@ -2,13 +2,16 @@ package services;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Sorts;
 import com.mongodb.client.model.UpdateOptions;
+import com.mongodb.client.model.Updates;
 import models.User.UserHistoryBooks;
 import models.book_information.Book;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +22,10 @@ import static commons.CurrentUser.userAccount;
 public class BookService {
     public void storageBookToUser(ObjectId bookId){
         if (!checkIfExitBookInUser(bookId)){
-            UserHistoryBooks userHistoryBooks = new UserHistoryBooks(userAccount.getId(), bookId, 1);
+            UserHistoryBooks userHistoryBooks = new UserHistoryBooks(userAccount.getId(), bookId, 1, LocalDateTime.now());
             collectionHistory.insertOne(userHistoryBooks);
+        } else {
+
         }
     }
 
@@ -31,6 +36,10 @@ public class BookService {
         );
         UserHistoryBooks userHistoryBooks = collectionHistory.find(filter).first();
         if (userHistoryBooks != null) {
+            collectionHistory.updateOne(
+                    filter,
+                    Updates.set("lastReadDate", LocalDateTime.now())
+            );
             return true;
         } else {
             return false;
@@ -52,7 +61,7 @@ public class BookService {
     public ArrayList<Book> getAllBooks(){
         ArrayList<Book> books = new ArrayList<>();
 
-        FindIterable<UserHistoryBooks> results = collectionHistory.find(new Document("userId", userAccount.getId()));
+        FindIterable<UserHistoryBooks> results = collectionHistory.find(new Document("userId", userAccount.getId())).sort(Sorts.descending("lastReadDate"));
         for (UserHistoryBooks history : results) {
             Book book = getBookById(history.getBookId());
             if (book != null) {
