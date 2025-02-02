@@ -239,11 +239,11 @@ public class customBookGridPanel {
         chapterLastestArea.setColumns(20);
         chapterLastestArea.setRows(5);
 
-        fixDragable(titleArea, childPanel);
-        fixDragable(updateAtArea, childPanel);
-        fixDragable(statusArea, childPanel);
-        fixDragable(categoriesArea, childPanel);
-        fixDragable(chapterLastestArea, childPanel);
+        fixDragable(titleArea, childPanel, previousScreen, books, index);
+        fixDragable(updateAtArea, childPanel, previousScreen, books, index);
+        fixDragable(statusArea, childPanel, previousScreen, books, index);
+        fixDragable(categoriesArea, childPanel, previousScreen, books, index);
+        fixDragable(chapterLastestArea, childPanel, previousScreen, books, index);
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
@@ -425,8 +425,38 @@ public class customBookGridPanel {
         return childPanel;
     }
 
-    private static void fixDragable(JTextArea textArea, JPanel childPanel){
+    private static void fixDragable(JTextArea textArea, JPanel childPanel, JFrame previousScreen, ArrayList<Book> books, int index){
         textArea.addMouseListener(new MouseAdapter() {
+            GetAllBook getBook = new GetAllBook();
+            GetChapters getChapters = new GetChapters();
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                SwingUtilities.invokeLater(() -> {
+                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                        Book curBook = new Book();
+                        ArrayList<AllChapters> chapters = new ArrayList<>();
+                        WaitScreen ws = new WaitScreen();
+
+                        @Override
+                        protected Void doInBackground() {
+                            ws.setVisible(true);
+                            previousScreen.setVisible(false);
+                            curBook = getBook.getBooksTheoTen(books.get(index).getSlug());
+                            chapters = getChapters.getListChapters(curBook);
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters); // Truyền thông tin sách vào
+                            oneBookScreen.setVisible(true);
+                            ws.setVisible(false);
+                        }
+                    };
+
+                    worker.execute();
+                });
+            }
             @Override
             public void mousePressed(MouseEvent e) {
                 childPanel.dispatchEvent(SwingUtilities.convertMouseEvent(textArea, e, childPanel));
