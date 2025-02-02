@@ -30,10 +30,10 @@ public class MoreBookScreen extends javax.swing.JFrame {
         jTabbedPane1.setBackgroundAt(2, colorMain);
         jTabbedPane1.setBackgroundAt(3, colorMain);
 
-        jTabbedPane1.setForegroundAt(0, Color.WHITE);
-        jTabbedPane1.setForegroundAt(1, Color.WHITE);
-        jTabbedPane1.setForegroundAt(2, Color.WHITE);
-        jTabbedPane1.setForegroundAt(3, Color.WHITE);
+        jTabbedPane1.setForegroundAt(0, Color.BLACK);
+        jTabbedPane1.setForegroundAt(1, Color.BLACK);
+        jTabbedPane1.setForegroundAt(2, Color.BLACK);
+        jTabbedPane1.setForegroundAt(3, Color.BLACK);
 
         jTabbedPane1.setSelectedIndex(indexTabbed);
     }

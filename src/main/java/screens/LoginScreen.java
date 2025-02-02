@@ -95,7 +95,7 @@ public class LoginScreen extends JFrame {
 
         loginButton.setBackground(colorMain);
         loginButton.setFont(new Font("Segoe UI", 1, 18));
-        loginButton.setForeground(new Color(255, 255, 255));
+        loginButton.setForeground(Color.black);
         loginButton.setText("ĐĂNG NHẬP");
         loginButton.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
         loginButton.addActionListener(new ActionListener() {
@@ -171,7 +171,7 @@ public class LoginScreen extends JFrame {
 
         signUpButton.setBackground(colorMain);
         signUpButton.setFont(new Font("Segoe UI", 1, 18));
-        signUpButton.setForeground(new Color(255, 255, 255));
+        signUpButton.setForeground(Color.black);
         signUpButton.setText("ĐĂNG KÍ");
         signUpButton.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
         signUpButton.addMouseListener(new MouseAdapter() {
@@ -245,7 +245,7 @@ public class LoginScreen extends JFrame {
         loginLoginTabbed.addTab("ĐĂNG KÍ", loginSignUpPanel);
 
         jLabel1.setFont(new Font("Segoe UI", 1, 24));
-        jLabel1.setForeground(new Color(255, 255, 255));
+        jLabel1.setForeground(Color.black);
         jLabel1.setText("Welcom to my comic");
 
         jLabel2.setIcon(new ImageIcon(basePath + "\\src\\main\\java\\assets\\a-book-114_256.gif"));
