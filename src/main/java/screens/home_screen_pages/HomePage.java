@@ -20,6 +20,7 @@ import screens.HomeScreen;
 import screens.MoreBookScreen;
 import screens.WaitScreen;
 
+import static commons.ColorMain.colorMain;
 import static utils.CustomBookGridPanel.customBookGrid3;
 
 public class HomePage extends javax.swing.JFrame {
@@ -56,9 +57,9 @@ public class HomePage extends javax.swing.JFrame {
         setTitle("SignUp");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        homeMainPanel.setBackground(new java.awt.Color(176, 223, 251));
+        homeMainPanel.setBackground(colorMain);
 
-        homePageViewPanel.setBackground(new java.awt.Color(176, 223, 251));
+        homePageViewPanel.setBackground(colorMain);
         homePageViewPanel.setLayout(new java.awt.CardLayout());
         CardLayout cardLayout = (CardLayout) homePageViewPanel.getLayout();
         Timer timer = new Timer(4000, e -> {
@@ -69,25 +70,25 @@ public class HomePage extends javax.swing.JFrame {
 
         homeSearchLabel.setText("Tìm kiếm");
 
-        homeStyleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        homeStyleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeStyleLabel.setText("Thể Loại");
 
         homeStyleScrollPane.setBorder(null);
 
-        homeStyleMainPanel.setBackground(new java.awt.Color(176, 223, 251));
+        homeStyleMainPanel.setBackground(colorMain);
         homeStyleMainPanel.setLayout(new java.awt.GridBagLayout());
         homeStyleScrollPane.setViewportView(homeStyleMainPanel);
         homeStyleMainPanel.addMouseListener(dragScrollListenerStyleScroll);
         homeStyleMainPanel.addMouseMotionListener(dragScrollListenerStyleScroll);
 
-        homeNewBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        homeNewBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeNewBookLabel.setText("Truyện mới");
 
         homeNewBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         homeNewBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         homeNewBookScrollPane.setBorder(null);
 
-        homeNewBookGridPanel.setBackground(new java.awt.Color(176, 223, 251));
+        homeNewBookGridPanel.setBackground(colorMain);
         homeNewBookGridPanel.setLayout(new java.awt.GridBagLayout());
 
         homeNewBookScrollPane.setViewportView(homeNewBookGridPanel);
@@ -108,7 +109,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel1.setText("Đề xuất");
 
         homeCommingSoonBookShow.setForeground(new java.awt.Color(102, 102, 102));
@@ -123,12 +124,12 @@ public class HomePage extends javax.swing.JFrame {
         homeNewBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         homeCommingSoonBookScrollPane.setBorder(null);
 
-        homeCommingSoonBookGridPanel1.setBackground(new java.awt.Color(176, 223, 251));
+        homeCommingSoonBookGridPanel1.setBackground(colorMain);
         homeCommingSoonBookGridPanel1.setLayout(new java.awt.GridBagLayout());
 
         homeCommingSoonBookScrollPane.setViewportView(homeCommingSoonBookGridPanel1);
 
-        homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeCommingSoonBookLabel.setText("Sắp ra mắt");
 
         javax.swing.GroupLayout homeMainPanelLayout = new javax.swing.GroupLayout(homeMainPanel);

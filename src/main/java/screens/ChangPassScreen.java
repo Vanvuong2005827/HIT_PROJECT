@@ -3,6 +3,7 @@ package screens;
 import javax.swing.*;
 import java.io.File;
 
+import static commons.ColorMain.colorMain;
 import static commons.CurrentUser.*;
 
 public class ChangPassScreen extends javax.swing.JFrame {
@@ -37,9 +38,9 @@ public class ChangPassScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        changPassPanel.setBackground(new java.awt.Color(176, 223, 251));
+        changPassPanel.setBackground(colorMain);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24));
         jLabel1.setText("<");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -47,40 +48,40 @@ public class ChangPassScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel2.setText("Đổi mật khẩu");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\wind-mill-6875_256.gif")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\wind-mill-6875_256.gif"));
 
-        changePassOldPassTextField.setBackground(new java.awt.Color(176, 223, 251));
+        changePassOldPassTextField.setBackground(colorMain);
         changePassOldPassTextField.setBorder(null);
 
         jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(204, 204, 204));
 
-        changePassOldPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        changePassOldPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         changePassOldPassLabel.setText("Mật khẩu cũ: ");
 
-        changePassNewPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        changePassNewPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         changePassNewPassLabel.setText("Mật khẩu mới: ");
 
-        changePassReEnterPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        changePassReEnterPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         changePassReEnterPassLabel.setText("Nhập lại mật khẩu:");
 
-        changePassNewPassTextField.setBackground(new java.awt.Color(176, 223, 251));
+        changePassNewPassTextField.setBackground(colorMain);
         changePassNewPassTextField.setBorder(null);
 
         jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
 
-        changePassReEnterPassTextField.setBackground(new java.awt.Color(176, 223, 251));
+        changePassReEnterPassTextField.setBackground(colorMain);
         changePassReEnterPassTextField.setBorder(null);
 
         jTextField4.setEditable(false);
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
 
-        changePassConfirmButton.setBackground(new java.awt.Color(204, 255, 204));
-        changePassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        changePassConfirmButton.setBackground(colorMain);
+        changePassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 14));
         changePassConfirmButton.setText("Xác nhận");
         changePassConfirmButton.setBorder(null);
         changePassConfirmButton.addMouseListener(new java.awt.event.MouseAdapter() {

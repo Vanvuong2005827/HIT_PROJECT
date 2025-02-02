@@ -15,6 +15,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import static commons.ColorMain.colorMain;
+
 public class HomeScreen extends javax.swing.JFrame {
     LoginScreen loginScreen;
     WaitScreen waitScreen;
@@ -33,11 +35,10 @@ public class HomeScreen extends javax.swing.JFrame {
         jTabbedPane1.addTab("Lịch sử", rp.recentPanel());
         jTabbedPane1.addTab("Yêu thích", fp.favouritePanel());
         jTabbedPane1.addTab("Tài khoản", ap.accountPanel());
-        Color customColor = new Color(51, 204, 255);
-        jTabbedPane1.setBackgroundAt(0, customColor);
-        jTabbedPane1.setBackgroundAt(1, customColor);
-        jTabbedPane1.setBackgroundAt(2, customColor);
-        jTabbedPane1.setBackgroundAt(3, customColor);
+        jTabbedPane1.setBackgroundAt(0, colorMain);
+        jTabbedPane1.setBackgroundAt(1, colorMain);
+        jTabbedPane1.setBackgroundAt(2, colorMain);
+        jTabbedPane1.setBackgroundAt(3, colorMain);
         // Thay đổi màu chữ của các tab
         jTabbedPane1.setForegroundAt(0, Color.WHITE);
         jTabbedPane1.setForegroundAt(1, Color.WHITE);
@@ -108,7 +109,7 @@ public class HomeScreen extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.setBackground(new java.awt.Color(176, 223, 251));
+        jTabbedPane1.setBackground(colorMain);
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(100, 100));
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 800));

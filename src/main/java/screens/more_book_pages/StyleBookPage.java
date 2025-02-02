@@ -2,6 +2,8 @@ package screens.more_book_pages;
 
 import javax.swing.*;
 
+import static commons.ColorMain.colorMain;
+
 public class StyleBookPage extends javax.swing.JFrame {
 
     public StyleBookPage() {
@@ -15,7 +17,7 @@ public class StyleBookPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        styleBookMainPanel.setBackground(new java.awt.Color(176, 223, 251));
+        styleBookMainPanel.setBackground(colorMain);
 
         javax.swing.GroupLayout newBookMainPanelLayout = new javax.swing.GroupLayout(styleBookMainPanel);
         styleBookMainPanel.setLayout(newBookMainPanelLayout);

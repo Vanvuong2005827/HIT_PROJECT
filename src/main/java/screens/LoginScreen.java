@@ -1,8 +1,6 @@
 package screens;
 
-import models.User.UserHistoryBooks;
 import models.User.UserIP;
-import models.book_information.Book;
 import utils.CheckRegex;
 import models.User.UserAccount;
 
@@ -15,11 +13,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.List;
 
+import static commons.ColorMain.colorMain;
 import static commons.CurrentUser.*;
 
 public class LoginScreen extends JFrame {
@@ -57,10 +54,10 @@ public class LoginScreen extends JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
-        setBackground(new Color(255, 255, 255));
+        setBackground(colorMain);
         setUndecorated(true);
 
-        loginMainPanel.setBackground(new Color(176, 223, 251));
+        loginMainPanel.setBackground(colorMain);
 
         loginLoginTabbed.setBackground(new Color(255, 255, 255));
         loginLoginTabbed.setToolTipText("");
@@ -96,7 +93,7 @@ public class LoginScreen extends JFrame {
             }
         });
 
-        loginButton.setBackground(new Color(176, 223, 251));
+        loginButton.setBackground(colorMain);
         loginButton.setFont(new Font("Segoe UI", 1, 18));
         loginButton.setForeground(new Color(255, 255, 255));
         loginButton.setText("ĐĂNG NHẬP");
@@ -172,7 +169,7 @@ public class LoginScreen extends JFrame {
         signUpPasswordLabel.setForeground(new Color(102, 102, 102));
         signUpPasswordLabel.setText("Mật khẩu");
 
-        signUpButton.setBackground(new Color(176, 223, 251));
+        signUpButton.setBackground(colorMain);
         signUpButton.setFont(new Font("Segoe UI", 1, 18));
         signUpButton.setForeground(new Color(255, 255, 255));
         signUpButton.setText("ĐĂNG KÍ");
@@ -413,7 +410,6 @@ public class LoginScreen extends JFrame {
     private JLabel loginForgotPassLabel;
     private JPanel loginLoginPanel;
     private JTabbedPane loginLoginTabbed;
-    private JPanel loginLogo;
     private JPanel loginMainPanel;
     private JLabel loginMessageLabel;
     private JLabel loginPasswordLabel;

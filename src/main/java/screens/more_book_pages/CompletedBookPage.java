@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
+import static commons.ColorMain.colorMain;
 import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class CompletedBookPage extends javax.swing.JFrame {
@@ -30,13 +31,13 @@ public class CompletedBookPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        completedBookMainPanel.setBackground(new java.awt.Color(176, 223, 251));
+        completedBookMainPanel.setBackground(colorMain);
 
-        completedBookScrollPane.setBackground(new java.awt.Color(176, 223, 251));
+        completedBookScrollPane.setBackground(colorMain);
         completedBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         completedBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        mainPanel.setBackground(new java.awt.Color(176, 223, 251));
+        mainPanel.setBackground(colorMain);
 
         mainPanel.setLayout(new java.awt.GridBagLayout());
         completedBookScrollPane.setViewportView(mainPanel);
