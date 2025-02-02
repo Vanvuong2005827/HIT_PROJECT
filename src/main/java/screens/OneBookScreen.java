@@ -1,10 +1,8 @@
 package screens;
 
-import models.User.UserHistoryBooks;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.chapter_information.AllChapters;
-import org.bson.types.ObjectId;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -16,9 +14,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import static DAO.ConnectDB.collectionHistory;
 import static commons.CurrentUser.bookService;
-import static commons.CurrentUser.userAccount;
 import static utils.customBookGridPanel.customChapterPanel;
 import static utils.customBookGridPanel.resizeImage;
 
@@ -259,8 +255,8 @@ public class OneBookScreen extends javax.swing.JFrame {
 
     private void startReadEvent(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-        bookService.InsertBookToDB(curBook);
-        bookService.StorageBookToUser(curBook.getId());
+        bookService.insertBookToDB(curBook);
+        bookService.storageBookToUser(curBook.getId());
     }
 
     public void processBookInfoData(){
