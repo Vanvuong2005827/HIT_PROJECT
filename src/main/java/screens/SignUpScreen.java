@@ -2,13 +2,14 @@
 package screens;
 
 import utils.CheckRegex;
+import utils.Gradient;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.Objects;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static commons.CurrentUser.*;
 
 public class SignUpScreen extends javax.swing.JFrame {
@@ -23,7 +24,7 @@ public class SignUpScreen extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        signUpMainPanel = new javax.swing.JPanel();
+        signUpMainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         signUpGif = new javax.swing.JLabel();
         signUpBackButton = new javax.swing.JButton();
         signUpFullNameLabel = new javax.swing.JLabel();
@@ -54,11 +55,9 @@ public class SignUpScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        signUpMainPanel.setBackground(colorMain);
-
         signUpGif.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\angry-2498_256.gif")); // NOI18N
 
-        signUpBackButton.setBackground(colorMain);
+        signUpBackButton.setBackground(colorFix);
         signUpBackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         signUpBackButton.setText("<");
         signUpBackButton.setBorder(null);
@@ -92,43 +91,43 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpGamailLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpGamailLabel.setText("Gmail : ");
 
-        signUpLine1.setBackground(colorMain);
+        signUpLine1.setBackground(colorFix);
         signUpLine1.setForeground(new java.awt.Color(102, 102, 102));
         signUpLine1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        signUpFullNameTextField.setBackground(colorMain);
+        signUpFullNameTextField.setBackground(colorFix);
         signUpFullNameTextField.setBorder(null);
 
-        signUpLine2.setBackground(colorMain);
+        signUpLine2.setBackground(colorFix);
         signUpLine2.setForeground(new java.awt.Color(102, 102, 102));
         signUpLine2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        signUpLine3.setBackground(colorMain);
+        signUpLine3.setBackground(colorFix);
         signUpLine3.setForeground(new java.awt.Color(102, 102, 102));
         signUpLine3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        signUpGmailTextField.setBackground(colorMain);
+        signUpGmailTextField.setBackground(colorFix);
         signUpGmailTextField.setBorder(null);
 
-        signUpPhoneNumberTextField.setBackground(colorMain);
+        signUpPhoneNumberTextField.setBackground(colorFix);
         signUpPhoneNumberTextField.setBorder(null);
 
-        signUpYearOfBirth.setBackground(colorMain);
+        signUpYearOfBirth.setBackground(colorFix);
         signUpYearOfBirth.setMaximumRowCount(30);
         signUpYearOfBirth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012" }));
         signUpYearOfBirth.setBorder(null);
 
-        signUpMaleCheckBox.setBackground(colorMain);
+        signUpMaleCheckBox.setBackground(colorFix);
         signUpMaleCheckBox.setForeground(new java.awt.Color(102, 102, 102));
         signUpMaleCheckBox.setText("Nam");
         signUpMaleCheckBox.setBorder(null);
 
-        signUpFemaleCheckBox.setBackground(colorMain);
+        signUpFemaleCheckBox.setBackground(colorFix);
         signUpFemaleCheckBox.setForeground(new java.awt.Color(102, 102, 102));
         signUpFemaleCheckBox.setText("Nữ");
         signUpFemaleCheckBox.setBorder(null);
 
-        signUpConfirmButton.setBackground(colorMain);
+        signUpConfirmButton.setBackground(colorFix);
         signUpConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 24));
         signUpConfirmButton.setForeground(new java.awt.Color(102, 102, 102));
         signUpConfirmButton.setText("Xác nhận");
@@ -139,7 +138,7 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
 
-        signUpOtherCheckBox.setBackground(colorMain);
+        signUpOtherCheckBox.setBackground(colorFix);
         signUpOtherCheckBox.setForeground(new java.awt.Color(102, 102, 102));
         signUpOtherCheckBox.setText("Khác");
         signUpOtherCheckBox.setBorder(null);
@@ -155,7 +154,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpGamailCodeLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpGamailCodeLabel.setText("Mã xác thực:");
 
-        signUpGmailCodeTextField.setBackground(colorMain);
+        signUpGmailCodeTextField.setBackground(colorFix);
         signUpGmailCodeTextField.setBorder(null);
 
         signUpLine4.setBackground(new java.awt.Color(102, 102, 102));

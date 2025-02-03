@@ -3,12 +3,13 @@ package screens;
 import utils.CheckRegex;
 import models.User.UserAccount;
 import models.User.UserInfo;
+import utils.Gradient;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static commons.CurrentUser.*;
 public class ForgotPassScreen extends javax.swing.JFrame {
     private String AnsCode = "";
@@ -22,7 +23,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        forgorPassMainPanel = new javax.swing.JPanel();
+        forgorPassMainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         forgotPassBack = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         forgotPassEmailLabel = new javax.swing.JLabel();
@@ -43,8 +44,6 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        forgorPassMainPanel.setBackground(colorMain);
-
         forgotPassBack.setFont(new java.awt.Font("Segoe UI", 1, 24));
         forgotPassBack.setText("<");
         forgotPassBack.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -59,7 +58,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         forgotPassEmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         forgotPassEmailLabel.setText("Email liên kết:");
 
-        forgotPassEmailTextField.setBackground(colorMain);
+        forgotPassEmailTextField.setBackground(colorFix);
         forgotPassEmailTextField.setFont(new java.awt.Font("Segoe UI", 0, 14));
         forgotPassEmailTextField.setBorder(null);
 
@@ -68,7 +67,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         forgotPassCodeLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         forgotPassCodeLabel.setText("Mã xác thực:");
 
-        forgotPassCodeTextField.setBackground(colorMain);
+        forgotPassCodeTextField.setBackground(colorFix);
         forgotPassCodeTextField.setFont(new java.awt.Font("Segoe UI", 0, 14));
         forgotPassCodeTextField.setBorder(null);
 
@@ -89,13 +88,13 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         forgotPassUsernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         forgotPassUsernameLabel.setText("Tài khoản");
 
-        forgotPassUsernameTextField.setBackground(colorMain);
+        forgotPassUsernameTextField.setBackground(colorFix);
         forgotPassUsernameTextField.setFont(new java.awt.Font("Segoe UI", 0, 14));
         forgotPassUsernameTextField.setBorder(null);
 
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
 
-        forgotPassConfirmButton.setBackground(colorMain);
+        forgotPassConfirmButton.setBackground(colorFix);
         forgotPassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 14));
         forgotPassConfirmButton.setText("Xác nhận");
         forgotPassConfirmButton.setBorder(null);

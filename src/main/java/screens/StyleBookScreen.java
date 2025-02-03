@@ -2,6 +2,7 @@ package screens;
 
 import models.book_information.Book;
 import utils.GetAllBook;
+import utils.Gradient;
 
 import javax.swing.*;
 
@@ -11,7 +12,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class StyleBookScreen extends javax.swing.JFrame{
@@ -35,23 +36,20 @@ public class StyleBookScreen extends javax.swing.JFrame{
 
         styleBookMainPanel = new javax.swing.JPanel();
         styleBookScrollPane = new javax.swing.JScrollPane();
-        mainPanel = new javax.swing.JPanel();
+        mainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        styleBookMainPanel.setBackground(colorMain);
-
         styleBookScrollPane.setBorder(null);
         styleBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         styleBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        mainPanel.setBackground(colorMain);
-
         mainPanel.setLayout(new java.awt.GridBagLayout());
         styleBookScrollPane.setViewportView(mainPanel);
+        styleBookMainPanel.setBackground(colorMain1);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(styleBookMainPanel);
         styleBookMainPanel.setLayout(mainPanelLayout);
@@ -148,7 +146,7 @@ public class StyleBookScreen extends javax.swing.JFrame{
         ArrayList<Book> books = lb.getBooksTungTheLoai(2, nameStyle);
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
-        Color cusColor = mainPanel.getBackground();
+
         totalBooks = books.size();
         int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
@@ -156,7 +154,7 @@ public class StyleBookScreen extends javax.swing.JFrame{
         for (int i = 0; i < totalBooks; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                return customBookGrid1(styleBookScreen, index, 450, 190, 114, 187, books, cusColor, baseUrl, customFont1, mainPanel);
+                return customBookGrid1(styleBookScreen, index, 450, 190, 114, 187, books, colorOpaque, baseUrl, customFont1, mainPanel);
             };
             futures.add(executor.submit(task));
         }

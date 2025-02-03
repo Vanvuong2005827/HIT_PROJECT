@@ -6,6 +6,7 @@ import screens.MoreBookScreen;
 import screens.StyleBookScreen;
 import screens.WaitScreen;
 import utils.GetAllBook;
+import utils.Gradient;
 
 import javax.swing.*;
 
@@ -16,7 +17,8 @@ import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
+import static commons.ColorMain.colorMain3;
 
 public class StyleBookPage extends javax.swing.JFrame {
     MoreBookScreen moreBookScreen;
@@ -31,7 +33,7 @@ public class StyleBookPage extends javax.swing.JFrame {
 
         styleBookMainPanel = new javax.swing.JPanel();
         styleBookScrollPane = new javax.swing.JScrollPane();
-        mainPanel = new javax.swing.JPanel();
+        mainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -41,8 +43,6 @@ public class StyleBookPage extends javax.swing.JFrame {
         styleBookScrollPane.setBackground(colorMain);
         styleBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         styleBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        mainPanel.setBackground(colorMain);
 
         mainPanel.setLayout(new java.awt.GridBagLayout());
         styleBookScrollPane.setViewportView(mainPanel);

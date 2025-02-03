@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import static commons.ColorMain.colorMain;
+import static commons.ColorMain.colorMain1;
 
 public class MoreBookScreen extends javax.swing.JFrame {
     HomeScreen homeScreen;
@@ -25,10 +26,10 @@ public class MoreBookScreen extends javax.swing.JFrame {
         jTabbedPane1.addTab("Sắp ra mắt", cp.commingSoonBookPanel());
         jTabbedPane1.addTab("Hoàn thành", cdp.completedBookPanel());
         jTabbedPane1.addTab("Thể loại", sp.styleBookPanel());
-        jTabbedPane1.setBackgroundAt(0, colorMain);
-        jTabbedPane1.setBackgroundAt(1, colorMain);
-        jTabbedPane1.setBackgroundAt(2, colorMain);
-        jTabbedPane1.setBackgroundAt(3, colorMain);
+        jTabbedPane1.setBackgroundAt(0, colorMain1);
+        jTabbedPane1.setBackgroundAt(1, colorMain1);
+        jTabbedPane1.setBackgroundAt(2, colorMain1);
+        jTabbedPane1.setBackgroundAt(3, colorMain1);
 
         jTabbedPane1.setForegroundAt(0, Color.BLACK);
         jTabbedPane1.setForegroundAt(1, Color.BLACK);
@@ -47,7 +48,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        mainPanel.setBackground(colorMain);
+        mainPanel.setBackground(colorMain1);
 
         jTabbedPane1.setBackground(colorMain);
 

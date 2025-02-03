@@ -16,6 +16,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import static commons.ColorMain.colorMain;
+import static commons.ColorMain.colorMain3;
 
 public class HomeScreen extends javax.swing.JFrame {
     LoginScreen loginScreen;
@@ -35,10 +36,10 @@ public class HomeScreen extends javax.swing.JFrame {
         jTabbedPane1.addTab("Lịch sử", rp.recentPanel());
         jTabbedPane1.addTab("Yêu thích", fp.favouritePanel());
         jTabbedPane1.addTab("Tài khoản", ap.accountPanel());
-        jTabbedPane1.setBackgroundAt(0, colorMain);
-        jTabbedPane1.setBackgroundAt(1, colorMain);
-        jTabbedPane1.setBackgroundAt(2, colorMain);
-        jTabbedPane1.setBackgroundAt(3, colorMain);
+        jTabbedPane1.setBackgroundAt(0, colorMain3);
+        jTabbedPane1.setBackgroundAt(1, colorMain3);
+        jTabbedPane1.setBackgroundAt(2, colorMain3);
+        jTabbedPane1.setBackgroundAt(3, colorMain3);
         // Thay đổi màu chữ của các tab
         jTabbedPane1.setForegroundAt(0, Color.BLACK);
         jTabbedPane1.setForegroundAt(1, Color.BLACK);

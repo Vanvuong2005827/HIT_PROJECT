@@ -2,6 +2,7 @@ package commons;
 
 import utils.Gradient;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -34,5 +35,7 @@ public class ColorMain {
     public static Color colorMain1 = new Color(238,174,202);
     public static Color colorMain2 = new Color(148,187,233);
     public static Color colorMain3 = new Color(165,232,246);
-    public static Gradient gradient = new Gradient(colorMain1, colorMain2, colorMain3);
+    public static Color colorFix = new Color(156,209,239);
+    public static JPanel PanelGradient = new Gradient(colorMain1, colorMain2, colorMain3);
+    public static Color colorOpaque = new Color(0, 0, 0, 0);
 }
