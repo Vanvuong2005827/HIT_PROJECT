@@ -29,6 +29,26 @@ public class BookService {
         }
     }
 
+    public int getLastReadIndexChapter(ObjectId bookId){
+        Bson filter = Filters.and(
+                Filters.eq("userId", userAccount.getId()),
+                Filters.eq("bookId", bookId)
+        );
+        return collectionHistory.find(filter).first().getLastReadChapter();
+    }
+
+    public void saveLastReadChapter(ObjectId bookId, double chapter){
+        Bson filter = Filters.and(
+                Filters.eq("userId", userAccount.getId()),
+                Filters.eq("bookId", bookId)
+        );
+
+        collectionHistory.updateOne(
+                filter,
+                Updates.set("lastReadChapter", chapter)
+        );
+    }
+
     public boolean checkIfExitBookInUser(ObjectId bookId){
         Bson filter = Filters.and(
                 Filters.eq("userId", userAccount.getId()),

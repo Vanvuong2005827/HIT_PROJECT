@@ -100,7 +100,7 @@ public class CustomBookGridPanel {
                         protected void done() {
                             OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters);
                             if (bookService.checkIfExitBookInUser(curBook.getId())){
-                                oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter ");
+                                oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                             }
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
@@ -324,7 +324,8 @@ public class CustomBookGridPanel {
                         protected void done() {
                             OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters);
                             if (bookService.checkIfExitBookInUser(curBook.getId())){
-                                oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter ");
+
+                                oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                             }
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
@@ -354,9 +355,8 @@ public class CustomBookGridPanel {
         return childPanel;
     }
 
-    public static JPanel customChapterPanel(JFrame previousScreen,AllChapters chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain, Book curBook){
+    public static JPanel customChapterPanel(JFrame previousScreen,AllChapters chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain, Book curBook, int indexChapetr){
         JPanel childPanel = new JPanel();
-
         childPanel.setBackground(cusColor);
         childPanel.setPreferredSize(new java.awt.Dimension(432, 70));
 
@@ -409,6 +409,7 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
+                            bookService.saveLastReadChapter(curBook.getId(), indexChapetr);
                             cs.setVisible(true);
                             ws.setVisible(false);
                         }
