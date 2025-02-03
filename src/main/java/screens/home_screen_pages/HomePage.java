@@ -21,8 +21,9 @@ import utils.GetAllBook;
 import screens.HomeScreen;
 import screens.MoreBookScreen;
 import screens.WaitScreen;
+import utils.Gradient;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid3;
 
 public class HomePage extends javax.swing.JFrame {
@@ -37,7 +38,7 @@ public class HomePage extends javax.swing.JFrame {
     private void initComponents() {
         homePanel = new javax.swing.JPanel();
         homeMainScrollPane = new javax.swing.JScrollPane();
-        homeMainPanel = new javax.swing.JPanel();
+        homeMainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         homePageViewPanel = new javax.swing.JPanel();
         homeSearchLabel = new javax.swing.JLabel();
         homeBellNotifications = new javax.swing.JLabel();
@@ -59,7 +60,7 @@ public class HomePage extends javax.swing.JFrame {
         setTitle("SignUp");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        homeMainPanel.setBackground(colorMain);
+//        homeMainPanel.setBackground(colorMain);
 
         homePageViewPanel.setBackground(colorMain);
         homePageViewPanel.setLayout(new java.awt.CardLayout());

@@ -1,5 +1,7 @@
 package commons;
 
+import utils.Gradient;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -29,4 +31,8 @@ public class ColorMain {
     }
 
     public static Color colorMain = new Color(176, 223, 251);
+    public static Color colorMain1 = new Color(238,174,202);
+    public static Color colorMain2 = new Color(148,187,233);
+    public static Color colorMain3 = new Color(165,232,246);
+    public static Gradient gradient = new Gradient(colorMain1, colorMain2, colorMain3);
 }
