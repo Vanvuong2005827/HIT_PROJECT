@@ -1,5 +1,6 @@
 package commons;
 
+import utils.ColorTuple;
 import utils.Gradient;
 
 import javax.swing.*;
@@ -7,9 +8,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ColorMain {
-    public static ArrayList<Color> listColor = new ArrayList<>();
+    public static ArrayList<Color> listColorNormal = new ArrayList<>();
+    public static ArrayList<ColorTuple> listColorGradient = new ArrayList<>();
 
-    public ArrayList<Color> getColorMain(){
+    public ArrayList<Color> getColorMain() {
         ArrayList<Color> colors = new ArrayList<>();
         colors.add(new Color(176, 223, 251));
         colors.add(new Color(135, 206, 250)); // Sky Blue
@@ -27,15 +29,84 @@ public class ColorMain {
         colors.add(new Color(176, 251, 202)); // Mint Green
         colors.add(new Color(239, 176, 251)); // Lavender
         colors.add(Color.white);
-        listColor = colors;
+        listColorNormal = colors;
         return colors;
     }
 
+    public static void getColorGradient() {
+        ArrayList<ColorTuple> colors = new ArrayList<>();
+        colors.add(new ColorTuple(new Color(238, 174, 202), //
+                new Color(148, 187, 233), //
+                new Color(165, 232, 246) //
+        ));
+        colors.add(new ColorTuple(new Color(255, 221, 210), // Light Peach
+                new Color(255, 198, 187), // Soft Salmon
+                new Color(255, 173, 173)  // Light Coral
+        ));
+        colors.add(new ColorTuple(new Color(204, 237, 225), // Pale Aqua
+                new Color(179, 229, 215), // Soft Mint
+                new Color(153, 215, 200)  // Light Teal
+        ));
+        colors.add(new ColorTuple(new Color(255, 244, 214), // Light Cream
+                new Color(255, 229, 180), // Soft Apricot
+                new Color(255, 216, 160)  // Pale Gold
+        ));
+        colors.add(new ColorTuple(new Color(230, 220, 250), // Lavender Mist
+                new Color(205, 195, 235), // Soft Lilac
+                new Color(180, 170, 220)  // Light Mauve
+        ));
+        colors.add(new ColorTuple(new Color(220, 230, 235), // Light Mist Blue
+                new Color(200, 215, 225), // Soft Gray Blue
+                new Color(180, 200, 215)  // Pale Slate Blue
+        ));
+        colors.add(new ColorTuple(new Color(245, 235, 220), // Light Latte
+                new Color(230, 215, 190), // Warm Mocha
+                new Color(210, 195, 170)  // Soft Coffee Brown
+        ));
+        colors.add(new ColorTuple(new Color(220, 235, 215), // Soft Mint Green
+                new Color(200, 220, 190), // Warm Sage
+                new Color(180, 200, 170)  // Pale Olive Green
+        ));
+        colors.add(new ColorTuple(new Color(245, 220, 225), // Light Rosewood
+                new Color(230, 200, 205), // Dusty Blush
+                new Color(210, 180, 185)  // Warm Terracotta Pink
+        ));
+        colors.add(new ColorTuple(new Color(255, 225, 205), // Soft Apricot
+                new Color(250, 200, 175), // Warm Peach
+                new Color(240, 180, 150)  // Pale Coral
+        ));
+        colors.add(new ColorTuple(new Color(200, 220, 180), // Soft Olive Green
+                new Color(225, 205, 150), // Warm Beige
+                new Color(250, 190, 120)  // Pale Goldenrod
+        ));
+        colors.add(new ColorTuple(new Color(190, 210, 220), // Cool Slate Blue
+                new Color(215, 185, 160), // Warm Taupe
+                new Color(230, 160, 120)  // Soft Ember Orange
+        ));
+        colors.add(new ColorTuple(new Color(200, 230, 255), // Soft Sky Blue
+                new Color(230, 200, 220), // Light Blush Pink
+                new Color(250, 180, 200)  // Warm Rose
+        ));
+        colors.add(new ColorTuple(new Color(220, 200, 180), // Light Mocha
+                new Color(200, 220, 170), // Soft Olive Green
+                new Color(180, 230, 160)  // Warm Pastel Green
+        ));
+        colors.add(new ColorTuple(new Color(230, 180, 170), // Soft Sunset Red
+                new Color(210, 190, 180), // Warm Beige
+                new Color(190, 170, 160)  // Muted Taupe
+        ));
+        colors.add(new ColorTuple(new Color(240, 200, 160), // Warm Sand Yellow
+                new Color(220, 180, 200), // Soft Mauve
+                new Color(200, 160, 230)  // Light Plum Purple
+        ));
+        listColorGradient = colors;
+    }
+
     public static Color colorMain = new Color(176, 223, 251);
-    public static Color colorMain1 = new Color(238,174,202);
-    public static Color colorMain2 = new Color(148,187,233);
-    public static Color colorMain3 = new Color(165,232,246);
-    public static Color colorFix = new Color(156,209,239);
+    public static Color colorMain1 = colorMain;
+    public static Color colorMain2 = colorMain;
+    public static Color colorMain3 = colorMain;
+    public static Color colorFix = colorMain;
     public static JPanel PanelGradient = new Gradient(colorMain1, colorMain2, colorMain3);
     public static Color colorOpaque = new Color(0, 0, 0, 0);
 }
