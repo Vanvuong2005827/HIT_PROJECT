@@ -282,7 +282,7 @@ public class OneBookScreen extends javax.swing.JFrame {
             });
         }
         else{
-            int x = 10; // Lastest chapter read
+            int x = bookService.getLastReadIndexChapter(curBook.getId()); // Lastest chapter read
             SwingUtilities.invokeLater(() -> {
                 SwingWorker<Void, Void> worker = new SwingWorker<>() {
                     WaitScreen ws = new WaitScreen();
@@ -331,8 +331,8 @@ public class OneBookScreen extends javax.swing.JFrame {
 
         for(int i = 0; i < chapters.size(); i++){
             String title = chapters.get(i).getFilename();
-            String chapterNumber = "Chapter: " + chapters.get(i).getChapter_name();
-            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, chapters.get(i), title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel, curBook));
+            String chapterNumber = "Chapter: " + chapters.get(i).getChapter_name() ;
+            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, chapters.get(i), title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel, curBook, i));
             oneBookChapterMainPanel.revalidate();
             oneBookChapterMainPanel.repaint();
         }
