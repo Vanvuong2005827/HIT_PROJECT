@@ -6,6 +6,7 @@ import models.chapter_information.AllChapters;
 import screens.ChapterScreen;
 import screens.OneBookScreen;
 import screens.WaitScreen;
+import services.BookService;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -84,6 +85,7 @@ public class CustomBookGridPanel {
                         Book curBook = new Book();
                         ArrayList<AllChapters> chapters = new ArrayList<>();
                         WaitScreen ws = new WaitScreen();
+                        BookService bookService = new BookService();
 
                         @Override
                         protected Void doInBackground() {
@@ -96,7 +98,10 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters); // Truyền thông tin sách vào
+                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters);
+                            if (bookService.checkIfExitBookInUser(curBook.getId())){
+                                oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter ");
+                            }
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
                         }
@@ -304,6 +309,7 @@ public class CustomBookGridPanel {
                         Book curBook = new Book();
                         ArrayList<AllChapters> chapters = new ArrayList<>();
                         WaitScreen ws = new WaitScreen();
+                        BookService bookService = new BookService();
 
                         @Override
                         protected Void doInBackground() {
@@ -316,7 +322,10 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters); // Truyền thông tin sách vào
+                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters);
+                            if (bookService.checkIfExitBookInUser(curBook.getId())){
+                                oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter ");
+                            }
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
                         }
