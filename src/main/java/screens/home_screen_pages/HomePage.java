@@ -3,6 +3,7 @@ package screens.home_screen_pages;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ import javax.swing.*;
 import commons.ColorMain;
 import models.book_information.Book;
 import models.book_information.BookCategory;
+import screens.StyleBookScreen;
 import utils.GetAllBook;
 import screens.HomeScreen;
 import screens.MoreBookScreen;
@@ -78,8 +80,6 @@ public class HomePage extends javax.swing.JFrame {
         homeStyleMainPanel.setBackground(colorMain);
         homeStyleMainPanel.setLayout(new java.awt.GridBagLayout());
         homeStyleScrollPane.setViewportView(homeStyleMainPanel);
-        homeStyleMainPanel.addMouseListener(dragScrollListenerStyleScroll);
-        homeStyleMainPanel.addMouseMotionListener(dragScrollListenerStyleScroll);
 
         homeNewBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeNewBookLabel.setText("Truyện mới");
@@ -388,6 +388,31 @@ public class HomePage extends javax.swing.JFrame {
                 label1.setFont(new Font("Segoe UI", Font.BOLD, 14));
                 label1.setHorizontalAlignment(JLabel.CENTER);
                 panel.add(label1, BorderLayout.CENTER);
+                panel.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        String nameStyle = books.get(index).getSlug();
+                        WaitScreen ws = new WaitScreen();
+                        ws.setVisible(true);
+                        homeScreen.setVisible(false);
+                        StyleBookScreen styleBookScreen = new StyleBookScreen(homeScreen, nameStyle, label1.getText(), ws);;
+                    }
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        homeStyleMainPanel.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, homeStyleMainPanel));
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        homeStyleMainPanel.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, homeStyleMainPanel));
+                    }
+                });
+                panel.addMouseMotionListener(new MouseMotionAdapter() {
+                    @Override
+                    public void mouseDragged(MouseEvent e) {
+                        homeStyleMainPanel.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, homeStyleMainPanel));
+                    }
+                });
                 return panel;
             };
             futures.add(executor.submit(task));
@@ -412,6 +437,8 @@ public class HomePage extends javax.swing.JFrame {
         }
 
         executor.shutdown();
+        homeStyleMainPanel.addMouseListener(dragScrollListenerStyleScroll);
+        homeStyleMainPanel.addMouseMotionListener(dragScrollListenerStyleScroll);
     }
 
     public void processPageViewBookPicture() {
