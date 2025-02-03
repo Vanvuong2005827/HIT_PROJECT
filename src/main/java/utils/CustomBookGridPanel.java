@@ -401,7 +401,7 @@ public class CustomBookGridPanel {
                         protected Void doInBackground() {
                             ws.setVisible(true);
                             previousScreen.setVisible(false);
-                            cs = new ChapterScreen(previousScreen, chapters.get(indexChapter), curBook, oneBookStartReadButton, chapters);
+                            cs = new ChapterScreen(previousScreen, curBook, oneBookStartReadButton, chapters, indexChapter);
                             bookService.insertBookToDB(curBook);
                             bookService.storageBookToUser(curBook.getId());
                             return null;
