@@ -1,9 +1,11 @@
 package screens;
 
+import utils.Gradient;
+
 import javax.swing.*;
 import java.io.File;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static commons.CurrentUser.*;
 
 public class ChangPassScreen extends javax.swing.JFrame {
@@ -18,7 +20,7 @@ public class ChangPassScreen extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        changPassPanel = new javax.swing.JPanel();
+        changPassPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -38,8 +40,6 @@ public class ChangPassScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        changPassPanel.setBackground(colorMain);
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24));
         jLabel1.setText("<");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -53,7 +53,7 @@ public class ChangPassScreen extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\wind-mill-6875_256.gif"));
 
-        changePassOldPassTextField.setBackground(colorMain);
+        changePassOldPassTextField.setBackground(colorFix);
         changePassOldPassTextField.setBorder(null);
 
         jTextField2.setEditable(false);
@@ -68,19 +68,19 @@ public class ChangPassScreen extends javax.swing.JFrame {
         changePassReEnterPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         changePassReEnterPassLabel.setText("Nhập lại mật khẩu:");
 
-        changePassNewPassTextField.setBackground(colorMain);
+        changePassNewPassTextField.setBackground(colorFix);
         changePassNewPassTextField.setBorder(null);
 
         jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
 
-        changePassReEnterPassTextField.setBackground(colorMain);
+        changePassReEnterPassTextField.setBackground(colorFix);
         changePassReEnterPassTextField.setBorder(null);
 
         jTextField4.setEditable(false);
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
 
-        changePassConfirmButton.setBackground(colorMain);
+        changePassConfirmButton.setBackground(colorFix);
         changePassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 14));
         changePassConfirmButton.setText("Xác nhận");
         changePassConfirmButton.setBorder(null);

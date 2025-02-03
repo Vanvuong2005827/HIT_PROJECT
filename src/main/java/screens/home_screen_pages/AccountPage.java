@@ -12,8 +12,9 @@ import screens.ChangPassScreen;
 import screens.ChangeThemeScreen;
 import screens.ForgotPassScreen;
 import screens.HomeScreen;
+import utils.Gradient;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static commons.CurrentUser.userAccount;
 import static commons.CurrentUser.userInfo;
 
@@ -34,7 +35,7 @@ public class AccountPage extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new Gradient(colorMain1, colorMain2, colorMain3);
         jLabel2 = new javax.swing.JLabel();
         accountTTTKLabel = new javax.swing.JLabel();
         accountNameLabel = new javax.swing.JLabel();
@@ -61,7 +62,6 @@ public class AccountPage extends javax.swing.JFrame {
 
         jPanel1.revalidate();
         jPanel1.repaint();
-        jPanel1.setBackground(colorMain);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(basePath + getRandomIconUser()));
 
@@ -132,7 +132,7 @@ public class AccountPage extends javax.swing.JFrame {
             }
         });
 
-        accountLogoutButton.setBackground(colorMain);
+        accountLogoutButton.setBackground(colorFix);
         accountLogoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
         accountLogoutButton.setText("ĐĂNG XUẤT");
         accountLogoutButton.setBorder(null);

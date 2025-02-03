@@ -3,6 +3,7 @@ package screens.more_book_pages;
 import models.book_information.Book;
 import screens.MoreBookScreen;
 import utils.GetAllBook;
+import utils.Gradient;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class CompletedBookPage extends javax.swing.JFrame {
@@ -26,7 +27,7 @@ public class CompletedBookPage extends javax.swing.JFrame {
 
         completedBookMainPanel = new javax.swing.JPanel();
         completedBookScrollPane = new javax.swing.JScrollPane();
-        mainPanel = new javax.swing.JPanel();
+        mainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -36,8 +37,6 @@ public class CompletedBookPage extends javax.swing.JFrame {
         completedBookScrollPane.setBackground(colorMain);
         completedBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         completedBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        mainPanel.setBackground(colorMain);
 
         mainPanel.setLayout(new java.awt.GridBagLayout());
         completedBookScrollPane.setViewportView(mainPanel);
@@ -78,7 +77,6 @@ public class CompletedBookPage extends javax.swing.JFrame {
         ArrayList<Book> books = lb.getBooksHoanThanh(2);
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
-        Color cusColor = mainPanel.getBackground();
 
         totalBooks = books.size();
         int maxThreads = 10;
@@ -87,7 +85,7 @@ public class CompletedBookPage extends javax.swing.JFrame {
         for (int i = 0; i < totalBooks; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                return customBookGrid1(moreBookScreen, index, 400, 190, 114, 187, books, cusColor, baseUrl, customFont1, mainPanel);
+                return customBookGrid1(moreBookScreen, index, 400, 190, 114, 187, books, colorOpaque, baseUrl, customFont1, mainPanel);
             };
             futures.add(executor.submit(task));
         }

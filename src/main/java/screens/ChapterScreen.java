@@ -5,6 +5,7 @@ import models.chapter_information.AllChapters;
 import models.chapter_information.Chapter;
 import models.chapter_information.ChapterImage;
 import utils.GetChapters;
+import utils.Gradient;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -21,7 +22,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static commons.CurrentUser.bookService;
 import static utils.CustomBookGridPanel.resizeImage;
 
@@ -48,7 +49,7 @@ public class ChapterScreen extends JFrame {
 
     private void initComponents() {
 
-        mainPanel = new javax.swing.JPanel();
+        mainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         chapterPanelLayeded = new javax.swing.JLayeredPane();
         chapterBackLabel = new javax.swing.JLabel();
         chapterScrollPane = new javax.swing.JScrollPane();
@@ -59,8 +60,6 @@ public class ChapterScreen extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-
-        mainPanel.setBackground(colorMain);
 
         chapterPanelLayeded.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -75,7 +74,7 @@ public class ChapterScreen extends JFrame {
 
         chapterScrollPane.setBorder(null);
 
-        chapterImgLabel.setBackground(colorMain);
+        chapterImgLabel.setBackground(colorOpaque);
 
         javax.swing.GroupLayout chapterImgLabelLayout = new javax.swing.GroupLayout(chapterImgLabel);
         chapterImgLabel.setLayout(chapterImgLabelLayout);

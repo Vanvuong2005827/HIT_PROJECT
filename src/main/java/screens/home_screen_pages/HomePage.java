@@ -21,8 +21,9 @@ import utils.GetAllBook;
 import screens.HomeScreen;
 import screens.MoreBookScreen;
 import screens.WaitScreen;
+import utils.Gradient;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid3;
 
 public class HomePage extends javax.swing.JFrame {
@@ -37,7 +38,7 @@ public class HomePage extends javax.swing.JFrame {
     private void initComponents() {
         homePanel = new javax.swing.JPanel();
         homeMainScrollPane = new javax.swing.JScrollPane();
-        homeMainPanel = new javax.swing.JPanel();
+        homeMainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         homePageViewPanel = new javax.swing.JPanel();
         homeSearchLabel = new javax.swing.JLabel();
         homeBellNotifications = new javax.swing.JLabel();
@@ -59,9 +60,7 @@ public class HomePage extends javax.swing.JFrame {
         setTitle("SignUp");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        homeMainPanel.setBackground(colorMain);
-
-        homePageViewPanel.setBackground(colorMain);
+        homePageViewPanel.setBackground(colorOpaque);
         homePageViewPanel.setLayout(new java.awt.CardLayout());
         CardLayout cardLayout = (CardLayout) homePageViewPanel.getLayout();
         Timer timer = new Timer(4000, e -> {
@@ -77,7 +76,7 @@ public class HomePage extends javax.swing.JFrame {
 
         homeStyleScrollPane.setBorder(null);
 
-        homeStyleMainPanel.setBackground(colorMain);
+        homeStyleMainPanel.setBackground(colorFix);
         homeStyleMainPanel.setLayout(new java.awt.GridBagLayout());
         homeStyleScrollPane.setViewportView(homeStyleMainPanel);
 
@@ -88,7 +87,7 @@ public class HomePage extends javax.swing.JFrame {
         homeNewBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         homeNewBookScrollPane.setBorder(null);
 
-        homeNewBookGridPanel.setBackground(colorMain);
+        homeNewBookGridPanel.setBackground(colorOpaque);
         homeNewBookGridPanel.setLayout(new java.awt.GridBagLayout());
 
         homeNewBookScrollPane.setViewportView(homeNewBookGridPanel);
@@ -124,7 +123,7 @@ public class HomePage extends javax.swing.JFrame {
         homeNewBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         homeCommingSoonBookScrollPane.setBorder(null);
 
-        homeCommingSoonBookGridPanel1.setBackground(colorMain);
+        homeCommingSoonBookGridPanel1.setBackground(colorOpaque);
         homeCommingSoonBookGridPanel1.setLayout(new java.awt.GridBagLayout());
 
         homeCommingSoonBookScrollPane.setViewportView(homeCommingSoonBookGridPanel1);
@@ -278,7 +277,7 @@ public class HomePage extends javax.swing.JFrame {
         for (int i = 0; i < totalPanels; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                return customBookGrid3(homeScreen, index, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2, homeNewBookGridPanel);
+                return customBookGrid3(homeScreen, index, 130, 200, 130, 160, books, colorOpaque, baseUrl, customFont1, customFont2, homeNewBookGridPanel);
             };
             futures.add(executor.submit(task));
         }
@@ -329,7 +328,7 @@ public class HomePage extends javax.swing.JFrame {
         for (int i = 0; i < totalPanels; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                return customBookGrid3(homeScreen, index, 130, 200, 130, 160, books, homeMainPanel.getBackground(), baseUrl, customFont1, customFont2, homeCommingSoonBookGridPanel1);
+                return customBookGrid3(homeScreen, index, 130, 200, 130, 160, books, colorOpaque, baseUrl, customFont1, customFont2, homeCommingSoonBookGridPanel1);
             };
             futures.add(executor.submit(task));
         }
