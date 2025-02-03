@@ -1,5 +1,6 @@
 package screens;
 
+import models.book_information.Book;
 import models.chapter_information.AllChapters;
 import models.chapter_information.Chapter;
 import models.chapter_information.ChapterImage;
@@ -13,22 +14,31 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
 import static commons.ColorMain.colorMain;
+import static commons.CurrentUser.bookService;
 import static utils.CustomBookGridPanel.resizeImage;
 
 public class ChapterScreen extends JFrame {
     GetChapters getChapter = new GetChapters();
     JFrame previousScreen;
-    AllChapters chapters;
+    AllChapters chapter;
+    ArrayList<AllChapters> chapters;
+    Book curBook;
+    JButton oneBookStartReadButton;
     int totalChapters;
-    public ChapterScreen(JFrame jf, AllChapters c) {
+
+    public ChapterScreen(JFrame jf, AllChapters c, Book b, JButton j, ArrayList<AllChapters> ch) {
         previousScreen = jf;
-        chapters = c;
+        chapter = c;
+        curBook = b;
+        oneBookStartReadButton = j;
+        chapters = ch;
         initComponents();
         processData();
         setLocationRelativeTo(null);
@@ -135,15 +145,21 @@ public class ChapterScreen extends JFrame {
     }
 
     private void nextEvent(MouseEvent evt) {
-        // TODO add your handling code here:
+        int chapterLastest = bookService.getLastReadIndexChapter(curBook.getId());
+        chapterLastest++;
+        bookService.saveLastReadChapter(curBook.getId(), chapterLastest);
+        oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
     }
 
     private void previousEvent(MouseEvent evt) {
-        // TODO add your handling code here:
+        int chapterLastest = bookService.getLastReadIndexChapter(curBook.getId());
+        chapterLastest--;
+        bookService.saveLastReadChapter(curBook.getId(), chapterLastest);
+        oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
     }
 
     private void processData(){
-        Chapter chapter = getChapter.getChapter(chapters);
+        Chapter chapter = getChapter.getChapter(this.chapter);
         chapterNameLabel.setText("Chapter: " + chapter.getChapter_name());
 
         chapterImgLabel.setLayout(new BoxLayout(chapterImgLabel, BoxLayout.Y_AXIS));

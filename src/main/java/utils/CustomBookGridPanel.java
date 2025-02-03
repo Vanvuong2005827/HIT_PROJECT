@@ -355,7 +355,7 @@ public class CustomBookGridPanel {
         return childPanel;
     }
 
-    public static JPanel customChapterPanel(JFrame previousScreen,AllChapters chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain, Book curBook, int indexChapetr){
+    public static JPanel customChapterPanel(JFrame previousScreen, int indexChapter, ArrayList<AllChapters> chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain, Book curBook, JButton oneBookStartReadButton){
         JPanel childPanel = new JPanel();
         childPanel.setBackground(cusColor);
         childPanel.setPreferredSize(new java.awt.Dimension(432, 70));
@@ -401,7 +401,7 @@ public class CustomBookGridPanel {
                         protected Void doInBackground() {
                             ws.setVisible(true);
                             previousScreen.setVisible(false);
-                            cs = new ChapterScreen(previousScreen, chapters);
+                            cs = new ChapterScreen(previousScreen, chapters.get(indexChapter), curBook, oneBookStartReadButton, chapters);
                             bookService.insertBookToDB(curBook);
                             bookService.storageBookToUser(curBook.getId());
                             return null;
@@ -409,7 +409,8 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            bookService.saveLastReadChapter(curBook.getId(), indexChapetr);
+                            bookService.saveLastReadChapter(curBook.getId(), indexChapter);
+                            oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                             cs.setVisible(true);
                             ws.setVisible(false);
                         }

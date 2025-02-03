@@ -264,8 +264,8 @@ public class OneBookScreen extends javax.swing.JFrame {
                     @Override
                     protected Void doInBackground() {
                         ws.setVisible(true);
-                        previousScreen.setVisible(false);
-                        cs = new ChapterScreen(oneBookScreen, chapters.get(0));
+                        oneBookScreen.setVisible(false);
+                        cs = new ChapterScreen(oneBookScreen, chapters.get(0), curBook, oneBookStartReadButton, chapters);
                         bookService.insertBookToDB(curBook);
                         bookService.storageBookToUser(curBook.getId());
                         return null;
@@ -282,7 +282,7 @@ public class OneBookScreen extends javax.swing.JFrame {
             });
         }
         else{
-            int x = bookService.getLastReadIndexChapter(curBook.getId()); // Lastest chapter read
+            int x = bookService.getLastReadIndexChapter(curBook.getId());
             SwingUtilities.invokeLater(() -> {
                 SwingWorker<Void, Void> worker = new SwingWorker<>() {
                     WaitScreen ws = new WaitScreen();
@@ -290,8 +290,8 @@ public class OneBookScreen extends javax.swing.JFrame {
                     @Override
                     protected Void doInBackground() {
                         ws.setVisible(true);
-                        previousScreen.setVisible(false);
-                        cs = new ChapterScreen(oneBookScreen, chapters.get(x));
+                        oneBookScreen.setVisible(false);
+                        cs = new ChapterScreen(oneBookScreen, chapters.get(x), curBook, oneBookStartReadButton, chapters);
                         bookService.insertBookToDB(curBook);
                         bookService.storageBookToUser(curBook.getId());
                         return null;
@@ -332,7 +332,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         for(int i = 0; i < chapters.size(); i++){
             String title = chapters.get(i).getFilename();
             String chapterNumber = "Chapter: " + chapters.get(i).getChapter_name() ;
-            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, chapters.get(i), title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel, curBook, i));
+            oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, i, chapters, title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel, curBook, oneBookStartReadButton));
             oneBookChapterMainPanel.revalidate();
             oneBookChapterMainPanel.repaint();
         }
