@@ -307,111 +307,111 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         colorMain1 = listColorGradient.get(0).getColor1();
         colorMain2 = listColorGradient.get(0).getColor2();
         colorMain3 = listColorGradient.get(0).getColor3();
-        colorFix = new Color(156, 209, 239);
+        colorFix = listColorGradient.get(0).getColor4();
     }
 
     private void color2Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(1).getColor1();
         colorMain2 = listColorGradient.get(1).getColor2();
         colorMain3 = listColorGradient.get(1).getColor3();
-        colorFix = new Color(255, 185, 180);
+        colorFix = listColorGradient.get(1).getColor4();
     }
 
     private void color3Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(2).getColor1();
         colorMain2 = listColorGradient.get(2).getColor2();
         colorMain3 = listColorGradient.get(2).getColor3();
-        colorFix = new Color(166,222,207);
+        colorFix = listColorGradient.get(2).getColor4();
     }
     private void color4Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(3).getColor1();
         colorMain2 = listColorGradient.get(3).getColor2();
         colorMain3 = listColorGradient.get(3).getColor3();
-        colorFix = new Color(255,222,169);
+        colorFix = listColorGradient.get(3).getColor4();
     }
 
     private void color5Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(4).getColor1();
         colorMain2 = listColorGradient.get(4).getColor2();
         colorMain3 = listColorGradient.get(4).getColor3();
-        colorFix = new Color(192,182,227);
+        colorFix = listColorGradient.get(4).getColor4();
     }
 
     private void color6Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(5).getColor1();
         colorMain2 = listColorGradient.get(5).getColor2();
         colorMain3 = listColorGradient.get(5).getColor3();
-        colorFix = new Color(180,212,235);
+        colorFix = listColorGradient.get(5).getColor4();
     }
 
     private void color7Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(6).getColor1();
         colorMain2 = listColorGradient.get(6).getColor2();
         colorMain3 = listColorGradient.get(6).getColor3();
-        colorFix = new Color(220,205,180);
+        colorFix = listColorGradient.get(6).getColor4();
     }
 
     private void color8Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(7).getColor1();
         colorMain2 = listColorGradient.get(7).getColor2();
         colorMain3 = listColorGradient.get(7).getColor3();
-        colorFix = new Color(190,210,180);
+        colorFix = listColorGradient.get(7).getColor4();
     }
 
     private void color9Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(8).getColor1();
         colorMain2 = listColorGradient.get(8).getColor2();
         colorMain3 = listColorGradient.get(8).getColor3();
-        colorFix = new Color(220,190,195);
+        colorFix = listColorGradient.get(8).getColor4();
     }
 
     private void color10Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(9).getColor1();
         colorMain2 = listColorGradient.get(9).getColor2();
         colorMain3 = listColorGradient.get(9).getColor3();
-        colorFix = new Color(245,190,162);
+        colorFix = listColorGradient.get(9).getColor4();
     }
 
     private void color11Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(10).getColor1();
         colorMain2 = listColorGradient.get(10).getColor2();
         colorMain3 = listColorGradient.get(10).getColor3();
-        colorFix = new Color(237,197,135);
+        colorFix = listColorGradient.get(10).getColor4();
     }
 
     private void color12Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(11).getColor1();
         colorMain2 = listColorGradient.get(11).getColor2();
         colorMain3 = listColorGradient.get(11).getColor3();
-        colorFix = new Color(222,172,139);
+        colorFix = listColorGradient.get(11).getColor4();
     }
 
     private void color13Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(12).getColor1();
         colorMain2 = listColorGradient.get(12).getColor2();
         colorMain3 = listColorGradient.get(12).getColor3();
-        colorFix = new Color(239,190,210);
+        colorFix = listColorGradient.get(12).getColor4();
     }
 
     private void color14Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(13).getColor1();
         colorMain2 = listColorGradient.get(13).getColor2();
         colorMain3 = listColorGradient.get(13).getColor3();
-        colorFix = new Color(190,224,165);
+        colorFix = listColorGradient.get(13).getColor4();
     }
 
     private void color15Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(14).getColor1();
         colorMain2 = listColorGradient.get(14).getColor2();
         colorMain3 = listColorGradient.get(14).getColor3();
-        colorFix = new Color(200,180,170);
+        colorFix = listColorGradient.get(14).getColor4();
     }
 
     private void color16Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(15).getColor1();
         colorMain2 = listColorGradient.get(15).getColor2();
         colorMain3 = listColorGradient.get(15).getColor3();
-        colorFix = new Color(210,170,214);
+        colorFix = listColorGradient.get(15).getColor4();
     }
 
     private javax.swing.JPanel color1;

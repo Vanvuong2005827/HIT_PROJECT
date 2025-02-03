@@ -37,67 +37,83 @@ public class ColorMain {
         ArrayList<ColorTuple> colors = new ArrayList<>();
         colors.add(new ColorTuple(new Color(238, 174, 202), //
                 new Color(148, 187, 233), //
-                new Color(165, 232, 246) //
+                new Color(165, 232, 246), //
+                new Color(156, 209, 239) //
         ));
         colors.add(new ColorTuple(new Color(255, 221, 210), // Light Peach
                 new Color(255, 198, 187), // Soft Salmon
-                new Color(255, 173, 173)  // Light Coral
+                new Color(255, 173, 173),  // Light Coral
+                new Color(255, 185, 180) //
         ));
         colors.add(new ColorTuple(new Color(204, 237, 225), // Pale Aqua
                 new Color(179, 229, 215), // Soft Mint
-                new Color(153, 215, 200)  // Light Teal
+                new Color(153, 215, 200),  // Light Teal
+                new Color(166, 222, 207) //
         ));
         colors.add(new ColorTuple(new Color(255, 244, 214), // Light Cream
                 new Color(255, 229, 180), // Soft Apricot
-                new Color(255, 216, 160)  // Pale Gold
+                new Color(255, 216, 160),  // Pale Gold
+                new Color(255, 222, 169) //
         ));
         colors.add(new ColorTuple(new Color(230, 220, 250), // Lavender Mist
                 new Color(205, 195, 235), // Soft Lilac
-                new Color(180, 170, 220)  // Light Mauve
+                new Color(180, 170, 220),  // Light Mauve
+                new Color(192, 182, 227) //
         ));
         colors.add(new ColorTuple(new Color(220, 230, 235), // Light Mist Blue
                 new Color(200, 215, 225), // Soft Gray Blue
-                new Color(180, 200, 215)  // Pale Slate Blue
+                new Color(180, 200, 215),  // Pale Slate Blue
+                new Color(180, 212, 235) //
         ));
         colors.add(new ColorTuple(new Color(245, 235, 220), // Light Latte
                 new Color(230, 215, 190), // Warm Mocha
-                new Color(210, 195, 170)  // Soft Coffee Brown
+                new Color(210, 195, 170),  // Soft Coffee Brown
+                new Color(220, 205, 180) //
         ));
         colors.add(new ColorTuple(new Color(220, 235, 215), // Soft Mint Green
                 new Color(200, 220, 190), // Warm Sage
-                new Color(180, 200, 170)  // Pale Olive Green
+                new Color(180, 200, 170),  // Pale Olive Green
+                new Color(190, 210, 180) //
         ));
         colors.add(new ColorTuple(new Color(245, 220, 225), // Light Rosewood
                 new Color(230, 200, 205), // Dusty Blush
-                new Color(210, 180, 185)  // Warm Terracotta Pink
+                new Color(210, 180, 185),  // Warm Terracotta Pink
+                new Color(220, 190, 195) //
         ));
         colors.add(new ColorTuple(new Color(255, 225, 205), // Soft Apricot
                 new Color(250, 200, 175), // Warm Peach
-                new Color(240, 180, 150)  // Pale Coral
+                new Color(240, 180, 150),  // Pale Coral
+                new Color(245, 190, 162) //
         ));
         colors.add(new ColorTuple(new Color(200, 220, 180), // Soft Olive Green
                 new Color(225, 205, 150), // Warm Beige
-                new Color(250, 190, 120)  // Pale Goldenrod
+                new Color(250, 190, 120),  // Pale Goldenrod
+                new Color(237, 197, 135) //
         ));
         colors.add(new ColorTuple(new Color(190, 210, 220), // Cool Slate Blue
                 new Color(215, 185, 160), // Warm Taupe
-                new Color(230, 160, 120)  // Soft Ember Orange
+                new Color(230, 160, 120),  // Soft Ember Orange
+                new Color(222, 172, 139) //
         ));
         colors.add(new ColorTuple(new Color(200, 230, 255), // Soft Sky Blue
                 new Color(230, 200, 220), // Light Blush Pink
-                new Color(250, 180, 200)  // Warm Rose
+                new Color(250, 180, 200),  // Warm Rose
+                new Color(239, 190, 210) //
         ));
         colors.add(new ColorTuple(new Color(220, 200, 180), // Light Mocha
                 new Color(200, 220, 170), // Soft Olive Green
-                new Color(180, 230, 160)  // Warm Pastel Green
+                new Color(180, 230, 160),  // Warm Pastel Green
+                new Color(190, 224, 165) //
         ));
         colors.add(new ColorTuple(new Color(230, 180, 170), // Soft Sunset Red
                 new Color(210, 190, 180), // Warm Beige
-                new Color(190, 170, 160)  // Muted Taupe
+                new Color(190, 170, 160),  // Muted Taupe
+                new Color(200, 180, 170) //
         ));
         colors.add(new ColorTuple(new Color(240, 200, 160), // Warm Sand Yellow
                 new Color(220, 180, 200), // Soft Mauve
-                new Color(200, 160, 230)  // Light Plum Purple
+                new Color(200, 160, 230),  // Light Plum Purple
+                new Color(210, 170, 214) //
         ));
         listColorGradient = colors;
     }
