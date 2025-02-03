@@ -14,7 +14,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
     NewBookPage np = new NewBookPage(this);
     CommingSoonBookPage cp = new CommingSoonBookPage(this);
     CompletedBookPage cdp = new CompletedBookPage(this);
-    StyleBookPage sp = new StyleBookPage();
+    StyleBookPage sp = new StyleBookPage(this);
     public MoreBookScreen(HomeScreen hs, int indexTabbed, WaitScreen ws) {
         waitScreen = ws;
         homeScreen = hs;
@@ -97,6 +97,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
                 np.processNewBook();
                 cp.processCommingSoonBook();
                 cdp.processCompletedBook();
+                sp.processStyleBook();
                 return null;
             }
 

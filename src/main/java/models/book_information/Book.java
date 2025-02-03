@@ -22,6 +22,11 @@ public class Book {
     public Book() {
     }
 
+    public Book(String name, String slug) {
+        this.name = name;
+        this.slug = slug;
+    }
+
     public Book(String id, String name, String slug, String status, String updatedAt, String thumbnail, List<BookCategory> category, List<BookChapterLastest> chapterLastests) {
         this.id = new ObjectId(id);
         this.name = name;
@@ -32,6 +37,7 @@ public class Book {
         this.category = category;
         this.chapterLastests = chapterLastests;
     }
+
     public Book(String id, String name, String slug, String content, String status, String thumbnail, List<BookCategory> category, List<ApiChapterSeverData> chapters, String updatedAt) {
         this.id = new ObjectId(id);
         this.name = name;
@@ -51,8 +57,6 @@ public class Book {
     public void setId(ObjectId id) {
         this.id = id;
     }
-
-    public Book(String name){this.name = name;}
 
     public String getThumbnail() {
         return thumbnail;

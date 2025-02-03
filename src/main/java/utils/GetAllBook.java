@@ -16,7 +16,7 @@ public class GetAllBook {
     public ArrayList<Book> getBooksTruyenMoi(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
         int totalPages = numberPage;
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         for (int i = 1; i <= totalPages; i++) {
@@ -57,7 +57,7 @@ public class GetAllBook {
     public ArrayList<Book> getBooksHoanThanh(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
         int totalPages = numberPage;
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         for (int i = 1; i <= totalPages; i++) {
@@ -98,7 +98,7 @@ public class GetAllBook {
     public ArrayList<Book> getBooksSapRaMat(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
         int totalPages = numberPage;
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         for (int i = 1; i <= totalPages; i++) {
@@ -138,7 +138,7 @@ public class GetAllBook {
 
     public ArrayList<Book> getBooksTheLoai() {
         ArrayList<Book> books = new ArrayList<>();
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         Callable<ArrayList<Book>> task = () -> {
@@ -151,7 +151,7 @@ public class GetAllBook {
 
                 if (apiResponse != null && apiResponse.getData() != null) {
                     apiResponse.getData().getItems().forEach(item -> {
-                        pageBooks.add(new Book(item.getName()));
+                        pageBooks.add(new Book(item.getName(), item.getSlug()));
                     });
                 }
             }
@@ -160,6 +160,47 @@ public class GetAllBook {
 
         futures.add(executor.submit(task));
 
+
+        for (Future<ArrayList<Book>> future : futures) {
+            try {
+                books.addAll(future.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
+        return books;
+    }
+
+    public ArrayList<Book> getBooksTungTheLoai(int numberPage, String nameStyle) {
+        ArrayList<Book> books = new ArrayList<>();
+        int totalPages = numberPage;
+        int maxThreads = 10;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
+        List<Future<ArrayList<Book>>> futures = new ArrayList<>();
+        for (int i = 1; i <= totalPages; i++) {
+            int page = i;
+            Callable<ArrayList<Book>> task = () -> {
+                ArrayList<Book> pageBooks = new ArrayList<>();
+                String pageNumber = Integer.toString(page);
+                String apiUrl = "https://otruyenapi.com/v1/api/the-loai/" + nameStyle + "?page=" + pageNumber;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        });
+                    }
+                }
+                return pageBooks;
+            };
+
+            futures.add(executor.submit(task));
+        }
 
         for (Future<ArrayList<Book>> future : futures) {
             try {

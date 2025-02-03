@@ -79,16 +79,12 @@ public class HomeScreen extends javax.swing.JFrame {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         @Override
                         protected Void doInBackground() {
-//                            waitScreen.setVisible(true);
-//                            homeScreen.setVisible(false);
                             rp.processRecentBook();
                             return null;
                         }
 
                         @Override
                         protected void done() {
-//                            homeScreen.setVisible(true);
-//                            waitScreen.setVisible(false);
                         }
                     };
 
