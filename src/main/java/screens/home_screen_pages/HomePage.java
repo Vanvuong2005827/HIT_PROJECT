@@ -376,7 +376,7 @@ public class HomePage extends javax.swing.JFrame {
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         ArrayList<Future<JPanel>> futures = new ArrayList<>();
 
-        for (int i = 0; i < totalPanels2 / 2 - 1; i++) {
+        for (int i = 0; i < totalPanels2 / 2 + 1; i++) {
             int index = i;
             Callable<JPanel> task = () -> {
                 JPanel panel = new JPanel(new BorderLayout());

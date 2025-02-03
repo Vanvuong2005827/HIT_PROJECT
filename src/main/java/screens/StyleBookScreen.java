@@ -1,7 +1,6 @@
 package screens;
 
 import models.book_information.Book;
-import services.BookService;
 import utils.GetAllBook;
 
 import javax.swing.*;
@@ -17,13 +16,13 @@ import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class StyleBookScreen extends javax.swing.JFrame{
     String nameStyle;
-    HomeScreen homeScreen;
+    JFrame previousScreen;
     WaitScreen waitScreen;
     StyleBookScreen styleBookScreen = this;
     int totalBooks;
 
-    public StyleBookScreen(HomeScreen hs, String n, String nn, WaitScreen w) {
-        homeScreen = hs;
+    public StyleBookScreen(JFrame hs, String n, String nn, WaitScreen w) {
+        previousScreen = hs;
         nameStyle = n;
         waitScreen = w;
         initComponents();
@@ -115,7 +114,7 @@ public class StyleBookScreen extends javax.swing.JFrame{
     }
 
     private void backEvent(java.awt.event.MouseEvent evt) {
-        homeScreen.setVisible(true);
+        previousScreen.setVisible(true);
         styleBookScreen.setVisible(false);
     }
 

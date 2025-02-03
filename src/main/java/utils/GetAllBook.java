@@ -138,7 +138,7 @@ public class GetAllBook {
 
     public ArrayList<Book> getBooksTheLoai() {
         ArrayList<Book> books = new ArrayList<>();
-        int maxThreads = 80;
+        int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         Callable<ArrayList<Book>> task = () -> {
