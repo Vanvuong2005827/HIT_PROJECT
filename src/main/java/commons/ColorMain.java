@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static commons.CurrentUser.userInfo;
+
 public class ColorMain {
     public static ArrayList<Color> listColorNormal = new ArrayList<>();
     public static ArrayList<ColorTuple> listColorGradient = new ArrayList<>();
@@ -119,10 +121,10 @@ public class ColorMain {
     }
 
     public static Color colorMain = new Color(176, 223, 251);
-    public static Color colorMain1 = colorMain;
-    public static Color colorMain2 = colorMain;
-    public static Color colorMain3 = colorMain;
-    public static Color colorFix = colorMain;
+    public static Color colorMain1 =  colorMain;
+    public static Color colorMain2 =  colorMain;
+    public static Color colorMain3 =  colorMain;
+    public static Color colorFix =  colorMain;
     public static JPanel PanelGradient = new Gradient(colorMain1, colorMain2, colorMain3);
     public static Color colorOpaque = new Color(0, 0, 0, 0);
 }
