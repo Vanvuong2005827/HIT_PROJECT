@@ -265,7 +265,7 @@ public class OneBookScreen extends javax.swing.JFrame {
                     protected Void doInBackground() {
                         ws.setVisible(true);
                         oneBookScreen.setVisible(false);
-                        cs = new ChapterScreen(oneBookScreen, chapters.get(0), curBook, oneBookStartReadButton, chapters);
+                        cs = new ChapterScreen(oneBookScreen, curBook, oneBookStartReadButton, chapters, 0);
                         bookService.insertBookToDB(curBook);
                         bookService.storageBookToUser(curBook.getId());
                         return null;
@@ -291,7 +291,7 @@ public class OneBookScreen extends javax.swing.JFrame {
                     protected Void doInBackground() {
                         ws.setVisible(true);
                         oneBookScreen.setVisible(false);
-                        cs = new ChapterScreen(oneBookScreen, chapters.get(x), curBook, oneBookStartReadButton, chapters);
+                        cs = new ChapterScreen(oneBookScreen, curBook, oneBookStartReadButton, chapters, x);
                         bookService.insertBookToDB(curBook);
                         bookService.storageBookToUser(curBook.getId());
                         return null;

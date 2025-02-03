@@ -75,7 +75,7 @@ public class NewBookPage extends javax.swing.JFrame {
         gbc.weightx = 1.0;
 
         GetAllBook lb = new GetAllBook();
-        ArrayList<Book> books = lb.getBooksTruyenMoi(200);
+        ArrayList<Book> books = lb.getBooksTruyenMoi(2);
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
         Color cusColor = mainPanel.getBackground();
