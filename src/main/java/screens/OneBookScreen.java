@@ -3,6 +3,7 @@ package screens;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.chapter_information.AllChapters;
+import services.BookService;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -255,9 +256,57 @@ public class OneBookScreen extends javax.swing.JFrame {
     }
 
     private void startReadEvent(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
-        bookService.insertBookToDB(curBook);
-        bookService.storageBookToUser(curBook.getId());
+        if (oneBookStartReadButton.getText().equals("Bắt đầu đọc")){
+            SwingUtilities.invokeLater(() -> {
+                SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                    WaitScreen ws = new WaitScreen();
+                    ChapterScreen cs;
+                    @Override
+                    protected Void doInBackground() {
+                        ws.setVisible(true);
+                        previousScreen.setVisible(false);
+                        cs = new ChapterScreen(previousScreen, chapters.get(0));
+                        bookService.insertBookToDB(curBook);
+                        bookService.storageBookToUser(curBook.getId());
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        cs.setVisible(true);
+                        ws.setVisible(false);
+                    }
+                };
+
+                worker.execute();
+            });
+        }
+        else{
+            int x = 10; // Lastest chapter read
+            SwingUtilities.invokeLater(() -> {
+                SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                    WaitScreen ws = new WaitScreen();
+                    ChapterScreen cs;
+                    @Override
+                    protected Void doInBackground() {
+                        ws.setVisible(true);
+                        previousScreen.setVisible(false);
+                        cs = new ChapterScreen(previousScreen, chapters.get(x));
+                        bookService.insertBookToDB(curBook);
+                        bookService.storageBookToUser(curBook.getId());
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        cs.setVisible(true);
+                        ws.setVisible(false);
+                    }
+                };
+
+                worker.execute();
+            });
+        }
     }
 
     public void processBookInfoData(){
@@ -364,7 +413,7 @@ public class OneBookScreen extends javax.swing.JFrame {
     private javax.swing.JLayeredPane oneBookMainPanel;
     private javax.swing.JTextArea oneBookNameTextArea;
     private javax.swing.JPanel oneBookPanel;
-    private javax.swing.JButton oneBookStartReadButton;
+    public javax.swing.JButton oneBookStartReadButton;
     private javax.swing.JLabel oneBookStatusLabel;
     private javax.swing.JTabbedPane oneBookTabbed;
 }
