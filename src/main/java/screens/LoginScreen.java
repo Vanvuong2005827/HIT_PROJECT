@@ -16,7 +16,7 @@ import java.net.InetAddress;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.*;
 import static commons.CurrentUser.*;
 
 public class LoginScreen extends JFrame {
@@ -293,11 +293,32 @@ public class LoginScreen extends JFrame {
 
     }
 
+    private static Color hextoColor(String hex) {
+        return Color.decode(hex);
+    }
 
     private void forgotPassEvent(MouseEvent evt) {
         ForgotPassScreen fg = new ForgotPassScreen(this);
         this.setVisible(false);
         fg.setVisible(true);
+    }
+
+    public void getGradientInUser(){
+        if (userInfo.getColorMain1() != null) {
+            colorMain1 = hextoColor(userInfo.getColorMain1());
+        }
+
+        if (userInfo.getColorMain2() != null) {
+            colorMain2 = hextoColor(userInfo.getColorMain2());
+        }
+
+        if (userInfo.getColorMain3() != null) {
+            colorMain3 = hextoColor(userInfo.getColorMain3());
+        }
+
+        if (userInfo.getColorFix() != null) {
+            colorFix = hextoColor(userInfo.getColorFix());
+        }
     }
 
     private void loginEvent(ActionEvent evt) {
@@ -331,6 +352,8 @@ public class LoginScreen extends JFrame {
         if (loginService.authenticate(userName, password)) {
             userAccount = userServices.getUserByUsername(userName);
             userInfo = userServices.getUserInfoByUserAccount(userAccount);
+
+            getGradientInUser();
 
             if (loginRememberCheckbox.isSelected()) {
                 loginService.saveUser(userName, password);

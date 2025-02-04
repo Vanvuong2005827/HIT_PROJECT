@@ -6,10 +6,12 @@ import models.User.UserAccount;
 import models.User.UserIP;
 import models.User.UserInfo;
 
+import java.awt.*;
 import java.time.LocalDateTime;
 
 import static DAO.ConnectDB.*;
 import static commons.CurrentUser.encryptorService;
+import static commons.CurrentUser.userAccount;
 
 
 public class UserServices {
@@ -38,7 +40,8 @@ public class UserServices {
         if (found != null) {
             return found;
         } else {
-            return new UserInfo();
+            collectionInfo.insertOne(new UserInfo(userAccount.getId()));
+            return new UserInfo(userAccount.getId());
         }
     }
 
@@ -80,6 +83,22 @@ public class UserServices {
         if (female) return "female";
         if (other) return "other";
         return "";
+    }
+
+    public String colorToHex(Color color) {
+        return String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+    }
+
+    public void updateGradientColorToUser(Color one, Color two, Color three, Color fix) {
+        collectionInfo.updateOne(
+                Filters.eq("_id", userAccount.getId()),
+                Updates.combine(
+                        Updates.set("colorMain1", colorToHex(one)),
+                        Updates.set("colorMain2", colorToHex(two)),
+                        Updates.set("colorMain3", colorToHex(three)),
+                        Updates.set("colorFix", colorToHex(fix))
+                )
+        );
     }
 
 }

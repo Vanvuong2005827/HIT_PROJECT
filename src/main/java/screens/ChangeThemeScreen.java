@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import static commons.ColorMain.*;
+import static commons.CurrentUser.userServices;
 
 public class ChangeThemeScreen extends javax.swing.JFrame {
     JFrame previousScreen;
@@ -295,6 +296,7 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         jPanel1.revalidate();
         int confirm = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng xuất để áp dụng màu nền này không?", "Đăng xuất?", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
+            userServices.updateGradientColorToUser(colorMain1, colorMain2, colorMain3, colorFix);
             new ConnectDB();
             LoginScreen lg = new LoginScreen();
             lg.setVisible(true);
