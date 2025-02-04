@@ -6,7 +6,8 @@ public class UserIP {
     private String ip;
     private LocalDateTime time;
 
-    public UserIP() {}
+    public UserIP() {
+    }
 
     public UserIP(String ip) {
         this.ip = ip;

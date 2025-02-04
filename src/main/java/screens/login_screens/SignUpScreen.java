@@ -16,6 +16,8 @@ import static commons.CurrentUser.*;
 
 public class SignUpScreen extends javax.swing.JFrame {
     private String basePath = new File("").getAbsolutePath();
+    private String AnsCode = "";
+    private int Count = 60;
 
     public SignUpScreen() {
         initComponents();
@@ -23,7 +25,6 @@ public class SignUpScreen extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         signUpMainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         signUpGif = new javax.swing.JLabel();
         signUpBackButton = new javax.swing.JButton();
@@ -114,7 +115,7 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         signUpYearOfBirth.setBackground(colorFix);
         signUpYearOfBirth.setMaximumRowCount(30);
-        signUpYearOfBirth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012" }));
+        signUpYearOfBirth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"0", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"}));
         signUpYearOfBirth.setBorder(null);
 
         signUpMaleCheckBox.setBackground(colorFix);
@@ -305,26 +306,25 @@ public class SignUpScreen extends javax.swing.JFrame {
     }
 
     private void signUpConfirmEvent(java.awt.event.MouseEvent evt) {
-
         String fullname = signUpFullNameTextField.getText().trim();
         String yearOfBirth = Objects.requireNonNull(signUpYearOfBirth.getSelectedItem()).toString().trim();
         String gender = userServices.selectGender(signUpMaleCheckBox.isSelected(), signUpFemaleCheckBox.isSelected(), signUpOtherCheckBox.isSelected());
         String phoneNumber = signUpPhoneNumberTextField.getText().trim();
         String Gmail = signUpGmailTextField.getText().trim();
 
-        if (fullname.isEmpty()){
+        if (fullname.isEmpty()) {
             signUpMessageLabel.setText("Xin mời nhập họ tên");
             return;
         }
-        if (yearOfBirth.equals("0")){
+        if (yearOfBirth.equals("0")) {
             signUpMessageLabel.setText("Xin mời nhập năm sinh");
             return;
         }
-        if (phoneNumber.isEmpty()){
+        if (phoneNumber.isEmpty()) {
             signUpMessageLabel.setText("Xin mời nhập số điện thoại");
             return;
         }
-        if (Gmail.isEmpty()){
+        if (Gmail.isEmpty()) {
             signUpMessageLabel.setText("Xin mời nhập email");
             return;
         }
@@ -343,7 +343,7 @@ public class SignUpScreen extends javax.swing.JFrame {
             return;
         }
 
-        if (!AnsCode.equals(signUpGmailCodeTextField.getText().trim())){
+        if (!AnsCode.equals(signUpGmailCodeTextField.getText().trim())) {
             signUpMessageLabel.setText("Mã xác thực không đúng");
         }
 
@@ -365,7 +365,7 @@ public class SignUpScreen extends javax.swing.JFrame {
     private void sendCodeEvent(java.awt.event.MouseEvent evt) {
         String Gmail = signUpGmailTextField.getText().trim();
 
-        if (Gmail.isEmpty()){
+        if (Gmail.isEmpty()) {
             signUpMessageLabel.setText("Xin mời nhập email");
             return;
         }
@@ -375,7 +375,7 @@ public class SignUpScreen extends javax.swing.JFrame {
             return;
         }
 
-        if (Count != 60){
+        if (Count != 60) {
             return;
         }
 
@@ -462,6 +462,4 @@ public class SignUpScreen extends javax.swing.JFrame {
     private javax.swing.JTextField signUpPhoneNumberTextField;
     private javax.swing.JLabel signUpSendingLabel;
     private javax.swing.JComboBox<String> signUpYearOfBirth;
-    private String AnsCode = "";
-    private int Count = 60;
 }

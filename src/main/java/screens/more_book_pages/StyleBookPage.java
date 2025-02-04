@@ -20,8 +20,8 @@ import static commons.ColorMain.*;
 import static commons.ColorMain.colorMain3;
 
 public class StyleBookPage extends javax.swing.JFrame {
-    MoreBookScreen moreBookScreen;
-    int totalBooks;
+    private MoreBookScreen moreBookScreen;
+    private int totalBooks;
 
     public StyleBookPage(MoreBookScreen m) {
         moreBookScreen = m;
@@ -73,7 +73,7 @@ public class StyleBookPage extends javax.swing.JFrame {
         pack();
     }
 
-    public void processStyleBook(){
+    public void processStyleBook() {
         GridBagConstraints gbc2 = new GridBagConstraints();
         gbc2.fill = GridBagConstraints.BOTH;
         gbc2.insets = new Insets(10, 15, 10, 15);
@@ -109,8 +109,10 @@ public class StyleBookPage extends javax.swing.JFrame {
                         WaitScreen ws = new WaitScreen();
                         ws.setVisible(true);
                         moreBookScreen.setVisible(false);
-                        StyleBookScreen styleBookScreen = new StyleBookScreen(moreBookScreen, nameStyle, label1.getText(), ws);;
+                        StyleBookScreen styleBookScreen = new StyleBookScreen(moreBookScreen, nameStyle, label1.getText(), ws);
+                        ;
                     }
+
                     @Override
                     public void mousePressed(MouseEvent e) {
                         mainPanel.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, mainPanel));
@@ -155,11 +157,11 @@ public class StyleBookPage extends javax.swing.JFrame {
         mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
-    public JPanel styleBookPanel(){
+    public JPanel styleBookPanel() {
         return styleBookMainPanel;
     }
 
-    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
         private final double SCROLL_FACTOR = 1.0;
         private final int MAX_DELTA = 80;
@@ -194,11 +196,13 @@ public class StyleBookPage extends javax.swing.JFrame {
             int finalNewY = newY;
             SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
             origin = null;
             applyInertia();
         }
+
         private void applyInertia() {
             inertiaTimer = new Timer(16, event -> {
                 if (Math.abs(velocity) < 1) {

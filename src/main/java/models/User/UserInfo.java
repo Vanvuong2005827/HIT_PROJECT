@@ -2,7 +2,6 @@ package models.User;
 
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
-import java.awt.*;
 
 public class UserInfo {
     @BsonProperty("_id")
@@ -36,14 +35,15 @@ public class UserInfo {
     private String colorMain3;
 
     // Constructor mặc định (bắt buộc)
-    public UserInfo() {}
+    public UserInfo() {
+    }
 
     public UserInfo(ObjectId id) {
         this.id = id;
     }
+
     // Constructor đầy đủ
-    public UserInfo(ObjectId id, String fullName, String email, String phoneNumber, int birthday, String sex,
-                    String colorFix, String colorMain1, String colorMain2, String colorMain3) {
+    public UserInfo(ObjectId id, String fullName, String email, String phoneNumber, int birthday, String sex, String colorFix, String colorMain1, String colorMain2, String colorMain3) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
@@ -57,7 +57,6 @@ public class UserInfo {
     }
 
 
-
     public UserInfo(String fullname, int i, String email, String phoneNumber, String gender, UserAccount user) {
         this.id = user.getId();
         this.fullName = fullname;
@@ -68,33 +67,83 @@ public class UserInfo {
     }
 
     // Getter & Setter
-    public ObjectId getId() { return id; }
-    public void setId(ObjectId id) { this.id = id; }
+    public ObjectId getId() {
+        return id;
+    }
 
-    public String getFullName() { return fullName; }
-    public void setFullName(String fullName) { this.fullName = fullName; }
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getFullName() {
+        return fullName;
+    }
 
-    public String getPhoneNumber() { return phoneNumber; }
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-    public int getBirthday() { return birthday; }
-    public void setBirthday(int birthday) { this.birthday = birthday; }
+    public String getEmail() {
+        return email;
+    }
 
-    public String getSex() { return sex; }
-    public void setSex(String sex) { this.sex = sex; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public String getColorFix() { return colorFix; }
-    public void setColorFix(String colorFix) { this.colorFix = colorFix; }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-    public String getColorMain1() { return colorMain1; }
-    public void setColorMain1(String colorMain1) { this.colorMain1 = colorMain1; }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-    public String getColorMain2() { return colorMain2; }
-    public void setColorMain2(String colorMain2) { this.colorMain2 = colorMain2; }
+    public int getBirthday() {
+        return birthday;
+    }
 
-    public String getColorMain3() { return colorMain3; }
-    public void setColorMain3(String colorMain3) { this.colorMain3 = colorMain3; }
+    public void setBirthday(int birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getColorFix() {
+        return colorFix;
+    }
+
+    public void setColorFix(String colorFix) {
+        this.colorFix = colorFix;
+    }
+
+    public String getColorMain1() {
+        return colorMain1;
+    }
+
+    public void setColorMain1(String colorMain1) {
+        this.colorMain1 = colorMain1;
+    }
+
+    public String getColorMain2() {
+        return colorMain2;
+    }
+
+    public void setColorMain2(String colorMain2) {
+        this.colorMain2 = colorMain2;
+    }
+
+    public String getColorMain3() {
+        return colorMain3;
+    }
+
+    public void setColorMain3(String colorMain3) {
+        this.colorMain3 = colorMain3;
+    }
 }

@@ -8,6 +8,7 @@ public class UserAccount {
     private String username;
     private String password;
     private Role role;
+
     public UserAccount() {
         id = null;
         username = "";

@@ -10,7 +10,7 @@ import static commons.ColorMain.*;
 import static commons.CurrentUser.userServices;
 
 public class ChangeThemeScreen extends javax.swing.JFrame {
-    JFrame previousScreen;
+    private JFrame previousScreen;
 
     public ChangeThemeScreen(JFrame jf) {
         previousScreen = jf;
@@ -282,7 +282,7 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE));
 
         pack();
-    }// </editor-fold>
+    }
 
     private void backEvent(java.awt.event.MouseEvent evt) {
         previousScreen.setVisible(true);
@@ -321,6 +321,7 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         colorMain3 = listColorGradient.get(2).getColor3();
         colorFix = listColorGradient.get(2).getColor4();
     }
+
     private void color4Event(java.awt.event.MouseEvent evt) {
         colorMain1 = listColorGradient.get(3).getColor1();
         colorMain2 = listColorGradient.get(3).getColor2();

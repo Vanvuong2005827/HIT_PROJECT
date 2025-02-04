@@ -16,8 +16,8 @@ import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class CompletedBookPage extends javax.swing.JFrame {
-    MoreBookScreen moreBookScreen;
-    int totalBooks;
+    private MoreBookScreen moreBookScreen;
+    private int totalBooks;
     public CompletedBookPage(MoreBookScreen m) {
         moreBookScreen = m;
         initComponents();
@@ -114,7 +114,7 @@ public class CompletedBookPage extends javax.swing.JFrame {
         return completedBookMainPanel;
     }
 
-    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
         private final double SCROLL_FACTOR = 1.0;
         private final int MAX_DELTA = 80;

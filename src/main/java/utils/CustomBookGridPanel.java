@@ -101,7 +101,7 @@ public class CustomBookGridPanel {
                         @Override
                         protected void done() {
                             OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters);
-                            if (bookService.checkIfExitBookInUser(curBook.getId())){
+                            if (bookService.checkIfExitBookInUser(curBook.getId())) {
                                 oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                             }
                             oneBookScreen.setVisible(true);
@@ -209,48 +209,8 @@ public class CustomBookGridPanel {
 
         javax.swing.GroupLayout childPanelLayout = new javax.swing.GroupLayout(childPanel);
         childPanel.setLayout(childPanelLayout);
-        childPanelLayout.setHorizontalGroup(
-                childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(childPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jSeparator1)
-                                        .addGroup(childPanelLayout.createSequentialGroup()
-                                                .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, imgWidth, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(titleArea)
-                                                        .addGroup(childPanelLayout.createSequentialGroup()
-                                                                .addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(statusArea, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(updateAtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(chapterLastestArea, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(0, 0, Short.MAX_VALUE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, childPanelLayout.createSequentialGroup()
-                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                .addComponent(categoriesArea, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addContainerGap())
-        );
-        childPanelLayout.setVerticalGroup(
-                childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(childPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(childPanelLayout.createSequentialGroup()
-                                                .addComponent(titleArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(statusArea, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(updateAtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(chapterLastestArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(categoriesArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 7, Short.MAX_VALUE))
-                                        .addComponent(imgLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        childPanelLayout.setHorizontalGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jSeparator1).addGroup(childPanelLayout.createSequentialGroup().addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, imgWidth, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(titleArea).addGroup(childPanelLayout.createSequentialGroup().addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(statusArea, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(updateAtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(chapterLastestArea, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)).addGap(0, 0, Short.MAX_VALUE)).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, childPanelLayout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(categoriesArea, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))).addContainerGap()));
+        childPanelLayout.setVerticalGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addComponent(titleArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(statusArea, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(updateAtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(chapterLastestArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(categoriesArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(0, 7, Short.MAX_VALUE)).addComponent(imgLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)));
         childPanel.addMouseListener(new MouseAdapter() {
             GetAllBook getBook = new GetAllBook();
             GetChapters getChapters = new GetChapters();
@@ -276,7 +236,7 @@ public class CustomBookGridPanel {
                         @Override
                         protected void done() {
                             OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters);
-                            if (bookService.checkIfExitBookInUser(curBook.getId())){
+                            if (bookService.checkIfExitBookInUser(curBook.getId())) {
 
                                 oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                             }
@@ -308,7 +268,7 @@ public class CustomBookGridPanel {
         return childPanel;
     }
 
-    public static JPanel customChapterPanel(JFrame previousScreen, int indexChapter, ArrayList<AllChapters> chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain, Book curBook, JButton oneBookStartReadButton){
+    public static JPanel customChapterPanel(JFrame previousScreen, int indexChapter, ArrayList<AllChapters> chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain, Book curBook, JButton oneBookStartReadButton) {
         JPanel childPanel = new JPanel();
         childPanel.setBackground(cusColor);
         childPanel.setPreferredSize(new java.awt.Dimension(432, 70));
@@ -321,27 +281,8 @@ public class CustomBookGridPanel {
 
         javax.swing.GroupLayout childPanelLayout = new javax.swing.GroupLayout(childPanel);
         childPanel.setLayout(childPanelLayout);
-        childPanelLayout.setHorizontalGroup(
-                childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(childPanelLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(chapterNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(titleArea, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                                        .addComponent(jSeparator1))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        childPanelLayout.setVerticalGroup(
-                childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(childPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(chapterNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(titleArea, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        childPanelLayout.setHorizontalGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addGap(16, 16, 16).addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false).addComponent(chapterNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(titleArea, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE).addComponent(jSeparator1)).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        childPanelLayout.setVerticalGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addComponent(chapterNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(titleArea, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         childPanel.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -350,6 +291,7 @@ public class CustomBookGridPanel {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         WaitScreen ws = new WaitScreen();
                         ChapterScreen cs;
+
                         @Override
                         protected Void doInBackground() {
                             ws.setVisible(true);
@@ -392,10 +334,11 @@ public class CustomBookGridPanel {
         return childPanel;
     }
 
-    public static void fixDragable(JTextArea textArea, JPanel childPanel, JFrame previousScreen, ArrayList<Book> books, int index){
+    public static void fixDragable(JTextArea textArea, JPanel childPanel, JFrame previousScreen, ArrayList<Book> books, int index) {
         textArea.addMouseListener(new MouseAdapter() {
             GetAllBook getBook = new GetAllBook();
             GetChapters getChapters = new GetChapters();
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 SwingUtilities.invokeLater(() -> {
@@ -424,6 +367,7 @@ public class CustomBookGridPanel {
                     worker.execute();
                 });
             }
+
             @Override
             public void mousePressed(MouseEvent e) {
                 childPanel.dispatchEvent(SwingUtilities.convertMouseEvent(textArea, e, childPanel));
@@ -441,6 +385,7 @@ public class CustomBookGridPanel {
             }
         });
     }
+
     public static BufferedImage resizeImage(BufferedImage originalImage, int width, int height) {
         BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = resizedImage.createGraphics();

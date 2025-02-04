@@ -9,7 +9,7 @@ import static commons.ColorMain.*;
 import static commons.CurrentUser.*;
 
 public class ChangPassScreen extends javax.swing.JFrame {
-    JFrame previousFrame;
+    private JFrame previousFrame;
     private String basePath = new File("").getAbsolutePath();
 
     public ChangPassScreen(JFrame jf) {
@@ -19,7 +19,6 @@ public class ChangPassScreen extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         changPassPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -102,97 +101,13 @@ public class ChangPassScreen extends javax.swing.JFrame {
 
         javax.swing.GroupLayout changPassPanelLayout = new javax.swing.GroupLayout(changPassPanel);
         changPassPanel.setLayout(changPassPanelLayout);
-        changPassPanelLayout.setHorizontalGroup(
-                changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(changPassPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(changPassPanelLayout.createSequentialGroup()
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(134, 134, 134)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(changPassPanelLayout.createSequentialGroup()
-                                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(changePassNewPassLabel)
-                                                        .addComponent(changePassReEnterPassLabel))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                                                        .addComponent(changePassReEnterPassTextField)))))
-                        .addGroup(changPassPanelLayout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(changePassShowMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(14, Short.MAX_VALUE))
-                        .addGroup(changPassPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(changPassPanelLayout.createSequentialGroup()
-                                                .addComponent(changePassOldPassLabel)
-                                                .addGap(53, 53, 53)
-                                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                                                        .addComponent(jTextField2)
-                                                        .addComponent(changePassNewPassTextField)
-                                                        .addComponent(changePassOldPassTextField))
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changPassPanelLayout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changPassPanelLayout.createSequentialGroup()
-                                                                .addComponent(changePassForgotPassLabel)
-                                                                .addGap(19, 19, 19))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changPassPanelLayout.createSequentialGroup()
-                                                                .addComponent(changePassConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(94, 94, 94))))))
-        );
-        changPassPanelLayout.setVerticalGroup(
-                changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(changPassPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2))
-                                .addGap(57, 57, 57)
-                                .addComponent(jLabel3)
-                                .addGap(32, 32, 32)
-                                .addComponent(changePassShowMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(changePassOldPassLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(changePassOldPassTextField))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(changePassNewPassTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(changePassNewPassLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(changePassReEnterPassTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(changePassReEnterPassLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(changePassForgotPassLabel)
-                                .addGap(34, 34, 34)
-                                .addComponent(changePassConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(249, 249, 249))
-        );
+        changPassPanelLayout.setHorizontalGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(changPassPanelLayout.createSequentialGroup().addContainerGap().addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(changPassPanelLayout.createSequentialGroup().addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(134, 134, 134).addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)).addGroup(changPassPanelLayout.createSequentialGroup().addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(changePassNewPassLabel).addComponent(changePassReEnterPassLabel)).addGap(18, 18, 18).addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false).addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE).addComponent(changePassReEnterPassTextField))))).addGroup(changPassPanelLayout.createSequentialGroup().addGap(94, 94, 94).addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jLabel3).addComponent(changePassShowMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)).addContainerGap(14, Short.MAX_VALUE)).addGroup(changPassPanelLayout.createSequentialGroup().addContainerGap().addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(changPassPanelLayout.createSequentialGroup().addComponent(changePassOldPassLabel).addGap(53, 53, 53).addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false).addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE).addComponent(jTextField2).addComponent(changePassNewPassTextField).addComponent(changePassOldPassTextField)).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changPassPanelLayout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changPassPanelLayout.createSequentialGroup().addComponent(changePassForgotPassLabel).addGap(19, 19, 19)).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, changPassPanelLayout.createSequentialGroup().addComponent(changePassConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(94, 94, 94)))))));
+        changPassPanelLayout.setVerticalGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(changPassPanelLayout.createSequentialGroup().addContainerGap().addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(jLabel2)).addGap(57, 57, 57).addComponent(jLabel3).addGap(32, 32, 32).addComponent(changePassShowMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false).addComponent(changePassOldPassLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(changePassOldPassTextField)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(changePassNewPassTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(changePassNewPassLabel)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addGroup(changPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(changePassReEnterPassTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(changePassReEnterPassLabel)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18).addComponent(changePassForgotPassLabel).addGap(34, 34, 34).addComponent(changePassConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(249, 249, 249)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(changPassPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(changPassPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(changPassPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(changPassPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
     }
@@ -201,31 +116,32 @@ public class ChangPassScreen extends javax.swing.JFrame {
         previousFrame.setVisible(true);
         this.setVisible(false);
     }
+
     private void confirmEvent(java.awt.event.MouseEvent evt) {
         String oldPass = changePassOldPassTextField.getText().trim();
         String newPass = changePassNewPassTextField.getText().trim();
         String reEnterPass = changePassReEnterPassTextField.getText().trim();
 
-        if (oldPass.isEmpty()){
+        if (oldPass.isEmpty()) {
             changePassShowMessageLabel.setText("Xin mời nhập mật khẩu cũ");
             return;
         }
-        if (newPass.isEmpty()){
+        if (newPass.isEmpty()) {
             changePassShowMessageLabel.setText("Xin mời nhập mật khẩu mới");
             return;
         }
 
-        if (reEnterPass.isEmpty()){
+        if (reEnterPass.isEmpty()) {
             changePassShowMessageLabel.setText("Xin mời nhập lại mật khẩu mới");
             return;
         }
 
-        if (!newPass.equals(reEnterPass)){
+        if (!newPass.equals(reEnterPass)) {
             changePassShowMessageLabel.setText("Mật khẩu nhập lại không khớp");
             return;
         }
 
-        if (!encryptorService.checkPassword(oldPass ,userAccount.getPassword())) {
+        if (!encryptorService.checkPassword(oldPass, userAccount.getPassword())) {
             changePassShowMessageLabel.setText("Mật khẩu cũ không khớp vui lòng nhập lại");
             return;
         } else {

@@ -16,8 +16,9 @@ import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class NewBookPage extends javax.swing.JFrame {
-    MoreBookScreen moreBookScreen;
-    int totalBooks;
+    private MoreBookScreen moreBookScreen;
+    private int totalBooks;
+
     public NewBookPage(MoreBookScreen m) {
         moreBookScreen = m;
         initComponents();
@@ -70,7 +71,7 @@ public class NewBookPage extends javax.swing.JFrame {
         pack();
     }
 
-    public void processNewBook(){
+    public void processNewBook() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
@@ -113,11 +114,11 @@ public class NewBookPage extends javax.swing.JFrame {
         mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
-    public JPanel newBookPanel(){
+    public JPanel newBookPanel() {
         return newBookMainPanel;
     }
 
-    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
         private final double SCROLL_FACTOR = 1.0;
         private final int MAX_DELTA = 80;
@@ -152,11 +153,13 @@ public class NewBookPage extends javax.swing.JFrame {
             int finalNewY = newY;
             SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
             origin = null;
             applyInertia();
         }
+
         private void applyInertia() {
             inertiaTimer = new Timer(16, event -> {
                 if (Math.abs(velocity) < 1) {

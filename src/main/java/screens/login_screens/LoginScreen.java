@@ -24,6 +24,7 @@ import static commons.CurrentUser.*;
 
 public class LoginScreen extends JFrame {
     private String basePath = new File("").getAbsolutePath();
+    private int cnt = 0;
 
     public LoginScreen() {
         initComponents();
@@ -90,11 +91,6 @@ public class LoginScreen extends JFrame {
         loginRememberCheckbox.setForeground(new Color(102, 102, 102));
         loginRememberCheckbox.setText("Nhớ tài khoản");
         loginRememberCheckbox.setBorder(null);
-        loginRememberCheckbox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                loginRememberCheckboxActionPerformed(evt);
-            }
-        });
 
         loginButton.setBackground(colorMain);
         loginButton.setFont(new Font("Segoe UI", 1, 18));
@@ -306,7 +302,7 @@ public class LoginScreen extends JFrame {
         fg.setVisible(true);
     }
 
-    public void getGradientInUser(){
+    public void getGradientInUser() {
         if (userInfo.getColorMain1() != null) {
             colorMain1 = hextoColor(userInfo.getColorMain1());
         }
@@ -369,12 +365,11 @@ public class LoginScreen extends JFrame {
             HomeScreen hs = new HomeScreen(this, ws);
 
 
-
         } else {
             loginMessageLabel.setText("Sai tên đăng nhập hoặc mật khẩu");
             cnt++;
             if (cnt == 5) {
-                userServices.plusTime(userIP,5);
+                userServices.plusTime(userIP, 5);
                 cnt = 0;
             }
         }
@@ -426,10 +421,6 @@ public class LoginScreen extends JFrame {
         }
     }
 
-    private void loginRememberCheckboxActionPerformed(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private JLabel jLabel1;
     private JLabel jLabel2;
     private JButton loginButton;
@@ -453,5 +444,4 @@ public class LoginScreen extends JFrame {
     private JPasswordField signUpReEnterPasswordTextField;
     private JLabel signUpUsernameLabel;
     private JTextField signUpUsernameTextField;
-    private int cnt = 0;
 }

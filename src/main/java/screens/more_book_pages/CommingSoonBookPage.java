@@ -16,15 +16,15 @@ import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class CommingSoonBookPage extends javax.swing.JFrame {
-    MoreBookScreen moreBookScreen;
-    int totalBooks;
+    private MoreBookScreen moreBookScreen;
+    private int totalBooks;
+
     public CommingSoonBookPage(MoreBookScreen m) {
         moreBookScreen = m;
         initComponents();
     }
 
     private void initComponents() {
-
         commingSoonBookMainPanel = new javax.swing.JPanel();
         commingSoonBookScrollPane = new javax.swing.JScrollPane();
         mainPanel = new Gradient(colorMain1, colorMain2, colorMain3);
@@ -68,7 +68,7 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         pack();
     }
 
-    public void processCommingSoonBook(){
+    public void processCommingSoonBook() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
@@ -110,11 +110,11 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
-    public JPanel commingSoonBookPanel(){
+    public JPanel commingSoonBookPanel() {
         return commingSoonBookMainPanel;
     }
 
-    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
         private final double SCROLL_FACTOR = 1.0;
         private final int MAX_DELTA = 80;
@@ -149,11 +149,13 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
             int finalNewY = newY;
             SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
             origin = null;
             applyInertia();
         }
+
         private void applyInertia() {
             inertiaTimer = new Timer(16, event -> {
                 if (Math.abs(velocity) < 1) {

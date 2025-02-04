@@ -21,16 +21,16 @@ import static utils.CustomBookGridPanel.customChapterPanel;
 import static utils.CustomBookGridPanel.resizeImage;
 
 public class OneBookScreen extends javax.swing.JFrame {
-    JFrame previousScreen;
-    OneBookScreen oneBookScreen = this;
-    Book curBook;
-    ArrayList<AllChapters> chapters = new ArrayList<>();
-    String fullUrl = "https://img.otruyenapi.com/uploads/comics/";
-    String name;
-    String status;
-    String content;
-    StringBuilder categories = new StringBuilder();
-    StringBuilder authors = new StringBuilder();
+    private JFrame previousScreen;
+    private OneBookScreen oneBookScreen = this;
+    private Book curBook;
+    private ArrayList<AllChapters> chapters = new ArrayList<>();
+    private String fullUrl = "https://img.otruyenapi.com/uploads/comics/";
+    private String name;
+    private String status;
+    private String content;
+    private StringBuilder categories = new StringBuilder();
+    private StringBuilder authors = new StringBuilder();
 
     public OneBookScreen(JFrame ps, Book book, ArrayList<AllChapters> chapter) {
         previousScreen = ps;
@@ -90,12 +90,12 @@ public class OneBookScreen extends javax.swing.JFrame {
         oneBookNameTextArea.setEditable(false);
         oneBookNameTextArea.setColumns(20);
         oneBookNameTextArea.setFont(new java.awt.Font("Segoe UI", 1, 18));
-        oneBookNameTextArea.setForeground(new java.awt.Color(102,102,102));
+        oneBookNameTextArea.setForeground(new java.awt.Color(102, 102, 102));
         oneBookNameTextArea.setRows(5);
         oneBookNameTextArea.setFocusable(false);
 
         oneBookStatusLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
-        oneBookStatusLabel.setForeground(new java.awt.Color(102,102,102));
+        oneBookStatusLabel.setForeground(new java.awt.Color(102, 102, 102));
 
         oneBookAuthorTextArea.setBackground(colorMain);
         oneBookAuthorTextArea.setWrapStyleWord(true);
@@ -103,7 +103,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         oneBookAuthorTextArea.setEditable(false);
         oneBookAuthorTextArea.setColumns(20);
         oneBookAuthorTextArea.setFont(new java.awt.Font("Segoe UI", 1, 18));
-        oneBookAuthorTextArea.setForeground(new java.awt.Color(102,102,102));
+        oneBookAuthorTextArea.setForeground(new java.awt.Color(102, 102, 102));
         oneBookAuthorTextArea.setRows(5);
         oneBookAuthorTextArea.setFocusable(false);
 
@@ -113,7 +113,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         oneBookCategoryTextArea.setEditable(false);
         oneBookCategoryTextArea.setColumns(20);
         oneBookCategoryTextArea.setFont(new java.awt.Font("Segoe UI", 1, 18));
-        oneBookCategoryTextArea.setForeground(new java.awt.Color(102,102,102));
+        oneBookCategoryTextArea.setForeground(new java.awt.Color(102, 102, 102));
         oneBookCategoryTextArea.setRows(5);
         oneBookCategoryTextArea.setFocusable(false);
 
@@ -286,11 +286,12 @@ public class OneBookScreen extends javax.swing.JFrame {
     }
 
     private void startReadEvent(java.awt.event.MouseEvent evt) {
-        if (oneBookStartReadButton.getText().equals("Bắt đầu đọc")){
+        if (oneBookStartReadButton.getText().equals("Bắt đầu đọc")) {
             SwingUtilities.invokeLater(() -> {
                 SwingWorker<Void, Void> worker = new SwingWorker<>() {
                     WaitScreen ws = new WaitScreen();
                     ChapterScreen cs;
+
                     @Override
                     protected Void doInBackground() {
                         ws.setVisible(true);
@@ -312,13 +313,13 @@ public class OneBookScreen extends javax.swing.JFrame {
 
                 worker.execute();
             });
-        }
-        else{
+        } else {
             int x = bookService.getLastReadIndexChapter(curBook.getId());
             SwingUtilities.invokeLater(() -> {
                 SwingWorker<Void, Void> worker = new SwingWorker<>() {
                     WaitScreen ws = new WaitScreen();
                     ChapterScreen cs;
+
                     @Override
                     protected Void doInBackground() {
                         ws.setVisible(true);
@@ -355,7 +356,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         }
     }
 
-    public void processBookInfoData(){
+    public void processBookInfoData() {
         fullUrl = fullUrl + curBook.getThumbnail();
         name = curBook.getName();
         content = curBook.getContent();
@@ -369,15 +370,16 @@ public class OneBookScreen extends javax.swing.JFrame {
         }
         authors.append("Đang cập nhật");
     }
-    public void processBookChapterData(){
+
+    public void processBookChapterData() {
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
         Color cusColor = Color.WHITE;
 
         oneBookChapterMainPanel.setLayout(new BoxLayout(oneBookChapterMainPanel, BoxLayout.Y_AXIS));
 
-        for(int i = 0; i < chapters.size(); i++){
+        for (int i = 0; i < chapters.size(); i++) {
             String title = chapters.get(i).getFilename();
-            String chapterNumber = "Chapter: " + chapters.get(i).getChapter_name() ;
+            String chapterNumber = "Chapter: " + chapters.get(i).getChapter_name();
             oneBookChapterMainPanel.add(customChapterPanel(oneBookScreen, i, chapters, title, chapterNumber, cusColor, customFont1, oneBookChapterMainPanel, curBook, oneBookStartReadButton));
             oneBookChapterMainPanel.revalidate();
             oneBookChapterMainPanel.repaint();
@@ -386,7 +388,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         oneBookChapterMainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
-    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
         private final double SCROLL_FACTOR = 1.5;
         private final int MAX_DELTA = 80;
@@ -421,11 +423,13 @@ public class OneBookScreen extends javax.swing.JFrame {
             int finalNewY = newY;
             SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
             origin = null;
             applyInertia();
         }
+
         private void applyInertia() {
             inertiaTimer = new Timer(16, event -> {
                 if (Math.abs(velocity) < 1) {

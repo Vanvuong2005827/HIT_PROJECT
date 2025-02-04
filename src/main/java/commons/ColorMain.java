@@ -1,9 +1,6 @@
 package commons;
 
 import utils.get_color.ColorTuple;
-import utils.get_color.Gradient;
-
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -123,6 +120,5 @@ public class ColorMain {
     public static Color colorMain2 =  colorMain;
     public static Color colorMain3 =  colorMain;
     public static Color colorFix =  colorMain;
-    public static JPanel PanelGradient = new Gradient(colorMain1, colorMain2, colorMain3);
     public static Color colorOpaque = new Color(0, 0, 0, 0);
 }

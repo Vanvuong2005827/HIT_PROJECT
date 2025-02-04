@@ -10,7 +10,7 @@ import static commons.CurrentUser.forgetPasswordService;
 import static commons.CurrentUser.userAccount;
 
 public class ChangPassScreenSecond extends javax.swing.JFrame {
-    JFrame previousFrame;
+    private JFrame previousFrame;
     private String basePath = new File("").getAbsolutePath();
 
     public ChangPassScreenSecond(JFrame jf) {
@@ -20,7 +20,6 @@ public class ChangPassScreenSecond extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         changPassPanel = new Gradient(colorMain1, colorMain2, colorMain3);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -168,17 +167,17 @@ public class ChangPassScreenSecond extends javax.swing.JFrame {
         String newPass = changePassNewPassTextField.getText().trim();
         String reEnterPass = changePassReEnterPassTextField.getText().trim();
 
-        if (newPass.isEmpty()){
+        if (newPass.isEmpty()) {
             changePassShowMessageLabel.setText("Xin mời nhập mật khẩu mới");
             return;
         }
 
-        if (reEnterPass.isEmpty()){
+        if (reEnterPass.isEmpty()) {
             changePassShowMessageLabel.setText("Xin mời nhập lại mật khẩu mới");
             return;
         }
 
-        if (!newPass.equals(reEnterPass)){
+        if (!newPass.equals(reEnterPass)) {
             changePassShowMessageLabel.setText("Mật khẩu nhập lại không khớp");
             return;
         } else {

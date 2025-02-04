@@ -16,6 +16,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
     CommingSoonBookPage cp = new CommingSoonBookPage(this);
     CompletedBookPage cdp = new CompletedBookPage(this);
     StyleBookPage sp = new StyleBookPage(this);
+
     public MoreBookScreen(HomeScreen hs, int indexTabbed, WaitScreen ws) {
         waitScreen = ws;
         homeScreen = hs;
@@ -91,7 +92,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
         pack();
     }
 
-    public void processAllData(){
+    public void processAllData() {
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
             protected Void doInBackground() {
@@ -112,7 +113,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
         worker.execute();
     }
 
-    public void backEvent(java.awt.event.MouseEvent evt){
+    public void backEvent(java.awt.event.MouseEvent evt) {
         homeScreen.setVisible(true);
         this.setVisible(false);
     }

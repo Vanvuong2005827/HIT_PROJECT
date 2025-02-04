@@ -1,4 +1,3 @@
-
 package screens.home_screen_pages;
 
 import models.book_information.Book;
@@ -19,8 +18,9 @@ import static commons.ColorMain.colorFix;
 import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class FavouritePage extends javax.swing.JFrame {
-    HomeScreen homeScreen;
-    int totalBooks;
+    private HomeScreen homeScreen;
+    private int totalBooks;
+
     public FavouritePage(HomeScreen hs) {
         homeScreen = hs;
         initComponents();
@@ -46,32 +46,17 @@ public class FavouritePage extends javax.swing.JFrame {
 
         javax.swing.GroupLayout newBookMainPanelLayout = new javax.swing.GroupLayout(favouriteBookMainPanel);
         favouriteBookMainPanel.setLayout(newBookMainPanelLayout);
-        newBookMainPanelLayout.setHorizontalGroup(
-                newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(favouriteBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-        );
-        newBookMainPanelLayout.setVerticalGroup(
-                newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookMainPanelLayout.createSequentialGroup()
-                                .addComponent(favouriteBookScrollPane)
-                                .addContainerGap())
-        );
+        newBookMainPanelLayout.setHorizontalGroup(newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(favouriteBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE));
+        newBookMainPanelLayout.setVerticalGroup(newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookMainPanelLayout.createSequentialGroup().addComponent(favouriteBookScrollPane).addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(favouriteBookMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(favouriteBookMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(favouriteBookMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(favouriteBookMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         pack();
     }
 
-
-    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
         private final double SCROLL_FACTOR = 1.5;
         private final int MAX_DELTA = 80;
@@ -106,11 +91,13 @@ public class FavouritePage extends javax.swing.JFrame {
             int finalNewY = newY;
             SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
             origin = null;
             applyInertia();
         }
+
         private void applyInertia() {
             inertiaTimer = new Timer(16, event -> {
                 if (Math.abs(velocity) < 1) {
@@ -133,7 +120,7 @@ public class FavouritePage extends javax.swing.JFrame {
         }
     };
 
-    public void processFavouriteBook(){
+    public void processFavouriteBook() {
         mainPanel.removeAll();
         mainPanel.revalidate();
         mainPanel.repaint();
@@ -181,7 +168,7 @@ public class FavouritePage extends javax.swing.JFrame {
         mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
-    public JPanel favouritePanel(){
+    public JPanel favouritePanel() {
         return favouriteBookMainPanel;
     }
 

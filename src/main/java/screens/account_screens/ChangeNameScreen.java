@@ -7,18 +7,17 @@ import static commons.ColorMain.colorFix;
 import static commons.CurrentUser.userInfo;
 import static commons.CurrentUser.userServices;
 
-public class ChangeNameScreen extends javax.swing.JFrame{
-    JLabel label;
+public class ChangeNameScreen extends javax.swing.JFrame {
+    private JLabel label;
     private String basePath = new File("").getAbsolutePath();
+
     public ChangeNameScreen(JLabel l) {
         label = l;
         initComponents();
         setLocationRelativeTo(null);
     }
 
-
     private void initComponents() {
-
         changeNameMainPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -74,14 +73,8 @@ public class ChangeNameScreen extends javax.swing.JFrame{
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(changeNameMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(changeNameMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(changeNameMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(changeNameMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE));
 
         pack();
     }

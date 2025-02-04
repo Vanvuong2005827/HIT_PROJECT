@@ -1,9 +1,6 @@
 package models.User;
 
-import models.book_information.Book;
 import org.bson.types.ObjectId;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class UserHistoryBooks {

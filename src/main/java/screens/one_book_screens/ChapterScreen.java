@@ -14,7 +14,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -26,14 +25,13 @@ import static commons.CurrentUser.bookService;
 import static utils.CustomBookGridPanel.resizeImage;
 
 public class ChapterScreen extends JFrame {
-    GetChapters getChapter = new GetChapters();
-    JFrame previousScreen;
-    ArrayList<AllChapters> chapters;
-    Book curBook;
-    JButton oneBookStartReadButton;
-    int indexChapter;
-    int totalChapters;
-    private String basePath = new File("").getAbsolutePath();
+    private GetChapters getChapter = new GetChapters();
+    private JFrame previousScreen;
+    private ArrayList<AllChapters> chapters;
+    private Book curBook;
+    private JButton oneBookStartReadButton;
+    private int indexChapter;
+    private int totalChapters;
 
     public ChapterScreen(JFrame jf, Book b, JButton j, ArrayList<AllChapters> ch, int i) {
         previousScreen = jf;
@@ -77,14 +75,8 @@ public class ChapterScreen extends JFrame {
 
         javax.swing.GroupLayout chapterImgLabelLayout = new javax.swing.GroupLayout(chapterImgLabel);
         chapterImgLabel.setLayout(chapterImgLabelLayout);
-        chapterImgLabelLayout.setHorizontalGroup(
-                chapterImgLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 450, Short.MAX_VALUE)
-        );
-        chapterImgLabelLayout.setVerticalGroup(
-                chapterImgLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 710, Short.MAX_VALUE)
-        );
+        chapterImgLabelLayout.setHorizontalGroup(chapterImgLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 450, Short.MAX_VALUE));
+        chapterImgLabelLayout.setVerticalGroup(chapterImgLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 710, Short.MAX_VALUE));
 
         chapterScrollPane.setViewportView(chapterImgLabel);
 
@@ -116,29 +108,16 @@ public class ChapterScreen extends JFrame {
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-                mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(chapterPanelLayeded)
-        );
-        mainPanelLayout.setVerticalGroup(
-                mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(chapterPanelLayeded)
-        );
+        mainPanelLayout.setHorizontalGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(chapterPanelLayeded));
+        mainPanelLayout.setVerticalGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(chapterPanelLayeded));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
     }// </editor-fold>
-
 
     private void backEvent(MouseEvent evt) {
         previousScreen.setVisible(true);
@@ -174,6 +153,7 @@ public class ChapterScreen extends JFrame {
         SwingUtilities.invokeLater(() -> {
             SwingWorker<Void, Void> worker = new SwingWorker<>() {
                 Chapter chapter = getChapter.getChapter(chapters.get(indexChapter));
+
                 @Override
                 protected Void doInBackground() {
                     chapterNameLabel.setText("Loading...");
@@ -251,7 +231,7 @@ public class ChapterScreen extends JFrame {
         chapterImgLabel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
-    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
         private final double SCROLL_FACTOR = 1.0;
         private final int MAX_DELTA = 80;

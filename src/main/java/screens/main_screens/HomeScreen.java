@@ -111,7 +111,6 @@ public class HomeScreen extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,6 +125,5 @@ public class HomeScreen extends javax.swing.JFrame {
         pack();
     }
 
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
 }

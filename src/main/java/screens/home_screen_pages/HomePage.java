@@ -32,7 +32,7 @@ import static utils.CustomBookGridPanel.customBookGrid3;
 import static utils.CustomBookGridPanel.fixDragable;
 
 public class HomePage extends javax.swing.JFrame {
-    HomeScreen homeScreen;
+    private HomeScreen homeScreen;
 
     public HomePage(HomeScreen hs) {
         homeScreen = hs;
@@ -399,8 +399,10 @@ public class HomePage extends javax.swing.JFrame {
                         WaitScreen ws = new WaitScreen();
                         ws.setVisible(true);
                         homeScreen.setVisible(false);
-                        StyleBookScreen styleBookScreen = new StyleBookScreen(homeScreen, nameStyle, label1.getText(), ws);;
+                        StyleBookScreen styleBookScreen = new StyleBookScreen(homeScreen, nameStyle, label1.getText(), ws);
+                        ;
                     }
+
                     @Override
                     public void mousePressed(MouseEvent e) {
                         homeStyleMainPanel.dispatchEvent(SwingUtilities.convertMouseEvent(panel, e, homeStyleMainPanel));
@@ -546,7 +548,7 @@ public class HomePage extends javax.swing.JFrame {
                                 @Override
                                 protected void done() {
                                     OneBookScreen oneBookScreen = new OneBookScreen(homeScreen, curBook, chapters);
-                                    if (bookService.checkIfExitBookInUser(curBook.getId())){
+                                    if (bookService.checkIfExitBookInUser(curBook.getId())) {
 
                                         oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                                     }
@@ -607,8 +609,9 @@ public class HomePage extends javax.swing.JFrame {
         MoreBookScreen mb = new MoreBookScreen(homeScreen, 3, ws);
     }
 
-    MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
         private Point origin;
+
         @Override
         public void mousePressed(MouseEvent e) {
             origin = e.getPoint();
@@ -638,7 +641,7 @@ public class HomePage extends javax.swing.JFrame {
         }
     };
 
-    MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
+    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
         private Point origin;
         private final double SCROLL_FACTOR = 1.5;
         private final int MAX_DELTA = 80;
@@ -673,11 +676,13 @@ public class HomePage extends javax.swing.JFrame {
             int finalNewY = newY;
             SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
             origin = null;
             applyInertia();
         }
+
         private void applyInertia() {
             inertiaTimer = new Timer(16, event -> {
                 if (Math.abs(velocity) < 1) {

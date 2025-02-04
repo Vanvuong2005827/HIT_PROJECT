@@ -11,13 +11,10 @@ import java.awt.*;
 import java.time.LocalDateTime;
 
 import static DAO.ConnectDB.*;
-import static commons.CurrentUser.encryptorService;
 import static commons.CurrentUser.userAccount;
 
 
 public class UserServices {
-
-
     public boolean isUsernameExists(String username) {
         UserAccount found = collection.find(new org.bson.Document("username", username)).first();
         return found != null;
@@ -73,17 +70,11 @@ public class UserServices {
     }
 
     public void changeUserFullName(ObjectId userId, String newFullname) {
-        collectionInfo.updateOne(
-                Filters.eq("_id", userId),
-                Updates.set("fullName", newFullname)
-        );
+        collectionInfo.updateOne(Filters.eq("_id", userId), Updates.set("fullName", newFullname));
     }
 
     public void plusTime(UserIP userIP, int plusMinutesInto) {
-        collectionIp.updateOne(
-                Filters.eq("ip", userIP.getIp()),
-                Updates.set("time", LocalDateTime.now().plusMinutes(plusMinutesInto))
-        );
+        collectionIp.updateOne(Filters.eq("ip", userIP.getIp()), Updates.set("time", LocalDateTime.now().plusMinutes(plusMinutesInto)));
     }
 
     public String selectGender(boolean male, boolean female, boolean other) {
@@ -98,15 +89,7 @@ public class UserServices {
     }
 
     public void updateGradientColorToUser(Color one, Color two, Color three, Color fix) {
-        collectionInfo.updateOne(
-                Filters.eq("_id", userAccount.getId()),
-                Updates.combine(
-                        Updates.set("colorMain1", colorToHex(one)),
-                        Updates.set("colorMain2", colorToHex(two)),
-                        Updates.set("colorMain3", colorToHex(three)),
-                        Updates.set("colorFix", colorToHex(fix))
-                )
-        );
+        collectionInfo.updateOne(Filters.eq("_id", userAccount.getId()), Updates.combine(Updates.set("colorMain1", colorToHex(one)), Updates.set("colorMain2", colorToHex(two)), Updates.set("colorMain3", colorToHex(three)), Updates.set("colorFix", colorToHex(fix))));
     }
 
 }
