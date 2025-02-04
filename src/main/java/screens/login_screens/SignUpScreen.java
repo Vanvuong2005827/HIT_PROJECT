@@ -6,6 +6,8 @@ import utils.get_color.Gradient;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Objects;
 
@@ -13,14 +15,12 @@ import static commons.ColorMain.*;
 import static commons.CurrentUser.*;
 
 public class SignUpScreen extends javax.swing.JFrame {
-
     private String basePath = new File("").getAbsolutePath();
 
     public SignUpScreen() {
         initComponents();
         setLocationRelativeTo(null);
     }
-
 
     private void initComponents() {
 
@@ -55,10 +55,10 @@ public class SignUpScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        signUpGif.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\angry-2498_256.gif")); // NOI18N
+        signUpGif.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\angry-2498_256.gif"));
 
         signUpBackButton.setBackground(colorFix);
-        signUpBackButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        signUpBackButton.setFont(new java.awt.Font("Segoe UI", 1, 24));
         signUpBackButton.setText("<");
         signUpBackButton.setBorder(null);
         signUpBackButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -67,27 +67,27 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
 
-        signUpFullNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpFullNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpFullNameLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpFullNameLabel.setText("Họ tên :");
 
-        signUpHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        signUpHeaderLabel.setFont(new java.awt.Font("Segoe UI", 1, 20));
         signUpHeaderLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpHeaderLabel.setText("Thông tin tài khoản");
 
-        signUpBornYearLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpBornYearLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpBornYearLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpBornYearLabel.setText("Năm sinh :");
 
-        signUpGenderLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpGenderLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpGenderLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpGenderLabel.setText("Giới tính :");
 
-        signUpPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpPhoneNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpPhoneNumberLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpPhoneNumberLabel.setText("Số điện thoại :");
 
-        signUpGamailLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        signUpGamailLabel.setFont(new java.awt.Font("Segoe UI", 1, 16));
         signUpGamailLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpGamailLabel.setText("Gmail : ");
 
@@ -142,11 +142,6 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpOtherCheckBox.setForeground(new java.awt.Color(102, 102, 102));
         signUpOtherCheckBox.setText("Khác");
         signUpOtherCheckBox.setBorder(null);
-        signUpOtherCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signUpOtherCheckBoxActionPerformed(evt);
-            }
-        });
 
         signUpMessageLabel.setForeground(new java.awt.Color(255, 51, 51));
 
@@ -162,7 +157,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpLine4.setBorder(null);
 
         signUpButtonSendCode.setBackground(new java.awt.Color(204, 255, 204));
-        signUpButtonSendCode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        signUpButtonSendCode.setFont(new java.awt.Font("Segoe UI", 1, 14));
         signUpButtonSendCode.setText("Lấy mã");
         signUpButtonSendCode.setBorder(null);
         signUpButtonSendCode.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -301,10 +296,13 @@ public class SignUpScreen extends javax.swing.JFrame {
                         .addComponent(signUpMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        ItemListener itemListener = this::itemStateChanged;
+        signUpMaleCheckBox.addItemListener(itemListener);
+        signUpFemaleCheckBox.addItemListener(itemListener);
+        signUpOtherCheckBox.addItemListener(itemListener);
+
         pack();
     }
-
-
 
     private void signUpConfirmEvent(java.awt.event.MouseEvent evt) {
 
@@ -364,10 +362,6 @@ public class SignUpScreen extends javax.swing.JFrame {
         ls.setVisible(true);
     }
 
-    private void signUpOtherCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void sendCodeEvent(java.awt.event.MouseEvent evt) {
         String Gmail = signUpGmailTextField.getText().trim();
 
@@ -412,7 +406,6 @@ public class SignUpScreen extends javax.swing.JFrame {
         }
     }
 
-
     private void waitToSendCode() {
         Timer timer = new Timer(1000, e -> {
             if (Count > 0) {
@@ -424,6 +417,22 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
         timer.start();
+    }
+
+    private void itemStateChanged(ItemEvent e) {
+        if (e.getStateChange() == ItemEvent.SELECTED) {
+            JCheckBox selected = (JCheckBox) e.getSource();
+            if (selected == signUpMaleCheckBox) {
+                signUpFemaleCheckBox.setSelected(false);
+                signUpOtherCheckBox.setSelected(false);
+            } else if (selected == signUpFemaleCheckBox) {
+                signUpMaleCheckBox.setSelected(false);
+                signUpOtherCheckBox.setSelected(false);
+            } else if (selected == signUpOtherCheckBox) {
+                signUpMaleCheckBox.setSelected(false);
+                signUpFemaleCheckBox.setSelected(false);
+            }
+        }
     }
 
     private javax.swing.JLabel signUpAge;
