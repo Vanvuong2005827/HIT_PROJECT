@@ -441,7 +441,7 @@ public class CustomBookGridPanel {
         return childPanel;
     }
 
-    private static void fixDragable(JTextArea textArea, JPanel childPanel, JFrame previousScreen, ArrayList<Book> books, int index){
+    public static void fixDragable(JTextArea textArea, JPanel childPanel, JFrame previousScreen, ArrayList<Book> books, int index){
         textArea.addMouseListener(new MouseAdapter() {
             GetAllBook getBook = new GetAllBook();
             GetChapters getChapters = new GetChapters();

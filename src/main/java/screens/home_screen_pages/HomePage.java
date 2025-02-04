@@ -16,15 +16,20 @@ import javax.swing.*;
 import commons.ColorMain;
 import models.book_information.Book;
 import models.book_information.BookCategory;
+import models.chapter_information.AllChapters;
 import screens.more_book_pages.StyleBookScreen;
+import screens.one_book_screens.OneBookScreen;
+import services.BookService;
 import utils.get_data.GetAllBook;
 import screens.main_screens.HomeScreen;
 import screens.main_screens.MoreBookScreen;
 import screens.main_screens.WaitScreen;
 import utils.get_color.Gradient;
+import utils.get_data.GetChapters;
 
 import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid3;
+import static utils.CustomBookGridPanel.fixDragable;
 
 public class HomePage extends javax.swing.JFrame {
     HomeScreen homeScreen;
@@ -510,10 +515,50 @@ public class HomePage extends javax.swing.JFrame {
                     textArea.setFocusable(false);
                     textArea.setEditable(false);
                     textPanel.add(textArea);
+                    fixDragable(textArea, panel, homeScreen, books, index);
                 }
 
                 mainTextPanel.add(textPanel, BorderLayout.CENTER);
                 panel.add(mainTextPanel, BorderLayout.CENTER);
+
+                panel.addMouseListener(new MouseAdapter() {
+                    GetAllBook getBook = new GetAllBook();
+                    GetChapters getChapters = new GetChapters();
+
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        SwingUtilities.invokeLater(() -> {
+                            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                                Book curBook = new Book();
+                                ArrayList<AllChapters> chapters = new ArrayList<>();
+                                WaitScreen ws = new WaitScreen();
+                                BookService bookService = new BookService();
+
+                                @Override
+                                protected Void doInBackground() {
+                                    ws.setVisible(true);
+                                    homeScreen.setVisible(false);
+                                    curBook = getBook.getBooksTheoTen(books.get(index).getSlug());
+                                    chapters = getChapters.getListChapters(curBook);
+                                    return null;
+                                }
+
+                                @Override
+                                protected void done() {
+                                    OneBookScreen oneBookScreen = new OneBookScreen(homeScreen, curBook, chapters);
+                                    if (bookService.checkIfExitBookInUser(curBook.getId())){
+
+                                        oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
+                                    }
+                                    oneBookScreen.setVisible(true);
+                                    ws.setVisible(false);
+                                }
+                            };
+
+                            worker.execute();
+                        });
+                    }
+                });
 
                 return panel;
             };
