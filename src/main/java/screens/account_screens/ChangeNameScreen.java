@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.io.File;
 
 import static commons.ColorMain.colorFix;
+import static commons.CurrentUser.userInfo;
+import static commons.CurrentUser.userServices;
 
 public class ChangeNameScreen extends javax.swing.JFrame{
     JLabel label;
@@ -90,6 +92,7 @@ public class ChangeNameScreen extends javax.swing.JFrame{
 
     private void confirmEvent(java.awt.event.MouseEvent evt) {
         label.setText(jTextField1.getText().trim());
+        userServices.changeUserFullName(userInfo.getId(), jTextField1.getText().trim());
         this.setVisible(false);
     }
 
