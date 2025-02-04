@@ -1,9 +1,9 @@
-package screens;
+package screens.account_screens;
 
 import utils.CheckRegex;
 import models.User.UserAccount;
 import models.User.UserInfo;
-import utils.Gradient;
+import utils.get_color.Gradient;
 
 import javax.swing.*;
 import java.awt.*;

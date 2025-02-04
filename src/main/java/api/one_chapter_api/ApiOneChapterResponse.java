@@ -1,4 +1,4 @@
-package api.chapter_api.one_chapter_api;
+package api.one_chapter_api;
 
 public class ApiOneChapterResponse {
     private String status;

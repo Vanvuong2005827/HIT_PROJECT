@@ -1,11 +1,10 @@
-package screens;
+package screens.account_screens;
 
 import DAO.ConnectDB;
-import utils.Gradient;
+import screens.login_screens.LoginScreen;
+import utils.get_color.Gradient;
 
 import javax.swing.*;
-
-import java.awt.*;
 
 import static commons.ColorMain.*;
 import static commons.CurrentUser.userServices;
@@ -291,9 +290,6 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
     }
 
     private void confirmEvent(java.awt.event.MouseEvent evt) {
-        jPanel1.setBackground(colorMain);
-        jPanel1.repaint();
-        jPanel1.revalidate();
         int confirm = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng xuất để áp dụng màu nền này không?", "Đăng xuất?", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
             userServices.updateGradientColorToUser(colorMain1, colorMain2, colorMain3, colorFix);

@@ -1,4 +1,4 @@
-import screens.LoginScreen;
+import screens.login_screens.LoginScreen;
 import DAO.ConnectDB;
 
 import static commons.ColorMain.getColorGradient;

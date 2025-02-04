@@ -2,9 +2,9 @@
 package screens.home_screen_pages;
 
 import models.book_information.Book;
-import screens.HomeScreen;
+import screens.main_screens.HomeScreen;
 import services.BookService;
-import utils.Gradient;
+import utils.get_color.Gradient;
 
 import javax.swing.*;
 import java.awt.*;

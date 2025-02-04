@@ -4,19 +4,21 @@ import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.JPanel;
+import javax.swing.*;
 
+import DAO.ConnectDB;
 import commons.IconUser;
 import models.User.UserInfo;
-import screens.ChangPassScreen;
-import screens.ChangeThemeScreen;
-import screens.ForgotPassScreen;
-import screens.HomeScreen;
-import utils.Gradient;
+import screens.account_screens.ChangPassScreen;
+import screens.account_screens.ChangeNameScreen;
+import screens.account_screens.ChangeThemeScreen;
+import screens.account_screens.ForgotPassScreen;
+import screens.login_screens.LoginScreen;
+import screens.main_screens.HomeScreen;
+import utils.get_color.Gradient;
 
 import static commons.ColorMain.*;
-import static commons.CurrentUser.userAccount;
-import static commons.CurrentUser.userInfo;
+import static commons.CurrentUser.*;
 
 public class AccountPage extends javax.swing.JFrame {
     HomeScreen homeScreen;
@@ -267,7 +269,8 @@ public class AccountPage extends javax.swing.JFrame {
     }
 
     private void changeNameEvent(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
+        ChangeNameScreen changeNameScreen = new ChangeNameScreen(accountNameLabel);
+        changeNameScreen.setVisible(true);
     }
 
     private void changePassEvent(java.awt.event.MouseEvent evt) {
@@ -289,7 +292,10 @@ public class AccountPage extends javax.swing.JFrame {
     }
 
     private void removeAccEvent(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa tài khoản?", "Xóa tài khoản?", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            homeScreen.backToLogin();
+        }
     }
 
     private String getRandomIconUser(){

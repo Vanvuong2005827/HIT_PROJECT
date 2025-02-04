@@ -1,7 +1,7 @@
 package models.book_information;
 
 
-import api.chapter_api.ApiChapterSeverData;
+import api.list_chapter_api.ApiChapterSeverData;
 import org.bson.types.ObjectId;
 
 import java.util.List;

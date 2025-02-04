@@ -1,4 +1,4 @@
-package api.chapter_api.one_chapter_api;
+package api.one_chapter_api;
 
 import com.google.gson.annotations.SerializedName;
 import models.chapter_information.ChapterImage;

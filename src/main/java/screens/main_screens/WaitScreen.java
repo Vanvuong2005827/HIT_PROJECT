@@ -1,5 +1,5 @@
 
-package screens;
+package screens.main_screens;
 
 
 import java.io.File;

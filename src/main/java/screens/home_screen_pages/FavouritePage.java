@@ -1,7 +1,7 @@
 
 package screens.home_screen_pages;
 
-import screens.HomeScreen;
+import screens.main_screens.HomeScreen;
 
 import javax.swing.JPanel;
 

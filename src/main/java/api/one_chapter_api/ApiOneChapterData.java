@@ -1,6 +1,4 @@
-package api.chapter_api.one_chapter_api;
-
-import java.util.List;
+package api.one_chapter_api;
 
 public class ApiOneChapterData {
     private ApiOneChapterJson item;

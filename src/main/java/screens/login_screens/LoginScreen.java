@@ -1,6 +1,9 @@
-package screens;
+package screens.login_screens;
 
 import models.User.UserIP;
+import screens.main_screens.HomeScreen;
+import screens.main_screens.WaitScreen;
+import screens.account_screens.ForgotPassScreen;
 import utils.CheckRegex;
 import models.User.UserAccount;
 

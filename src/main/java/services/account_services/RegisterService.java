@@ -1,7 +1,8 @@
-package services;
+package services.account_services;
 
 import models.User.UserAccount;
 import org.bson.Document;
+import services.UserServices;
 
 import static DAO.ConnectDB.*;
 public class RegisterService {

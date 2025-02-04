@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package screens;
+package screens.main_screens;
 
 import java.awt.Color;
 
@@ -10,6 +10,7 @@ import screens.home_screen_pages.HomePage;
 import screens.home_screen_pages.AccountPage;
 import screens.home_screen_pages.FavouritePage;
 import screens.home_screen_pages.RecentPage;
+import screens.login_screens.LoginScreen;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
