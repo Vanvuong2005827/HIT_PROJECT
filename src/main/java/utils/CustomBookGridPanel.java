@@ -4,7 +4,7 @@ import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.chapter_information.AllChapters;
 import screens.one_book_screens.ChapterScreen;
-import screens.main_screens.OneBookScreen;
+import screens.one_book_screens.OneBookScreen;
 import screens.main_screens.WaitScreen;
 import services.BookService;
 import utils.get_data.GetAllBook;

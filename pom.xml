@@ -22,6 +22,34 @@
             <version>RELEASE210</version>
         </dependency>
 
+        <!-- FlatLaf core -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <!-- FlatLaf Extras (hỗ trợ SVG Icon) -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-extras</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.jiconfont/jiconfont-swing -->
+        <dependency>
+            <groupId>com.github.jiconfont</groupId>
+            <artifactId>jiconfont-swing</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>6.7.2</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/com.sun.mail/jakarta.mail -->
         <dependency>
