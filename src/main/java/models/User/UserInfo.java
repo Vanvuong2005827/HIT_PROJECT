@@ -60,11 +60,11 @@ public class UserInfo {
 
     public UserInfo(String fullname, int i, String email, String phoneNumber, String gender, UserAccount user) {
         this.id = user.getId();
-        this.fullName = fullName;
+        this.fullName = fullname;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.birthday = birthday;
-        this.sex = sex;
+        this.birthday = i;
+        this.sex = gender;
     }
 
     // Getter & Setter

@@ -1,8 +1,7 @@
 import screens.login_screens.LoginScreen;
 import DAO.ConnectDB;
-
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.*;
-
 import static commons.ColorMain.getColorGradient;
 
 

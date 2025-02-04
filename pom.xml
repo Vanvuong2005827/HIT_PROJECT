@@ -22,19 +22,24 @@
             <version>RELEASE210</version>
         </dependency>
 
-        <!-- FlatLaf core -->
-        <dependency>
-            <groupId>com.formdev</groupId>
-            <artifactId>flatlaf</artifactId>
-            <version>3.1</version>
-        </dependency>
-
-        <!-- FlatLaf Extras (hỗ trợ SVG Icon) -->
+        <!-- https://mvnrepository.com/artifact/com.formdev/flatlaf-extras -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf-extras</artifactId>
-            <version>3.1</version>
+            <version>3.4</version>
         </dependency>
+
+
+
+        <!-- https://mvnrepository.com/artifact/com.formdev/flatlaf -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.1.1</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
 
         <!-- https://mvnrepository.com/artifact/com.github.jiconfont/jiconfont-swing -->
         <dependency>

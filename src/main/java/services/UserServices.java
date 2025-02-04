@@ -5,6 +5,7 @@ import com.mongodb.client.model.Updates;
 import models.User.UserAccount;
 import models.User.UserIP;
 import models.User.UserInfo;
+import org.bson.types.ObjectId;
 
 import java.awt.*;
 import java.time.LocalDateTime;
@@ -69,6 +70,13 @@ public class UserServices {
 
         UserInfo userInfo = new UserInfo(fullname, Integer.parseInt(yearOfBirth), email, phoneNumber, Gender, user);
         collectionInfo.insertOne(userInfo);
+    }
+
+    public void changeUserFullName(ObjectId userId, String newFullname) {
+        collectionInfo.updateOne(
+                Filters.eq("_id", userId),
+                Updates.set("fullName", newFullname)
+        );
     }
 
     public void plusTime(UserIP userIP, int plusMinutesInto) {

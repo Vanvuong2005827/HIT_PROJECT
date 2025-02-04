@@ -294,6 +294,7 @@ public class AccountPage extends javax.swing.JFrame {
     private void removeAccEvent(java.awt.event.MouseEvent evt) {
         int confirm = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa tài khoản?", "Xóa tài khoản?", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
+            delAccountService.delAccount(userAccount.getId());
             homeScreen.backToLogin();
         }
     }

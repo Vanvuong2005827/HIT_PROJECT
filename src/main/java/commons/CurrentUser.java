@@ -3,10 +3,7 @@ package commons;
 import models.User.UserAccount;
 import models.User.UserInfo;
 import services.*;
-import services.account_services.EncryptorService;
-import services.account_services.ForgetPasswordService;
-import services.account_services.LoginService;
-import services.account_services.RegisterService;
+import services.account_services.*;
 
 import java.util.prefs.Preferences;
 
@@ -20,4 +17,5 @@ public class CurrentUser {
     public static ForgetPasswordService forgetPasswordService = new ForgetPasswordService();
     public static Preferences pref = Preferences.userRoot().node("rememberMe");
     public static EncryptorService encryptorService = new EncryptorService();
+    public static DelAccountService delAccountService = new DelAccountService();
 }
