@@ -192,7 +192,7 @@ public class CustomBookGridPanel {
 
         JTextArea[] textAreas = {titleArea, updateAtArea, statusArea, chapterLastestArea, categoriesArea};
         for (JTextArea textArea : textAreas) {
-            titleArea.setFont(customFont);
+            textArea.setFont(customFont);
             textArea.setBackground(cusColor);
             textArea.setWrapStyleWord(true);
             textArea.setLineWrap(true);
