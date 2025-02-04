@@ -11,6 +11,7 @@ import screens.home_screen_pages.AccountPage;
 import screens.home_screen_pages.FavouritePage;
 import screens.home_screen_pages.RecentPage;
 import screens.login_screens.LoginScreen;
+import screens.login_screens.SignUpScreen;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -18,6 +19,7 @@ import javax.swing.event.ChangeListener;
 
 import static commons.ColorMain.colorMain;
 import static commons.ColorMain.colorMain3;
+import static commons.CurrentUser.*;
 
 public class HomeScreen extends javax.swing.JFrame {
     LoginScreen loginScreen;
@@ -62,6 +64,17 @@ public class HomeScreen extends javax.swing.JFrame {
             protected void done() {
                 homeScreen.setVisible(true);
                 waitScreen.setVisible(false);
+                if (userInfo.getFullName() == null){
+                    int confirm = JOptionPane.showConfirmDialog(homeScreen, "Vui lòng điền thông tin cá nhân!", "Thông báo", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        SignUpScreen signUpScreen = new SignUpScreen(loginScreen);
+                        signUpScreen.setVisible(true);
+                        homeScreen.setVisible(false);
+                    }
+                    else{
+                        backToLogin();
+                    }
+                }
             }
         };
 

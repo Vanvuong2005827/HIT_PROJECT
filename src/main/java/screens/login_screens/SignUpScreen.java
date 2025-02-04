@@ -18,8 +18,10 @@ public class SignUpScreen extends javax.swing.JFrame {
     private String basePath = new File("").getAbsolutePath();
     private String AnsCode = "";
     private int Count = 60;
+    private JFrame loginScreen;
 
-    public SignUpScreen() {
+    public SignUpScreen(JFrame l) {
+        loginScreen = l;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -357,9 +359,8 @@ public class SignUpScreen extends javax.swing.JFrame {
     }
 
     private void backEvent(java.awt.event.MouseEvent evt) {
-        LoginScreen ls = new LoginScreen();
+        loginScreen.setVisible(true);
         this.setVisible(false);
-        ls.setVisible(true);
     }
 
     private void sendCodeEvent(java.awt.event.MouseEvent evt) {

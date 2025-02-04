@@ -415,7 +415,7 @@ public class LoginScreen extends JFrame {
             signUpMessageLabel.setText("Tài khoản đã tồn tại");
             return;
         } else {
-            SignUpScreen su = new SignUpScreen();
+            SignUpScreen su = new SignUpScreen(this);
             this.setVisible(false);
             su.setVisible(true);
         }
