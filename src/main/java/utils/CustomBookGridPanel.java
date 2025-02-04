@@ -277,7 +277,7 @@ public class CustomBookGridPanel {
                                                                 .addGap(0, 0, Short.MAX_VALUE))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, childPanelLayout.createSequentialGroup()
                                                                 .addGap(0, 0, Short.MAX_VALUE)
-                                                                .addComponent(categoriesArea, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                                .addComponent(categoriesArea, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addContainerGap())
         );
         childPanelLayout.setVerticalGroup(
