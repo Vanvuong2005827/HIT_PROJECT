@@ -132,7 +132,7 @@ public class CustomBookGridPanel {
         return panel;
     }
 
-    public static JPanel customBookGrid1(JFrame previousScreen, int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont1, JPanel panelMain) {
+    public static JPanel customBookGrid1(JFrame previousScreen, int index, int panelWidth, int panelHeight, int imgWidth, int imgHeight, ArrayList<Book> books, Color cusColor, String baseUrl, Font customFont, JPanel panelMain) {
         JPanel childPanel = new JPanel();
 
         JTextArea categoriesArea;
@@ -165,9 +165,6 @@ public class CustomBookGridPanel {
             imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
         }
 
-        imgLabel.setBackground(cusColor);
-        imgLabel.setForeground(cusColor);
-
         String inputDateTime = books.get(index).getUpdatedAt();
         LocalDateTime dateTime = LocalDateTime.parse(inputDateTime.substring(0, 19));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
@@ -193,68 +190,22 @@ public class CustomBookGridPanel {
         chapterLastestArea = new JTextArea("Chapter newest: " + chapterLatest);
         categoriesArea = new JTextArea(categories.toString());
 
-        titleArea.setFont(customFont1);
-        titleArea.setBackground(cusColor);
-        titleArea.setWrapStyleWord(true);
-        titleArea.setLineWrap(true);
-        titleArea.setFocusable(false);
-        titleArea.setHighlighter(null);
-        titleArea.setCursor(Cursor.getDefaultCursor());
-        titleArea.setColumns(20);
-        titleArea.setRows(5);
-
-        updateAtArea.setFont(customFont1);
-        updateAtArea.setBackground(cusColor);
-        updateAtArea.setLineWrap(true);
-        updateAtArea.setWrapStyleWord(true);
-        updateAtArea.setFocusable(false);
-        updateAtArea.setEditable(false);
-        updateAtArea.setHighlighter(null);
-        updateAtArea.setCursor(Cursor.getDefaultCursor());
-        updateAtArea.setColumns(20);
-        updateAtArea.setRows(5);
-
-        statusArea.setFont(customFont1);
-        statusArea.setBackground(cusColor);
-        statusArea.setLineWrap(true);
-        statusArea.setWrapStyleWord(true);
-        statusArea.setFocusable(false);
-        statusArea.setEditable(false);
-        statusArea.setHighlighter(null);
-        statusArea.setCursor(Cursor.getDefaultCursor());
-        statusArea.setColumns(20);
-        statusArea.setRows(5);
-
-        categoriesArea.setFont(customFont1);
-        categoriesArea.setBackground(cusColor);
-        categoriesArea.setLineWrap(true);
-        categoriesArea.setWrapStyleWord(true);
-        categoriesArea.setFocusable(false);
-        categoriesArea.setEditable(false);
-        categoriesArea.setHighlighter(null);
-        categoriesArea.setCursor(Cursor.getDefaultCursor());
-        categoriesArea.setColumns(20);
-        categoriesArea.setRows(5);
-
-        chapterLastestArea.setFont(customFont1);
-        chapterLastestArea.setBackground(cusColor);
-        chapterLastestArea.setLineWrap(true);
-        chapterLastestArea.setWrapStyleWord(true);
-        chapterLastestArea.setFocusable(false);
-        chapterLastestArea.setEditable(false);
-        chapterLastestArea.setHighlighter(null);
-        chapterLastestArea.setCursor(Cursor.getDefaultCursor());
-        chapterLastestArea.setColumns(20);
-        chapterLastestArea.setRows(5);
-
-        fixDragable(titleArea, childPanel, previousScreen, books, index);
-        fixDragable(updateAtArea, childPanel, previousScreen, books, index);
-        fixDragable(statusArea, childPanel, previousScreen, books, index);
-        fixDragable(categoriesArea, childPanel, previousScreen, books, index);
-        fixDragable(chapterLastestArea, childPanel, previousScreen, books, index);
+        JTextArea[] textAreas = {titleArea, updateAtArea, statusArea, chapterLastestArea, categoriesArea};
+        for (JTextArea textArea : textAreas) {
+            titleArea.setFont(customFont);
+            textArea.setBackground(cusColor);
+            textArea.setWrapStyleWord(true);
+            textArea.setLineWrap(true);
+            textArea.setFocusable(false);
+            textArea.setHighlighter(null);
+            textArea.setCursor(Cursor.getDefaultCursor());
+            textArea.setEditable(false);
+            textArea.setColumns(20);
+            textArea.setRows(5);
+            fixDragable(textArea, childPanel, previousScreen, books, index);
+        }
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
-        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout childPanelLayout = new javax.swing.GroupLayout(childPanel);
         childPanel.setLayout(childPanelLayout);
@@ -498,5 +449,4 @@ public class CustomBookGridPanel {
         g2d.dispose();
         return resizedImage;
     }
-
 }
