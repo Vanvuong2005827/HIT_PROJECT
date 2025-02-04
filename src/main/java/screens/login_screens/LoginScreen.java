@@ -251,7 +251,7 @@ public class LoginScreen extends JFrame {
         jLabel1.setForeground(Color.black);
         jLabel1.setText("Welcom to my comic");
 
-        jLabel2.setIcon(new ImageIcon(basePath + "\\src\\main\\java\\assets\\a-book-114_256.gif"));
+        jLabel2.setIcon(new ImageIcon(basePath + "\\src\\main\\java\\assets\\logoBrand.png"));
 
         GroupLayout loginMainPanelLayout = new GroupLayout(loginMainPanel);
         loginMainPanel.setLayout(loginMainPanelLayout);
