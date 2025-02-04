@@ -136,7 +136,7 @@ public class OneBookScreen extends javax.swing.JFrame {
             }
         });
 
-        oneBookFavou.setBackground(Color.gray);
+        oneBookFavou.setBackground(bookService.checkFavorite(curBook.getId()));
         javax.swing.GroupLayout oneBookFavouLayout = new javax.swing.GroupLayout(oneBookFavou);
         oneBookFavou.setLayout(oneBookFavouLayout);
         oneBookFavouLayout.setHorizontalGroup(
@@ -344,7 +344,13 @@ public class OneBookScreen extends javax.swing.JFrame {
     }
 
     private void loveEvent(java.awt.event.MouseEvent evt) {
-        oneBookFavou.setBackground((oneBookFavou.getBackground() == Color.red) ? Color.gray : Color.red);
+        if (oneBookFavou.getBackground() == Color.gray) {
+            oneBookFavou.setBackground(Color.red);
+            bookService.toggleFavorite(curBook.getId(), Color.red);
+        } else {
+            oneBookFavou.setBackground(Color.gray);
+            bookService.toggleFavorite(curBook.getId(), Color.gray);
+        }
     }
 
     public void processBookInfoData(){

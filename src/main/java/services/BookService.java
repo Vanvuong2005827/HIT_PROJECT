@@ -11,6 +11,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,4 +91,78 @@ public class BookService {
         }
         return books;
     }
+
+    public void toggleFavorite(ObjectId bookId, Color level) {
+        storageBookToUser(bookId);
+
+        Bson filter = Filters.and(
+                Filters.eq("userId", userAccount.getId()),
+                Filters.eq("bookId", bookId)
+        );
+
+        UserHistoryBooks result = collectionHistory.find(filter).first();
+
+        boolean isFavorite = false;
+
+        if (result != null && result.getFavorite()) {
+            isFavorite = result.getFavorite();
+        }
+
+        if (result == null || !result.getFavorite()) {
+            collectionHistory.updateOne(
+                    filter,
+                    Updates.set("favorite", false),
+                    new UpdateOptions().upsert(true)
+            );
+        }
+
+        boolean newFavoriteStatus = (level == Color.red);
+
+        collectionHistory.updateOne(
+                filter,
+                Updates.set("favorite", newFavoriteStatus),
+                new UpdateOptions().upsert(true)
+        );
+
+    }
+
+
+    public ArrayList<Book> getAllFavorites(ObjectId bookId) {
+        ArrayList<Book> books = new ArrayList<>();
+
+        Bson filter = Filters.and(
+                Filters.eq("userId", userAccount.getId()),
+                Filters.eq("favorite", true)
+        );
+
+        FindIterable<UserHistoryBooks> results = collectionHistory.find(filter)
+                .sort(Sorts.descending("lastReadDate"));
+        for (UserHistoryBooks history : results) {
+            Book book = getBookById(history.getBookId());
+            if (book != null) {
+                books.add(book);
+            }
+        }
+        return books;
+    }
+
+    public Color checkFavorite(ObjectId bookId) {
+        Bson filter = Filters.and(
+                Filters.eq("userId", userAccount.getId()),
+                Filters.eq("bookId", bookId)
+        );
+
+        UserHistoryBooks result = collectionHistory.find(filter).first();
+
+        if (result == null || !result.getFavorite()) {
+            return Color.gray;
+        }
+
+        boolean isFavorite = result.getFavorite();
+        return isFavorite ? Color.red : Color.gray;
+
+    }
+
+
+
 }
