@@ -22,11 +22,11 @@
             <version>RELEASE210</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.formdev/flatlaf-extras -->
+        <!-- FlatLaf core -->
         <dependency>
             <groupId>com.formdev</groupId>
-            <artifactId>flatlaf-extras</artifactId>
-            <version>3.4</version>
+            <artifactId>flatlaf</artifactId>
+            <version>3.1</version>
         </dependency>
 
 
@@ -34,9 +34,8 @@
         <!-- https://mvnrepository.com/artifact/com.formdev/flatlaf -->
         <dependency>
             <groupId>com.formdev</groupId>
-            <artifactId>flatlaf</artifactId>
-            <version>3.1.1</version>
-            <scope>runtime</scope>
+            <artifactId>flatlaf-extras</artifactId>
+            <version>3.1</version>
         </dependency>
 
 
