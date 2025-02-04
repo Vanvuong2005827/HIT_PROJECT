@@ -127,7 +127,7 @@ public class BookService {
     }
 
 
-    public ArrayList<Book> getAllFavorites(ObjectId bookId) {
+    public ArrayList<Book> getAllFavorites() {
         ArrayList<Book> books = new ArrayList<>();
 
         Bson filter = Filters.and(

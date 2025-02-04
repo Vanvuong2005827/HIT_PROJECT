@@ -82,7 +82,6 @@ public class RecentPage extends javax.swing.JFrame {
         ArrayList<Book> books = bookService.getAllBooks();
         Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
         String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
-        Color cusColor = mainPanel.getBackground();
         totalBooks = books.size();
         int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);

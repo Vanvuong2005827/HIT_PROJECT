@@ -27,6 +27,7 @@ public class HomeScreen extends javax.swing.JFrame {
     RecentPage rp = new RecentPage(this);
     FavouritePage fp = new FavouritePage(this);
     AccountPage ap = new AccountPage(this);
+
     public HomeScreen(LoginScreen ls, WaitScreen ws) {
         loginScreen = ls;
         waitScreen = ws;
@@ -77,7 +78,7 @@ public class HomeScreen extends javax.swing.JFrame {
             @Override
             public void stateChanged(ChangeEvent e) {
                 int selectedIndex = jTabbedPane1.getSelectedIndex();
-                if (selectedIndex == 1){
+                if (selectedIndex == 1) {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         @Override
                         protected Void doInBackground() {
@@ -91,9 +92,19 @@ public class HomeScreen extends javax.swing.JFrame {
                     };
 
                     worker.execute();
-                }
-                else if (selectedIndex == 2){
-                 // Favourite
+                } else if (selectedIndex == 2) {
+                    SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                        @Override
+                        protected Void doInBackground() {
+                            fp.processFavouriteBook();
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                        }
+                    };
+                    worker.execute();
                 }
             }
         });
