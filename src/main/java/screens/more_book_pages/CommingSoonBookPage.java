@@ -32,9 +32,9 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        commingSoonBookMainPanel.setBackground(colorMain);
+        commingSoonBookMainPanel.setBackground(colorMain2);
 
-        commingSoonBookScrollPane.setBackground(colorMain);
+        commingSoonBookScrollPane.setBackground(colorMain2);
         commingSoonBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         commingSoonBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 

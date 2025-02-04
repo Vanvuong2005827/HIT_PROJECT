@@ -35,9 +35,9 @@ public class RecentPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        recentBookMainPanel.setBackground(colorOpaque);
+        recentBookMainPanel.setBackground(colorFix);
+        recentBookScrollPane.setBackground(colorFix);
 
-        mainPanel.setBackground(colorOpaque);
         recentBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         recentBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 

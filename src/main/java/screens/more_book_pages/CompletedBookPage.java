@@ -32,9 +32,9 @@ public class CompletedBookPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        completedBookMainPanel.setBackground(colorMain);
+        completedBookMainPanel.setBackground(colorMain2);
 
-        completedBookScrollPane.setBackground(colorMain);
+        completedBookScrollPane.setBackground(colorMain2);
         completedBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         completedBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 

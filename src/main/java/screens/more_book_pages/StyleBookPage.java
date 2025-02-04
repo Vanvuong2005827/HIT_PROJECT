@@ -37,9 +37,9 @@ public class StyleBookPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        styleBookMainPanel.setBackground(colorMain);
+        styleBookMainPanel.setBackground(colorMain2);
 
-        styleBookScrollPane.setBackground(colorMain);
+        styleBookScrollPane.setBackground(colorMain2);
         styleBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         styleBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 

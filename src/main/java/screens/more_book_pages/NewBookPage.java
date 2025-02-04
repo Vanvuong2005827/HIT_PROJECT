@@ -32,9 +32,10 @@ public class NewBookPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        newBookMainPanel.setBackground(colorOpaque);
+        newBookMainPanel.setBackground(colorMain2);
 
-        newBookScrollPane.setBackground(colorOpaque);
+        newBookScrollPane.setBackground(colorMain2);
+
         newBookScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         newBookScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
