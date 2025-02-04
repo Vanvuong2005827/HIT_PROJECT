@@ -1,11 +1,11 @@
-package screens;
+package screens.one_book_screens;
 
 import models.book_information.Book;
 import models.chapter_information.AllChapters;
 import models.chapter_information.Chapter;
 import models.chapter_information.ChapterImage;
-import utils.GetChapters;
-import utils.Gradient;
+import utils.get_data.GetChapters;
+import utils.get_color.Gradient;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,7 +16,6 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;

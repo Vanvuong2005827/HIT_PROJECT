@@ -1,11 +1,9 @@
-package utils;
+package utils.get_data;
 
-import api.chapter_api.ApiChapterSeverData;
-import api.chapter_api.ApiListChapterJson;
-import api.chapter_api.one_chapter_api.ApiOneChapterJson;
-import api.chapter_api.one_chapter_api.ApiOneChapterResponse;
-import api.one_book_api.ApiOneBookJson;
-import api.one_book_api.ApiOneBookResponse;
+import api.list_chapter_api.ApiChapterSeverData;
+import api.list_chapter_api.ApiListChapterJson;
+import api.one_chapter_api.ApiOneChapterJson;
+import api.one_chapter_api.ApiOneChapterResponse;
 import com.google.gson.Gson;
 import models.book_information.Book;
 import models.chapter_information.AllChapters;

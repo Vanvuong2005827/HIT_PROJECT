@@ -1,4 +1,4 @@
-package screens;
+package screens.main_screens;
 
 import screens.more_book_pages.*;
 

@@ -1,9 +1,9 @@
 package screens.more_book_pages;
 
 import models.book_information.Book;
-import utils.GetAllBook;
-import screens.MoreBookScreen;
-import utils.Gradient;
+import utils.get_data.GetAllBook;
+import screens.main_screens.MoreBookScreen;
+import utils.get_color.Gradient;
 
 import javax.swing.*;
 import java.awt.*;

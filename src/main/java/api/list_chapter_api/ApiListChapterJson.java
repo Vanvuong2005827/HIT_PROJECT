@@ -1,4 +1,4 @@
-package api.chapter_api;
+package api.list_chapter_api;
 
 public class ApiListChapterJson {
     private String filename;

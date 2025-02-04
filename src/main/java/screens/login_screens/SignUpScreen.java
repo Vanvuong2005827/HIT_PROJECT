@@ -1,8 +1,8 @@
 
-package screens;
+package screens.login_screens;
 
 import utils.CheckRegex;
-import utils.Gradient;
+import utils.get_color.Gradient;
 
 import javax.swing.*;
 import java.awt.*;

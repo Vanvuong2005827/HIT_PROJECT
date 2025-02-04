@@ -1,4 +1,4 @@
-package services;
+package services.account_services;
 
 import org.mindrot.jbcrypt.BCrypt;
 

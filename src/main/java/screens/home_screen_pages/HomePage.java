@@ -16,12 +16,12 @@ import javax.swing.*;
 import commons.ColorMain;
 import models.book_information.Book;
 import models.book_information.BookCategory;
-import screens.StyleBookScreen;
-import utils.GetAllBook;
-import screens.HomeScreen;
-import screens.MoreBookScreen;
-import screens.WaitScreen;
-import utils.Gradient;
+import screens.more_book_pages.StyleBookScreen;
+import utils.get_data.GetAllBook;
+import screens.main_screens.HomeScreen;
+import screens.main_screens.MoreBookScreen;
+import screens.main_screens.WaitScreen;
+import utils.get_color.Gradient;
 
 import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid3;

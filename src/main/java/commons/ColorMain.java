@@ -1,13 +1,11 @@
 package commons;
 
-import utils.ColorTuple;
-import utils.Gradient;
+import utils.get_color.ColorTuple;
+import utils.get_color.Gradient;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
-import static commons.CurrentUser.userInfo;
 
 public class ColorMain {
     public static ArrayList<Color> listColorNormal = new ArrayList<>();

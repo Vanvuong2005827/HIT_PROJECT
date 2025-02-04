@@ -1,6 +1,6 @@
-package screens;
+package screens.account_screens;
 
-import utils.Gradient;
+import utils.get_color.Gradient;
 
 import javax.swing.*;
 import java.io.File;

@@ -1,8 +1,7 @@
-package services;
+package services.account_services;
 
 import models.User.UserAccount;
-
-import java.util.prefs.Preferences;
+import services.UserServices;
 
 import static commons.CurrentUser.encryptorService;
 import static commons.CurrentUser.pref;

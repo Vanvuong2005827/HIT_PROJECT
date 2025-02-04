@@ -1,4 +1,4 @@
-package utils;
+package utils.get_color;
 
 import java.awt.*;
 

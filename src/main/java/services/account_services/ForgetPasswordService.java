@@ -1,4 +1,4 @@
-package services;
+package services.account_services;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import jakarta.mail.*;
@@ -6,7 +6,6 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import models.User.UserAccount;
 
-import javax.swing.*;
 import java.util.Properties;
 import java.util.Random;
 

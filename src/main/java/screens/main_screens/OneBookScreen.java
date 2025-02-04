@@ -1,9 +1,9 @@
-package screens;
+package screens.main_screens;
 
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.chapter_information.AllChapters;
-import services.BookService;
+import screens.one_book_screens.ChapterScreen;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
