@@ -303,6 +303,8 @@ public class OneBookScreen extends javax.swing.JFrame {
 
                     @Override
                     protected void done() {
+                        bookService.saveLastReadChapter(curBook.getId(), 0);
+                        oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                         cs.setVisible(true);
                         ws.setVisible(false);
                     }
@@ -329,6 +331,8 @@ public class OneBookScreen extends javax.swing.JFrame {
 
                     @Override
                     protected void done() {
+                        bookService.saveLastReadChapter(curBook.getId(), x);
+                        oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                         cs.setVisible(true);
                         ws.setVisible(false);
                     }
