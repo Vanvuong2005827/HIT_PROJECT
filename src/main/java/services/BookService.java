@@ -5,7 +5,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.model.Updates;
-import models.User.UserHistoryBooks;
+import models.user.UserHistoryBooks;
 import models.book_information.Book;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -15,8 +15,8 @@ import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import static DAO.ConnectDB.collectionBook;
-import static DAO.ConnectDB.collectionHistory;
+import static dao.ConnectDB.collectionBook;
+import static dao.ConnectDB.collectionHistory;
 import static commons.CurrentUser.userAccount;
 
 public class BookService {

@@ -1,6 +1,6 @@
 package services.account_services;
 
-import models.User.UserAccount;
+import models.user.UserAccount;
 import services.UserServices;
 
 import static commons.CurrentUser.encryptorService;

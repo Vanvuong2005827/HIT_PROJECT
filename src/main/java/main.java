@@ -1,5 +1,5 @@
-import screens.login_screens.LoginScreen;
-import DAO.ConnectDB;
+import view.screens.login_screens.LoginScreen;
+import dao.ConnectDB;
 import javax.swing.*;
 import static commons.ColorMain.getColorGradient;
 
@@ -15,5 +15,6 @@ public class main {
         getColorGradient();
         LoginScreen lg = new LoginScreen();
         lg.setVisible(true);
+
     }
 }

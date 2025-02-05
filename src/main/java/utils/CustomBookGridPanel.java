@@ -3,12 +3,12 @@ package utils;
 import models.book_information.Book;
 import models.book_information.BookCategory;
 import models.chapter_information.AllChapters;
-import screens.one_book_screens.ChapterScreen;
-import screens.one_book_screens.OneBookScreen;
-import screens.main_screens.WaitScreen;
+import view.screens.one_book_screens.ChapterScreen;
+import view.screens.one_book_screens.OneBookScreen;
+import view.screens.main_screens.WaitScreen;
 import services.BookService;
-import utils.get_data.GetAllBook;
-import utils.get_data.GetChapters;
+import data.GetAllBook;
+import data.GetChapters;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

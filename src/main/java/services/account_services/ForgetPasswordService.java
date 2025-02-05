@@ -5,12 +5,12 @@ import com.mongodb.client.model.Updates;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import models.User.UserAccount;
+import models.user.UserAccount;
 
 import java.util.Properties;
 import java.util.Random;
 
-import static DAO.ConnectDB.collection;
+import static dao.ConnectDB.collection;
 import static commons.CurrentUser.*;
 
 public class ForgetPasswordService {

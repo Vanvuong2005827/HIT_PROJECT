@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 import javax.swing.*;
 
-import static DAO.ConnectDB.*;
+import static dao.ConnectDB.*;
 
 public class DelAccountService {
     public void delAccount(ObjectId idUser) {
