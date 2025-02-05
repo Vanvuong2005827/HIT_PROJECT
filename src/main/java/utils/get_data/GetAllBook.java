@@ -3,9 +3,11 @@ package utils.get_data;
 import api.all_book_api.ApiAllBookResponse;
 import api.one_book_api.ApiOneBookJson;
 import api.one_book_api.ApiOneBookResponse;
+import api.seach_book_api.ApiSearchBookResponse;
 import com.google.gson.Gson;
 import models.book_information.Book;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -228,6 +230,43 @@ public class GetAllBook {
             }
         }
         return book;
+    }
+
+    public ArrayList<Book> getBooksTheoKeywords(String keywords, JLabel label) {
+        ArrayList<Book> books = new ArrayList<>();
+        int maxThreads = 10;
+        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
+        List<Future<ArrayList<Book>>> futures = new ArrayList<>();
+        Callable<ArrayList<Book>> task = () -> {
+            ArrayList<Book> pageBooks = new ArrayList<>();
+            String apiUrl = "https://otruyenapi.com/v1/api/tim-kiem?keyword=" + keywords;
+            String jsonData = getApi(apiUrl);
+            if (jsonData != null && !jsonData.isEmpty()) {
+                Gson gson = new Gson();
+                ApiSearchBookResponse apiResponse = gson.fromJson(jsonData, ApiSearchBookResponse.class);
+
+                if (apiResponse != null && apiResponse.getData() != null) {
+                    apiResponse.getData().getItems().forEach(item -> {
+                        pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChapters()));
+                    });
+                    label.setText(apiResponse.getData().getTitlePage());
+                }
+            }
+            return pageBooks;
+        };
+
+        futures.add(executor.submit(task));
+
+        for (Future<ArrayList<Book>> future : futures) {
+            try {
+                books.addAll(future.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
+        return books;
     }
 }
 

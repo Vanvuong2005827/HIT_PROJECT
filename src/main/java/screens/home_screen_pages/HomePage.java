@@ -62,7 +62,6 @@ public class HomePage extends javax.swing.JFrame {
         homeCommingSoonBookLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SignUp");
         setBackground(new java.awt.Color(255, 255, 255));
 
         homePageViewPanel.setBackground(colorOpaque);
@@ -75,6 +74,7 @@ public class HomePage extends javax.swing.JFrame {
         timer.start();
 
         homeSearchLabel.setText("Tìm kiếm");
+        homeSearchLabel.setFont(new java.awt.Font("Segoe UI", 1, 17));
 
         homeStyleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeStyleLabel.setText("Thể Loại");
@@ -247,7 +247,11 @@ public class HomePage extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(homePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
+        homeSearchLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchEvent(evt);
+            }
+        });
         pack();
     }
 
@@ -607,6 +611,12 @@ public class HomePage extends javax.swing.JFrame {
         ws.setVisible(true);
         homeScreen.setVisible(false);
         MoreBookScreen mb = new MoreBookScreen(homeScreen, 3, ws);
+    }
+
+    private void searchEvent(java.awt.event.MouseEvent evt) {
+        SearchPage sp = new SearchPage (homeScreen);
+        sp.setVisible(true);
+        homeScreen.setVisible(false);
     }
 
     private MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
