@@ -2,15 +2,15 @@ package services;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
-import models.User.UserAccount;
-import models.User.UserIP;
-import models.User.UserInfo;
+import models.user.UserAccount;
+import models.user.UserIP;
+import models.user.UserInfo;
 import org.bson.types.ObjectId;
 
 import java.awt.*;
 import java.time.LocalDateTime;
 
-import static DAO.ConnectDB.*;
+import static dao.ConnectDB.*;
 import static commons.CurrentUser.userAccount;
 
 

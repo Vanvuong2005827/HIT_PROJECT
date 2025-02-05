@@ -1,7 +1,7 @@
 package commons;
 
-import models.User.UserAccount;
-import models.User.UserInfo;
+import models.user.UserAccount;
+import models.user.UserInfo;
 import services.*;
 import services.account_services.*;
 

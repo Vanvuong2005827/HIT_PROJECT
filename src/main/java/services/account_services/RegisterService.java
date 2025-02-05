@@ -1,9 +1,9 @@
 package services.account_services;
 
-import models.User.UserAccount;
+import models.user.UserAccount;
 import services.UserServices;
 
-import static DAO.ConnectDB.*;
+import static dao.ConnectDB.*;
 
 public class RegisterService {
     private UserServices userServices;
