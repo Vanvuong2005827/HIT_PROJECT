@@ -262,7 +262,7 @@ public class HomePage extends javax.swing.JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(5, 8, 5, 5);
 
         GetAllBook lb = new GetAllBook();
         ArrayList<Book> books = lb.getBooksTruyenMoi(1);
@@ -314,7 +314,7 @@ public class HomePage extends javax.swing.JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(5, 8, 5, 5);
 
         GetAllBook lb = new GetAllBook();
         ArrayList<Book> books = lb.getBooksSapRaMat(1);

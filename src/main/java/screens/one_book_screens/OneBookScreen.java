@@ -40,6 +40,16 @@ public class OneBookScreen extends javax.swing.JFrame {
         initComponents();
         processBookChapterData();
         setLocationRelativeTo(null);
+
+        int tabWidth = 201;
+        for (int i = 0; i < oneBookTabbed.getTabCount(); i++) {
+            oneBookTabbed.setTabComponentAt(i, new JLabel(oneBookTabbed.getTitleAt(i)) {
+                {
+                    setPreferredSize(new Dimension(tabWidth, 30));
+                    setHorizontalAlignment(SwingConstants.CENTER);
+                }
+            });
+        }
     }
 
     private void initComponents() {

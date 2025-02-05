@@ -9,13 +9,13 @@ import static commons.ColorMain.colorMain;
 import static commons.ColorMain.colorMain1;
 
 public class MoreBookScreen extends javax.swing.JFrame {
-    HomeScreen homeScreen;
-    WaitScreen waitScreen;
-    MoreBookScreen moreBookScreen = this;
-    NewBookPage np = new NewBookPage(this);
-    CommingSoonBookPage cp = new CommingSoonBookPage(this);
-    CompletedBookPage cdp = new CompletedBookPage(this);
-    StyleBookPage sp = new StyleBookPage(this);
+    private HomeScreen homeScreen;
+    private WaitScreen waitScreen;
+    private MoreBookScreen moreBookScreen = this;
+    private NewBookPage np = new NewBookPage(this);
+    private CommingSoonBookPage cp = new CommingSoonBookPage(this);
+    private CompletedBookPage cdp = new CompletedBookPage(this);
+    private StyleBookPage sp = new StyleBookPage(this);
 
     public MoreBookScreen(HomeScreen hs, int indexTabbed, WaitScreen ws) {
         waitScreen = ws;
@@ -38,6 +38,16 @@ public class MoreBookScreen extends javax.swing.JFrame {
         jTabbedPane1.setForegroundAt(3, Color.BLACK);
 
         jTabbedPane1.setSelectedIndex(indexTabbed);
+
+        int tabWidth = 88;
+        for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+            jTabbedPane1.setTabComponentAt(i, new JLabel(jTabbedPane1.getTitleAt(i)) {
+                {
+                    setPreferredSize(new Dimension(tabWidth, 30));
+                    setHorizontalAlignment(SwingConstants.CENTER);
+                }
+            });
+        }
     }
 
     private void initComponents() {
