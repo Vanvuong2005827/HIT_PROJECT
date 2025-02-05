@@ -44,10 +44,10 @@ public class FavouritePage extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.GridBagLayout());
         favouriteBookScrollPane.setViewportView(mainPanel);
 
-        javax.swing.GroupLayout newBookMainPanelLayout = new javax.swing.GroupLayout(favouriteBookMainPanel);
-        favouriteBookMainPanel.setLayout(newBookMainPanelLayout);
-        newBookMainPanelLayout.setHorizontalGroup(newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(favouriteBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE));
-        newBookMainPanelLayout.setVerticalGroup(newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookMainPanelLayout.createSequentialGroup().addComponent(favouriteBookScrollPane).addContainerGap()));
+        javax.swing.GroupLayout favouriteBookMainPanelLayout = new javax.swing.GroupLayout(favouriteBookMainPanel);
+        favouriteBookMainPanel.setLayout(favouriteBookMainPanelLayout);
+        favouriteBookMainPanelLayout.setHorizontalGroup(favouriteBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(favouriteBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE));
+        favouriteBookMainPanelLayout.setVerticalGroup(favouriteBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(favouriteBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

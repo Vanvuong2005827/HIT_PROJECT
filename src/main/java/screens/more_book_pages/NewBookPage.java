@@ -52,9 +52,7 @@ public class NewBookPage extends javax.swing.JFrame {
         );
         newBookMainPanelLayout.setVerticalGroup(
                 newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookMainPanelLayout.createSequentialGroup()
-                                .addComponent(newBookScrollPane)
-                                .addContainerGap())
+                        .addComponent(newBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

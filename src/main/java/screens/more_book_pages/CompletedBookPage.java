@@ -41,17 +41,15 @@ public class CompletedBookPage extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.GridBagLayout());
         completedBookScrollPane.setViewportView(mainPanel);
 
-        javax.swing.GroupLayout newBookMainPanelLayout = new javax.swing.GroupLayout(completedBookMainPanel);
-        completedBookMainPanel.setLayout(newBookMainPanelLayout);
-        newBookMainPanelLayout.setHorizontalGroup(
-                newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout completedBookMainPanelLayout = new javax.swing.GroupLayout(completedBookMainPanel);
+        completedBookMainPanel.setLayout(completedBookMainPanelLayout);
+        completedBookMainPanelLayout.setHorizontalGroup(
+                completedBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(completedBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
-        newBookMainPanelLayout.setVerticalGroup(
-                newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookMainPanelLayout.createSequentialGroup()
-                                .addComponent(completedBookScrollPane)
-                                .addContainerGap())
+        completedBookMainPanelLayout.setVerticalGroup(
+                completedBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(completedBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

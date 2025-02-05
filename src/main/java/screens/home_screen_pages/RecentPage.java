@@ -44,17 +44,15 @@ public class RecentPage extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.GridBagLayout());
         recentBookScrollPane.setViewportView(mainPanel);
 
-        javax.swing.GroupLayout newBookMainPanelLayout = new javax.swing.GroupLayout(recentBookMainPanel);
-        recentBookMainPanel.setLayout(newBookMainPanelLayout);
-        newBookMainPanelLayout.setHorizontalGroup(
-                newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout recentBookMainPanelLayout = new javax.swing.GroupLayout(recentBookMainPanel);
+        recentBookMainPanel.setLayout(recentBookMainPanelLayout);
+        recentBookMainPanelLayout.setHorizontalGroup(
+                recentBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(recentBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
-        newBookMainPanelLayout.setVerticalGroup(
-                newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookMainPanelLayout.createSequentialGroup()
-                                .addComponent(recentBookScrollPane)
-                                .addContainerGap())
+        recentBookMainPanelLayout.setVerticalGroup(
+                recentBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(recentBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -67,6 +65,7 @@ public class RecentPage extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(recentBookMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
         pack();
     }
 

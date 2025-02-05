@@ -41,17 +41,15 @@ public class CommingSoonBookPage extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.GridBagLayout());
         commingSoonBookScrollPane.setViewportView(mainPanel);
 
-        javax.swing.GroupLayout newBookMainPanelLayout = new javax.swing.GroupLayout(commingSoonBookMainPanel);
-        commingSoonBookMainPanel.setLayout(newBookMainPanelLayout);
-        newBookMainPanelLayout.setHorizontalGroup(
-                newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout commingSoonBookMainPanelLayout = new javax.swing.GroupLayout(commingSoonBookMainPanel);
+        commingSoonBookMainPanel.setLayout(commingSoonBookMainPanelLayout);
+        commingSoonBookMainPanelLayout.setHorizontalGroup(
+                commingSoonBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(commingSoonBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
-        newBookMainPanelLayout.setVerticalGroup(
-                newBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newBookMainPanelLayout.createSequentialGroup()
-                                .addComponent(commingSoonBookScrollPane)
-                                .addContainerGap())
+        commingSoonBookMainPanelLayout.setVerticalGroup(
+                commingSoonBookMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(commingSoonBookScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
