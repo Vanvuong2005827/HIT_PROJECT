@@ -43,7 +43,7 @@ public class OneBookScreen extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
+        bookService.insertBookToDB(curBook);
         oneBookPanel = new javax.swing.JPanel();
         oneBookMainPanel = new javax.swing.JLayeredPane();
         oneBookImgLabel = new javax.swing.JLabel();
