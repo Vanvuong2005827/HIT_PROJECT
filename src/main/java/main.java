@@ -15,5 +15,6 @@ public class main {
         getColorGradient();
         LoginScreen lg = new LoginScreen();
         lg.setVisible(true);
+
     }
 }
