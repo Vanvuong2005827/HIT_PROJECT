@@ -443,7 +443,7 @@ public class HomePage extends javax.swing.JFrame {
         for (int i = 0; i < books.size(); i++) {
             int index = i;
             Callable<JPanel> task = () -> {
-                JPanel panel = new JPanel(new BorderLayout(10, 10));
+                JPanel panel = new JPanel(new BorderLayout(30, 10));
                 Color cusColor = colors.get(index % colors.size());
                 Font customFont = new Font("Segoe UI", Font.BOLD, 13);
                 panel.setBackground(cusColor);
@@ -631,7 +631,7 @@ public class HomePage extends javax.swing.JFrame {
             velocity = deltaY;
 
             int newY = viewPosition.y + deltaY;
-            int maxScrollHeight = 1430;
+            int maxScrollHeight = 1450;
 
             newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
@@ -655,7 +655,7 @@ public class HomePage extends javax.swing.JFrame {
                 JViewport viewport = homeMainScrollPane.getViewport();
                 Point viewPosition = viewport.getViewPosition();
                 int newY = viewPosition.y + velocity;
-                int maxScrollHeight = 1430;
+                int maxScrollHeight = 1450;
                 newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
                 int finalNewY = newY;
