@@ -50,6 +50,16 @@ public class Book {
         this.updatedAt = updatedAt;
     }
 
+    public Book(String name, String slug, String status, String updatedAt, String thumbnail, List<BookCategory> category, List<ApiChapterSeverData> chapters) {
+        this.name = name;
+        this.slug = slug;
+        this.status = status;
+        this.updatedAt = updatedAt;
+        this.thumbnail = thumbnail;
+        this.category = category;
+        this.chapters = chapters;
+    }
+
     public ObjectId getId() {
         return id;
     }
