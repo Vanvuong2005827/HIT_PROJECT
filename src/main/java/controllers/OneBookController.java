@@ -59,7 +59,6 @@ public class OneBookController {
                                 ws.setVisible(true);
                                 oneBookScreen.setVisible(false);
                                 cs = new ChapterScreen(oneBookScreen, oneBookScreen.getCurBook(), oneBookScreen.getOneBookStartReadButton(), oneBookScreen.getChapters(), 0);
-                                bookService.insertBookToDB(oneBookScreen.getCurBook());
                                 bookService.storageBookToUser(oneBookScreen.getCurBook().getId());
                                 return null;
                             }
@@ -87,7 +86,6 @@ public class OneBookController {
                                 ws.setVisible(true);
                                 oneBookScreen.setVisible(false);
                                 cs = new ChapterScreen(oneBookScreen, oneBookScreen.getCurBook(), oneBookScreen.getOneBookStartReadButton(), oneBookScreen.getChapters(), x);
-                                bookService.insertBookToDB(oneBookScreen.getCurBook());
                                 bookService.storageBookToUser(oneBookScreen.getCurBook().getId());
                                 return null;
                             }
