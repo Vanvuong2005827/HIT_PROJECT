@@ -53,7 +53,7 @@ public class OneBookScreen extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
+        bookService.insertBookToDB(curBook);
         oneBookPanel = new javax.swing.JPanel();
         oneBookMainPanel = new javax.swing.JLayeredPane();
         oneBookImgLabel = new javax.swing.JLabel();
@@ -307,7 +307,6 @@ public class OneBookScreen extends javax.swing.JFrame {
                         ws.setVisible(true);
                         oneBookScreen.setVisible(false);
                         cs = new ChapterScreen(oneBookScreen, curBook, oneBookStartReadButton, chapters, 0);
-                        bookService.insertBookToDB(curBook);
                         bookService.storageBookToUser(curBook.getId());
                         return null;
                     }
@@ -335,7 +334,6 @@ public class OneBookScreen extends javax.swing.JFrame {
                         ws.setVisible(true);
                         oneBookScreen.setVisible(false);
                         cs = new ChapterScreen(oneBookScreen, curBook, oneBookStartReadButton, chapters, x);
-                        bookService.insertBookToDB(curBook);
                         bookService.storageBookToUser(curBook.getId());
                         return null;
                     }
@@ -364,6 +362,9 @@ public class OneBookScreen extends javax.swing.JFrame {
             jLabel1.setForeground(Color.black);
             bookService.toggleFavorite(curBook.getId(), Color.gray);
         }
+
+
+
     }
 
     public void processBookInfoData() {

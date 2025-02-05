@@ -79,18 +79,11 @@ public class BookService {
 
         UserHistoryBooks result = collectionHistory.find(filter).first();
 
-        boolean isFavorite = false;
-
-        if (result != null && result.getFavorite()) {
-            isFavorite = result.getFavorite();
-        }
-
         if (result == null || !result.getFavorite()) {
             collectionHistory.updateOne(filter, Updates.set("favorite", false), new UpdateOptions().upsert(true));
         }
 
         boolean newFavoriteStatus = (level == Color.red);
-
         collectionHistory.updateOne(filter, Updates.set("favorite", newFavoriteStatus), new UpdateOptions().upsert(true));
 
     }
