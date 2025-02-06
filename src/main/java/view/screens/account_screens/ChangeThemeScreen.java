@@ -1,8 +1,8 @@
 package view.screens.account_screens;
 
 import dao.ConnectDB;
-import view.screens.login_screens.LoginScreen;
 import utils.Gradient;
+import view.screens.auth_screens.LoginScreen;
 
 import javax.swing.*;
 

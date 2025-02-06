@@ -1,6 +1,6 @@
 package view.screens.account_screens;
 
-import controllers.ChangeNameController;
+import controllers.account.ChangeNameController;
 
 import javax.swing.*;
 import java.io.File;

@@ -1,6 +1,6 @@
 package view.screens.account_screens;
 
-import controllers.ForgotPassController;
+import controllers.account.ForgotPassController;
 import utils.Gradient;
 
 import javax.swing.*;

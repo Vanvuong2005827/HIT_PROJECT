@@ -12,7 +12,7 @@ import models.user.UserAccount;
 import models.user.UserHistoryBooks;
 import models.user.UserIP;
 import models.user.UserInfo;
-import models.book_information.Book;
+import models.book.Book;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
