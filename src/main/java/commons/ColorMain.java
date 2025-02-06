@@ -1,6 +1,6 @@
 package commons;
 
-import models.color.ColorTuple;
+import models.ColorTuple;
 import java.awt.*;
 import java.util.ArrayList;
 

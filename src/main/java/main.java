@@ -1,5 +1,5 @@
 import utils.NetworkChecker;
-import view.screens.login_screens.LoginScreen;
+import view.screens.auth_screens.LoginScreen;
 import dao.ConnectDB;
 import javax.swing.*;
 import static commons.ColorMain.getColorGradient;

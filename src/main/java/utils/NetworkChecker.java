@@ -1,6 +1,6 @@
 package utils;
 
-import view.screens.main_screens.DisconnectScreen;
+import view.screens.DisconnectScreen;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -28,9 +28,9 @@ public class NetworkChecker {
         new Thread(() -> {
             while (true) {
                 boolean currentStatus = checkInternetConnection();
-                DisconnectScreen d = new DisconnectScreen();
                 if (!currentStatus) {
                     if (isConnected) {
+                        DisconnectScreen d = new DisconnectScreen();
                         d.setVisible(true);
                         curFrame.setVisible(false);
                         curFrame.dispose();
@@ -38,8 +38,6 @@ public class NetworkChecker {
                     isConnected = false;
                 } else {
                     isConnected = true;
-                    curFrame.setVisible(true);
-                    d.setVisible(false);
                 }
 
                 try {

@@ -1,11 +1,11 @@
 package data;
 
-import api.all_book_api.ApiAllBookResponse;
-import api.one_book_api.ApiOneBookJson;
-import api.one_book_api.ApiOneBookResponse;
-import api.seach_book_api.ApiSearchBookResponse;
+import api.book.ApiAllBookResponse;
+import api.book.ApiOneBookJson;
+import api.book.ApiOneBookResponse;
+import api.search.ApiSearchBookResponse;
 import com.google.gson.Gson;
-import models.book_information.Book;
+import models.book.Book;
 
 import javax.swing.*;
 import java.util.ArrayList;

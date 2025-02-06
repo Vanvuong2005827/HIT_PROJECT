@@ -1,11 +1,11 @@
 package utils;
 
-import models.book_information.Book;
-import models.book_information.BookCategory;
-import models.chapter_information.AllChapters;
-import view.screens.one_book_screens.ChapterScreen;
-import view.screens.one_book_screens.OneBookScreen;
-import view.screens.main_screens.WaitScreen;
+import models.book.Book;
+import models.book.BookCategory;
+import models.chapter.AllChapters;
+import view.screens.ChapterScreen;
+import view.pages.OneBookPage;
+import view.screens.WaitScreen;
 import services.BookService;
 import data.GetAllBook;
 import data.GetChapters;
@@ -99,7 +99,7 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters);
+                            OneBookPage oneBookScreen = new OneBookPage(previousScreen, curBook, chapters);
                             if (bookService.checkIfExitBookInUser(curBook.getId())) {
                                 oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                             }
@@ -233,7 +233,7 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters);
+                            OneBookPage oneBookScreen = new OneBookPage(previousScreen, curBook, chapters);
                             if (bookService.checkIfExitBookInUser(curBook.getId())) {
 
                                 oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
@@ -356,7 +356,7 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            OneBookScreen oneBookScreen = new OneBookScreen(previousScreen, curBook, chapters); // Truyền thông tin sách vào
+                            OneBookPage oneBookScreen = new OneBookPage(previousScreen, curBook, chapters); // Truyền thông tin sách vào
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
                         }
