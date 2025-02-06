@@ -31,11 +31,11 @@ public class ChangeNameController {
     private void confirmEvent() {
         changeNameScreen.getjLabel6().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                label.setText(changeNameScreen.getjTextField1().getText().trim());
                 try {
+                    label.setText(changeNameScreen.getjTextField1().getText().trim());
                     userServices.changeUserFullName(userInfo.getId(), changeNameScreen.getjTextField1().getText().trim());
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
                 changeNameScreen.setVisible(false);
             }

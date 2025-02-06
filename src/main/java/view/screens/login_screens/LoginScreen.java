@@ -9,6 +9,7 @@ import java.io.File;
 
 import static commons.ColorMain.*;
 import static commons.CurrentUser.*;
+import static utils.NetworkChecker.curFrame;
 
 public class LoginScreen extends JFrame {
     private String basePath = new File("").getAbsolutePath();
@@ -17,6 +18,7 @@ public class LoginScreen extends JFrame {
         initComponents();
         new LoginController(this);
         setLocationRelativeTo(null);
+        curFrame = this;
     }
 
     private void initComponents() {

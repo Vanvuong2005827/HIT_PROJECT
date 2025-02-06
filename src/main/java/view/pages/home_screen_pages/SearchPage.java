@@ -15,6 +15,7 @@ import java.util.concurrent.*;
 
 import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
+import static utils.NetworkChecker.curFrame;
 
 public class SearchPage extends JFrame {
     private JFrame searchPage = this;
@@ -26,6 +27,7 @@ public class SearchPage extends JFrame {
         initComponents();
         setLocationRelativeTo(null);
         new SearchController(this, previousScreen);
+        curFrame = this;
     }
 
     private void initComponents() {

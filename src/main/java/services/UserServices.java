@@ -21,9 +21,8 @@ public class UserServices {
             UserAccount found = collection.find(new org.bson.Document("username", username)).first();
             return found != null;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
-        //true là có username trong DB và ngược lại
         return false;
     }
 
@@ -36,7 +35,7 @@ public class UserServices {
                 return null;
             }
         } catch (NoClassDefFoundError e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }
@@ -54,7 +53,7 @@ public class UserServices {
                 return new UserInfo(userAccount.getId());
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
 
         return null;
@@ -71,7 +70,7 @@ public class UserServices {
                 return ip;
             }
         } catch (NoClassDefFoundError e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
 
         return null;
@@ -86,7 +85,7 @@ public class UserServices {
                 return null;
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }
@@ -97,7 +96,7 @@ public class UserServices {
             UserInfo userInfo = new UserInfo(fullname, Integer.parseInt(yearOfBirth), email, phoneNumber, Gender, user);
             collectionInfo.insertOne(userInfo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -106,7 +105,7 @@ public class UserServices {
         try {
             collectionInfo.updateOne(Filters.eq("_id", userId), Updates.set("fullName", newFullname));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -115,7 +114,7 @@ public class UserServices {
         try {
             collectionIp.updateOne(Filters.eq("ip", userIP.getIp()), Updates.set("time", LocalDateTime.now().plusMinutes(plusMinutesInto)));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -126,7 +125,7 @@ public class UserServices {
             if (other) return "other";
             return "";
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return "";
     }
@@ -135,7 +134,7 @@ public class UserServices {
         try {
             return String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi không xác định, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return "";
     }
@@ -144,7 +143,7 @@ public class UserServices {
         try {
             collectionInfo.updateOne(Filters.eq("_id", userAccount.getId()), Updates.combine(Updates.set("colorMain1", colorToHex(one)), Updates.set("colorMain2", colorToHex(two)), Updates.set("colorMain3", colorToHex(three)), Updates.set("colorFix", colorToHex(fix))));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi không xác định, vui lòng kiểm tra lại đường truyền hoặc là báo lại Admin");
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 

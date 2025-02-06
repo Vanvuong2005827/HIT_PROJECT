@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.io.File;
 
 import static commons.ColorMain.*;
+import static utils.NetworkChecker.curFrame;
 
 public class ChangePassScreenSecond extends javax.swing.JFrame {
     private JFrame previousFrame;
@@ -17,6 +18,7 @@ public class ChangePassScreenSecond extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         new ChangePassController(previousFrame, this);
+        curFrame = this;
     }
 
     private void initComponents() {

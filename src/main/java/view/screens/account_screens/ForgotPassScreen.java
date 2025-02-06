@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.io.File;
 
 import static commons.ColorMain.*;
+import static utils.NetworkChecker.curFrame;
 
 public class ForgotPassScreen extends javax.swing.JFrame {
     private String basePath = new File("").getAbsolutePath();
@@ -17,6 +18,7 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         new ForgotPassController(previousFrame, this);
+        curFrame = this;
     }
 
     private void initComponents() {

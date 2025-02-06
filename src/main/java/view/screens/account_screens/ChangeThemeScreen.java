@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import static commons.ColorMain.*;
 import static commons.CurrentUser.userServices;
+import static utils.NetworkChecker.curFrame;
 
 public class ChangeThemeScreen extends javax.swing.JFrame {
     private JFrame previousScreen;
@@ -16,6 +17,7 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         previousScreen = jf;
         initComponents();
         setLocationRelativeTo(null);
+        curFrame = this;
     }
 
     private void initComponents() {
@@ -274,7 +276,7 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
                 try {
                     confirmEvent(evt);
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

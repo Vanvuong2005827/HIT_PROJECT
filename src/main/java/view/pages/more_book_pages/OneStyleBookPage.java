@@ -15,6 +15,7 @@ import java.util.concurrent.*;
 
 import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
+import static utils.NetworkChecker.curFrame;
 
 public class OneStyleBookPage extends javax.swing.JFrame {
     private String nameStyle;
@@ -31,6 +32,7 @@ public class OneStyleBookPage extends javax.swing.JFrame {
         jLabel2.setText(nn);
         processData();
         setLocationRelativeTo(null);
+        curFrame = this;
     }
 
     private void initComponents() {

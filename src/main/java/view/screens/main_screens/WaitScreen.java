@@ -4,12 +4,15 @@ package view.screens.main_screens;
 
 import java.io.File;
 
+import static utils.NetworkChecker.curFrame;
+
 public class WaitScreen extends javax.swing.JFrame {
     private String basePath = new File("").getAbsolutePath();
 
     public WaitScreen() {
         initComponents();
         setLocationRelativeTo(null);
+        curFrame = this;
     }
 
     private void initComponents() {

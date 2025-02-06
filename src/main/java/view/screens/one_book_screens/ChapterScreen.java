@@ -23,6 +23,7 @@ import java.util.concurrent.*;
 
 import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.resizeImage;
+import static utils.NetworkChecker.curFrame;
 
 public class ChapterScreen extends JFrame {
     private GetChapters getChapter = new GetChapters();
@@ -31,7 +32,6 @@ public class ChapterScreen extends JFrame {
     private Book curBook;
     private JButton oneBookStartReadButton;
     private int indexChapter;
-    private int totalChapters;
 
     public ChapterScreen(JFrame jf, Book b, JButton j, ArrayList<AllChapters> ch, int i) {
         previousScreen = jf;
@@ -43,6 +43,7 @@ public class ChapterScreen extends JFrame {
         processData();
         setLocationRelativeTo(null);
         new ChapterController(this);
+        curFrame = this;
     }
 
     private void initComponents() {
@@ -121,7 +122,6 @@ public class ChapterScreen extends JFrame {
 
                     String baseUrl = "https://sv1.otruyencdn.com/";
                     String preUrl = chapter.getChapter_path() + "/";
-                    totalChapters = chapter.getChapter_image().size();
 
                     int maxThreads = 10;
                     ExecutorService executor = Executors.newFixedThreadPool(maxThreads);

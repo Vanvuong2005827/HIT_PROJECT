@@ -11,6 +11,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
+import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,9 +28,9 @@ public class BookService {
                 collectionHistory.insertOne(userHistoryBooks);
             }
         } catch (NullPointerException e) {
-            System.err.println("Lỗi: userAccount hoặc bookId bị null.");
+            JOptionPane.showMessageDialog(null, "Lỗi: userAccount hoặc bookId bị null.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            System.err.println("Lỗi khi lưu sách vào user: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi khi lưu sách vào user", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -39,10 +40,10 @@ public class BookService {
             UserHistoryBooks result = collectionHistory.find(filter).first();
             return (result != null) ? result.getLastReadChapter() : 1;
         } catch (NullPointerException e) {
-            System.err.println("Lỗi: Không tìm thấy dữ liệu user hoặc book.");
+            JOptionPane.showMessageDialog(null, "Lỗi: Không tìm thấy dữ liệu user hoặc book.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return 1;
         } catch (Exception e) {
-            System.err.println("Lỗi không xác định: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return 1;
         }
     }
@@ -52,7 +53,7 @@ public class BookService {
             Bson filter = Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("bookId", bookId));
             collectionHistory.updateOne(filter, Updates.set("lastReadChapter", chapter));
         } catch (Exception e) {
-            System.err.println("Lỗi khi lưu chương cuối cùng đã đọc: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi khi lưu chương cuối cùng đã đọc:", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -67,10 +68,10 @@ public class BookService {
             }
             return false;
         } catch (NullPointerException e) {
-            System.err.println("Lỗi: Dữ liệu user hoặc bookId bị null.");
+            JOptionPane.showMessageDialog(null, "Lỗi: Dữ liệu user hoặc bookId bị null.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return false;
         } catch (Exception e) {
-            System.err.println("Lỗi không xác định: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
@@ -79,9 +80,9 @@ public class BookService {
         try {
             collectionBook.updateOne(Filters.eq("_id", book.getId()), new Document("$setOnInsert", book), new UpdateOptions().upsert(true));
         } catch (NullPointerException e) {
-            System.err.println("Lỗi: Dữ liệu sách bị null.");
+            JOptionPane.showMessageDialog(null, "Lỗi: Dữ liệu sách bị null.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            System.err.println("Lỗi khi thêm sách vào DB: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -89,7 +90,7 @@ public class BookService {
         try {
             return collectionBook.find(Filters.eq("_id", bookId)).first();
         } catch (Exception e) {
-            System.err.println("Lỗi khi lấy sách theo ID: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
@@ -105,10 +106,8 @@ public class BookService {
                     books.add(book);
                 }
             }
-        } catch (NullPointerException e) {
-            System.err.println("Lỗi: Dữ liệu null khi lấy danh sách sách.");
         } catch (Exception e) {
-            System.err.println("Lỗi khi lấy danh sách sách: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return books;
     }
@@ -127,10 +126,8 @@ public class BookService {
 
             boolean newFavoriteStatus = (level == Color.red);
             collectionHistory.updateOne(filter, Updates.set("favorite", newFavoriteStatus), new UpdateOptions().upsert(true));
-        } catch (NullPointerException e) {
-            System.err.println("Lỗi: Dữ liệu null khi thao tác với yêu thích.");
         } catch (Exception e) {
-            System.err.println("Lỗi không xác định khi đổi trạng thái yêu thích: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -146,10 +143,8 @@ public class BookService {
                     books.add(book);
                 }
             }
-        } catch (NullPointerException e) {
-            System.err.println("Lỗi: Dữ liệu null khi lấy danh sách yêu thích.");
         } catch (Exception e) {
-            System.err.println("Lỗi khi lấy danh sách sách yêu thích: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return books;
     }
@@ -164,11 +159,8 @@ public class BookService {
             }
 
             return result.getFavorite() ? Color.red : Color.gray;
-        } catch (NullPointerException e) {
-            System.err.println("Lỗi: Dữ liệu null khi kiểm tra yêu thích.");
-            return Color.gray;
         } catch (Exception e) {
-            System.err.println("Lỗi không xác định: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return Color.gray;
         }
     }

@@ -7,7 +7,7 @@ import view.screens.login_screens.LoginScreen;
 import view.screens.login_screens.SignUpScreen;
 import view.screens.main_screens.HomeScreen;
 import view.screens.main_screens.WaitScreen;
-import utils.CheckRegex;
+import utils.RegexChecker;
 
 import javax.swing.*;
 import java.awt.*;
@@ -87,7 +87,7 @@ public class LoginController {
                     InetAddress localhost = InetAddress.getLocalHost();
                     userIP = userServices.getUserIPByIP(localhost.getHostAddress());
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
 
                 String userName = loginScreen.getLoginUsernameTextField().getText().trim();
@@ -109,7 +109,7 @@ public class LoginController {
                         return;
                     }
                 } catch (NullPointerException e) {
-                    JOptionPane.showMessageDialog(null, "lỗi không xác định");
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
 
 
@@ -118,12 +118,12 @@ public class LoginController {
                         try {
                             userAccount = userServices.getUserByUsername(userName);
                         } catch (Exception e) {
-                            throw new RuntimeException(e);
+                            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                         }
                         try {
                             userInfo = userServices.getUserInfoByUserAccount(userAccount);
                         } catch (Exception e) {
-                            throw new RuntimeException(e);
+                            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                         }
 
                         getGradientInUser();
@@ -145,13 +145,13 @@ public class LoginController {
                             try {
                                 userServices.plusTime(userIP, 5);
                             } catch (Exception e) {
-                                throw new RuntimeException(e);
+                                JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                             }
                             cnt = 0;
                         }
                     }
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -185,12 +185,12 @@ public class LoginController {
                     return;
                 }
 
-                if (!CheckRegex.checkValidUserName(userName)) {
+                if (!RegexChecker.checkValidUserName(userName)) {
                     loginScreen.getSignUpMessageLabel().setText("Tài khoản phải dài 8-20 (a-z, A-Z, 0-9). Không có kí tự _, . ở đầu/cuối");
                     return;
                 }
 
-                if (!CheckRegex.checkValidPassword(password)) {
+                if (!RegexChecker.checkValidPassword(password)) {
                     loginScreen.getSignUpMessageLabel().setText("Mật khẩu ít nhất 8 kí tự, 1 in hoa, 1 in thường, 1 số.");
                     return;
                 }
@@ -206,7 +206,7 @@ public class LoginController {
                         su.setVisible(true);
                     }
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

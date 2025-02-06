@@ -4,7 +4,7 @@ import models.user.UserAccount;
 import models.user.UserInfo;
 import view.screens.account_screens.ChangePassScreenSecond;
 import view.screens.account_screens.ForgotPassScreen;
-import utils.CheckRegex;
+import utils.RegexChecker;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,7 +52,7 @@ public class ForgotPassController {
                     return;
                 }
 
-                if (!CheckRegex.checkValidEmail(email)) {
+                if (!RegexChecker.checkValidEmail(email)) {
                     forgotPassScreen.getForgotPassShowMessage().setText("Email không hợp lệ");
                     return;
                 }
@@ -61,7 +61,7 @@ public class ForgotPassController {
                 try {
                     userAccount1 = userServices.getUserByUsername(username);
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
                 if (userAccount1 == null) {
                     forgotPassScreen.getForgotPassShowMessage().setText("Không tìm thấy tài khoản");
@@ -71,7 +71,7 @@ public class ForgotPassController {
                     try {
                         userInfo1 = userServices.getUserInfoByUserAccount(userAccount1);
                     } catch (Exception e) {
-                        throw new RuntimeException(e);
+                        JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                     }
                     if (!userInfo1.getEmail().equals(email)) {
                         forgotPassScreen.getForgotPassShowMessage().setText("Email không trùng khớp");
@@ -103,8 +103,7 @@ public class ForgotPassController {
 
                     worker.execute();
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    forgotPassScreen.getForgotPassShowMessage().setText("An error occurred while generating ans code");
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -150,7 +149,7 @@ public class ForgotPassController {
                     try {
                         userAccount = userServices.getUserByUsername(username);
                     } catch (Exception e) {
-                        throw new RuntimeException(e);
+                        JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                     }
                     ChangePassScreenSecond changPassScreenSecond = new ChangePassScreenSecond(previousFrame);
                     changPassScreenSecond.setVisible(true);

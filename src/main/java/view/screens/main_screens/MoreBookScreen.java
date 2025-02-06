@@ -10,6 +10,7 @@ import java.awt.*;
 
 import static commons.ColorMain.colorMain;
 import static commons.ColorMain.colorMain1;
+import static utils.NetworkChecker.curFrame;
 
 public class MoreBookScreen extends javax.swing.JFrame {
     private HomeScreen homeScreen;
@@ -51,6 +52,7 @@ public class MoreBookScreen extends javax.swing.JFrame {
                 }
             });
         }
+        curFrame = this;
     }
 
     private void initComponents() {

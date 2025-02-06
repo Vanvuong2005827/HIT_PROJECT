@@ -6,6 +6,8 @@ import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import models.user.UserAccount;
+
+import javax.swing.*;
 import java.util.Properties;
 import java.util.Random;
 
@@ -59,11 +61,11 @@ public class ForgetPasswordService {
             Transport.send(message);
             System.out.println("Email đã được gửi thành công.");
         } catch (NullPointerException e) {
-            System.err.println("Lỗi: Mật khẩu email không được tìm thấy trong biến môi trường.");
+            JOptionPane.showMessageDialog(null, "Lỗi: Mật khẩu email không được tìm thấy trong biến môi trường.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (MessagingException e) {
-            System.err.println("Lỗi khi gửi email: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi khi gửi email.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            System.err.println("Lỗi không xác định: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
 
         return String.valueOf(randomNum);
@@ -87,11 +89,9 @@ public class ForgetPasswordService {
             System.out.println("Mật khẩu đã được cập nhật thành công.");
 
         } catch (NullPointerException e) {
-            System.err.println("Lỗi: User không tồn tại.");
-        } catch (IllegalArgumentException e) {
-            System.err.println("Lỗi: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi: User không tồn tại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            System.err.println("Lỗi khi cập nhật mật khẩu: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

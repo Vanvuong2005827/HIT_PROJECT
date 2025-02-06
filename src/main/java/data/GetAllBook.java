@@ -25,6 +25,7 @@ public class GetAllBook {
             int page = i;
             Callable<ArrayList<Book>> task = () -> {
                 ArrayList<Book> pageBooks = new ArrayList<>();
+               
                 String pageNumber = Integer.toString(page);
                 String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
                 String jsonData = getApi(apiUrl);
@@ -38,6 +39,8 @@ public class GetAllBook {
                         });
                     }
                 }
+
+
                 return pageBooks;
             };
 
@@ -53,6 +56,7 @@ public class GetAllBook {
         }
 
         executor.shutdown();
+
         return books;
     }
 
@@ -66,6 +70,7 @@ public class GetAllBook {
             int page = i;
             Callable<ArrayList<Book>> task = () -> {
                 ArrayList<Book> pageBooks = new ArrayList<>();
+
                 String pageNumber = Integer.toString(page);
                 String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/hoan-thanh?page=" + pageNumber;
                 String jsonData = getApi(apiUrl);
@@ -79,6 +84,7 @@ public class GetAllBook {
                         });
                     }
                 }
+
                 return pageBooks;
             };
 
@@ -94,6 +100,7 @@ public class GetAllBook {
         }
 
         executor.shutdown();
+
         return books;
     }
 
@@ -107,6 +114,7 @@ public class GetAllBook {
             int page = i;
             Callable<ArrayList<Book>> task = () -> {
                 ArrayList<Book> pageBooks = new ArrayList<>();
+
                 String pageNumber = Integer.toString(page);
                 String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/sap-ra-mat?page=" + pageNumber;
                 String jsonData = getApi(apiUrl);
@@ -120,6 +128,7 @@ public class GetAllBook {
                         });
                     }
                 }
+
                 return pageBooks;
             };
 
@@ -135,6 +144,7 @@ public class GetAllBook {
         }
 
         executor.shutdown();
+
         return books;
     }
 
@@ -145,6 +155,7 @@ public class GetAllBook {
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         Callable<ArrayList<Book>> task = () -> {
             ArrayList<Book> pageBooks = new ArrayList<>();
+
             String apiUrl = "https://otruyenapi.com/v1/api/the-loai";
             String jsonData = getApi(apiUrl);
             if (jsonData != null && !jsonData.isEmpty()) {
@@ -157,6 +168,7 @@ public class GetAllBook {
                     });
                 }
             }
+
             return pageBooks;
         };
 
@@ -172,6 +184,7 @@ public class GetAllBook {
         }
 
         executor.shutdown();
+
         return books;
     }
 
@@ -185,6 +198,7 @@ public class GetAllBook {
             int page = i;
             Callable<ArrayList<Book>> task = () -> {
                 ArrayList<Book> pageBooks = new ArrayList<>();
+
                 String pageNumber = Integer.toString(page);
                 String apiUrl = "https://otruyenapi.com/v1/api/the-loai/" + nameStyle + "?page=" + pageNumber;
                 String jsonData = getApi(apiUrl);
@@ -198,6 +212,7 @@ public class GetAllBook {
                         });
                     }
                 }
+
                 return pageBooks;
             };
 
@@ -213,6 +228,9 @@ public class GetAllBook {
         }
 
         executor.shutdown();
+        if (books.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
         return books;
     }
 
