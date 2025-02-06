@@ -232,7 +232,8 @@ public class OneBookScreen extends javax.swing.JFrame {
             velocity = deltaY;
 
             int newY = viewPosition.y + deltaY;
-            int maxScrollHeight = chapters.size() * 80;
+            Component view = viewport.getView();
+            int maxScrollHeight = view.getHeight() - viewport.getHeight();
 
             newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
@@ -256,7 +257,8 @@ public class OneBookScreen extends javax.swing.JFrame {
                 JViewport viewport = oneBookChapterScroll.getViewport();
                 Point viewPosition = viewport.getViewPosition();
                 int newY = viewPosition.y + velocity;
-                int maxScrollHeight = chapters.size() * 80;
+                Component view = viewport.getView();
+                int maxScrollHeight = view.getHeight() - viewport.getHeight();
                 newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
                 int finalNewY = newY;

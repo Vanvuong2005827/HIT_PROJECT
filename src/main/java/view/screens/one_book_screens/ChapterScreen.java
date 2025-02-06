@@ -219,7 +219,8 @@ public class ChapterScreen extends JFrame {
             velocity = deltaY;
 
             int newY = viewPosition.y + deltaY;
-            int maxScrollHeight = totalChapters * 900;
+            Component view = viewport.getView();
+            int maxScrollHeight = view.getHeight() - viewport.getHeight();
 
             newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
@@ -243,7 +244,8 @@ public class ChapterScreen extends JFrame {
                 JViewport viewport = chapterScrollPane.getViewport();
                 Point viewPosition = viewport.getViewPosition();
                 int newY = viewPosition.y + velocity;
-                int maxScrollHeight = totalChapters * 900;
+                Component view = viewport.getView();
+                int maxScrollHeight = view.getHeight() - viewport.getHeight();
                 newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
                 int finalNewY = newY;

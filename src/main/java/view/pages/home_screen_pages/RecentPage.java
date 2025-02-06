@@ -145,7 +145,8 @@ public class RecentPage extends javax.swing.JFrame {
             velocity = deltaY;
 
             int newY = viewPosition.y + deltaY;
-            int maxScrollHeight = 400 * totalBooks;
+            Component view = viewport.getView();
+            int maxScrollHeight = view.getHeight() - viewport.getHeight();
 
             newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
@@ -169,7 +170,8 @@ public class RecentPage extends javax.swing.JFrame {
                 JViewport viewport = recentBookScrollPane.getViewport();
                 Point viewPosition = viewport.getViewPosition();
                 int newY = viewPosition.y + velocity;
-                int maxScrollHeight = 400 * totalBooks;
+                Component view = viewport.getView();
+                int maxScrollHeight = view.getHeight() - viewport.getHeight();
                 newY = Math.max(0, Math.min(newY, maxScrollHeight));
 
                 int finalNewY = newY;
