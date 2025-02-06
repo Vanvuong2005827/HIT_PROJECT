@@ -100,38 +100,58 @@ public class LoginController {
                     loginScreen.getLoginMessageLabel().setText("Xin mời nhập mật khẩu");
                     return;
                 }
-
-                if (userIP.getTime().isAfter(LocalDateTime.now())) {
-                    Duration duration = Duration.between(LocalDateTime.now(), userIP.getTime());
-                    long minutes = duration.toMinutes();
-                    long seconds = duration.getSeconds() % 60;
-                    loginScreen.getLoginMessageLabel().setText("Thử lại sau: " + minutes + " phút " + seconds + " giây");
-                    return;
+                try {
+                    if (userIP.getTime().isAfter(LocalDateTime.now())) {
+                        Duration duration = Duration.between(LocalDateTime.now(), userIP.getTime());
+                        long minutes = duration.toMinutes();
+                        long seconds = duration.getSeconds() % 60;
+                        loginScreen.getLoginMessageLabel().setText("Thử lại sau: " + minutes + " phút " + seconds + " giây");
+                        return;
+                    }
+                } catch (NullPointerException e) {
+                    JOptionPane.showMessageDialog(null, "lỗi không xác định");
                 }
 
-                if (loginService.authenticate(userName, password)) {
-                    userAccount = userServices.getUserByUsername(userName);
-                    userInfo = userServices.getUserInfoByUserAccount(userAccount);
 
-                    getGradientInUser();
+                try {
+                    if (loginService.authenticate(userName, password)) {
+                        try {
+                            userAccount = userServices.getUserByUsername(userName);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                        try {
+                            userInfo = userServices.getUserInfoByUserAccount(userAccount);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
 
-                    if (loginScreen.getLoginRememberCheckbox().isSelected()) {
-                        loginService.saveUser(userName, password);
+                        getGradientInUser();
+
+                        if (loginScreen.getLoginRememberCheckbox().isSelected()) {
+                            loginService.saveUser(userName, password);
+                        }
+
+                        WaitScreen ws = new WaitScreen();
+                        ws.setVisible(true);
+                        loginScreen.setVisible(false);
+                        HomeScreen hs = new HomeScreen(loginScreen, ws);
+
+
+                    } else {
+                        loginScreen.getLoginMessageLabel().setText("Sai tên đăng nhập hoặc mật khẩu");
+                        cnt++;
+                        if (cnt == 5) {
+                            try {
+                                userServices.plusTime(userIP, 5);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            cnt = 0;
+                        }
                     }
-
-                    WaitScreen ws = new WaitScreen();
-                    ws.setVisible(true);
-                    loginScreen.setVisible(false);
-                    HomeScreen hs = new HomeScreen(loginScreen, ws);
-
-
-                } else {
-                    loginScreen.getLoginMessageLabel().setText("Sai tên đăng nhập hoặc mật khẩu");
-                    cnt++;
-                    if (cnt == 5) {
-                        userServices.plusTime(userIP, 5);
-                        cnt = 0;
-                    }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
             }
         });
@@ -176,13 +196,17 @@ public class LoginController {
                 }
                 password = encryptorService.hasing(password);
                 userAccount = new UserAccount(userName, password);
-                if (!registerService.register(userAccount)) {
-                    loginScreen.getSignUpMessageLabel().setText("Tài khoản đã tồn tại");
-                    return;
-                } else {
-                    SignUpScreen su = new SignUpScreen(loginScreen);
-                    loginScreen.setVisible(false);
-                    su.setVisible(true);
+                try {
+                    if (!registerService.register(userAccount)) {
+                        loginScreen.getSignUpMessageLabel().setText("Tài khoản đã tồn tại");
+                        return;
+                    } else {
+                        SignUpScreen su = new SignUpScreen(loginScreen);
+                        loginScreen.setVisible(false);
+                        su.setVisible(true);
+                    }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
             }
         });

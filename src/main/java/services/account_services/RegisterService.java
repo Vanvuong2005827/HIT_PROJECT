@@ -12,7 +12,7 @@ public class RegisterService {
         userServices = new UserServices();
     }
 
-    public boolean register(UserAccount user) {
+    public boolean register(UserAccount user) throws Exception {
         if (!userServices.isUsernameExists(user.getUsername())) {
             collection.insertOne(user);
             return true;

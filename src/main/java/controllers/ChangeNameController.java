@@ -32,7 +32,11 @@ public class ChangeNameController {
         changeNameScreen.getjLabel6().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 label.setText(changeNameScreen.getjTextField1().getText().trim());
-                userServices.changeUserFullName(userInfo.getId(), changeNameScreen.getjTextField1().getText().trim());
+                try {
+                    userServices.changeUserFullName(userInfo.getId(), changeNameScreen.getjTextField1().getText().trim());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 changeNameScreen.setVisible(false);
             }
         });

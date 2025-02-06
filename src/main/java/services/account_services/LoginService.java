@@ -13,7 +13,7 @@ public class LoginService {
         userServices = new UserServices();
     }
 
-    public boolean authenticate(String username, String password) {
+    public boolean authenticate(String username, String password) throws Exception {
         UserAccount user = userServices.getUserByUsername(username);
         if (user != null && encryptorService.checkPassword(password, user.getPassword())) {
             return true;

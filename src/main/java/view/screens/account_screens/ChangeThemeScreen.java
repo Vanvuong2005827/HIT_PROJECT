@@ -271,7 +271,11 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         jLabel3.setText("Xác nhận");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                confirmEvent(evt);
+                try {
+                    confirmEvent(evt);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 660, 280, 80));
@@ -289,7 +293,7 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         this.setVisible(false);
     }
 
-    private void confirmEvent(java.awt.event.MouseEvent evt) {
+    private void confirmEvent(java.awt.event.MouseEvent evt) throws Exception {
         int confirm = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng xuất để áp dụng màu nền này không?", "Đăng xuất?", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
             userServices.updateGradientColorToUser(colorMain1, colorMain2, colorMain3, colorFix);

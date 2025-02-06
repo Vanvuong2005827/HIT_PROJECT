@@ -57,12 +57,22 @@ public class ForgotPassController {
                     return;
                 }
 
-                UserAccount userAccount1 = userServices.getUserByUsername(username);
+                UserAccount userAccount1 = null;
+                try {
+                    userAccount1 = userServices.getUserByUsername(username);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 if (userAccount1 == null) {
                     forgotPassScreen.getForgotPassShowMessage().setText("Không tìm thấy tài khoản");
                     return;
                 } else {
-                    UserInfo userInfo1 = userServices.getUserInfoByUserAccount(userAccount1);
+                    UserInfo userInfo1 = null;
+                    try {
+                        userInfo1 = userServices.getUserInfoByUserAccount(userAccount1);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                     if (!userInfo1.getEmail().equals(email)) {
                         forgotPassScreen.getForgotPassShowMessage().setText("Email không trùng khớp");
                         return;
@@ -137,7 +147,11 @@ public class ForgotPassController {
                 }
 
                 if (AnsCode.equals(code)) {
-                    userAccount = userServices.getUserByUsername(username);
+                    try {
+                        userAccount = userServices.getUserByUsername(username);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                     ChangePassScreenSecond changPassScreenSecond = new ChangePassScreenSecond(previousFrame);
                     changPassScreenSecond.setVisible(true);
                     forgotPassScreen.setVisible(false);

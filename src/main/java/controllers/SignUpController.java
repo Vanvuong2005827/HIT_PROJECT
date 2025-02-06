@@ -103,7 +103,12 @@ public class SignUpController {
             public void mouseClicked(MouseEvent evt) {
                 String fullname = signUpScreen.getSignUpFullNameTextField().getText().trim();
                 String yearOfBirth = Objects.requireNonNull(signUpScreen.getSignUpYearOfBirth().getSelectedItem()).toString().trim();
-                String gender = userServices.selectGender(signUpScreen.getSignUpMaleCheckBox().isSelected(), signUpScreen.getSignUpFemaleCheckBox().isSelected(), signUpScreen.getSignUpOtherCheckBox().isSelected());
+                String gender = null;
+                try {
+                    gender = userServices.selectGender(signUpScreen.getSignUpMaleCheckBox().isSelected(), signUpScreen.getSignUpFemaleCheckBox().isSelected(), signUpScreen.getSignUpOtherCheckBox().isSelected());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 String phoneNumber = signUpScreen.getSignUpPhoneNumberTextField().getText().trim();
                 String Gmail = signUpScreen.getSignUpGmailTextField().getText().trim();
 
@@ -142,7 +147,11 @@ public class SignUpController {
                     signUpScreen.getSignUpMessageLabel().setText("Mã xác thực không đúng");
                 }
 
-                userServices.updateInformation(userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
+                try {
+                    userServices.updateInformation(userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 userAccount = null;
 
                 LoginScreen ls = new LoginScreen();
