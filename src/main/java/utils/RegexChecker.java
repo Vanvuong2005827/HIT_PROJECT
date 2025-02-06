@@ -5,7 +5,7 @@ import commons.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CheckRegex {
+public class RegexChecker {
     public static boolean checkValidEmail(String email) {
         String EMAIL_PATTERN = Patterns.EMAIL_PATTERN;
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);

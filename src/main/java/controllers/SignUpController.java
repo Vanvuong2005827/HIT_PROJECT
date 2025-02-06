@@ -2,7 +2,7 @@ package controllers;
 
 import view.screens.login_screens.LoginScreen;
 import view.screens.login_screens.SignUpScreen;
-import utils.CheckRegex;
+import utils.RegexChecker;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,7 +47,7 @@ public class SignUpController {
                     return;
                 }
 
-                if (!CheckRegex.checkValidEmail(Gmail)) {
+                if (!RegexChecker.checkValidEmail(Gmail)) {
                     signUpScreen.getSignUpMessageLabel().setText("Email không tồn tại");
                     return;
                 }
@@ -64,7 +64,11 @@ public class SignUpController {
                             signUpScreen.getSignUpMessageLabel().setText("");
                             signUpScreen.getSignUpSendingLabel().setText("Đang gửi...");
                             signUpScreen.getSignUpSendingLabel().setForeground(Color.gray);
-                            AnsCode = forgetPasswordService.getCode(Gmail);
+                            try {
+                                AnsCode = forgetPasswordService.getCode(Gmail);
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            }
                             return null;
                         }
 
@@ -78,8 +82,7 @@ public class SignUpController {
 
                     worker.execute();
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    signUpScreen.getSignUpSendingLabel().setText("An error occurred while generating ans code");
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -107,7 +110,7 @@ public class SignUpController {
                 try {
                     gender = userServices.selectGender(signUpScreen.getSignUpMaleCheckBox().isSelected(), signUpScreen.getSignUpFemaleCheckBox().isSelected(), signUpScreen.getSignUpOtherCheckBox().isSelected());
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
                 String phoneNumber = signUpScreen.getSignUpPhoneNumberTextField().getText().trim();
                 String Gmail = signUpScreen.getSignUpGmailTextField().getText().trim();
@@ -128,12 +131,12 @@ public class SignUpController {
                     signUpScreen.getSignUpMessageLabel().setText("Xin mời nhập email");
                     return;
                 }
-                if (!CheckRegex.checkValidEmail(Gmail)) {
+                if (!RegexChecker.checkValidEmail(Gmail)) {
                     signUpScreen.getSignUpMessageLabel().setText("Email không tồn tại");
                     return;
                 }
 
-                if (!CheckRegex.checkValidPhoneNumber(phoneNumber)) {
+                if (!RegexChecker.checkValidPhoneNumber(phoneNumber)) {
                     signUpScreen.getSignUpMessageLabel().setText("Số điện thoại không hợp lệ");
                     return;
                 }
@@ -150,7 +153,7 @@ public class SignUpController {
                 try {
                     userServices.updateInformation(userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
                 userAccount = null;
 

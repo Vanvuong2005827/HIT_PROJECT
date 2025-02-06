@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.io.File;
 
 import static commons.ColorMain.colorFix;
+import static utils.NetworkChecker.curFrame;
 
 public class ChangeNameScreen extends javax.swing.JFrame {
     private JLabel label;
@@ -16,6 +17,7 @@ public class ChangeNameScreen extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         new ChangeNameController(this, label);
+        curFrame = this;
     }
 
     private void initComponents() {

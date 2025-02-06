@@ -19,6 +19,7 @@ import static commons.ColorMain.colorMain;
 import static commons.CurrentUser.bookService;
 import static utils.CustomBookGridPanel.customChapterPanel;
 import static utils.CustomBookGridPanel.resizeImage;
+import static utils.NetworkChecker.curFrame;
 
 public class OneBookScreen extends javax.swing.JFrame {
     private JFrame previousScreen;
@@ -40,6 +41,7 @@ public class OneBookScreen extends javax.swing.JFrame {
         processBookChapterData();
         setLocationRelativeTo(null);
         new OneBookController(this, previousScreen);
+        curFrame = this;
     }
 
     private void initComponents() {

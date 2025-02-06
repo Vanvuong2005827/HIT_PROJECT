@@ -19,6 +19,7 @@ import javax.swing.event.ChangeListener;
 
 import static commons.ColorMain.colorMain3;
 import static commons.CurrentUser.*;
+import static utils.NetworkChecker.curFrame;
 
 public class HomeScreen extends javax.swing.JFrame {
     private LoginScreen loginScreen;
@@ -59,6 +60,7 @@ public class HomeScreen extends javax.swing.JFrame {
                 }
             });
         }
+        curFrame = this;
     }
 
     public void processData() {
