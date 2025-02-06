@@ -67,7 +67,7 @@ public class SignUpController {
                             try {
                                 AnsCode = forgetPasswordService.getCode(Gmail);
                             } catch (Exception e) {
-                                JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                             }
                             return null;
                         }
@@ -110,7 +110,7 @@ public class SignUpController {
                 try {
                     gender = userServices.selectGender(signUpScreen.getSignUpMaleCheckBox().isSelected(), signUpScreen.getSignUpFemaleCheckBox().isSelected(), signUpScreen.getSignUpOtherCheckBox().isSelected());
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
                 String phoneNumber = signUpScreen.getSignUpPhoneNumberTextField().getText().trim();
                 String Gmail = signUpScreen.getSignUpGmailTextField().getText().trim();
@@ -153,7 +153,7 @@ public class SignUpController {
                 try {
                     userServices.updateInformation(userAccount, fullname, yearOfBirth, gender, phoneNumber, Gmail);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Không cập nhật được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
                 userAccount = null;
 

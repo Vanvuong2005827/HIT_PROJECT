@@ -59,13 +59,21 @@ public class OneBookController {
                                 ws.setVisible(true);
                                 oneBookScreen.setVisible(false);
                                 cs = new ChapterScreen(oneBookScreen, oneBookScreen.getCurBook(), oneBookScreen.getOneBookStartReadButton(), oneBookScreen.getChapters(), 0);
-                                bookService.storageBookToUser(oneBookScreen.getCurBook().getId());
+                                try {
+                                    bookService.storageBookToUser(oneBookScreen.getCurBook().getId());
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                }
                                 return null;
                             }
 
                             @Override
                             protected void done() {
-                                bookService.saveLastReadChapter(oneBookScreen.getCurBook().getId(), 0);
+                                try {
+                                    bookService.saveLastReadChapter(oneBookScreen.getCurBook().getId(), 0);
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, "Lưu dữ liệu không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                }
                                 oneBookScreen.getOneBookStartReadButton().setText("Tiếp tục đọc chapter " + oneBookScreen.getChapters().get(bookService.getLastReadIndexChapter(oneBookScreen.getCurBook().getId())).getChapter_name());
                                 cs.setVisible(true);
                                 ws.setVisible(false);
@@ -86,13 +94,21 @@ public class OneBookController {
                                 ws.setVisible(true);
                                 oneBookScreen.setVisible(false);
                                 cs = new ChapterScreen(oneBookScreen, oneBookScreen.getCurBook(), oneBookScreen.getOneBookStartReadButton(), oneBookScreen.getChapters(), x);
-                                bookService.storageBookToUser(oneBookScreen.getCurBook().getId());
+                                try {
+                                    bookService.storageBookToUser(oneBookScreen.getCurBook().getId());
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                }
                                 return null;
                             }
 
                             @Override
                             protected void done() {
-                                bookService.saveLastReadChapter(oneBookScreen.getCurBook().getId(), x);
+                                try {
+                                    bookService.saveLastReadChapter(oneBookScreen.getCurBook().getId(), x);
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                }
                                 oneBookScreen.getOneBookStartReadButton().setText("Tiếp tục đọc chapter " + oneBookScreen.getChapters().get(bookService.getLastReadIndexChapter(oneBookScreen.getCurBook().getId())).getChapter_name());
                                 cs.setVisible(true);
                                 ws.setVisible(false);
@@ -112,11 +128,19 @@ public class OneBookController {
                 if (oneBookScreen.getOneBookFavou().getBackground() == Color.gray) {
                     oneBookScreen.getOneBookFavou().setBackground(Color.red);
                     oneBookScreen.getjLabel1().setForeground(Color.white);
-                    bookService.toggleFavorite(oneBookScreen.getCurBook().getId(), Color.red);
+                    try {
+                        bookService.toggleFavorite(oneBookScreen.getCurBook().getId(), Color.red);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
                     oneBookScreen.getOneBookFavou().setBackground(Color.gray);
                     oneBookScreen.getjLabel1().setForeground(Color.black);
-                    bookService.toggleFavorite(oneBookScreen.getCurBook().getId(), Color.gray);
+                    try {
+                        bookService.toggleFavorite(oneBookScreen.getCurBook().getId(), Color.gray);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });

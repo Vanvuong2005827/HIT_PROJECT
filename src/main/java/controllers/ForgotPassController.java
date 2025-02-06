@@ -61,7 +61,7 @@ public class ForgotPassController {
                 try {
                     userAccount1 = userServices.getUserByUsername(username);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
                 if (userAccount1 == null) {
                     forgotPassScreen.getForgotPassShowMessage().setText("Không tìm thấy tài khoản");
@@ -71,7 +71,7 @@ public class ForgotPassController {
                     try {
                         userInfo1 = userServices.getUserInfoByUserAccount(userAccount1);
                     } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                     }
                     if (!userInfo1.getEmail().equals(email)) {
                         forgotPassScreen.getForgotPassShowMessage().setText("Email không trùng khớp");
@@ -89,7 +89,11 @@ public class ForgotPassController {
                         protected Void doInBackground() {
                             forgotPassScreen.getForgotPassWatingLabel().setText("Đang gửi...");
                             forgotPassScreen.getForgotPassWatingLabel().setForeground(Color.gray);
-                            AnsCode = forgetPasswordService.getCode(email);
+                            try {
+                                AnsCode = forgetPasswordService.getCode(email);
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, "Gửi không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            }
                             return null;
                         }
 
@@ -149,7 +153,7 @@ public class ForgotPassController {
                     try {
                         userAccount = userServices.getUserByUsername(username);
                     } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                     }
                     ChangePassScreenSecond changPassScreenSecond = new ChangePassScreenSecond(previousFrame);
                     changPassScreenSecond.setVisible(true);

@@ -9,6 +9,7 @@ import models.book_information.Book;
 import models.chapter_information.AllChapters;
 import models.chapter_information.Chapter;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 import static api.ApiGet.getApi;
@@ -26,17 +27,20 @@ public class GetChapters {
 
     public Chapter getChapter(AllChapters chapters) {
         Chapter chapter = new Chapter();
-        String apiUrl = chapters.getChapterData();
-        String jsonData = getApi(apiUrl);
-        if (jsonData != null && !jsonData.isEmpty()) {
-            Gson gson = new Gson();
-            ApiOneChapterResponse apiResponse = gson.fromJson(jsonData, ApiOneChapterResponse.class);
-            if (apiResponse != null && apiResponse.getData() != null) {
-                ApiOneChapterJson a = apiResponse.getData().getItem();
-                chapter = new Chapter(a.getId(), a.getChapter_name(), a.getChapter_path(), a.getChapter_image());
+        try {
+            String apiUrl = chapters.getChapterData();
+            String jsonData = getApi(apiUrl);
+            if (jsonData != null && !jsonData.isEmpty()) {
+                Gson gson = new Gson();
+                ApiOneChapterResponse apiResponse = gson.fromJson(jsonData, ApiOneChapterResponse.class);
+                if (apiResponse != null && apiResponse.getData() != null) {
+                    ApiOneChapterJson a = apiResponse.getData().getItem();
+                    chapter = new Chapter(a.getId(), a.getChapter_name(), a.getChapter_path(), a.getChapter_image());
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
-
         return chapter;
     }
 }

@@ -3,6 +3,8 @@ package services.account_services;
 import models.user.UserAccount;
 import services.UserServices;
 
+import javax.swing.*;
+
 import static dao.ConnectDB.*;
 
 public class RegisterService {
@@ -13,10 +15,15 @@ public class RegisterService {
     }
 
     public boolean register(UserAccount user) throws Exception {
-        if (!userServices.isUsernameExists(user.getUsername())) {
-            collection.insertOne(user);
-            return true;
-        } else {
+        try {
+            if (!userServices.isUsernameExists(user.getUsername())) {
+                collection.insertOne(user);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }

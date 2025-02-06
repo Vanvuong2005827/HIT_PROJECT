@@ -39,10 +39,4 @@ public class ConnectDB {
     public static MongoCollection<UserIP> collectionIp = db.getCollection("UserIP", UserIP.class);
     public static MongoCollection<UserHistoryBooks> collectionHistory = db.getCollection("UserHistoryBooks", UserHistoryBooks.class);
     public static MongoCollection<Book> collectionBook = db.getCollection("Book", Book.class);
-//    static {
-//        collectionHistory.createIndex(
-//                Indexes.ascending("userId", "bookId"),
-//                new IndexOptions().unique(true)
-//        );
-//    }
 }

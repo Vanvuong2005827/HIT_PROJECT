@@ -60,12 +60,10 @@ public class ForgetPasswordService {
 
             Transport.send(message);
             System.out.println("Email đã được gửi thành công.");
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi: Mật khẩu email không được tìm thấy trong biến môi trường.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (MessagingException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi khi gửi email.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không gửi được email. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
 
         return String.valueOf(randomNum);
@@ -88,10 +86,8 @@ public class ForgetPasswordService {
             userAccount = userServices.getUserByUsername(user.getUsername());
             System.out.println("Mật khẩu đã được cập nhật thành công.");
 
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi: User không tồn tại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

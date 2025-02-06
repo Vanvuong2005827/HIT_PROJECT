@@ -50,7 +50,7 @@ public class SearchController {
         try {
             keyword = URLEncoder.encode(input, StandardCharsets.UTF_8.toString());
         } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         String finalKeyword = keyword;
         SwingWorker<Void, Void> worker = new SwingWorker<>() {

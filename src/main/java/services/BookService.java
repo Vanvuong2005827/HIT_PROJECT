@@ -27,10 +27,8 @@ public class BookService {
                 UserHistoryBooks userHistoryBooks = new UserHistoryBooks(userAccount.getId(), bookId, 1, LocalDateTime.now());
                 collectionHistory.insertOne(userHistoryBooks);
             }
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi: userAccount hoặc bookId bị null.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi khi lưu sách vào user", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -39,11 +37,8 @@ public class BookService {
             Bson filter = Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("bookId", bookId));
             UserHistoryBooks result = collectionHistory.find(filter).first();
             return (result != null) ? result.getLastReadChapter() : 1;
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi: Không tìm thấy dữ liệu user hoặc book.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return 1;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return 1;
         }
     }
@@ -53,7 +48,7 @@ public class BookService {
             Bson filter = Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("bookId", bookId));
             collectionHistory.updateOne(filter, Updates.set("lastReadChapter", chapter));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi khi lưu chương cuối cùng đã đọc:", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -67,11 +62,8 @@ public class BookService {
                 return true;
             }
             return false;
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi: Dữ liệu user hoặc bookId bị null.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
@@ -79,10 +71,8 @@ public class BookService {
     public void insertBookToDB(Book book) {
         try {
             collectionBook.updateOne(Filters.eq("_id", book.getId()), new Document("$setOnInsert", book), new UpdateOptions().upsert(true));
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi: Dữ liệu sách bị null.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -90,7 +80,7 @@ public class BookService {
         try {
             return collectionBook.find(Filters.eq("_id", bookId)).first();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
@@ -107,7 +97,7 @@ public class BookService {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return books;
     }
@@ -127,7 +117,7 @@ public class BookService {
             boolean newFavoriteStatus = (level == Color.red);
             collectionHistory.updateOne(filter, Updates.set("favorite", newFavoriteStatus), new UpdateOptions().upsert(true));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -144,7 +134,7 @@ public class BookService {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return books;
     }
@@ -160,7 +150,7 @@ public class BookService {
 
             return result.getFavorite() ? Color.red : Color.gray;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return Color.gray;
         }
     }

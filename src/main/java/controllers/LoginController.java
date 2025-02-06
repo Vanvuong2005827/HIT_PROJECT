@@ -87,7 +87,7 @@ public class LoginController {
                     InetAddress localhost = InetAddress.getLocalHost();
                     userIP = userServices.getUserIPByIP(localhost.getHostAddress());
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
 
                 String userName = loginScreen.getLoginUsernameTextField().getText().trim();
@@ -108,8 +108,8 @@ public class LoginController {
                         loginScreen.getLoginMessageLabel().setText("Thử lại sau: " + minutes + " phút " + seconds + " giây");
                         return;
                     }
-                } catch (NullPointerException e) {
-                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
 
 
@@ -118,18 +118,22 @@ public class LoginController {
                         try {
                             userAccount = userServices.getUserByUsername(userName);
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                         }
                         try {
                             userInfo = userServices.getUserInfoByUserAccount(userAccount);
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                         }
 
                         getGradientInUser();
 
                         if (loginScreen.getLoginRememberCheckbox().isSelected()) {
-                            loginService.saveUser(userName, password);
+                            try {
+                                loginService.saveUser(userName, password);
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, "Lưu không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
 
                         WaitScreen ws = new WaitScreen();
@@ -145,7 +149,7 @@ public class LoginController {
                             try {
                                 userServices.plusTime(userIP, 5);
                             } catch (Exception e) {
-                                JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                             }
                             cnt = 0;
                         }
@@ -199,14 +203,13 @@ public class LoginController {
                 try {
                     if (!registerService.register(userAccount)) {
                         loginScreen.getSignUpMessageLabel().setText("Tài khoản đã tồn tại");
-                        return;
                     } else {
                         SignUpScreen su = new SignUpScreen(loginScreen);
                         loginScreen.setVisible(false);
                         su.setVisible(true);
                     }
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Đăng kí không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

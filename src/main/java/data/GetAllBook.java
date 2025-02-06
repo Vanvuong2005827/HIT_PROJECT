@@ -25,22 +25,23 @@ public class GetAllBook {
             int page = i;
             Callable<ArrayList<Book>> task = () -> {
                 ArrayList<Book> pageBooks = new ArrayList<>();
-               
-                String pageNumber = Integer.toString(page);
-                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
-                String jsonData = getApi(apiUrl);
-                if (jsonData != null && !jsonData.isEmpty()) {
-                    Gson gson = new Gson();
-                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+                try {
+                    String pageNumber = Integer.toString(page);
+                    String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
+                    String jsonData = getApi(apiUrl);
+                    if (jsonData != null && !jsonData.isEmpty()) {
+                        Gson gson = new Gson();
+                        ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-                    if (apiResponse != null && apiResponse.getData() != null) {
-                        apiResponse.getData().getItems().forEach(item -> {
-                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                        });
+                        if (apiResponse != null && apiResponse.getData() != null) {
+                            apiResponse.getData().getItems().forEach(item -> {
+                                pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                            });
+                        }
                     }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
-
-
                 return pageBooks;
             };
 
@@ -70,19 +71,22 @@ public class GetAllBook {
             int page = i;
             Callable<ArrayList<Book>> task = () -> {
                 ArrayList<Book> pageBooks = new ArrayList<>();
+                try {
+                    String pageNumber = Integer.toString(page);
+                    String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/hoan-thanh?page=" + pageNumber;
+                    String jsonData = getApi(apiUrl);
+                    if (jsonData != null && !jsonData.isEmpty()) {
+                        Gson gson = new Gson();
+                        ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-                String pageNumber = Integer.toString(page);
-                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/hoan-thanh?page=" + pageNumber;
-                String jsonData = getApi(apiUrl);
-                if (jsonData != null && !jsonData.isEmpty()) {
-                    Gson gson = new Gson();
-                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
-
-                    if (apiResponse != null && apiResponse.getData() != null) {
-                        apiResponse.getData().getItems().forEach(item -> {
-                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                        });
+                        if (apiResponse != null && apiResponse.getData() != null) {
+                            apiResponse.getData().getItems().forEach(item -> {
+                                pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                            });
+                        }
                     }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
 
                 return pageBooks;
@@ -114,19 +118,22 @@ public class GetAllBook {
             int page = i;
             Callable<ArrayList<Book>> task = () -> {
                 ArrayList<Book> pageBooks = new ArrayList<>();
+                try {
+                    String pageNumber = Integer.toString(page);
+                    String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/sap-ra-mat?page=" + pageNumber;
+                    String jsonData = getApi(apiUrl);
+                    if (jsonData != null && !jsonData.isEmpty()) {
+                        Gson gson = new Gson();
+                        ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-                String pageNumber = Integer.toString(page);
-                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/sap-ra-mat?page=" + pageNumber;
-                String jsonData = getApi(apiUrl);
-                if (jsonData != null && !jsonData.isEmpty()) {
-                    Gson gson = new Gson();
-                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
-
-                    if (apiResponse != null && apiResponse.getData() != null) {
-                        apiResponse.getData().getItems().forEach(item -> {
-                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                        });
+                        if (apiResponse != null && apiResponse.getData() != null) {
+                            apiResponse.getData().getItems().forEach(item -> {
+                                pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                            });
+                        }
                     }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
 
                 return pageBooks;
@@ -155,18 +162,21 @@ public class GetAllBook {
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         Callable<ArrayList<Book>> task = () -> {
             ArrayList<Book> pageBooks = new ArrayList<>();
+            try {
+                String apiUrl = "https://otruyenapi.com/v1/api/the-loai";
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-            String apiUrl = "https://otruyenapi.com/v1/api/the-loai";
-            String jsonData = getApi(apiUrl);
-            if (jsonData != null && !jsonData.isEmpty()) {
-                Gson gson = new Gson();
-                ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
-
-                if (apiResponse != null && apiResponse.getData() != null) {
-                    apiResponse.getData().getItems().forEach(item -> {
-                        pageBooks.add(new Book(item.getName(), item.getSlug()));
-                    });
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getName(), item.getSlug()));
+                        });
+                    }
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
 
             return pageBooks;
@@ -198,19 +208,22 @@ public class GetAllBook {
             int page = i;
             Callable<ArrayList<Book>> task = () -> {
                 ArrayList<Book> pageBooks = new ArrayList<>();
+                try {
+                    String pageNumber = Integer.toString(page);
+                    String apiUrl = "https://otruyenapi.com/v1/api/the-loai/" + nameStyle + "?page=" + pageNumber;
+                    String jsonData = getApi(apiUrl);
+                    if (jsonData != null && !jsonData.isEmpty()) {
+                        Gson gson = new Gson();
+                        ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-                String pageNumber = Integer.toString(page);
-                String apiUrl = "https://otruyenapi.com/v1/api/the-loai/" + nameStyle + "?page=" + pageNumber;
-                String jsonData = getApi(apiUrl);
-                if (jsonData != null && !jsonData.isEmpty()) {
-                    Gson gson = new Gson();
-                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
-
-                    if (apiResponse != null && apiResponse.getData() != null) {
-                        apiResponse.getData().getItems().forEach(item -> {
-                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                        });
+                        if (apiResponse != null && apiResponse.getData() != null) {
+                            apiResponse.getData().getItems().forEach(item -> {
+                                pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                            });
+                        }
                     }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
 
                 return pageBooks;
@@ -228,24 +241,24 @@ public class GetAllBook {
         }
 
         executor.shutdown();
-        if (books.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
         return books;
     }
 
     public Book getBooksTheoTen(String tenTruyen) {
         Book book = new Book();
-        String apiUrl = "https://otruyenapi.com/v1/api/truyen-tranh/" + tenTruyen;
-        String jsonData = getApi(apiUrl);
-        if (jsonData != null && !jsonData.isEmpty()) {
-            Gson gson = new Gson();
-            ApiOneBookResponse apiResponse = gson.fromJson(jsonData, ApiOneBookResponse.class);
-
-            if (apiResponse != null && apiResponse.getData() != null) {
-                ApiOneBookJson b = apiResponse.getData().getItem();
-                book = new Book(b.getId(), b.getName(), b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
+        try {
+            String apiUrl = "https://otruyenapi.com/v1/api/truyen-tranh/" + tenTruyen;
+            String jsonData = getApi(apiUrl);
+            if (jsonData != null && !jsonData.isEmpty()) {
+                Gson gson = new Gson();
+                ApiOneBookResponse apiResponse = gson.fromJson(jsonData, ApiOneBookResponse.class);
+                if (apiResponse != null && apiResponse.getData() != null) {
+                    ApiOneBookJson b = apiResponse.getData().getItem();
+                    book = new Book(b.getId(), b.getName(), b.getSlug(), b.getContent(), b.getStatus(), b.getThumbUrl(), b.getCategory(), b.getChapters(), b.getUpdatedAt());
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         return book;
     }
@@ -257,18 +270,21 @@ public class GetAllBook {
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
         Callable<ArrayList<Book>> task = () -> {
             ArrayList<Book> pageBooks = new ArrayList<>();
-            String apiUrl = "https://otruyenapi.com/v1/api/tim-kiem?keyword=" + keywords;
-            String jsonData = getApi(apiUrl);
-            if (jsonData != null && !jsonData.isEmpty()) {
-                Gson gson = new Gson();
-                ApiSearchBookResponse apiResponse = gson.fromJson(jsonData, ApiSearchBookResponse.class);
-
-                if (apiResponse != null && apiResponse.getData() != null) {
-                    apiResponse.getData().getItems().forEach(item -> {
-                        pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChapters()));
-                    });
-                    label.setText(apiResponse.getData().getTitlePage());
+            try {
+                String apiUrl = "https://otruyenapi.com/v1/api/tim-kiem?keyword=" + keywords;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiSearchBookResponse apiResponse = gson.fromJson(jsonData, ApiSearchBookResponse.class);
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChapters()));
+                        });
+                        label.setText(apiResponse.getData().getTitlePage());
+                    }
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
             return pageBooks;
         };

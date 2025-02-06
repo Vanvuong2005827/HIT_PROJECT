@@ -15,8 +15,7 @@ public class DelAccountService {
             collectionInfo.deleteMany(new Document("_id", idUser));
             collectionIp.deleteMany(new Document("_id", idUser));
         } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Lỗi Không Xác Định, Vui Lòng Liên Hệ Với Admin Qua Email: Vanvuong2005827@gmail.com");
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

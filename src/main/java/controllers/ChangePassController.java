@@ -69,9 +69,12 @@ public class ChangePassController {
 
                 if (!encryptorService.checkPassword(oldPass, userAccount.getPassword())) {
                     changePassScreen.getChangePassShowMessageLabel().setText("Mật khẩu cũ không khớp vui lòng nhập lại");
-                    return;
                 } else {
-                    forgetPasswordService.ChangePassword(userAccount, reEnterPass);
+                    try {
+                        forgetPasswordService.ChangePassword(userAccount, reEnterPass);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Đổi không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    }
                     previousScreen.setVisible(true);
                     changePassScreen.setVisible(false);
 
@@ -117,10 +120,13 @@ public class ChangePassController {
 
                 if (!newPass.equals(reEnterPass)) {
                     changePassScreenSecond.getChangePassShowMessageLabel().setText("Mật khẩu nhập lại không khớp");
-                    return;
                 } else {
-                    forgetPasswordService.ChangePassword(userAccount, reEnterPass);
-                    userAccount = null;
+                    try {
+                        forgetPasswordService.ChangePassword(userAccount, reEnterPass);
+                        userAccount = null;
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Đổi không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    }
                     previousScreen.setVisible(true);
                     changePassScreenSecond.setVisible(false);
 

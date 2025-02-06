@@ -45,7 +45,6 @@ public class CustomBookGridPanel {
 
             panel.add(jLabel1);
         } catch (IOException e) {
-            e.printStackTrace();
             JLabel errorLabel = new JLabel("Không thể tải ảnh!");
             errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
             errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -160,7 +159,6 @@ public class CustomBookGridPanel {
             imgLabel = new JLabel(new ImageIcon(resizedImage));
 
         } catch (IOException e) {
-            e.printStackTrace();
             imgLabel = new JLabel("Không thể tải ảnh!");
             imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
         }

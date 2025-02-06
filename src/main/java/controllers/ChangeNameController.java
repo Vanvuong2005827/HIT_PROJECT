@@ -35,7 +35,7 @@ public class ChangeNameController {
                     label.setText(changeNameScreen.getjTextField1().getText().trim());
                     userServices.changeUserFullName(userInfo.getId(), changeNameScreen.getjTextField1().getText().trim());
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
                 changeNameScreen.setVisible(false);
             }
