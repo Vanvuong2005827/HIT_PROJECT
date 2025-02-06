@@ -3,6 +3,7 @@ package controllers;
 import view.pages.home_screen_pages.SearchPage;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -30,35 +31,47 @@ public class SearchController {
     private void searchEvent() {
         searchPage.getSearchSearchLabel().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                String input = searchPage.getSearchSearchTextField().getText();
-                String keyword = null;
-                try {
-                    keyword = URLEncoder.encode(input, StandardCharsets.UTF_8.toString());
-                } catch (UnsupportedEncodingException e) {
-                    throw new RuntimeException(e);
-                }
-                String finalKeyword = keyword;
-                SwingWorker<Void, Void> worker = new SwingWorker<>() {
-                    @Override
-                    protected Void doInBackground() {
-                        searchPage.getSearchKeywordLabel().setText("Loading...");
-                        searchPage.processSeachBook(finalKeyword);
-                        return null;
-                    }
-
-                    @Override
-                    protected void done() {
-                        if (searchPage.getTotalBooks() == 0) {
-                            searchPage.getSearchKeywordLabel().setText("Không tìm thấy kết quả");
-                            searchPage.getMainPanel().removeAll();
-                            searchPage.getMainPanel().revalidate();
-                            searchPage.getMainPanel().repaint();
-                        }
-                    }
-                };
-
-                worker.execute();
+                performSearch();
             }
         });
+        searchPage.getSearchSearchTextField().addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    performSearch();
+                }
+            }
+        });
+    }
+
+    private void performSearch(){
+        String input = searchPage.getSearchSearchTextField().getText();
+        String keyword = null;
+        try {
+            keyword = URLEncoder.encode(input, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        String finalKeyword = keyword;
+        SwingWorker<Void, Void> worker = new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() {
+                searchPage.getSearchKeywordLabel().setText("Loading...");
+                searchPage.processSeachBook(finalKeyword);
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                if (searchPage.getTotalBooks() == 0) {
+                    searchPage.getSearchKeywordLabel().setText("Không tìm thấy kết quả");
+                    searchPage.getMainPanel().removeAll();
+                    searchPage.getMainPanel().revalidate();
+                    searchPage.getMainPanel().repaint();
+                }
+            }
+        };
+
+        worker.execute();
     }
 }
