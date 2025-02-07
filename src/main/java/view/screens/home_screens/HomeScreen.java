@@ -33,7 +33,6 @@ import static utils.CustomBookGridPanel.fixDragable;
 
 public class HomeScreen extends javax.swing.JFrame {
     private HomePage homeScreen;
-
     public HomeScreen(HomePage hs) {
         homeScreen = hs;
         initComponents();
@@ -197,8 +196,6 @@ public class HomeScreen extends javax.swing.JFrame {
         homeStyleScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         homeMainScrollPane.setViewportView(homeMainPanel);
-        homeMainScrollPane.addMouseListener(dragScrollListenerMainScroll);
-        homeMainScrollPane.addMouseMotionListener(dragScrollListenerMainScroll);
 
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
@@ -284,8 +281,6 @@ public class HomeScreen extends javax.swing.JFrame {
         }
 
         executor.shutdown();
-        homeNewBookGridPanel.addMouseListener(dragScrollListenerMainScroll);
-        homeNewBookGridPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
     public void processCommingSoonBookPicture() {
@@ -335,9 +330,6 @@ public class HomeScreen extends javax.swing.JFrame {
         }
 
         executor.shutdown();
-
-        homeCommingSoonBookGridPanel1.addMouseListener(dragScrollListenerMainScroll);
-        homeCommingSoonBookGridPanel1.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
     public void processStyleBookPircture() {
@@ -420,8 +412,6 @@ public class HomeScreen extends javax.swing.JFrame {
         }
 
         executor.shutdown();
-        homeStyleMainPanel.addMouseListener(dragScrollListenerStyleScroll);
-        homeStyleMainPanel.addMouseMotionListener(dragScrollListenerStyleScroll);
     }
 
     public void processPageViewBookPicture() {
@@ -565,102 +555,6 @@ public class HomeScreen extends javax.swing.JFrame {
         return homePanel;
     }
 
-    private MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
-        private Point origin;
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            origin = e.getPoint();
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            JViewport viewport = homeStyleScrollPane.getViewport();
-            Point viewPosition = viewport.getViewPosition();
-            int deltaX = origin.x - e.getX();
-
-            int newX = viewPosition.x + deltaX;
-
-            int totalWidth = 130 * 100;
-            if (totalWidth < homeStyleScrollPane.getWidth()) totalWidth = homeStyleScrollPane.getWidth();
-            int panelWidth = totalWidth;
-            int viewportWidth = viewport.getWidth();
-
-            if (newX < 0) {
-                newX = 0;
-            }
-            if (newX > panelWidth - viewportWidth) {
-                newX = panelWidth - viewportWidth;
-            }
-
-            viewport.setViewPosition(new Point(newX, 0));
-        }
-    };
-
-    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
-        private Point origin;
-        private final double SCROLL_FACTOR = 1.5;
-        private final int MAX_DELTA = 80;
-        private int velocity = 0;
-        private Timer inertiaTimer;
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            origin = e.getPoint();
-            if (inertiaTimer != null && inertiaTimer.isRunning()) {
-                inertiaTimer.stop();
-            }
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            if (origin == null) return;
-
-            JViewport viewport = homeMainScrollPane.getViewport();
-            Point viewPosition = viewport.getViewPosition();
-
-            int deltaY = origin.y - e.getY();
-            deltaY = (int) Math.signum(deltaY) * Math.min(MAX_DELTA, Math.abs((int) (deltaY * SCROLL_FACTOR)));
-
-            velocity = deltaY;
-
-            int newY = viewPosition.y + deltaY;
-            int maxScrollHeight = 1450;
-
-            newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-            int finalNewY = newY;
-            SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            origin = null;
-            applyInertia();
-        }
-
-        private void applyInertia() {
-            inertiaTimer = new Timer(16, event -> {
-                if (Math.abs(velocity) < 1) {
-                    ((Timer) event.getSource()).stop();
-                    return;
-                }
-
-                JViewport viewport = homeMainScrollPane.getViewport();
-                Point viewPosition = viewport.getViewPosition();
-                int newY = viewPosition.y + velocity;
-                int maxScrollHeight = 1450;
-                newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-                int finalNewY = newY;
-                SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-
-                velocity *= 0.9;
-            });
-            inertiaTimer.start();
-        }
-    };
-
     private javax.swing.JLabel homeBellNotifications;
     private javax.swing.JPanel homeCommingSoonBookGridPanel1;
     private javax.swing.JLabel homeCommingSoonBookLabel;
@@ -695,5 +589,29 @@ public class HomeScreen extends javax.swing.JFrame {
 
     public JLabel getHomeSearchLabel() {
         return homeSearchLabel;
+    }
+
+    public JPanel getHomeMainPanel() {
+        return homeMainPanel;
+    }
+
+    public JPanel getHomeNewBookGridPanel() {
+        return homeNewBookGridPanel;
+    }
+
+    public JPanel getHomeCommingSoonBookGridPanel1() {
+        return homeCommingSoonBookGridPanel1;
+    }
+
+    public JScrollPane getHomeMainScrollPane() {
+        return homeMainScrollPane;
+    }
+
+    public JPanel getHomeStyleMainPanel() {
+        return homeStyleMainPanel;
+    }
+
+    public JScrollPane getHomeStyleScrollPane() {
+        return homeStyleScrollPane;
     }
 }

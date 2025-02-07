@@ -1,5 +1,6 @@
 package controllers.book;
 
+import utils.MouseDrag;
 import view.screens.ChapterScreen;
 
 import javax.swing.*;
@@ -17,6 +18,7 @@ public class ChapterController {
         backEvent();
         nextEvent();
         previousEvent();
+        mouseDrag();
     }
 
     private void backEvent() {
@@ -80,5 +82,11 @@ public class ChapterController {
                 chapterScreen.processData();
             }
         });
+    }
+
+    private void mouseDrag(){
+        MouseDrag mouseDrag = new MouseDrag(chapterScreen.getChapterScrollPane(), 1.5, 80, false);
+        chapterScreen.getChapterImgLabel().addMouseListener(mouseDrag);
+        chapterScreen.getChapterImgLabel().addMouseMotionListener(mouseDrag);
     }
 }

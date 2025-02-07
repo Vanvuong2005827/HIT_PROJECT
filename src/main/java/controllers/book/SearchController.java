@@ -1,5 +1,6 @@
 package controllers.book;
 
+import utils.MouseDrag;
 import view.screens.home_screens.SearchScreen;
 
 import javax.swing.*;
@@ -9,32 +10,33 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class SearchController {
-    private SearchScreen searchPage;
+    private SearchScreen searchScreen;
     private JFrame previousScreen;
 
-    public SearchController(SearchScreen searchPage, JFrame previousScreen) {
-        this.searchPage = searchPage;
+    public SearchController(SearchScreen searchScreen, JFrame previousScreen) {
+        this.searchScreen = searchScreen;
         this.previousScreen = previousScreen;
         backEvent();
         searchEvent();
+        mouseDrag();
     }
 
     private void backEvent() {
-        searchPage.getSearchBackLabel().addMouseListener(new java.awt.event.MouseAdapter() {
+        searchScreen.getSearchBackLabel().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 previousScreen.setVisible(true);
-                searchPage.setVisible(false);
+                searchScreen.setVisible(false);
             }
         });
     }
 
     private void searchEvent() {
-        searchPage.getSearchSearchLabel().addMouseListener(new java.awt.event.MouseAdapter() {
+        searchScreen.getSearchSearchLabel().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performSearch();
             }
         });
-        searchPage.getSearchSearchTextField().addKeyListener(new java.awt.event.KeyAdapter() {
+        searchScreen.getSearchSearchTextField().addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -45,7 +47,7 @@ public class SearchController {
     }
 
     private void performSearch(){
-        String input = searchPage.getSearchSearchTextField().getText();
+        String input = searchScreen.getSearchSearchTextField().getText();
         String keyword = null;
         try {
             keyword = URLEncoder.encode(input, StandardCharsets.UTF_8.toString());
@@ -56,22 +58,28 @@ public class SearchController {
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
             protected Void doInBackground() {
-                searchPage.getSearchKeywordLabel().setText("Loading...");
-                searchPage.processSeachBook(finalKeyword);
+                searchScreen.getSearchKeywordLabel().setText("Loading...");
+                searchScreen.processSeachBook(finalKeyword);
                 return null;
             }
 
             @Override
             protected void done() {
-                if (searchPage.getTotalBooks() == 0) {
-                    searchPage.getSearchKeywordLabel().setText("Không tìm thấy kết quả");
-                    searchPage.getMainPanel().removeAll();
-                    searchPage.getMainPanel().revalidate();
-                    searchPage.getMainPanel().repaint();
+                if (searchScreen.getTotalBooks() == 0) {
+                    searchScreen.getSearchKeywordLabel().setText("Không tìm thấy kết quả");
+                    searchScreen.getMainPanel().removeAll();
+                    searchScreen.getMainPanel().revalidate();
+                    searchScreen.getMainPanel().repaint();
                 }
             }
         };
 
         worker.execute();
+    }
+
+    private void mouseDrag(){
+        MouseDrag mouseDrag = new MouseDrag(searchScreen.getSearchScrollPane(), 1.5, 80, false);
+        searchScreen.getMainPanel().addMouseListener(mouseDrag);
+        searchScreen.getMainPanel().addMouseMotionListener(mouseDrag);
     }
 }
