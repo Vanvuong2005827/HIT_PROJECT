@@ -1,6 +1,6 @@
 package controllers.book;
 
-import utils.MouseDrag;
+import utils.MouseDragCommon;
 import view.screens.home_screens.HomeScreen;
 import view.screens.home_screens.SearchScreen;
 import view.pages.HomePage;
@@ -70,13 +70,13 @@ public class HomeController {
     }
 
     private void mouseDrag(){
-        MouseDrag mouseDrag = new MouseDrag(homeScreen.getHomeMainScrollPane(),1.5, 80, true);
-        homeScreen.getHomeMainPanel().addMouseListener(mouseDrag);
-        homeScreen.getHomeMainPanel().addMouseMotionListener(mouseDrag);
-        homeScreen.getHomeNewBookGridPanel().addMouseListener(mouseDrag);
-        homeScreen.getHomeNewBookGridPanel().addMouseMotionListener(mouseDrag);
-        homeScreen.getHomeCommingSoonBookGridPanel1().addMouseListener(mouseDrag);
-        homeScreen.getHomeCommingSoonBookGridPanel1().addMouseMotionListener(mouseDrag);
+        MouseDragCommon mouseDragCommon = new MouseDragCommon(homeScreen.getHomeMainScrollPane(),1.5, 80, true);
+        homeScreen.getHomeMainPanel().addMouseListener(mouseDragCommon);
+        homeScreen.getHomeMainPanel().addMouseMotionListener(mouseDragCommon);
+        homeScreen.getHomeNewBookGridPanel().addMouseListener(mouseDragCommon);
+        homeScreen.getHomeNewBookGridPanel().addMouseMotionListener(mouseDragCommon);
+        homeScreen.getHomeCommingSoonBookGridPanel1().addMouseListener(mouseDragCommon);
+        homeScreen.getHomeCommingSoonBookGridPanel1().addMouseMotionListener(mouseDragCommon);
         homeScreen.getHomeStyleMainPanel().addMouseListener(dragScrollListenerStyleScroll);
         homeScreen.getHomeStyleMainPanel().addMouseMotionListener(dragScrollListenerStyleScroll);
     }

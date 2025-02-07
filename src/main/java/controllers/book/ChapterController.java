@@ -1,6 +1,6 @@
 package controllers.book;
 
-import utils.MouseDrag;
+import utils.MouseDragCommon;
 import view.screens.ChapterScreen;
 
 import javax.swing.*;
@@ -85,8 +85,8 @@ public class ChapterController {
     }
 
     private void mouseDrag(){
-        MouseDrag mouseDrag = new MouseDrag(chapterScreen.getChapterScrollPane(), 1.5, 80, false);
-        chapterScreen.getChapterImgLabel().addMouseListener(mouseDrag);
-        chapterScreen.getChapterImgLabel().addMouseMotionListener(mouseDrag);
+        MouseDragCommon mouseDragCommon = new MouseDragCommon(chapterScreen.getChapterScrollPane(), 1.5, 80, false);
+        chapterScreen.getChapterImgLabel().addMouseListener(mouseDragCommon);
+        chapterScreen.getChapterImgLabel().addMouseMotionListener(mouseDragCommon);
     }
 }

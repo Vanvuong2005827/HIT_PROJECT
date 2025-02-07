@@ -1,6 +1,6 @@
 package controllers.book;
 
-import utils.MouseDrag;
+import utils.MouseDragCommon;
 import view.screens.home_screens.RecentScreen;
 
 public class RecentController {
@@ -12,10 +12,10 @@ public class RecentController {
     }
 
     private void mouseDrag() {
-        MouseDrag mouseDrag = new MouseDrag(recentScreen.getRecentBookScrollPane(), 1.5, 80, false);
-        recentScreen.getMainPanel().removeMouseListener(mouseDrag);
-        recentScreen.getMainPanel().removeMouseMotionListener(mouseDrag);
-        recentScreen.getMainPanel().addMouseListener(mouseDrag);
-        recentScreen.getMainPanel().addMouseMotionListener(mouseDrag);
+        MouseDragCommon mouseDragCommon = new MouseDragCommon(recentScreen.getRecentBookScrollPane(), 1.5, 80, false);
+        recentScreen.getMainPanel().removeMouseListener(mouseDragCommon);
+        recentScreen.getMainPanel().removeMouseMotionListener(mouseDragCommon);
+        recentScreen.getMainPanel().addMouseListener(mouseDragCommon);
+        recentScreen.getMainPanel().addMouseMotionListener(mouseDragCommon);
     }
 }

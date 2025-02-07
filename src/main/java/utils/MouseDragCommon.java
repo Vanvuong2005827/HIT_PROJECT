@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-public class MouseDrag extends MouseAdapter {
+public class MouseDragCommon extends MouseAdapter {
     private Point origin;
     private Timer inertiaTimer;
     private int velocity = 0;
@@ -11,7 +11,7 @@ public class MouseDrag extends MouseAdapter {
     private final double SCROLL_FACTOR ;
     private final int MAX_DELTA;
     private final boolean isHaveSize;
-    public MouseDrag(JScrollPane scrollPane, double SCROLL_FACTOR, int MAX_DELTA, boolean isHaveSize) {
+    public MouseDragCommon(JScrollPane scrollPane, double SCROLL_FACTOR, int MAX_DELTA, boolean isHaveSize) {
         this.scrollPane = scrollPane;
         this.SCROLL_FACTOR = SCROLL_FACTOR;
         this.MAX_DELTA = MAX_DELTA;

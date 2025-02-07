@@ -1,6 +1,6 @@
 package controllers.book;
 
-import utils.MouseDrag;
+import utils.MouseDragCommon;
 import view.screens.WaitScreen;
 import view.screens.ChapterScreen;
 import view.pages.OneBookPage;
@@ -149,8 +149,8 @@ public class OneBookController {
     }
 
     private void mouseDrag(){
-        MouseDrag mouseDrag = new MouseDrag(oneBookPage.getOneBookChapterScroll(), 1.5, 80, false);
-        oneBookPage.getOneBookChapterMainPanel().addMouseListener(mouseDrag);
-        oneBookPage.getOneBookChapterMainPanel().addMouseMotionListener(mouseDrag);
+        MouseDragCommon mouseDragCommon = new MouseDragCommon(oneBookPage.getOneBookChapterScroll(), 1.5, 80, false);
+        oneBookPage.getOneBookChapterMainPanel().addMouseListener(mouseDragCommon);
+        oneBookPage.getOneBookChapterMainPanel().addMouseMotionListener(mouseDragCommon);
     }
 }

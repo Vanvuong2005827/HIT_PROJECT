@@ -1,6 +1,6 @@
 package controllers.book;
 
-import utils.MouseDrag;
+import utils.MouseDragCommon;
 import view.screens.home_screens.SearchScreen;
 
 import javax.swing.*;
@@ -78,8 +78,8 @@ public class SearchController {
     }
 
     private void mouseDrag() {
-        MouseDrag mouseDrag = new MouseDrag(searchScreen.getSearchScrollPane(), 1.5, 80, false);
-        searchScreen.getMainPanel().addMouseListener(mouseDrag);
-        searchScreen.getMainPanel().addMouseMotionListener(mouseDrag);
+        MouseDragCommon mouseDragCommon = new MouseDragCommon(searchScreen.getSearchScrollPane(), 1.5, 80, false);
+        searchScreen.getMainPanel().addMouseListener(mouseDragCommon);
+        searchScreen.getMainPanel().addMouseMotionListener(mouseDragCommon);
     }
 }
