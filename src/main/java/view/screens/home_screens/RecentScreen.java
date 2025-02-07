@@ -1,6 +1,7 @@
 
 package view.screens.home_screens;
 
+import controllers.book.RecentController;
 import models.book.Book;
 import services.BookService;
 import utils.Gradient;
@@ -24,6 +25,7 @@ public class RecentScreen extends javax.swing.JFrame {
     public RecentScreen(HomePage hs) {
         homeScreen = hs;
         initComponents();
+        new RecentController(this);
     }
 
     private void initComponents() {
@@ -110,78 +112,7 @@ public class RecentScreen extends javax.swing.JFrame {
         }
         mainPanel.revalidate();
         mainPanel.repaint();
-        mainPanel.removeMouseListener(dragScrollListenerMainScroll);
-        mainPanel.removeMouseMotionListener(dragScrollListenerMainScroll);
-
-        mainPanel.addMouseListener(dragScrollListenerMainScroll);
-        mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
-
-    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
-        private Point origin;
-        private final double SCROLL_FACTOR = 1.5;
-        private final int MAX_DELTA = 80;
-        private int velocity = 0;
-        private Timer inertiaTimer;
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            origin = e.getPoint();
-            if (inertiaTimer != null && inertiaTimer.isRunning()) {
-                inertiaTimer.stop();
-            }
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            if (origin == null) return;
-
-            JViewport viewport = recentBookScrollPane.getViewport();
-            Point viewPosition = viewport.getViewPosition();
-
-            int deltaY = origin.y - e.getY();
-            deltaY = (int) Math.signum(deltaY) * Math.min(MAX_DELTA, Math.abs((int) (deltaY * SCROLL_FACTOR)));
-
-            velocity = deltaY;
-
-            int newY = viewPosition.y + deltaY;
-            Component view = viewport.getView();
-            int maxScrollHeight = view.getHeight() - viewport.getHeight();
-
-            newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-            int finalNewY = newY;
-            SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            origin = null;
-            applyInertia();
-        }
-
-        private void applyInertia() {
-            inertiaTimer = new Timer(16, event -> {
-                if (Math.abs(velocity) < 1) {
-                    ((Timer) event.getSource()).stop();
-                    return;
-                }
-
-                JViewport viewport = recentBookScrollPane.getViewport();
-                Point viewPosition = viewport.getViewPosition();
-                int newY = viewPosition.y + velocity;
-                Component view = viewport.getView();
-                int maxScrollHeight = view.getHeight() - viewport.getHeight();
-                newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-                int finalNewY = newY;
-                SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-
-                velocity *= 0.9;
-            });
-            inertiaTimer.start();
-        }
-    };
 
     public JPanel recentPanel() {
         return recentBookMainPanel;
@@ -190,4 +121,12 @@ public class RecentScreen extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel recentBookMainPanel;
     private javax.swing.JScrollPane recentBookScrollPane;
+
+    public JScrollPane getRecentBookScrollPane() {
+        return recentBookScrollPane;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
 }

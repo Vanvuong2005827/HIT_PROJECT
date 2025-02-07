@@ -1,6 +1,7 @@
 package view.screens.more_book_screens;
 
 import commons.ColorMain;
+import controllers.book.StyleBookController;
 import models.book.Book;
 import data.GetAllBook;
 import utils.Gradient;
@@ -26,6 +27,7 @@ public class StyleBookScreen extends javax.swing.JFrame {
     public StyleBookScreen(MoreBookPage m) {
         moreBookScreen = m;
         initComponents();
+        new StyleBookController(this);
     }
 
     private void initComponents() {
@@ -151,81 +153,20 @@ public class StyleBookScreen extends javax.swing.JFrame {
         }
 
         executor.shutdown();
-        mainPanel.addMouseListener(dragScrollListenerMainScroll);
-        mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
     public JPanel styleBookPanel() {
         return styleBookMainPanel;
     }
 
-    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
-        private Point origin;
-        private final double SCROLL_FACTOR = 1.0;
-        private final int MAX_DELTA = 80;
-        private int velocity = 0;
-        private Timer inertiaTimer;
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            origin = e.getPoint();
-            if (inertiaTimer != null && inertiaTimer.isRunning()) {
-                inertiaTimer.stop();
-            }
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            if (origin == null) return;
-
-            JViewport viewport = styleBookScrollPane.getViewport();
-            Point viewPosition = viewport.getViewPosition();
-
-            int deltaY = origin.y - e.getY();
-            deltaY = (int) Math.signum(deltaY) * Math.min(MAX_DELTA, Math.abs((int) (deltaY * SCROLL_FACTOR)));
-
-            velocity = deltaY;
-
-            int newY = viewPosition.y + deltaY;
-            Component view = viewport.getView();
-            int maxScrollHeight = view.getHeight() - viewport.getHeight();
-
-            newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-            int finalNewY = newY;
-            SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            origin = null;
-            applyInertia();
-        }
-
-        private void applyInertia() {
-            inertiaTimer = new Timer(16, event -> {
-                if (Math.abs(velocity) < 1) {
-                    ((Timer) event.getSource()).stop();
-                    return;
-                }
-
-                JViewport viewport = styleBookScrollPane.getViewport();
-                Point viewPosition = viewport.getViewPosition();
-                int newY = viewPosition.y + velocity;
-                Component view = viewport.getView();
-                int maxScrollHeight = view.getHeight() - viewport.getHeight();
-                newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-                int finalNewY = newY;
-                SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-
-                velocity *= 0.9;
-            });
-            inertiaTimer.start();
-        }
-    };
-
     private javax.swing.JPanel styleBookMainPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JScrollPane styleBookScrollPane;
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+    public JScrollPane getStyleBookScrollPane() {
+        return styleBookScrollPane;
+    }
 }

@@ -145,16 +145,13 @@ public class ChapterScreen extends JFrame {
 
                                 try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream())) {
                                     BufferedImage originalImage = ImageIO.read(in);
-                                    if (originalImage == null) {
-                                        throw new IOException("Invalid image data: " + fullUrl);
-                                    }
 
                                     BufferedImage resizedImage = resizeImage(originalImage, 450, originalImage.getHeight());
                                     imageLabel = new JLabel(new ImageIcon(resizedImage));
                                 }
                                 connection.disconnect();
                             } catch (Exception e) {
-                                e.printStackTrace();
+//                                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                             }
                             return imageLabel;
                         };
@@ -170,7 +167,7 @@ public class ChapterScreen extends JFrame {
                                 chapterImgLabel.repaint();
                             });
                         } catch (InterruptedException | ExecutionException e) {
-                            e.printStackTrace();
+//                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                         }
                     }
 
@@ -185,77 +182,7 @@ public class ChapterScreen extends JFrame {
             };
             worker.execute();
         });
-
-
-        chapterImgLabel.addMouseListener(dragScrollListenerMainScroll);
-        chapterImgLabel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
-
-    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
-        private Point origin;
-        private final double SCROLL_FACTOR = 1.0;
-        private final int MAX_DELTA = 80;
-        private int velocity = 0;
-        private Timer inertiaTimer;
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            origin = e.getPoint();
-            if (inertiaTimer != null && inertiaTimer.isRunning()) {
-                inertiaTimer.stop();
-            }
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            if (origin == null) return;
-
-            JViewport viewport = chapterScrollPane.getViewport();
-            Point viewPosition = viewport.getViewPosition();
-
-            int deltaY = origin.y - e.getY();
-            deltaY = (int) Math.signum(deltaY) * Math.min(MAX_DELTA, Math.abs((int) (deltaY * SCROLL_FACTOR)));
-
-            velocity = deltaY;
-
-            int newY = viewPosition.y + deltaY;
-            Component view = viewport.getView();
-            int maxScrollHeight = view.getHeight() - viewport.getHeight();
-
-            newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-            int finalNewY = newY;
-            SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            origin = null;
-            applyInertia();
-        }
-
-        private void applyInertia() {
-            inertiaTimer = new Timer(16, event -> {
-                if (Math.abs(velocity) < 1) {
-                    ((Timer) event.getSource()).stop();
-                    return;
-                }
-
-                JViewport viewport = chapterScrollPane.getViewport();
-                Point viewPosition = viewport.getViewPosition();
-                int newY = viewPosition.y + velocity;
-                Component view = viewport.getView();
-                int maxScrollHeight = view.getHeight() - viewport.getHeight();
-                newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-                int finalNewY = newY;
-                SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-
-                velocity *= 0.95;
-            });
-            inertiaTimer.start();
-        }
-    };
 
     private JLabel chapterBackLabel;
     private JPanel chapterImgLabel;
@@ -286,10 +213,6 @@ public class ChapterScreen extends JFrame {
         return oneBookStartReadButton;
     }
 
-    public MouseAdapter getDragScrollListenerMainScroll() {
-        return dragScrollListenerMainScroll;
-    }
-
     public JLabel getChapterBackLabel() {
         return chapterBackLabel;
     }
@@ -300,5 +223,12 @@ public class ChapterScreen extends JFrame {
 
     public JLabel getChapterPrevious() {
         return chapterPrevious;
+    }
+
+    public JScrollPane getChapterScrollPane() {
+        return chapterScrollPane;
+    }
+    public JPanel getChapterImgLabel() {
+        return chapterImgLabel;
     }
 }

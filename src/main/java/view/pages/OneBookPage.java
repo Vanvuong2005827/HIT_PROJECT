@@ -76,7 +76,6 @@ public class OneBookPage extends javax.swing.JFrame {
             BufferedImage resizedImage = resizeImage(originalImage, 450, 600);
             oneBookImgLabel = new JLabel(new ImageIcon(resizedImage));
         } catch (IOException e) {
-            e.printStackTrace();
             JLabel errorLabel = new JLabel("Không thể tải ảnh!");
             errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
             errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -176,17 +175,40 @@ public class OneBookPage extends javax.swing.JFrame {
     }
 
     public void processBookInfoData() {
-        fullUrl = fullUrl + curBook.getThumbnail();
-        name = curBook.getName();
-        status = curBook.getStatus();
-
-        for (BookCategory x : curBook.getCategory()) {
-            if (categories.length() > 0) {
-                categories.append(", ");
-            }
-            categories.append(x.getName());
+        String thum;
+        String title;
+        String sta;
+        StringBuilder cat = new StringBuilder();
+//        StringBuilder au = new StringBuilder();
+        try {
+            thum = curBook.getThumbnail();
+        } catch (Exception e) {
+            thum = "";
         }
-        authors.append("Đang cập nhật");
+        try {
+            title = curBook.getName();
+        } catch (Exception e) {
+            title = "Đang cập nhật";
+        }
+        try {
+            sta = curBook.getStatus();
+        } catch (Exception e) {
+            sta = "Đang cập nhật";
+        }
+        try {
+            for (BookCategory x : curBook.getCategory()) {
+                if (cat.length() > 0) {
+                    cat.append(", ");
+                }
+                cat.append(x.getName());
+            }
+        } catch (Exception e) {
+            cat.append("Đang cập nhật");
+        }
+        fullUrl = fullUrl + thum;
+        name = title;
+        status = sta;
+        categories = cat;
     }
 
     public void processBookChapterData() {
@@ -202,75 +224,8 @@ public class OneBookPage extends javax.swing.JFrame {
             oneBookChapterMainPanel.revalidate();
             oneBookChapterMainPanel.repaint();
         }
-        oneBookChapterMainPanel.addMouseListener(dragScrollListenerMainScroll);
-        oneBookChapterMainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
-    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
-        private Point origin;
-        private final double SCROLL_FACTOR = 1.5;
-        private final int MAX_DELTA = 80;
-        private int velocity = 0;
-        private Timer inertiaTimer;
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            origin = e.getPoint();
-            if (inertiaTimer != null && inertiaTimer.isRunning()) {
-                inertiaTimer.stop();
-            }
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            if (origin == null) return;
-
-            JViewport viewport = oneBookChapterScroll.getViewport();
-            Point viewPosition = viewport.getViewPosition();
-
-            int deltaY = origin.y - e.getY();
-            deltaY = (int) Math.signum(deltaY) * Math.min(MAX_DELTA, Math.abs((int) (deltaY * SCROLL_FACTOR)));
-
-            velocity = deltaY;
-
-            int newY = viewPosition.y + deltaY;
-            Component view = viewport.getView();
-            int maxScrollHeight = view.getHeight() - viewport.getHeight();
-
-            newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-            int finalNewY = newY;
-            SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            origin = null;
-            applyInertia();
-        }
-
-        private void applyInertia() {
-            inertiaTimer = new Timer(16, event -> {
-                if (Math.abs(velocity) < 1) {
-                    ((Timer) event.getSource()).stop();
-                    return;
-                }
-
-                JViewport viewport = oneBookChapterScroll.getViewport();
-                Point viewPosition = viewport.getViewPosition();
-                int newY = viewPosition.y + velocity;
-                Component view = viewport.getView();
-                int maxScrollHeight = view.getHeight() - viewport.getHeight();
-                newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-                int finalNewY = newY;
-                SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-
-                velocity *= 0.9;
-            });
-            inertiaTimer.start();
-        }
-    };
 
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextArea oneBookAuthorTextArea;
@@ -315,5 +270,13 @@ public class OneBookPage extends javax.swing.JFrame {
 
     public JTabbedPane getOneBookTabbed() {
         return oneBookTabbed;
+    }
+
+    public JScrollPane getOneBookChapterScroll() {
+        return oneBookChapterScroll;
+    }
+
+    public JPanel getOneBookChapterMainPanel() {
+        return oneBookChapterMainPanel;
     }
 }

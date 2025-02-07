@@ -1,5 +1,6 @@
 package view.screens.home_screens;
 
+import controllers.book.FavouriteController;
 import models.book.Book;
 import services.BookService;
 import utils.Gradient;
@@ -24,6 +25,7 @@ public class FavouriteScreen extends javax.swing.JFrame {
     public FavouriteScreen(HomePage hs) {
         homeScreen = hs;
         initComponents();
+        new FavouriteController(this);
     }
 
     private void initComponents() {
@@ -55,72 +57,6 @@ public class FavouriteScreen extends javax.swing.JFrame {
         layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(favouriteBookMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         pack();
     }
-
-    private MouseAdapter dragScrollListenerMainScroll = new MouseAdapter() {
-        private Point origin;
-        private final double SCROLL_FACTOR = 1.5;
-        private final int MAX_DELTA = 80;
-        private int velocity = 0;
-        private Timer inertiaTimer;
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            origin = e.getPoint();
-            if (inertiaTimer != null && inertiaTimer.isRunning()) {
-                inertiaTimer.stop();
-            }
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            if (origin == null) return;
-
-            JViewport viewport = favouriteBookScrollPane.getViewport();
-            Point viewPosition = viewport.getViewPosition();
-
-            int deltaY = origin.y - e.getY();
-            deltaY = (int) Math.signum(deltaY) * Math.min(MAX_DELTA, Math.abs((int) (deltaY * SCROLL_FACTOR)));
-
-            velocity = deltaY;
-
-            int newY = viewPosition.y + deltaY;
-            Component view = viewport.getView();
-            int maxScrollHeight = view.getHeight() - viewport.getHeight();
-
-            newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-            int finalNewY = newY;
-            SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            origin = null;
-            applyInertia();
-        }
-
-        private void applyInertia() {
-            inertiaTimer = new Timer(16, event -> {
-                if (Math.abs(velocity) < 1) {
-                    ((Timer) event.getSource()).stop();
-                    return;
-                }
-
-                JViewport viewport = favouriteBookScrollPane.getViewport();
-                Point viewPosition = viewport.getViewPosition();
-                int newY = viewPosition.y + velocity;
-                Component view = viewport.getView();
-                int maxScrollHeight = view.getHeight() - viewport.getHeight();
-                newY = Math.max(0, Math.min(newY, maxScrollHeight));
-
-                int finalNewY = newY;
-                SwingUtilities.invokeLater(() -> viewport.setViewPosition(new Point(viewPosition.x, finalNewY)));
-
-                velocity *= 0.9;
-            });
-            inertiaTimer.start();
-        }
-    };
 
     public void processFavouriteBook() {
         mainPanel.removeAll();
@@ -163,11 +99,6 @@ public class FavouriteScreen extends javax.swing.JFrame {
         }
         mainPanel.revalidate();
         mainPanel.repaint();
-        mainPanel.removeMouseListener(dragScrollListenerMainScroll);
-        mainPanel.removeMouseMotionListener(dragScrollListenerMainScroll);
-
-        mainPanel.addMouseListener(dragScrollListenerMainScroll);
-        mainPanel.addMouseMotionListener(dragScrollListenerMainScroll);
     }
 
     public JPanel favouritePanel() {
@@ -177,4 +108,12 @@ public class FavouriteScreen extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel favouriteBookMainPanel;
     private javax.swing.JScrollPane favouriteBookScrollPane;
+
+    public JScrollPane getFavouriteBookScrollPane() {
+        return favouriteBookScrollPane;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
 }
