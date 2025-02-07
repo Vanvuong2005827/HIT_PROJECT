@@ -1,19 +1,29 @@
 # HIT_PROJECT
-This is an online library application that allows you to read books and search for your favorite ones. It helps you organize and track the books you have read or wish to read.
+
+This is an online library application that allows you to read books and search for your favorite ones. It helps you
+organize and track the books you have read or wish to read.
+
 ## Installation
-### Require 
- - Java 11+
- - Maven.
- - IDE: IntelliJ or Netbeans.
+
+### Require
+
+- Java 11+
+- Maven.
+- IDE: IntelliJ or Netbeans.
+
 ### How to run the project?
- - Clone the project.
- - Install the library necessary.
+
+- Clone the project.
+- Install the library necessary.
+
 ## How to Use
+
 1. Ensure you are connected to the internet.
 2. Run the project in the main class.
 3. If you don't have an account, create one.
 4. Log in using your account credentials.
-5. Retrieve your account information if needed.  
+5. Retrieve your account information if needed.
+
 <p align="center">
     <img src="app_image/img.png" width="200">
     <img src="app_image/img_1.png" width="200">
@@ -24,8 +34,10 @@ This is an online library application that allows you to read books and search f
     - Browse books by style.
 You can search for books using the search label.  
 You can view more books by clicking on the "Thêm >" label.  
-<img src="app_image/img_2.png" width="200">
-<img src="app_image/img_3.png" width="200">
+<p align="center">
+    <img src="app_image/img_2.png" width="200">
+    <img src="app_image/img_3.png" width="200">
+</p>
 ### Recent Page
 You can see a list of recently read books.  
 <img src="app_image/img_4.png" width="200">
@@ -39,20 +51,26 @@ You can see the information of your account in this page. Moreover, you can choo
 - Change the theme of the application.
 - Retrieve your password if forgotten.
 - Remove your account.  
-<img src="app_image/img_6.png" width="200">
-<img src="app_image/img_7.png" width="200">  
-<img src="app_image/img_8.png" width="200">
-<img src="app_image/img_9.png" width="200">  
-<img src="app_image/img_10.png" width="200">
-<img src="app_image/img_11.png" width="200">  
+<p align="center">
+    <img src="app_image/img_6.png" width="200">
+    <img src="app_image/img_7.png" width="200">  
+    <img src="app_image/img_8.png" width="200">
+</p>
+<p align="center">
+    <img src="app_image/img_9.png" width="200">  
+    <img src="app_image/img_10.png" width="200">
+    <img src="app_image/img_11.png" width="200">  
+</p>
 ### More Book Screen
 This screen lets you view books categorized by their status (e.g., ongoing, completed, new, etc.).  
 <img src="app_image/img_12.png" width="200">
 ### One Book Screen
 In this screen, you can read the book by clicking "Bắt đầu đọc". You can also see a list of chapters and choose one to 
 read. If you've already read a chapter, it will be marked. You can also add this book to your favorites list.  
-<img src="app_image/img_13.png" width="200">
-<img src="app_image/img_14.png" width="200">
+<p align="center">
+    <img src="app_image/img_13.png" width="200">
+    <img src="app_image/img_14.png" width="200">
+</p>
 ### Chapter Screen
 Read books on this screen. You can navigate between chapters using the next or previous chapter labels.  
 <img src="app_image/img_15.png" width="200">
