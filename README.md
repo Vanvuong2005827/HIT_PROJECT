@@ -25,8 +25,8 @@ organize and track the books you have read or wish to read.
 5. Retrieve your account information if needed.
 
 <p>
-    <img src="app_image/img.png" width="300">
-    <img src="app_image/img_1.png" width="300">
+    <img src="app_image/img.png" width="250">
+    <img src="app_image/img_1.png" width="250">
 </p>
 
 ### Home Page
@@ -39,19 +39,19 @@ You can search for books using the search label.
 You can view more books by clicking on the "Thêm >" label.
 
 <p>
-    <img src="app_image/img_2.png" width="300">
-    <img src="app_image/img_3.png" width="300">
+    <img src="app_image/img_2.png" width="250">
+    <img src="app_image/img_3.png" width="250">
 </p>
 
 ### Recent Page
 
 You can see a list of recently read books.  
-<img src="app_image/img_4.png" width="300">
+<img src="app_image/img_4.png" width="250">
 
 ### Favorite Page
 
 This page displays the books you've marked as favorites.  
-<img src="app_image/img_5.png" width="300">
+<img src="app_image/img_5.png" width="250">
 
 ### Account Page
 
@@ -64,39 +64,39 @@ You can see the information of your account in this page. Moreover, you can choo
 - Remove your account.
 
 <p>
-    <img src="app_image/img_6.png" width="300">
-    <img src="app_image/img_7.png" width="300">  
-    <img src="app_image/img_8.png" width="300">
+    <img src="app_image/img_6.png" width="250">
+    <img src="app_image/img_7.png" width="250">  
+    <img src="app_image/img_8.png" width="250">
 </p>
 <p>
-    <img src="app_image/img_9.png" width="300">  
-    <img src="app_image/img_10.png" width="300">
-    <img src="app_image/img_11.png" width="300">  
+    <img src="app_image/img_9.png" width="250">  
+    <img src="app_image/img_10.png" width="250">
+    <img src="app_image/img_11.png" width="250">  
 </p>
 
 ### More Book Screen
 
 This screen lets you view books categorized by their status (e.g., ongoing, completed, new, etc.).  
-<img src="app_image/img_12.png" width="300">
+<img src="app_image/img_12.png" width="250">
 
 ### One Book Screen
 
 In this screen, you can read the book by clicking "Bắt đầu đọc". You can also see a list of chapters and choose one to
 read. If you've already read a chapter, it will be marked. You can also add this book to your favorites list.
 <p>
-    <img src="app_image/img_13.png" width="300">
-    <img src="app_image/img_14.png" width="300">
+    <img src="app_image/img_13.png" width="250">
+    <img src="app_image/img_14.png" width="250">
 </p>
 
 ### Chapter Screen
 
 Read books on this screen. You can navigate between chapters using the next or previous chapter labels.  
-<img src="app_image/img_15.png" width="300">
+<img src="app_image/img_15.png" width="250">
 
 ### Search Screen
 
 Search for books by typing the book name in the text field.  
-<img src="app_image/img_16.png" width="300">
+<img src="app_image/img_16.png" width="250">
 
 ## TECHNOLOGY USED
 
