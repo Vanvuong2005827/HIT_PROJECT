@@ -76,7 +76,6 @@ public class OneBookPage extends javax.swing.JFrame {
             BufferedImage resizedImage = resizeImage(originalImage, 450, 600);
             oneBookImgLabel = new JLabel(new ImageIcon(resizedImage));
         } catch (IOException e) {
-            e.printStackTrace();
             JLabel errorLabel = new JLabel("Không thể tải ảnh!");
             errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
             errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
