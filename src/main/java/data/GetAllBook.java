@@ -17,36 +17,33 @@ import static api.ApiGet.getApi;
 public class GetAllBook {
     public ArrayList<Book> getBooksTruyenMoi(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
-        int totalPages = numberPage;
         int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
-        for (int i = 1; i <= totalPages; i++) {
-            int page = i;
-            Callable<ArrayList<Book>> task = () -> {
-                ArrayList<Book> pageBooks = new ArrayList<>();
-                try {
-                    String pageNumber = Integer.toString(page);
-                    String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
-                    String jsonData = getApi(apiUrl);
-                    if (jsonData != null && !jsonData.isEmpty()) {
-                        Gson gson = new Gson();
-                        ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+        Callable<ArrayList<Book>> task = () -> {
+            ArrayList<Book> pageBooks = new ArrayList<>();
+            try {
+                String pageNumber = Integer.toString(numberPage);
+                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=" + pageNumber;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-                        if (apiResponse != null && apiResponse.getData() != null) {
-                            apiResponse.getData().getItems().forEach(item -> {
-                                pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                            });
-                        }
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        });
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
-                return pageBooks;
-            };
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+            return pageBooks;
+        };
 
-            futures.add(executor.submit(task));
-        }
+        futures.add(executor.submit(task));
+
 
         for (Future<ArrayList<Book>> future : futures) {
             try {
@@ -63,37 +60,33 @@ public class GetAllBook {
 
     public ArrayList<Book> getBooksHoanThanh(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
-        int totalPages = numberPage;
         int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
-        for (int i = 1; i <= totalPages; i++) {
-            int page = i;
-            Callable<ArrayList<Book>> task = () -> {
-                ArrayList<Book> pageBooks = new ArrayList<>();
-                try {
-                    String pageNumber = Integer.toString(page);
-                    String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/hoan-thanh?page=" + pageNumber;
-                    String jsonData = getApi(apiUrl);
-                    if (jsonData != null && !jsonData.isEmpty()) {
-                        Gson gson = new Gson();
-                        ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+        Callable<ArrayList<Book>> task = () -> {
+            ArrayList<Book> pageBooks = new ArrayList<>();
+            try {
+                String pageNumber = Integer.toString(numberPage);
+                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/hoan-thanh?page=" + pageNumber;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-                        if (apiResponse != null && apiResponse.getData() != null) {
-                            apiResponse.getData().getItems().forEach(item -> {
-                                pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                            });
-                        }
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        });
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
 
-                return pageBooks;
-            };
+            return pageBooks;
+        };
 
-            futures.add(executor.submit(task));
-        }
+        futures.add(executor.submit(task));
 
         for (Future<ArrayList<Book>> future : futures) {
             try {
@@ -110,37 +103,33 @@ public class GetAllBook {
 
     public ArrayList<Book> getBooksSapRaMat(int numberPage) {
         ArrayList<Book> books = new ArrayList<>();
-        int totalPages = numberPage;
         int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
-        for (int i = 1; i <= totalPages; i++) {
-            int page = i;
-            Callable<ArrayList<Book>> task = () -> {
-                ArrayList<Book> pageBooks = new ArrayList<>();
-                try {
-                    String pageNumber = Integer.toString(page);
-                    String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/sap-ra-mat?page=" + pageNumber;
-                    String jsonData = getApi(apiUrl);
-                    if (jsonData != null && !jsonData.isEmpty()) {
-                        Gson gson = new Gson();
-                        ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+        Callable<ArrayList<Book>> task = () -> {
+            ArrayList<Book> pageBooks = new ArrayList<>();
+            try {
+                String pageNumber = Integer.toString(numberPage);
+                String apiUrl = "https://otruyenapi.com/v1/api/danh-sach/sap-ra-mat?page=" + pageNumber;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-                        if (apiResponse != null && apiResponse.getData() != null) {
-                            apiResponse.getData().getItems().forEach(item -> {
-                                pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                            });
-                        }
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        });
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
 
-                return pageBooks;
-            };
+            return pageBooks;
+        };
 
-            futures.add(executor.submit(task));
-        }
+        futures.add(executor.submit(task));
 
         for (Future<ArrayList<Book>> future : futures) {
             try {
@@ -200,37 +189,33 @@ public class GetAllBook {
 
     public ArrayList<Book> getBooksTungTheLoai(int numberPage, String nameStyle) {
         ArrayList<Book> books = new ArrayList<>();
-        int totalPages = numberPage;
         int maxThreads = 10;
         ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
         List<Future<ArrayList<Book>>> futures = new ArrayList<>();
-        for (int i = 1; i <= totalPages; i++) {
-            int page = i;
-            Callable<ArrayList<Book>> task = () -> {
-                ArrayList<Book> pageBooks = new ArrayList<>();
-                try {
-                    String pageNumber = Integer.toString(page);
-                    String apiUrl = "https://otruyenapi.com/v1/api/the-loai/" + nameStyle + "?page=" + pageNumber;
-                    String jsonData = getApi(apiUrl);
-                    if (jsonData != null && !jsonData.isEmpty()) {
-                        Gson gson = new Gson();
-                        ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
+        Callable<ArrayList<Book>> task = () -> {
+            ArrayList<Book> pageBooks = new ArrayList<>();
+            try {
+                String pageNumber = Integer.toString(numberPage);
+                String apiUrl = "https://otruyenapi.com/v1/api/the-loai/" + nameStyle + "?page=" + pageNumber;
+                String jsonData = getApi(apiUrl);
+                if (jsonData != null && !jsonData.isEmpty()) {
+                    Gson gson = new Gson();
+                    ApiAllBookResponse apiResponse = gson.fromJson(jsonData, ApiAllBookResponse.class);
 
-                        if (apiResponse != null && apiResponse.getData() != null) {
-                            apiResponse.getData().getItems().forEach(item -> {
-                                pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
-                            });
-                        }
+                    if (apiResponse != null && apiResponse.getData() != null) {
+                        apiResponse.getData().getItems().forEach(item -> {
+                            pageBooks.add(new Book(item.getId(), item.getName(), item.getSlug(), item.getStatus(), item.getUpdatedAt(), item.getThumbUrl(), item.getCategory(), item.getChaptersLatest()));
+                        });
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
 
-                return pageBooks;
-            };
+            return pageBooks;
+        };
 
-            futures.add(executor.submit(task));
-        }
+        futures.add(executor.submit(task));
 
         for (Future<ArrayList<Book>> future : futures) {
             try {

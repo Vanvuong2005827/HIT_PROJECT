@@ -1,6 +1,6 @@
 package controllers.book;
 
-import utils.MouseDrag;
+import utils.MouseDragAdvanced;
 import view.screens.more_book_screens.CommingSoonBookScreen;
 
 public class CommingSoonBookController {
@@ -12,8 +12,10 @@ public class CommingSoonBookController {
     }
 
     private void mouseDrag() {
-        MouseDrag mouseDrag = new MouseDrag(commingSoonBookScreen.getCommingSoonBookScrollPane(), 1.5, 80, false);
-        commingSoonBookScreen.getMainPanel().addMouseListener(mouseDrag);
-        commingSoonBookScreen.getMainPanel().addMouseMotionListener(mouseDrag);
+        MouseDragAdvanced mouseDragAdvanced = new MouseDragAdvanced(commingSoonBookScreen.getCommingSoonBookScrollPane(), 1.5, 80, false, () -> commingSoonBookScreen.processCommingSoonBook());
+        commingSoonBookScreen.getMainPanel().removeMouseListener(mouseDragAdvanced);
+        commingSoonBookScreen.getMainPanel().removeMouseMotionListener(mouseDragAdvanced);
+        commingSoonBookScreen.getMainPanel().addMouseListener(mouseDragAdvanced);
+        commingSoonBookScreen.getMainPanel().addMouseMotionListener(mouseDragAdvanced);
     }
 }

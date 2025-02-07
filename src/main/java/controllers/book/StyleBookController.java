@@ -1,6 +1,6 @@
 package controllers.book;
 
-import utils.MouseDrag;
+import utils.MouseDragCommon;
 import view.screens.more_book_screens.StyleBookScreen;
 
 public class StyleBookController {
@@ -12,8 +12,8 @@ public class StyleBookController {
     }
 
     private void mouseDrag() {
-        MouseDrag mouseDrag = new MouseDrag(styleBookScreen.getStyleBookScrollPane(), 1.5, 80, false);
-        styleBookScreen.getMainPanel().addMouseListener(mouseDrag);
-        styleBookScreen.getMainPanel().addMouseMotionListener(mouseDrag);
+        MouseDragCommon mouseDragCommon = new MouseDragCommon(styleBookScreen.getStyleBookScrollPane(), 1.5, 80, false);
+        styleBookScreen.getMainPanel().addMouseListener(mouseDragCommon);
+        styleBookScreen.getMainPanel().addMouseMotionListener(mouseDragCommon);
     }
 }

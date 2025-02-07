@@ -1,6 +1,6 @@
 package controllers.book;
 
-import utils.MouseDrag;
+import utils.MouseDragAdvanced;
 import view.screens.more_book_screens.OneStyleBookScreen;
 
 public class OneStyleBookController {
@@ -12,8 +12,10 @@ public class OneStyleBookController {
     }
 
     private void mouseDrag() {
-        MouseDrag mouseDrag = new MouseDrag(oneStyleBookScreen.getStyleBookScrollPane(), 1.5, 80, false);
-        oneStyleBookScreen.getMainPanel().addMouseListener(mouseDrag);
-        oneStyleBookScreen.getMainPanel().addMouseMotionListener(mouseDrag);
+        MouseDragAdvanced mouseDragAdvanced = new MouseDragAdvanced(oneStyleBookScreen.getStyleBookScrollPane(), 1.5, 80, false, () -> oneStyleBookScreen.processStyleBook());
+        oneStyleBookScreen.getMainPanel().removeMouseListener(mouseDragAdvanced);
+        oneStyleBookScreen.getMainPanel().removeMouseMotionListener(mouseDragAdvanced);
+        oneStyleBookScreen.getMainPanel().addMouseListener(mouseDragAdvanced);
+        oneStyleBookScreen.getMainPanel().addMouseMotionListener(mouseDragAdvanced);
     }
 }
