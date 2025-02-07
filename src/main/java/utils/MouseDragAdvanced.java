@@ -82,9 +82,9 @@ public class MouseDragAdvanced extends MouseAdapter {
         int viewportHeight = viewport.getHeight();
         int scrollY = viewport.getViewPosition().y;
 
-        if (scrollY + viewportHeight >= viewHeight - 100) { // Nếu kéo gần cuối trang (còn 100px)
+        if (scrollY + viewportHeight >= viewHeight - 100) {
             if (loadMoreCallback != null) {
-                loadMoreCallback.run(); // Gọi processNewBook() từ callback
+                loadMoreCallback.run();
             }
         }
     }
