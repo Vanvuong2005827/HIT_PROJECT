@@ -33,7 +33,6 @@ import static utils.CustomBookGridPanel.fixDragable;
 
 public class HomeScreen extends javax.swing.JFrame {
     private HomePage homeScreen;
-
     public HomeScreen(HomePage hs) {
         homeScreen = hs;
         initComponents();
