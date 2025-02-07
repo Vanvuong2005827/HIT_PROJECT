@@ -52,13 +52,13 @@ public class ChangePassSecondScreen extends javax.swing.JFrame {
         changePassReEnterPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         changePassReEnterPassLabel.setText("Nhập lại mật khẩu:");
 
-        changePassNewPassTextField.setBackground(colorFix);
+        changePassNewPassTextField.setBackground(colorMain2);
         changePassNewPassTextField.setBorder(null);
 
         jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
 
-        changePassReEnterPassTextField.setBackground(colorFix);
+        changePassReEnterPassTextField.setBackground(colorMain2);
         changePassReEnterPassTextField.setBorder(null);
 
         jTextField4.setEditable(false);

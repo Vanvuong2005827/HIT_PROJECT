@@ -55,7 +55,7 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         signUpGif.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\angry-2498_256.gif"));
 
-        signUpBackButton.setBackground(colorFix);
+        signUpBackButton.setBackground(colorMain1);
         signUpBackButton.setFont(new java.awt.Font("Segoe UI", 1, 24));
         signUpBackButton.setText("<");
         signUpBackButton.setBorder(null);
@@ -84,38 +84,35 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpGamailLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpGamailLabel.setText("Gmail : ");
 
-        signUpLine1.setBackground(colorFix);
         signUpLine1.setForeground(new java.awt.Color(102, 102, 102));
         signUpLine1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        signUpFullNameTextField.setBackground(colorFix);
+        signUpFullNameTextField.setBackground(colorMain2);
         signUpFullNameTextField.setBorder(null);
 
-        signUpLine2.setBackground(colorFix);
         signUpLine2.setForeground(new java.awt.Color(102, 102, 102));
         signUpLine2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        signUpLine3.setBackground(colorFix);
         signUpLine3.setForeground(new java.awt.Color(102, 102, 102));
         signUpLine3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        signUpGmailTextField.setBackground(colorFix);
+        signUpGmailTextField.setBackground(colorMain2);
         signUpGmailTextField.setBorder(null);
 
-        signUpPhoneNumberTextField.setBackground(colorFix);
+        signUpPhoneNumberTextField.setBackground(colorMain2);
         signUpPhoneNumberTextField.setBorder(null);
 
-        signUpYearOfBirth.setBackground(colorFix);
+        signUpYearOfBirth.setBackground(colorMain2);
         signUpYearOfBirth.setMaximumRowCount(30);
         signUpYearOfBirth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"0", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"}));
         signUpYearOfBirth.setBorder(null);
 
-        signUpMaleCheckBox.setBackground(colorFix);
+        signUpMaleCheckBox.setBackground(colorMain2);
         signUpMaleCheckBox.setForeground(new java.awt.Color(102, 102, 102));
         signUpMaleCheckBox.setText("Nam");
         signUpMaleCheckBox.setBorder(null);
 
-        signUpFemaleCheckBox.setBackground(colorFix);
+        signUpFemaleCheckBox.setBackground(colorMain2);
         signUpFemaleCheckBox.setForeground(new java.awt.Color(102, 102, 102));
         signUpFemaleCheckBox.setText("Nữ");
         signUpFemaleCheckBox.setBorder(null);
@@ -126,7 +123,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpConfirmButton.setText("Xác nhận");
         signUpConfirmButton.setBorder(null);
 
-        signUpOtherCheckBox.setBackground(colorFix);
+        signUpOtherCheckBox.setBackground(colorMain2);
         signUpOtherCheckBox.setForeground(new java.awt.Color(102, 102, 102));
         signUpOtherCheckBox.setText("Khác");
         signUpOtherCheckBox.setBorder(null);

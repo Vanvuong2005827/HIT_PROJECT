@@ -2,6 +2,7 @@
 package view.screens.home_screens;
 
 import controllers.book.RecentController;
+import data.GetAllBook;
 import models.book.Book;
 import services.BookService;
 import utils.Gradient;
@@ -20,7 +21,7 @@ import static utils.CustomBookGridPanel.customBookGrid1;
 
 public class RecentScreen extends javax.swing.JFrame {
     private HomePage homeScreen;
-    private int totalBooks;
+    private JLabel loadingLabel = new JLabel("Loading...", SwingConstants.CENTER);
 
     public RecentScreen(HomePage hs) {
         homeScreen = hs;
@@ -75,43 +76,72 @@ public class RecentScreen extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.revalidate();
         mainPanel.repaint();
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.weightx = 1.0;
 
-        BookService bookService = new BookService();
-        ArrayList<Book> books = bookService.getAllBooks();
-        Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
-        String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
-        totalBooks = books.size();
-        int maxThreads = 10;
-        ExecutorService executor = Executors.newFixedThreadPool(maxThreads);
-        ArrayList<Future<JPanel>> futures = new ArrayList<>();
-        for (int i = 0; i < totalBooks; i++) {
-            int index = i;
-            Callable<JPanel> task = () -> {
-                return customBookGrid1(homeScreen, index, 450, 190, 114, 187, books, colorOpaque, baseUrl, customFont1, mainPanel);
-            };
-            futures.add(executor.submit(task));
-        }
+        loadingLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        loadingLabel.setForeground(Color.GRAY);
 
-        for (int i = 0; i < futures.size(); i++) {
-            try {
-                JPanel panel = futures.get(i).get();
-                final int x = 1;
-                final int y = i;
-                SwingUtilities.invokeLater(() -> {
-                    GridBagConstraints gbcPanel = (GridBagConstraints) gbc.clone();
-                    gbcPanel.gridx = x;
-                    gbcPanel.gridy = y;
-                    mainPanel.add(panel, gbcPanel);
-                });
-            } catch (InterruptedException | ExecutionException e) {
+        SwingUtilities.invokeLater(() -> {
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.fill = GridBagConstraints.BOTH;
+            gbc.weightx = 1.0;
+            gbc.gridx = 1;
+            gbc.gridy = mainPanel.getComponentCount();
 
+            mainPanel.add(loadingLabel, gbc);
+            mainPanel.revalidate();
+            mainPanel.repaint();
+        });
+
+        SwingWorker<ArrayList<JPanel>, Void> worker = new SwingWorker<>() {
+            @Override
+            protected ArrayList<JPanel> doInBackground() throws Exception {
+                BookService bookService = new BookService();
+                ArrayList<Book> books = bookService.getAllBooks();
+                ArrayList<JPanel> bookPanels = new ArrayList<>();
+                String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
+                Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
+
+                ExecutorService executor = Executors.newFixedThreadPool(10);
+                ArrayList<Future<JPanel>> futures = new ArrayList<>();
+
+                for (int i = 0; i < books.size(); i++) {
+                    int index = i;
+                    Callable<JPanel> task = () -> customBookGrid1(homeScreen, index, 450, 190, 114, 187, books, colorOpaque, baseUrl, customFont1, mainPanel);
+                    futures.add(executor.submit(task));
+                }
+
+                for (Future<JPanel> future : futures) {
+                    bookPanels.add(future.get());
+                }
+
+                executor.shutdown();
+                return bookPanels;
             }
-        }
-        mainPanel.revalidate();
-        mainPanel.repaint();
+
+            @Override
+            protected void done() {
+                try {
+                    ArrayList<JPanel> bookPanels = get();
+
+                    SwingUtilities.invokeLater(() -> {
+                        mainPanel.remove(loadingLabel);
+                        for (JPanel panel : bookPanels) {
+                            GridBagConstraints gbc = new GridBagConstraints();
+                            gbc.fill = GridBagConstraints.BOTH;
+                            gbc.weightx = 1.0;
+                            gbc.gridx = 1;
+                            gbc.gridy = mainPanel.getComponentCount();
+                            mainPanel.add(panel, gbc);
+                        }
+                        mainPanel.revalidate();
+                        mainPanel.repaint();
+                    });
+                } catch (Exception e) {
+                    loadingLabel.setText("Không lấy được dữ liệu");
+                }
+            }
+        };
+        worker.execute();
     }
 
     public JPanel recentPanel() {

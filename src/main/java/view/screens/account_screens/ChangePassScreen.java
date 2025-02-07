@@ -50,7 +50,7 @@ public class ChangePassScreen extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\wind-mill-6875_256.gif"));
 
-        changePassOldPassTextField.setBackground(colorFix);
+        changePassOldPassTextField.setBackground(colorMain2);
         changePassOldPassTextField.setBorder(null);
 
         jTextField2.setEditable(false);
@@ -65,13 +65,13 @@ public class ChangePassScreen extends javax.swing.JFrame {
         changePassReEnterPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         changePassReEnterPassLabel.setText("Nhập lại mật khẩu:");
 
-        changePassNewPassTextField.setBackground(colorFix);
+        changePassNewPassTextField.setBackground(colorMain2);
         changePassNewPassTextField.setBorder(null);
 
         jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
 
-        changePassReEnterPassTextField.setBackground(colorFix);
+        changePassReEnterPassTextField.setBackground(colorMain2);
         changePassReEnterPassTextField.setBorder(null);
 
         jTextField4.setEditable(false);
