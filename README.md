@@ -14,22 +14,24 @@ This is an online library application that allows you to read books and search f
 3. If you don't have an account, create one.
 4. Log in using your account credentials.
 5. Retrieve your account information if needed.  
-<img src="img.png" width="200">
-<img src="img_1.png" width="200">
+<p align="center">
+    <img src="app_image/img.png" width="200">
+    <img src="app_image/img_1.png" width="200">
+</p>
 ### Home Page
 - You can choose a book from the home page.
     - View books in a list or grid layout.
     - Browse books by style.
 You can search for books using the search label.  
 You can view more books by clicking on the "Thêm >" label.  
-<img src="img_2.png" width="200">
-<img src="img_3.png" width="200">
+<img src="app_image/img_2.png" width="200">
+<img src="app_image/img_3.png" width="200">
 ### Recent Page
 You can see a list of recently read books.  
-<img src="img_4.png" width="200">
+<img src="app_image/img_4.png" width="200">
 ### Favorite Page
 This page displays the books you've marked as favorites.  
-<img src="img_5.png" width="200">
+<img src="app_image/img_5.png" width="200">
 ### Account Page
 You can see the information of your account in this page. Moreover, you can choose options in setting.
 - Change your name.
@@ -37,26 +39,26 @@ You can see the information of your account in this page. Moreover, you can choo
 - Change the theme of the application.
 - Retrieve your password if forgotten.
 - Remove your account.  
-<img src="img_6.png" width="200">
-<img src="img_7.png" width="200">  
-<img src="img_8.png" width="200">
-<img src="img_9.png" width="200">  
-<img src="img_10.png" width="200">
-<img src="img_11.png" width="200">  
+<img src="app_image/img_6.png" width="200">
+<img src="app_image/img_7.png" width="200">  
+<img src="app_image/img_8.png" width="200">
+<img src="app_image/img_9.png" width="200">  
+<img src="app_image/img_10.png" width="200">
+<img src="app_image/img_11.png" width="200">  
 ### More Book Screen
 This screen lets you view books categorized by their status (e.g., ongoing, completed, new, etc.).  
-<img src="img_12.png" width="200">
+<img src="app_image/img_12.png" width="200">
 ### One Book Screen
 In this screen, you can read the book by clicking "Bắt đầu đọc". You can also see a list of chapters and choose one to 
 read. If you've already read a chapter, it will be marked. You can also add this book to your favorites list.  
-<img src="img_13.png" width="200">
-<img src="img_14.png" width="200">
+<img src="app_image/img_13.png" width="200">
+<img src="app_image/img_14.png" width="200">
 ### Chapter Screen
 Read books on this screen. You can navigate between chapters using the next or previous chapter labels.  
-<img src="img_15.png" width="200">
+<img src="app_image/img_15.png" width="200">
 ### Search Screen
 Search for books by typing the book name in the text field.  
-<img src="img_16.png" width="200">
+<img src="app_image/img_16.png" width="200">
 ## TECHNOLOGY USED
 ### UI (User Interface)
 - **FlatLaf** (flatlaf, flatlaf-extras) – A modern look and feel for Java Swing applications.
