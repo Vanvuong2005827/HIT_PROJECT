@@ -528,7 +528,12 @@ public class HomeScreen extends javax.swing.JFrame {
 
                                 @Override
                                 protected void done() {
-                                    OneBookPage oneBookScreen = new OneBookPage(homeScreen, curBook, chapters);
+                                    OneBookPage oneBookScreen = null;
+                                    try {
+                                        oneBookScreen = new OneBookPage(homeScreen, curBook, chapters);
+                                    } catch (Exception ex) {
+                                        throw new RuntimeException(ex);
+                                    }
                                     if (bookService.checkIfExitBookInUser(curBook.getId())) {
 
                                         oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());

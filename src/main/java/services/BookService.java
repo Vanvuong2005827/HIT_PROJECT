@@ -5,6 +5,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.model.Updates;
+import models.user.UserFavouriteBook;
 import models.user.UserHistoryBooks;
 import models.book.Book;
 import org.bson.Document;
@@ -16,11 +17,12 @@ import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import static dao.ConnectDB.collectionBook;
-import static dao.ConnectDB.collectionHistory;
 import static commons.CurrentUser.userAccount;
+import static dao.ConnectDB.*;
 
 public class BookService {
+    private UserFavouriteBook foundFav;
+
     public void storageBookToUser(ObjectId bookId) {
         try {
             if (!checkIfExitBookInUser(bookId)) {
@@ -58,7 +60,6 @@ public class BookService {
             UserHistoryBooks userHistoryBooks = collectionHistory.find(filter).first();
 
             if (userHistoryBooks != null) {
-                collectionHistory.updateOne(filter, Updates.set("lastReadDate", LocalDateTime.now()));
                 return true;
             }
             return false;
@@ -67,6 +68,21 @@ public class BookService {
             return false;
         }
     }
+
+    public void updateDateToRead(ObjectId bookId) {
+        try {
+            Bson filter = Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("bookId", bookId));
+            UserHistoryBooks userHistoryBooks = collectionHistory.find(filter).first();
+            if (userHistoryBooks != null) {
+                collectionHistory.updateOne(filter, Updates.set("lastReadDate", LocalDateTime.now()));
+            } else {
+                collectionHistory.insertOne(new UserHistoryBooks(userAccount.getId(), bookId, 1, LocalDateTime.now()));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void insertBookToDB(Book book) {
         try {
@@ -85,10 +101,15 @@ public class BookService {
         }
     }
 
-    public ArrayList<Book> getAllBooks() {
+    public ArrayList<Book> getBooksByPage(int pageNumber, int pageSize) {
         ArrayList<Book> books = new ArrayList<>();
         try {
-            FindIterable<UserHistoryBooks> results = collectionHistory.find(new Document("userId", userAccount.getId())).sort(Sorts.descending("lastReadDate"));
+            // Sử dụng skip và limit để phân trang
+            FindIterable<UserHistoryBooks> results = collectionHistory
+                    .find(new Document("userId", userAccount.getId()))
+                    .sort(Sorts.descending("lastReadDate"))
+                    .skip((pageNumber - 1) * pageSize)
+                    .limit(pageSize);
 
             for (UserHistoryBooks history : results) {
                 Book book = getBookById(history.getBookId());
@@ -101,33 +122,43 @@ public class BookService {
         }
         return books;
     }
+
 
     public void toggleFavorite(ObjectId bookId, Color level) {
         try {
-            storageBookToUser(bookId);
-
             Bson filter = Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("bookId", bookId));
-
-            UserHistoryBooks result = collectionHistory.find(filter).first();
-
-            if (result == null || !result.getFavorite()) {
-                collectionHistory.updateOne(filter, Updates.set("favorite", false), new UpdateOptions().upsert(true));
+            if (foundFav == null) {
+                foundFav = new UserFavouriteBook(userAccount.getId(), bookId, true, LocalDateTime.now());
+                collectionFavourite.insertOne(foundFav);
+            } else {
+                collectionFavourite.updateOne(
+                        filter,
+                        Updates.set("favorite", (level == Color.red)),
+                        new UpdateOptions().upsert(true)
+                );
             }
-
-            boolean newFavoriteStatus = (level == Color.red);
-            collectionHistory.updateOne(filter, Updates.set("favorite", newFavoriteStatus), new UpdateOptions().upsert(true));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException(e);
         }
+
     }
 
-    public ArrayList<Book> getAllFavorites() {
+    public ArrayList<Book> getFavoritesByPage(int pageNumber, int pageSize) {
         ArrayList<Book> books = new ArrayList<>();
         try {
-            Bson filter = Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("favorite", true));
-            FindIterable<UserHistoryBooks> results = collectionHistory.find(filter).sort(Sorts.descending("lastReadDate"));
+            Bson filter = Filters.and(
+                    Filters.eq("userId", userAccount.getId()),
+                    Filters.eq("favourite", true)
+            );
 
-            for (UserHistoryBooks history : results) {
+
+            FindIterable<UserFavouriteBook> results = collectionFavourite
+                    .find(filter)
+                    .sort(Sorts.descending("lastAddFavDate"))
+                    .skip((pageNumber - 1) * pageSize)
+                    .limit(pageSize);
+
+            for (UserFavouriteBook history : results) {
                 Book book = getBookById(history.getBookId());
                 if (book != null) {
                     books.add(book);
@@ -139,20 +170,18 @@ public class BookService {
         return books;
     }
 
-    public Color checkFavorite(ObjectId bookId) {
-        try {
-            Bson filter = Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("bookId", bookId));
-            UserHistoryBooks result = collectionHistory.find(filter).first();
 
-            if (result == null || !result.getFavorite()) {
-                return Color.gray;
-            }
-
-            return result.getFavorite() ? Color.red : Color.gray;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return Color.gray;
-        }
+    public Color checkFavorite(ObjectId bookId) throws Exception {
+     try {
+         foundFav = collectionFavourite.find(Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("bookId", bookId))).first();
+         if (foundFav == null) {
+             return Color.gray;
+         } else {
+             return ((foundFav.getFavourite()) ? Color.red : Color.gray);
+         }
+     } catch (NullPointerException e) {
+         return Color.gray;
+     }
     }
 
 }

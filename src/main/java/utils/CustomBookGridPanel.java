@@ -119,7 +119,12 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            OneBookPage oneBookScreen = new OneBookPage(previousScreen, curBook, chapters);
+                            OneBookPage oneBookScreen = null;
+                            try {
+                                oneBookScreen = new OneBookPage(previousScreen, curBook, chapters);
+                            } catch (Exception ex) {
+                                throw new RuntimeException(ex);
+                            }
                             if (bookService.checkIfExitBookInUser(curBook.getId())) {
                                 oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
                             }
@@ -295,7 +300,12 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            OneBookPage oneBookScreen = new OneBookPage(previousScreen, curBook, chapters);
+                            OneBookPage oneBookScreen = null;
+                            try {
+                                oneBookScreen = new OneBookPage(previousScreen, curBook, chapters);
+                            } catch (Exception ex) {
+                                throw new RuntimeException(ex);
+                            }
                             if (bookService.checkIfExitBookInUser(curBook.getId())) {
 
                                 oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
@@ -418,7 +428,12 @@ public class CustomBookGridPanel {
 
                         @Override
                         protected void done() {
-                            OneBookPage oneBookScreen = new OneBookPage(previousScreen, curBook, chapters); // Truyền thông tin sách vào
+                            OneBookPage oneBookScreen = null; // Truyền thông tin sách vào
+                            try {
+                                oneBookScreen = new OneBookPage(previousScreen, curBook, chapters);
+                            } catch (Exception ex) {
+                                throw new RuntimeException(ex);
+                            }
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
                         }

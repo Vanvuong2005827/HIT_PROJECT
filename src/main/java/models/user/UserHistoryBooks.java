@@ -8,7 +8,6 @@ public class UserHistoryBooks {
     private ObjectId bookId;
     private int lastReadChapter;
     private LocalDateTime lastReadDate;
-    private boolean favorite;
 
     public UserHistoryBooks() {
         this.lastReadChapter = 1;
@@ -19,7 +18,6 @@ public class UserHistoryBooks {
         this.bookId = bookId;
         this.lastReadChapter = lastReadChapter;
         this.lastReadDate = lastReadDate;
-        favorite = false;
     }
 
     public ObjectId getUserId() {
@@ -52,13 +50,5 @@ public class UserHistoryBooks {
 
     public void setLastReadDate(LocalDateTime lastReadDate) {
         this.lastReadDate = lastReadDate;
-    }
-
-    public boolean getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(boolean favourite) {
-        this.favorite = favourite;
     }
 }

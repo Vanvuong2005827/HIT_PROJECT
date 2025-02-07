@@ -82,7 +82,7 @@ public class FavouriteScreen extends javax.swing.JFrame {
             @Override
             protected ArrayList<JPanel> doInBackground() throws Exception {
                 BookService bookService = new BookService();
-                ArrayList<Book> books = bookService.getAllFavorites();
+                ArrayList<Book> books = bookService.getFavoritesByPage(1, 10);
                 ArrayList<JPanel> bookPanels = new ArrayList<>();
                 String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
                 Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
