@@ -186,10 +186,10 @@ public class CustomBookGridPanel {
             }
             connection.disconnect();
         } catch (Exception e) {
-            JLabel errorLabel = new JLabel("Không thể tải ảnh!");
-            errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            childPanel.add(errorLabel, BorderLayout.CENTER);
+            imgLabel = new JLabel("Không thể tải ảnh!");
+            imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            imgLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            childPanel.add(imgLabel, BorderLayout.CENTER);
         }
 
         String inputDateTime;
