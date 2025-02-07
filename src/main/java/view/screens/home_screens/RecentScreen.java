@@ -107,7 +107,7 @@ public class RecentScreen extends javax.swing.JFrame {
                     mainPanel.add(panel, gbcPanel);
                 });
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+
             }
         }
         mainPanel.revalidate();

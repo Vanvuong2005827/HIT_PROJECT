@@ -9,7 +9,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -70,12 +72,23 @@ public class OneBookPage extends javax.swing.JFrame {
 
         oneBookMainPanel.setBackground(colorMain);
         oneBookMainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ImageIO.setUseCache(false);
         try {
-            URL urlAllbook = new URL(fullUrl);
-            BufferedImage originalImage = ImageIO.read(urlAllbook);
-            BufferedImage resizedImage = resizeImage(originalImage, 450, 600);
-            oneBookImgLabel = new JLabel(new ImageIcon(resizedImage));
-        } catch (IOException e) {
+            URL url = new URL(fullUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            connection.setConnectTimeout(4000);
+            connection.setReadTimeout(4000);
+            connection.connect();
+
+            try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream())) {
+                BufferedImage originalImage = ImageIO.read(in);
+
+                BufferedImage resizedImage = resizeImage(originalImage, 450, 600);
+                oneBookImgLabel = new JLabel(new ImageIcon(resizedImage));
+            }
+            connection.disconnect();
+        } catch (Exception e) {
             JLabel errorLabel = new JLabel("Không thể tải ảnh!");
             errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
             errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -279,4 +292,5 @@ public class OneBookPage extends javax.swing.JFrame {
     public JPanel getOneBookChapterMainPanel() {
         return oneBookChapterMainPanel;
     }
+
 }

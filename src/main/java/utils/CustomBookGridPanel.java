@@ -17,7 +17,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,21 +37,29 @@ public class CustomBookGridPanel {
         String posterPathAllBook = books.get(index).getThumbnail();
         String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
         ImageIO.setUseCache(false);
+        JLabel imageLabel = new JLabel();
         try {
-            URL urlAllbook = new URL(fullUrlAllBook);
-            BufferedImage originalImage = ImageIO.read(urlAllbook);
+            URL url = new URL(fullUrlAllBook);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            connection.setConnectTimeout(4000);
+            connection.setReadTimeout(4000);
+            connection.connect();
 
-            BufferedImage resizedImage = resizeImage(originalImage, imgWidth, imgHeight);
+            try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream())) {
+                BufferedImage originalImage = ImageIO.read(in);
 
-            JLabel jLabel1 = new JLabel(new ImageIcon(resizedImage));
-
-            panel.add(jLabel1);
-        } catch (IOException e) {
+                BufferedImage resizedImage = resizeImage(originalImage, imgWidth, imgHeight);
+                imageLabel = new JLabel(new ImageIcon(resizedImage));
+            }
+            connection.disconnect();
+        } catch (Exception e) {
             JLabel errorLabel = new JLabel("Không thể tải ảnh!");
             errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
             errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
             panel.add(errorLabel, BorderLayout.CENTER);
         }
+        panel.add(imageLabel);
 
         StringBuilder categories = new StringBuilder();
         try {
@@ -146,14 +156,14 @@ public class CustomBookGridPanel {
 
         JTextArea categoriesArea;
         JTextArea chapterLastestArea;
-        JLabel imgLabel;
+        JLabel imgLabel = null;
         JSeparator jSeparator1 = new JSeparator();
         JTextArea statusArea;
         JTextArea titleArea;
         JTextArea updateAtArea;
 
         childPanel.setBackground(cusColor);
-        childPanel.setPreferredSize(new java.awt.Dimension(panelWidth, panelHeight));
+        childPanel.setPreferredSize(new Dimension(panelWidth, panelHeight));
 
         String baseUrlAllBook = baseUrl;
         String posterPathAllBook = books.get(index).getThumbnail();
@@ -161,20 +171,29 @@ public class CustomBookGridPanel {
 
         ImageIO.setUseCache(false);
         try {
-            URL urlAllbook = new URL(fullUrlAllBook);
-            BufferedImage originalImage = ImageIO.read(urlAllbook);
+            URL url = new URL(fullUrlAllBook);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            connection.setConnectTimeout(4000);
+            connection.setReadTimeout(4000);
+            connection.connect();
 
-            BufferedImage resizedImage = resizeImage(originalImage, imgWidth, imgHeight);
+            try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream())) {
+                BufferedImage originalImage = ImageIO.read(in);
 
-            imgLabel = new JLabel(new ImageIcon(resizedImage));
-
-        } catch (IOException e) {
-            imgLabel = new JLabel("Không thể tải ảnh!");
-            imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                BufferedImage resizedImage = resizeImage(originalImage, imgWidth, imgHeight);
+                imgLabel = new JLabel(new ImageIcon(resizedImage));
+            }
+            connection.disconnect();
+        } catch (Exception e) {
+            JLabel errorLabel = new JLabel("Không thể tải ảnh!");
+            errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            childPanel.add(errorLabel, BorderLayout.CENTER);
         }
 
         String inputDateTime;
-        try{
+        try {
             inputDateTime = books.get(index).getUpdatedAt();
         } catch (Exception e) {
             inputDateTime = "Đang cập nhật";
@@ -184,14 +203,14 @@ public class CustomBookGridPanel {
         String updateAt = dateTime.format(formatter);
 
         StringBuilder categories = new StringBuilder();
-        try{
+        try {
             for (BookCategory x : books.get(index).getCategory()) {
                 if (categories.length() > 0) {
                     categories.append(", ");
                 }
                 categories.append(x.getName());
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             categories.append("Đang cập nhật");
         }
         String chapterLatest;
@@ -205,24 +224,24 @@ public class CustomBookGridPanel {
         String status;
         String update;
         String chapterNew;
-        try{
+        try {
             title = books.get(index).getName();
-        } catch (Exception e){
+        } catch (Exception e) {
             title = "Đang cập nhật";
         }
-        try{
+        try {
             status = "Trạng thái: " + books.get(index).getStatus();
-        } catch (Exception e){
+        } catch (Exception e) {
             status = "Trạng thái: Đang cập nhật";
         }
-        try{
+        try {
             update = "Cập nhật lần cuối: " + updateAt;
-        } catch (Exception e){
+        } catch (Exception e) {
             update = "Cập nhật lần cuối: Đang cập nhật";
         }
-        try{
+        try {
             chapterNew = "Chapter mới: " + chapterLatest;
-        } catch (Exception e){
+        } catch (Exception e) {
             chapterNew = "Chưa có chap mới";
         }
         titleArea = new JTextArea(title);
@@ -246,12 +265,12 @@ public class CustomBookGridPanel {
             fixDragable(textArea, childPanel, previousScreen, books, index);
         }
 
-        jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setBackground(new Color(153, 153, 153));
 
-        javax.swing.GroupLayout childPanelLayout = new javax.swing.GroupLayout(childPanel);
+        GroupLayout childPanelLayout = new GroupLayout(childPanel);
         childPanel.setLayout(childPanelLayout);
-        childPanelLayout.setHorizontalGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jSeparator1).addGroup(childPanelLayout.createSequentialGroup().addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, imgWidth, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(titleArea).addGroup(childPanelLayout.createSequentialGroup().addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(statusArea, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(updateAtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(chapterLastestArea, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)).addGap(0, 0, Short.MAX_VALUE)).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, childPanelLayout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(categoriesArea, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))).addContainerGap()));
-        childPanelLayout.setVerticalGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addComponent(titleArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(statusArea, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(updateAtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(chapterLastestArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(categoriesArea, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(0, 7, Short.MAX_VALUE)).addComponent(imgLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)));
+        childPanelLayout.setHorizontalGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jSeparator1).addGroup(childPanelLayout.createSequentialGroup().addComponent(imgLabel, GroupLayout.PREFERRED_SIZE, imgWidth, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(titleArea).addGroup(childPanelLayout.createSequentialGroup().addGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(statusArea, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE).addComponent(updateAtArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addComponent(chapterLastestArea, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)).addGap(0, 0, Short.MAX_VALUE)).addGroup(GroupLayout.Alignment.TRAILING, childPanelLayout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(categoriesArea, GroupLayout.PREFERRED_SIZE, 320, GroupLayout.PREFERRED_SIZE))))).addContainerGap()));
+        childPanelLayout.setVerticalGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addComponent(titleArea, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(statusArea, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(updateAtArea, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(chapterLastestArea, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(categoriesArea, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE).addGap(0, 7, Short.MAX_VALUE)).addComponent(imgLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jSeparator1, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)));
         childPanel.addMouseListener(new MouseAdapter() {
             GetAllBook getBook = new GetAllBook();
             GetChapters getChapters = new GetChapters();
@@ -312,18 +331,18 @@ public class CustomBookGridPanel {
     public static JPanel customChapterPanel(JFrame previousScreen, int indexChapter, ArrayList<AllChapters> chapters, String title, String chapterNumber, Color cusColor, Font customFont1, JPanel panelMain, Book curBook, JButton oneBookStartReadButton) {
         JPanel childPanel = new JPanel();
         childPanel.setBackground(cusColor);
-        childPanel.setPreferredSize(new java.awt.Dimension(432, 70));
+        childPanel.setPreferredSize(new Dimension(432, 70));
 
         JLabel titleArea = new JLabel(title);
         JLabel chapterNumberLabel = new JLabel(chapterNumber);
 
-        JSeparator jSeparator1 = new javax.swing.JSeparator();
-        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        JSeparator jSeparator1 = new JSeparator();
+        jSeparator1.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 
-        javax.swing.GroupLayout childPanelLayout = new javax.swing.GroupLayout(childPanel);
+        GroupLayout childPanelLayout = new GroupLayout(childPanel);
         childPanel.setLayout(childPanelLayout);
-        childPanelLayout.setHorizontalGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addGap(16, 16, 16).addGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false).addComponent(chapterNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(titleArea, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE).addComponent(jSeparator1)).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-        childPanelLayout.setVerticalGroup(childPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addComponent(chapterNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(titleArea, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        childPanelLayout.setHorizontalGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addGap(16, 16, 16).addGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false).addComponent(chapterNumberLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(titleArea, GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE).addComponent(jSeparator1)).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        childPanelLayout.setVerticalGroup(childPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(childPanelLayout.createSequentialGroup().addContainerGap().addComponent(chapterNumberLabel, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(titleArea, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(jSeparator1, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         childPanel.addMouseListener(new MouseAdapter() {
 
             @Override
