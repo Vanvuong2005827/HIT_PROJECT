@@ -106,6 +106,7 @@ public class OneBookPage extends javax.swing.JFrame {
         oneBookStartReadButton.setText("Bắt đầu đọc");
         oneBookStartReadButton.setBorder(null);
 
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Yêu thích");
 
