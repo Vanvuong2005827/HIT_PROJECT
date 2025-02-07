@@ -41,6 +41,10 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         color14 = new Gradient(listColorGradient.get(13).getColor1(), listColorGradient.get(13).getColor2(), listColorGradient.get(13).getColor3());
         color15 = new Gradient(listColorGradient.get(14).getColor1(), listColorGradient.get(14).getColor2(), listColorGradient.get(14).getColor3());
         color16 = new Gradient(listColorGradient.get(15).getColor1(), listColorGradient.get(15).getColor2(), listColorGradient.get(15).getColor3());
+        color17 = new Gradient(listColorGradient.get(16).getColor1(), listColorGradient.get(16).getColor2(), listColorGradient.get(16).getColor3());
+        color18 = new Gradient(listColorGradient.get(17).getColor1(), listColorGradient.get(17).getColor2(), listColorGradient.get(17).getColor3());
+        color19 = new Gradient(listColorGradient.get(18).getColor1(), listColorGradient.get(18).getColor2(), listColorGradient.get(18).getColor3());
+        color20 = new Gradient(listColorGradient.get(19).getColor1(), listColorGradient.get(19).getColor2(), listColorGradient.get(19).getColor3());
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -268,6 +272,58 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
 
         jPanel1.add(color14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 60, 50));
 
+        color17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color17Event(evt);
+            }
+        });
+
+        javax.swing.GroupLayout color17Layout = new javax.swing.GroupLayout(color17);
+        color17.setLayout(color17Layout);
+        color17Layout.setHorizontalGroup(color17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 60, Short.MAX_VALUE));
+        color17Layout.setVerticalGroup(color17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
+
+        jPanel1.add(color17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 60, 50));
+
+        color18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color18Event(evt);
+            }
+        });
+
+        javax.swing.GroupLayout color18Layout = new javax.swing.GroupLayout(color18);
+        color18.setLayout(color18Layout);
+        color18Layout.setHorizontalGroup(color18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 60, Short.MAX_VALUE));
+        color18Layout.setVerticalGroup(color18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
+
+        jPanel1.add(color18, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 60, 50));
+
+        color19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color19Event(evt);
+            }
+        });
+
+        javax.swing.GroupLayout color19Layout = new javax.swing.GroupLayout(color19);
+        color19.setLayout(color19Layout);
+        color19Layout.setHorizontalGroup(color19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 60, Short.MAX_VALUE));
+        color19Layout.setVerticalGroup(color19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
+
+        jPanel1.add(color19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 60, 50));
+
+        color20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                color20Event(evt);
+            }
+        });
+
+        javax.swing.GroupLayout color20Layout = new javax.swing.GroupLayout(color20);
+        color20.setLayout(color20Layout);
+        color20Layout.setHorizontalGroup(color20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 60, Short.MAX_VALUE));
+        color20Layout.setVerticalGroup(color20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
+
+        jPanel1.add(color20, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 60, 50));
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Xác nhận");
@@ -419,6 +475,34 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
         colorFix = listColorGradient.get(15).getColor4();
     }
 
+    private void color17Event(java.awt.event.MouseEvent evt) {
+        colorMain1 = listColorGradient.get(16).getColor1();
+        colorMain2 = listColorGradient.get(16).getColor2();
+        colorMain3 = listColorGradient.get(16).getColor3();
+        colorFix = listColorGradient.get(16).getColor4();
+    }
+
+    private void color18Event(java.awt.event.MouseEvent evt) {
+        colorMain1 = listColorGradient.get(17).getColor1();
+        colorMain2 = listColorGradient.get(17).getColor2();
+        colorMain3 = listColorGradient.get(17).getColor3();
+        colorFix = listColorGradient.get(17).getColor4();
+    }
+
+    private void color19Event(java.awt.event.MouseEvent evt) {
+        colorMain1 = listColorGradient.get(18).getColor1();
+        colorMain2 = listColorGradient.get(18).getColor2();
+        colorMain3 = listColorGradient.get(18).getColor3();
+        colorFix = listColorGradient.get(18).getColor4();
+    }
+
+    private void color20Event(java.awt.event.MouseEvent evt) {
+        colorMain1 = listColorGradient.get(19).getColor1();
+        colorMain2 = listColorGradient.get(19).getColor2();
+        colorMain3 = listColorGradient.get(19).getColor3();
+        colorFix = listColorGradient.get(19).getColor4();
+    }
+
     private javax.swing.JPanel color1;
     private javax.swing.JPanel color10;
     private javax.swing.JPanel color12;
@@ -427,6 +511,10 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
     private javax.swing.JPanel color15;
     private javax.swing.JPanel color14;
     private javax.swing.JPanel color13;
+    private javax.swing.JPanel color17;
+    private javax.swing.JPanel color18;
+    private javax.swing.JPanel color19;
+    private javax.swing.JPanel color20;
     private javax.swing.JPanel color2;
     private javax.swing.JPanel color4;
     private javax.swing.JPanel color3;

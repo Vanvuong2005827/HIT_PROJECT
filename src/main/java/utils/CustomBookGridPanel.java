@@ -52,18 +52,28 @@ public class CustomBookGridPanel {
         }
 
         StringBuilder categories = new StringBuilder();
-        for (BookCategory x : books.get(index).getCategory()) {
-            if (categories.length() > 0) {
-                categories.append(", ");
+        try {
+            for (BookCategory x : books.get(index).getCategory()) {
+                if (categories.length() > 0) {
+                    categories.append(", ");
+                }
+                categories.append(x.getName());
             }
-            categories.append(x.getName());
+        } catch (Exception e) {
+            categories.append("Đang cập nhật");
         }
 
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
         textPanel.setBackground(panel.getBackground());
 
-        JLabel titleArea = new JLabel(books.get(index).getName());
+        String title;
+        try {
+            title = books.get(index).getName();
+        } catch (Exception e) {
+            title = "Đang cập nhật";
+        }
+        JLabel titleArea = new JLabel(title);
         titleArea.setFont(customFont1);
         titleArea.setBackground(cusColor);
         textPanel.add(titleArea);
@@ -163,29 +173,63 @@ public class CustomBookGridPanel {
             imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
         }
 
-        String inputDateTime = books.get(index).getUpdatedAt();
+        String inputDateTime;
+        try{
+            inputDateTime = books.get(index).getUpdatedAt();
+        } catch (Exception e) {
+            inputDateTime = "Đang cập nhật";
+        }
         LocalDateTime dateTime = LocalDateTime.parse(inputDateTime.substring(0, 19));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
         String updateAt = dateTime.format(formatter);
 
         StringBuilder categories = new StringBuilder();
-        for (BookCategory x : books.get(index).getCategory()) {
-            if (categories.length() > 0) {
-                categories.append(", ");
+        try{
+            for (BookCategory x : books.get(index).getCategory()) {
+                if (categories.length() > 0) {
+                    categories.append(", ");
+                }
+                categories.append(x.getName());
             }
-            categories.append(x.getName());
+        } catch (Exception e){
+            categories.append("Đang cập nhật");
         }
-        String chapterLatest = "";
+
+        String chapterLatest;
         try {
             chapterLatest = books.get(index).getChapterLastests().get(0).getFilename();
         } catch (Exception e) {
             chapterLatest = "Chưa có chap mới";
         }
 
-        titleArea = new JTextArea(books.get(index).getName());
-        statusArea = new JTextArea("Status: " + books.get(index).getStatus());
-        updateAtArea = new JTextArea("Last update: " + updateAt);
-        chapterLastestArea = new JTextArea("Chapter newest: " + chapterLatest);
+        String title;
+        String status;
+        String update;
+        String chapterNew;
+        try{
+            title = books.get(index).getName();
+        } catch (Exception e){
+            title = "Đang cập nhật";
+        }
+        try{
+            status = "Trạng thái: " + books.get(index).getStatus();
+        } catch (Exception e){
+            status = "Trạng thái: Đang cập nhật";
+        }
+        try{
+            update = "Cập nhật lần cuối: " + updateAt;
+        } catch (Exception e){
+            update = "Cập nhật lần cuối: Đang cập nhật";
+        }
+        try{
+            chapterNew = "Chapter mới: " + chapterLatest;
+        } catch (Exception e){
+            chapterNew = "Chưa có chap mới";
+        }
+        titleArea = new JTextArea(title);
+        statusArea = new JTextArea(status);
+        updateAtArea = new JTextArea(update);
+        chapterLastestArea = new JTextArea(chapterNew);
         categoriesArea = new JTextArea(categories.toString());
 
         JTextArea[] textAreas = {titleArea, updateAtArea, statusArea, chapterLastestArea, categoriesArea};

@@ -1,6 +1,7 @@
 package commons;
 
 import models.ColorTuple;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -112,13 +113,33 @@ public class ColorMain {
                 new Color(200, 160, 230),  // Light Plum Purple
                 new Color(210, 170, 214) //
         ));
+        colors.add(new ColorTuple(new Color(166, 144, 209), //
+                new Color(250, 193, 234), //
+                new Color(166, 144, 209), //
+                new Color(207, 168, 221) //
+        ));
+        colors.add(new ColorTuple(new Color(166, 144, 209), //
+                new Color(250, 193, 234), //
+                new Color(166, 144, 209), //
+                new Color(207, 168, 221) //
+        ));
+        colors.add(new ColorTuple(new Color(166, 144, 209), //
+                new Color(250, 193, 234), //
+                new Color(166, 144, 209), //
+                new Color(207, 168, 221) //
+        ));
+        colors.add(new ColorTuple(new Color(166, 144, 209), //
+                new Color(250, 193, 234), //
+                new Color(166, 144, 209), //
+                new Color(207, 168, 221) //
+        ));
         listColorGradient = colors;
     }
 
     public static Color colorMain = new Color(176, 223, 251);
-    public static Color colorMain1 =  colorMain;
-    public static Color colorMain2 =  colorMain;
-    public static Color colorMain3 =  colorMain;
-    public static Color colorFix =  colorMain;
+    public static Color colorMain1 = colorMain;
+    public static Color colorMain2 = colorMain;
+    public static Color colorMain3 = colorMain;
+    public static Color colorFix = colorMain;
     public static Color colorOpaque = new Color(0, 0, 0, 0);
 }

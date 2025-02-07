@@ -176,16 +176,40 @@ public class OneBookPage extends javax.swing.JFrame {
     }
 
     public void processBookInfoData() {
-        fullUrl = fullUrl + curBook.getThumbnail();
-        name = curBook.getName();
-        status = curBook.getStatus();
-
-        for (BookCategory x : curBook.getCategory()) {
-            if (categories.length() > 0) {
-                categories.append(", ");
-            }
-            categories.append(x.getName());
+        String thum;
+        String title;
+        String sta;
+        StringBuilder cat = new StringBuilder();
+//        StringBuilder au = new StringBuilder();
+        try{
+            thum = curBook.getThumbnail();
+        } catch (Exception e){
+            thum = "";
         }
+        try{
+            title = curBook.getName();
+        } catch (Exception e){
+            title = "Đang cập nhật";
+        }
+        try{
+            sta = curBook.getStatus();
+        } catch (Exception e){
+            sta = "Đang cập nhật";
+        }
+        try{
+            for (BookCategory x : curBook.getCategory()) {
+                if (cat.length() > 0) {
+                    cat.append(", ");
+                }
+                cat.append(x.getName());
+            }
+        } catch (Exception e){
+            cat.append("Đang cập nhật");
+        }
+        fullUrl = fullUrl + thum;
+        name = title;
+        status = sta;
+        categories = cat;
         authors.append("Đang cập nhật");
     }
 
