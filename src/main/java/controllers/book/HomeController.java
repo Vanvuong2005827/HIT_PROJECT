@@ -82,32 +82,26 @@ public class HomeController {
     }
     private MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
         private Point origin;
-
         @Override
         public void mousePressed(MouseEvent e) {
             origin = e.getPoint();
         }
-
         @Override
         public void mouseDragged(MouseEvent e) {
             JViewport viewport = homeScreen.getHomeStyleScrollPane().getViewport();
             Point viewPosition = viewport.getViewPosition();
             int deltaX = origin.x - e.getX();
-
             int newX = viewPosition.x + deltaX;
-
             int totalWidth = 130 * 100;
             if (totalWidth < homeScreen.getHomeStyleScrollPane().getWidth()) totalWidth = homeScreen.getHomeStyleScrollPane().getWidth();
             int panelWidth = totalWidth;
             int viewportWidth = viewport.getWidth();
-
             if (newX < 0) {
                 newX = 0;
             }
             if (newX > panelWidth - viewportWidth) {
                 newX = panelWidth - viewportWidth;
             }
-
             viewport.setViewPosition(new Point(newX, 0));
         }
     };

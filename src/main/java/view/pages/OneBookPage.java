@@ -42,7 +42,6 @@ public class OneBookPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         new OneBookController(this, previousScreen);
         curFrame = this;
-        new OneBookController(this, previousScreen);
     }
 
     private void initComponents() {
@@ -210,7 +209,6 @@ public class OneBookPage extends javax.swing.JFrame {
         name = title;
         status = sta;
         categories = cat;
-        authors.append("Đang cập nhật");
     }
 
     public void processBookChapterData() {
@@ -227,6 +225,7 @@ public class OneBookPage extends javax.swing.JFrame {
             oneBookChapterMainPanel.repaint();
         }
     }
+
 
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextArea oneBookAuthorTextArea;

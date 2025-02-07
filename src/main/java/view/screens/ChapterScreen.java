@@ -151,7 +151,7 @@ public class ChapterScreen extends JFrame {
                                 }
                                 connection.disconnect();
                             } catch (Exception e) {
-                                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+//                                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                             }
                             return imageLabel;
                         };
@@ -167,7 +167,7 @@ public class ChapterScreen extends JFrame {
                                 chapterImgLabel.repaint();
                             });
                         } catch (InterruptedException | ExecutionException e) {
-                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+//                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                         }
                     }
 
@@ -228,7 +228,6 @@ public class ChapterScreen extends JFrame {
     public JScrollPane getChapterScrollPane() {
         return chapterScrollPane;
     }
-
     public JPanel getChapterImgLabel() {
         return chapterImgLabel;
     }

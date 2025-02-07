@@ -11,7 +11,7 @@ public class CompletedBookController {
         mouseDrag();
     }
 
-    private void mouseDrag(){
+    private void mouseDrag() {
         MouseDrag mouseDrag = new MouseDrag(completedBookScreen.getCompletedBookScrollPane(), 1.5, 80, false);
         completedBookScreen.getMainPanel().addMouseListener(mouseDrag);
         completedBookScreen.getMainPanel().addMouseMotionListener(mouseDrag);

@@ -194,7 +194,6 @@ public class CustomBookGridPanel {
         } catch (Exception e){
             categories.append("Đang cập nhật");
         }
-
         String chapterLatest;
         try {
             chapterLatest = books.get(index).getChapterLastests().get(0).getFilename();

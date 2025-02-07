@@ -1,6 +1,5 @@
 package view.screens.more_book_screens;
 
-import controllers.book.CommingSoonBookController;
 import controllers.book.CompletedBookController;
 import models.book.Book;
 import data.GetAllBook;
@@ -20,6 +19,7 @@ import static utils.CustomBookGridPanel.customBookGrid1;
 public class CompletedBookScreen extends javax.swing.JFrame {
     private MoreBookPage moreBookScreen;
     private int totalBooks;
+
     public CompletedBookScreen(MoreBookPage m) {
         moreBookScreen = m;
         initComponents();
@@ -69,7 +69,7 @@ public class CompletedBookScreen extends javax.swing.JFrame {
         pack();
     }
 
-    public void processCompletedBook(){
+    public void processCompletedBook() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
@@ -109,7 +109,7 @@ public class CompletedBookScreen extends javax.swing.JFrame {
         }
     }
 
-    public JPanel completedBookPanel(){
+    public JPanel completedBookPanel() {
         return completedBookMainPanel;
     }
 

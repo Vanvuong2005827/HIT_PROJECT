@@ -11,11 +11,10 @@ public class RecentController {
         mouseDrag();
     }
 
-    private void mouseDrag(){
+    private void mouseDrag() {
         MouseDrag mouseDrag = new MouseDrag(recentScreen.getRecentBookScrollPane(), 1.5, 80, false);
         recentScreen.getMainPanel().removeMouseListener(mouseDrag);
         recentScreen.getMainPanel().removeMouseMotionListener(mouseDrag);
-
         recentScreen.getMainPanel().addMouseListener(mouseDrag);
         recentScreen.getMainPanel().addMouseMotionListener(mouseDrag);
     }

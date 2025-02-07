@@ -11,7 +11,7 @@ public class CommingSoonBookController {
         mouseDrag();
     }
 
-    private void mouseDrag(){
+    private void mouseDrag() {
         MouseDrag mouseDrag = new MouseDrag(commingSoonBookScreen.getCommingSoonBookScrollPane(), 1.5, 80, false);
         commingSoonBookScreen.getMainPanel().addMouseListener(mouseDrag);
         commingSoonBookScreen.getMainPanel().addMouseMotionListener(mouseDrag);

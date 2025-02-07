@@ -166,7 +166,6 @@ public class StyleBookScreen extends javax.swing.JFrame {
     public JPanel getMainPanel() {
         return mainPanel;
     }
-
     public JScrollPane getStyleBookScrollPane() {
         return styleBookScrollPane;
     }

@@ -277,12 +277,10 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
                 color17Event(evt);
             }
         });
-
         javax.swing.GroupLayout color17Layout = new javax.swing.GroupLayout(color17);
         color17.setLayout(color17Layout);
         color17Layout.setHorizontalGroup(color17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 60, Short.MAX_VALUE));
         color17Layout.setVerticalGroup(color17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
-
         jPanel1.add(color17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 60, 50));
 
         color18.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -290,12 +288,10 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
                 color18Event(evt);
             }
         });
-
         javax.swing.GroupLayout color18Layout = new javax.swing.GroupLayout(color18);
         color18.setLayout(color18Layout);
         color18Layout.setHorizontalGroup(color18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 60, Short.MAX_VALUE));
         color18Layout.setVerticalGroup(color18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
-
         jPanel1.add(color18, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 60, 50));
 
         color19.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -303,12 +299,10 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
                 color19Event(evt);
             }
         });
-
         javax.swing.GroupLayout color19Layout = new javax.swing.GroupLayout(color19);
         color19.setLayout(color19Layout);
         color19Layout.setHorizontalGroup(color19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 60, Short.MAX_VALUE));
         color19Layout.setVerticalGroup(color19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
-
         jPanel1.add(color19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 60, 50));
 
         color20.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -316,13 +310,12 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
                 color20Event(evt);
             }
         });
-
         javax.swing.GroupLayout color20Layout = new javax.swing.GroupLayout(color20);
         color20.setLayout(color20Layout);
         color20Layout.setHorizontalGroup(color20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 60, Short.MAX_VALUE));
         color20Layout.setVerticalGroup(color20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 50, Short.MAX_VALUE));
-
         jPanel1.add(color20, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 60, 50));
+
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -511,10 +504,6 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
     private javax.swing.JPanel color15;
     private javax.swing.JPanel color14;
     private javax.swing.JPanel color13;
-    private javax.swing.JPanel color17;
-    private javax.swing.JPanel color18;
-    private javax.swing.JPanel color19;
-    private javax.swing.JPanel color20;
     private javax.swing.JPanel color2;
     private javax.swing.JPanel color4;
     private javax.swing.JPanel color3;
@@ -523,6 +512,10 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
     private javax.swing.JPanel color6;
     private javax.swing.JPanel color5;
     private javax.swing.JPanel color9;
+    private javax.swing.JPanel color17;
+    private javax.swing.JPanel color18;
+    private javax.swing.JPanel color19;
+    private javax.swing.JPanel color20;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

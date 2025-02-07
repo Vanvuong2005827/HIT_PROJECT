@@ -11,11 +11,10 @@ public class FavouriteController {
         mouseDrag();
     }
 
-    private void mouseDrag(){
+    private void mouseDrag() {
         MouseDrag mouseDrag = new MouseDrag(favouriteScreen.getFavouriteBookScrollPane(), 1.5, 80, false);
         favouriteScreen.getMainPanel().removeMouseListener(mouseDrag);
         favouriteScreen.getMainPanel().removeMouseMotionListener(mouseDrag);
-
         favouriteScreen.getMainPanel().addMouseListener(mouseDrag);
         favouriteScreen.getMainPanel().addMouseMotionListener(mouseDrag);
     }

@@ -118,7 +118,6 @@ public class SearchScreen extends JFrame {
         mainPanel.repaint();
     }
 
-
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel searchBackLabel;
     private javax.swing.JLabel searchKeywordLabel;

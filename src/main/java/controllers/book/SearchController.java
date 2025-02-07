@@ -46,7 +46,7 @@ public class SearchController {
         });
     }
 
-    private void performSearch(){
+    private void performSearch() {
         String input = searchScreen.getSearchSearchTextField().getText();
         String keyword = null;
         try {
@@ -77,7 +77,7 @@ public class SearchController {
         worker.execute();
     }
 
-    private void mouseDrag(){
+    private void mouseDrag() {
         MouseDrag mouseDrag = new MouseDrag(searchScreen.getSearchScrollPane(), 1.5, 80, false);
         searchScreen.getMainPanel().addMouseListener(mouseDrag);
         searchScreen.getMainPanel().addMouseMotionListener(mouseDrag);
