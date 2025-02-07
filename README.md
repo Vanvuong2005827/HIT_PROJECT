@@ -65,9 +65,8 @@ You can see the information of your account in this page. Moreover, you can choo
 <p>
     <img src="app_image/img_6.png" width="250">
     <img src="app_image/img_7.png" width="250">  
-    <img src="app_image/img_8.png" width="250
+    <img src="app_image/img_8.png" width="250">
 </p>
-
 <p>
     <img src="app_image/img_9.png" width="250">  
     <img src="app_image/img_10.png" width="250">
