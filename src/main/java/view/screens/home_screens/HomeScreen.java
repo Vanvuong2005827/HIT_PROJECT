@@ -4,7 +4,10 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,8 +31,7 @@ import view.screens.WaitScreen;
 import view.screens.more_book_screens.OneStyleBookScreen;
 
 import static commons.ColorMain.*;
-import static utils.CustomBookGridPanel.customBookGrid3;
-import static utils.CustomBookGridPanel.fixDragable;
+import static utils.CustomBookGridPanel.*;
 
 public class HomeScreen extends javax.swing.JFrame {
     private HomePage homeScreen;
@@ -436,17 +438,29 @@ public class HomeScreen extends javax.swing.JFrame {
                 String posterPathAllBook = books.get(index).getThumbnail();
                 String fullUrlAllBook = baseUrlAllBook + posterPathAllBook;
 
+                JLabel imgLabel = null;
+                ImageIO.setUseCache(false);
                 try {
-                    URL urlAllbook = new URL(fullUrlAllBook);
-                    Image imageAllBook = ImageIO.read(urlAllbook);
-                    Image resizedImageAllBook = imageAllBook.getScaledInstance(120, 169, Image.SCALE_SMOOTH);
-                    JLabel jLabel1 = new JLabel(new ImageIcon(resizedImageAllBook));
-                    panel.add(jLabel1, BorderLayout.WEST);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    JLabel errorLabel = new JLabel("Không thể tải ảnh!");
-                    errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                    panel.add(errorLabel, BorderLayout.CENTER);
+                    URL url = new URL(fullUrlAllBook);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+                    connection.setConnectTimeout(4000);
+                    connection.setReadTimeout(4000);
+                    connection.connect();
+
+                    try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream())) {
+                        BufferedImage originalImage = ImageIO.read(in);
+
+                        BufferedImage resizedImage = resizeImage(originalImage, 120, 169);
+                        imgLabel = new JLabel(new ImageIcon(resizedImage));
+                        panel.add(imgLabel, BorderLayout.WEST);
+                    }
+                    connection.disconnect();
+                } catch (Exception e) {
+                    imgLabel = new JLabel("Không thể tải ảnh!");
+                    imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    imgLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                    panel.add(imgLabel, BorderLayout.CENTER);
                 }
 
                 JPanel mainTextPanel = new JPanel();

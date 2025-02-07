@@ -89,10 +89,10 @@ public class OneBookPage extends javax.swing.JFrame {
             }
             connection.disconnect();
         } catch (Exception e) {
-            JLabel errorLabel = new JLabel("Không thể tải ảnh!");
-            errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            oneBookPanel.add(errorLabel, BorderLayout.CENTER);
+            oneBookImgLabel = new JLabel("Không thể tải ảnh!");
+            oneBookImgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            oneBookImgLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            oneBookPanel.add(oneBookImgLabel, BorderLayout.CENTER);
         }
         oneBookMainPanel.add(oneBookImgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -170, 450, 800));
 
