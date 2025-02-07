@@ -203,9 +203,18 @@ public class AccountScreen extends javax.swing.JFrame {
         }
     }
 
-    private String getRandomIconUser() {
+    private String  getRandomIconUser() {
         IconUser iconUser = new IconUser();
-        ArrayList<String> icons = iconUser.getIconUser();
+        ArrayList<String> icons;
+        if (userInfo.getSex() == null) {
+            icons = iconUser.getIconUser();
+        } else
+            if (userInfo.getSex().equals("male")) {
+                icons = iconUser.getIconUserForMale();
+            } else {
+                icons = iconUser.getIconUserForFemale();
+            }
+
         Random random = new Random();
         String randomIcon = icons.get(random.nextInt(icons.size()));
         return randomIcon;
