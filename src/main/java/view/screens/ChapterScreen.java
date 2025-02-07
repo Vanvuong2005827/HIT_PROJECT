@@ -145,8 +145,8 @@ public class ChapterScreen extends JFrame {
 
                                 try (BufferedInputStream in = new BufferedInputStream(connection.getInputStream())) {
                                     BufferedImage originalImage = ImageIO.read(in);
-
-                                    BufferedImage resizedImage = resizeImage(originalImage, 450, originalImage.getHeight());
+                                    int height = originalImage.getHeight();
+                                    BufferedImage resizedImage = resizeImage(originalImage, 450, height - (height * 15 / 100));
                                     imageLabel = new JLabel(new ImageIcon(resizedImage));
                                 }
                                 connection.disconnect();
@@ -228,6 +228,7 @@ public class ChapterScreen extends JFrame {
     public JScrollPane getChapterScrollPane() {
         return chapterScrollPane;
     }
+
     public JPanel getChapterImgLabel() {
         return chapterImgLabel;
     }
