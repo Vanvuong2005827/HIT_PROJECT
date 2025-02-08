@@ -106,11 +106,8 @@ public class StyleBookScreen extends javax.swing.JFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         String nameStyle = books.get(index).getSlug();
-                        WaitScreen ws = new WaitScreen();
-                        ws.setVisible(true);
                         moreBookScreen.setVisible(false);
-                        OneStyleBookScreen oneStyleBookPage = new OneStyleBookScreen(moreBookScreen, nameStyle, label1.getText(), ws);
-                        ;
+                        OneStyleBookScreen oneStyleBookPage = new OneStyleBookScreen(moreBookScreen, nameStyle, label1.getText());
                     }
 
                     @Override

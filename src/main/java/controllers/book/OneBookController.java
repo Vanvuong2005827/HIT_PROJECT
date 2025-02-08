@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static commons.CurrentUser.bookService;
+import static utils.NetworkChecker.isConnected;
 
 public class OneBookController {
     private OneBookPage oneBookPage;
@@ -50,7 +51,6 @@ public class OneBookController {
     private void startReadEvent() {
         oneBookPage.getOneBookStartReadButton().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                bookService.updateDateToRead(oneBookPage.getCurBook().getId());
                 if (oneBookPage.getOneBookStartReadButton().getText().equals("Bắt đầu đọc")) {
                     SwingUtilities.invokeLater(() -> {
                         SwingWorker<Void, Void> worker = new SwingWorker<>() {
@@ -62,6 +62,7 @@ public class OneBookController {
                                 ws.setVisible(true);
                                 oneBookPage.setVisible(false);
                                 cs = new ChapterScreen(oneBookPage, oneBookPage.getCurBook(), oneBookPage.getOneBookStartReadButton(), oneBookPage.getChapters(), 0);
+                                bookService.updateDateToRead(oneBookPage.getCurBook().getId());
                                 try {
                                     bookService.storageBookToUser(oneBookPage.getCurBook().getId());
                                 } catch (Exception e) {
@@ -72,6 +73,7 @@ public class OneBookController {
 
                             @Override
                             protected void done() {
+                                if (!isConnected) return;
                                 try {
                                     bookService.saveLastReadChapter(oneBookPage.getCurBook().getId(), 0);
                                 } catch (Exception e) {
@@ -86,17 +88,19 @@ public class OneBookController {
                         worker.execute();
                     });
                 } else {
-                    int x = bookService.getLastReadIndexChapter(oneBookPage.getCurBook().getId());
                     SwingUtilities.invokeLater(() -> {
                         SwingWorker<Void, Void> worker = new SwingWorker<>() {
                             WaitScreen ws = new WaitScreen();
                             ChapterScreen cs;
+                            int x;
 
                             @Override
                             protected Void doInBackground() {
                                 ws.setVisible(true);
                                 oneBookPage.setVisible(false);
+                                x = bookService.getLastReadIndexChapter(oneBookPage.getCurBook().getId());
                                 cs = new ChapterScreen(oneBookPage, oneBookPage.getCurBook(), oneBookPage.getOneBookStartReadButton(), oneBookPage.getChapters(), x);
+                                bookService.updateDateToRead(oneBookPage.getCurBook().getId());
                                 try {
                                     bookService.storageBookToUser(oneBookPage.getCurBook().getId());
                                 } catch (Exception e) {
@@ -107,6 +111,7 @@ public class OneBookController {
 
                             @Override
                             protected void done() {
+                                if (!isConnected) return;
                                 try {
                                     bookService.saveLastReadChapter(oneBookPage.getCurBook().getId(), x);
                                 } catch (Exception e) {

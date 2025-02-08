@@ -72,8 +72,8 @@ public class LoginController {
             @Override
             public void mouseClicked(MouseEvent evt) {
                 ForgotPassScreen fg = new ForgotPassScreen(loginScreen);
-                loginScreen.setVisible(false);
                 fg.setVisible(true);
+                loginScreen.setVisible(false);
             }
         });
     }
@@ -82,14 +82,6 @@ public class LoginController {
         loginScreen.getLoginButton().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
-                UserIP userIP = new UserIP();
-                try {
-                    InetAddress localhost = InetAddress.getLocalHost();
-                    userIP = userServices.getUserIPByIP(localhost.getHostAddress());
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                }
-
                 String userName = loginScreen.getLoginUsernameTextField().getText().trim();
                 String password = loginScreen.getLoginPasswordTextField().getText().trim();
                 if (userName.isEmpty()) {
@@ -100,63 +92,86 @@ public class LoginController {
                     loginScreen.getLoginMessageLabel().setText("Xin mời nhập mật khẩu");
                     return;
                 }
-                try {
-                    if (userIP.getTime().isAfter(LocalDateTime.now())) {
-                        Duration duration = Duration.between(LocalDateTime.now(), userIP.getTime());
-                        long minutes = duration.toMinutes();
-                        long seconds = duration.getSeconds() % 60;
-                        loginScreen.getLoginMessageLabel().setText("Thử lại sau: " + minutes + " phút " + seconds + " giây");
-                        return;
-                    }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                }
-
-
-                try {
-                    if (loginService.authenticate(userName, password)) {
-                        try {
-                            userAccount = userServices.getUserByUsername(userName);
-                        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                        }
-                        try {
-                            userInfo = userServices.getUserInfoByUserAccount(userAccount);
-                        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                        }
-
-                        getGradientInUser();
-
-                        if (loginScreen.getLoginRememberCheckbox().isSelected()) {
-                            try {
-                                loginService.saveUser(userName, password);
-                            } catch (Exception e) {
-                                JOptionPane.showMessageDialog(null, "Lưu không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                            }
-                        }
-
-                        WaitScreen ws = new WaitScreen();
+                SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                    boolean isLogin = false;
+                    WaitScreen ws = new WaitScreen();
+                    @Override
+                    protected Void doInBackground() {
                         ws.setVisible(true);
                         loginScreen.setVisible(false);
-                        HomePage hs = new HomePage(loginScreen, ws);
+                        UserIP userIP = new UserIP();
+                        try {
+                            InetAddress localhost = InetAddress.getLocalHost();
+                            userIP = userServices.getUserIPByIP(localhost.getHostAddress());
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                        }
 
-
-                    } else {
-                        loginScreen.getLoginMessageLabel().setText("Sai tên đăng nhập hoặc mật khẩu");
-                        cnt++;
-                        if (cnt == 5) {
-                            try {
-                                userServices.plusTime(userIP, 5);
-                            } catch (Exception e) {
-                                JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                        try {
+                            if (userIP.getTime().isAfter(LocalDateTime.now())) {
+                                Duration duration = Duration.between(LocalDateTime.now(), userIP.getTime());
+                                long minutes = duration.toMinutes();
+                                long seconds = duration.getSeconds() % 60;
+                                loginScreen.getLoginMessageLabel().setText("Thử lại sau: " + minutes + " phút " + seconds + " giây");
+                                return null;
                             }
-                            cnt = 0;
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                        }
+
+
+                        try {
+                            if (loginService.authenticate(userName, password)) {
+                                isLogin = true;
+                                try {
+                                    userAccount = userServices.getUserByUsername(userName);
+                                } catch (Exception e) {
+                                    isLogin = false;
+                                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                }
+                                try {
+                                    userInfo = userServices.getUserInfoByUserAccount(userAccount);
+                                } catch (Exception e) {
+                                    isLogin = false;
+                                    JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                }
+
+                                getGradientInUser();
+
+                                if (loginScreen.getLoginRememberCheckbox().isSelected()) {
+                                    try {
+                                        loginService.saveUser(userName, password);
+                                    } catch (Exception e) {
+                                        isLogin = false;
+                                        JOptionPane.showMessageDialog(null, "Lưu không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                }
+                            } else {
+                                loginScreen.getLoginMessageLabel().setText("Sai tên đăng nhập hoặc mật khẩu");
+                                cnt++;
+                                if (cnt == 5) {
+                                    try {
+                                        userServices.plusTime(userIP, 5);
+                                    } catch (Exception e) {
+                                        JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                    cnt = 0;
+                                }
+                            }
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        if (isLogin == true){
+                            HomePage hs = new HomePage(loginScreen, ws);
                         }
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Lỗi kết nối mạng! Vui lòng kiểm tra Internet.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                }
+                };
+                worker.execute();
             }
         });
     }
@@ -205,8 +220,8 @@ public class LoginController {
                         loginScreen.getSignUpMessageLabel().setText("Tài khoản đã tồn tại");
                     } else {
                         SignUpScreen su = new SignUpScreen(loginScreen);
-                        loginScreen.setVisible(false);
                         su.setVisible(true);
+                        loginScreen.setVisible(false);
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Đăng kí không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);

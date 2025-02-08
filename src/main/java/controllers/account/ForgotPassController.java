@@ -24,7 +24,6 @@ public class ForgotPassController {
         this.forgotPassScreen = forgotPassScreen;
         backEvent();
         getCodeEvent();
-        waitToSendCode();
         confirmEvent();
     }
 
