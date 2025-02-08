@@ -21,6 +21,7 @@ import javax.swing.event.ChangeListener;
 import static commons.ColorMain.colorMain3;
 import static commons.CurrentUser.*;
 import static utils.NetworkChecker.curFrame;
+import static utils.NetworkChecker.isConnected;
 
 public class HomePage extends javax.swing.JFrame {
     private LoginScreen loginScreen;
@@ -74,6 +75,7 @@ public class HomePage extends javax.swing.JFrame {
 
             @Override
             protected void done() {
+                if (!isConnected) {return;}
                 homeScreen.setVisible(true);
                 waitScreen.setVisible(false);
                 if (userInfo.getFullName() == null){
@@ -117,6 +119,11 @@ public class HomePage extends javax.swing.JFrame {
 
                         @Override
                         protected void done() {
+                            if (!isConnected) {
+                                rp.getMainPanel().removeAll();
+                                rp.getMainPanel().repaint();
+                                rp.getMainPanel().revalidate();
+                            }
                         }
                     };
 
@@ -135,6 +142,11 @@ public class HomePage extends javax.swing.JFrame {
 
                         @Override
                         protected void done() {
+                            if (!isConnected) {
+                                fp.getMainPanel().removeAll();
+                                fp.getMainPanel().repaint();
+                                fp.getMainPanel().revalidate();
+                            }
                         }
                     };
                     worker.execute();

@@ -17,6 +17,7 @@ import java.util.concurrent.*;
 
 import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
+import static utils.NetworkChecker.isConnected;
 
 
 public class RecentScreen extends javax.swing.JFrame {
@@ -122,6 +123,7 @@ public class RecentScreen extends javax.swing.JFrame {
 
             @Override
             protected void done() {
+                if (!isConnected) {return;}
                 try {
                     ArrayList<JPanel> bookPanels = get();
                     if (bookPanels.isEmpty()) {

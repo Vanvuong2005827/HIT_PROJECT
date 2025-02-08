@@ -12,6 +12,7 @@ import java.awt.*;
 import static commons.ColorMain.colorMain;
 import static commons.ColorMain.colorMain1;
 import static utils.NetworkChecker.curFrame;
+import static utils.NetworkChecker.isConnected;
 
 public class MoreBookPage extends javax.swing.JFrame {
     private HomePage homeScreen;
@@ -121,6 +122,7 @@ public class MoreBookPage extends javax.swing.JFrame {
 
             @Override
             protected void done() {
+                if (!isConnected) {return;}
                 moreBookScreen.setVisible(true);
                 waitScreen.setVisible(false);
             }

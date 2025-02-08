@@ -8,14 +8,13 @@ import data.GetAllBook;
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
 import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.customBookGrid1;
 import static utils.NetworkChecker.curFrame;
+import static utils.NetworkChecker.isConnected;
 
 public class SearchScreen extends JFrame {
     private JFrame searchPage = this;
@@ -98,7 +97,7 @@ public class SearchScreen extends JFrame {
             };
             futures.add(executor.submit(task));
         }
-
+        if (!isConnected) {return;}
         for (int i = 0; i < futures.size(); i++) {
             try {
                 JPanel panel = futures.get(i).get();
