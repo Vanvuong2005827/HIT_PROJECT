@@ -50,6 +50,7 @@ public class OneBookController {
     private void startReadEvent() {
         oneBookPage.getOneBookStartReadButton().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
+                bookService.updateDateToRead(oneBookPage.getCurBook().getId());
                 if (oneBookPage.getOneBookStartReadButton().getText().equals("Bắt đầu đọc")) {
                     SwingUtilities.invokeLater(() -> {
                         SwingWorker<Void, Void> worker = new SwingWorker<>() {

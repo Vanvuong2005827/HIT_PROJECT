@@ -34,7 +34,7 @@ public class OneBookPage extends javax.swing.JFrame {
     private StringBuilder categories = new StringBuilder();
     private StringBuilder authors = new StringBuilder();
 
-    public OneBookPage(JFrame ps, Book book, ArrayList<AllChapters> chapter) {
+    public OneBookPage(JFrame ps, Book book, ArrayList<AllChapters> chapter) throws Exception {
         previousScreen = ps;
         curBook = book;
         chapters = chapter;
@@ -46,7 +46,7 @@ public class OneBookPage extends javax.swing.JFrame {
         curFrame = this;
     }
 
-    private void initComponents() {
+    private void initComponents() throws Exception {
         bookService.insertBookToDB(curBook);
         oneBookPanel = new javax.swing.JPanel();
         oneBookMainPanel = new javax.swing.JLayeredPane();

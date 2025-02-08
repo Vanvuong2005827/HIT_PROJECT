@@ -8,10 +8,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import models.user.UserAccount;
-import models.user.UserHistoryBooks;
-import models.user.UserIP;
-import models.user.UserInfo;
+import models.user.*;
 import models.book.Book;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
@@ -39,4 +36,5 @@ public class ConnectDB {
     public static MongoCollection<UserIP> collectionIp = db.getCollection("UserIP", UserIP.class);
     public static MongoCollection<UserHistoryBooks> collectionHistory = db.getCollection("UserHistoryBooks", UserHistoryBooks.class);
     public static MongoCollection<Book> collectionBook = db.getCollection("Book", Book.class);
+    public static MongoCollection<UserFavouriteBook> collectionFavourite = db.getCollection("UserFavouriteBook", UserFavouriteBook.class);
 }

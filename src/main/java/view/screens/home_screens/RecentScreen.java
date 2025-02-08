@@ -96,7 +96,7 @@ public class RecentScreen extends javax.swing.JFrame {
             @Override
             protected ArrayList<JPanel> doInBackground() throws Exception {
                 BookService bookService = new BookService();
-                ArrayList<Book> books = bookService.getAllBooks();
+                ArrayList<Book> books = bookService.getBooksByPage(1, 10);
                 ArrayList<JPanel> bookPanels = new ArrayList<>();
                 String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
                 Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);

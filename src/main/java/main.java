@@ -1,8 +1,11 @@
+import com.mongodb.client.model.IndexOptions;
+import com.mongodb.client.model.Indexes;
 import utils.NetworkChecker;
 import view.screens.auth_screens.LoginScreen;
 import dao.ConnectDB;
 import javax.swing.*;
 import static commons.ColorMain.getColorGradient;
+import static dao.ConnectDB.collectionFavourite;
 
 
 public class main {
