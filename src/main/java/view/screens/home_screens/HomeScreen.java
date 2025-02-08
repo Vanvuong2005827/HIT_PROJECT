@@ -368,10 +368,8 @@ public class HomeScreen extends javax.swing.JFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         String nameStyle = books.get(index).getSlug();
-                        WaitScreen ws = new WaitScreen();
-                        ws.setVisible(true);
                         homeScreen.setVisible(false);
-                        OneStyleBookScreen oneStyleBookPage = new OneStyleBookScreen(homeScreen, nameStyle, label1.getText(), ws);
+                        OneStyleBookScreen oneStyleBookPage = new OneStyleBookScreen(homeScreen, nameStyle, label1.getText());
                     }
 
                     @Override

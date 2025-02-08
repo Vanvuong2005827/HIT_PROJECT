@@ -22,16 +22,14 @@ import static utils.NetworkChecker.isConnected;
 public class OneStyleBookScreen extends javax.swing.JFrame {
     private String nameStyle;
     private JFrame previousScreen;
-    private WaitScreen waitScreen;
     private OneStyleBookScreen oneStyleBookPage = this;
     private JLabel loadingLabel = new JLabel("Loading...", SwingConstants.CENTER);
     private boolean isLoading = false;
     int curPage = 0;
 
-    public OneStyleBookScreen(JFrame hs, String n, String nn, WaitScreen w) {
+    public OneStyleBookScreen(JFrame hs, String n, String nn) {
         previousScreen = hs;
         nameStyle = n;
-        waitScreen = w;
         initComponents();
         jLabel2.setText(nn);
         processData();
@@ -102,7 +100,6 @@ public class OneStyleBookScreen extends javax.swing.JFrame {
             @Override
             protected void done() {
                 oneStyleBookPage.setVisible(true);
-                waitScreen.setVisible(false);
             }
         };
 
