@@ -136,6 +136,7 @@ public class CommingSoonBookScreen extends javax.swing.JFrame {
                         isLoading = false;
                     });
                 } catch (Exception e) {
+                    loadingLabel.setText("Không lấy được dữ liệu");
                     isLoading = false;
                 }
             }

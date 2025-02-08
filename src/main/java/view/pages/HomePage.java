@@ -107,6 +107,10 @@ public class HomePage extends javax.swing.JFrame {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         @Override
                         protected Void doInBackground() {
+                            rp.getMainPanel().removeAll();
+                            rp.getMainPanel().revalidate();
+                            rp.getMainPanel().repaint();
+                            rp.setCurPage(0);
                             rp.processRecentBook();
                             return null;
                         }
@@ -121,6 +125,10 @@ public class HomePage extends javax.swing.JFrame {
                     SwingWorker<Void, Void> worker = new SwingWorker<>() {
                         @Override
                         protected Void doInBackground() {
+                            fp.getMainPanel().removeAll();
+                            fp.getMainPanel().revalidate();
+                            fp.getMainPanel().repaint();
+                            fp.setCurPage(0);
                             fp.processFavouriteBook();
                             return null;
                         }

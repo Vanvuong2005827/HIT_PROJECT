@@ -21,6 +21,8 @@ import static utils.CustomBookGridPanel.customBookGrid1;
 public class FavouriteScreen extends javax.swing.JFrame {
     private HomePage homeScreen;
     private JLabel loadingLabel = new JLabel("Loading...", SwingConstants.CENTER);
+    private boolean isLoading = false;
+    private int curPage = 0;
 
     public FavouriteScreen(HomePage hs) {
         homeScreen = hs;
@@ -59,10 +61,10 @@ public class FavouriteScreen extends javax.swing.JFrame {
     }
 
     public void processFavouriteBook() {
-        mainPanel.removeAll();
-        mainPanel.revalidate();
-        mainPanel.repaint();
+        if (isLoading) return;
 
+        curPage++;
+        isLoading = true;
         loadingLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
         loadingLabel.setForeground(Color.GRAY);
 
@@ -82,7 +84,7 @@ public class FavouriteScreen extends javax.swing.JFrame {
             @Override
             protected ArrayList<JPanel> doInBackground() throws Exception {
                 BookService bookService = new BookService();
-                ArrayList<Book> books = bookService.getFavoritesByPage(1, 10);
+                ArrayList<Book> books = bookService.getFavoritesByPage(curPage, 10);
                 ArrayList<JPanel> bookPanels = new ArrayList<>();
                 String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
                 Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);
@@ -108,7 +110,11 @@ public class FavouriteScreen extends javax.swing.JFrame {
             protected void done() {
                 try {
                     ArrayList<JPanel> bookPanels = get();
-
+                    if (bookPanels.isEmpty()) {
+                        loadingLabel.setText("Danh sách trống");
+                        isLoading = false;
+                        return;
+                    }
                     SwingUtilities.invokeLater(() -> {
                         mainPanel.remove(loadingLabel);
                         for (JPanel panel : bookPanels) {
@@ -121,9 +127,11 @@ public class FavouriteScreen extends javax.swing.JFrame {
                         }
                         mainPanel.revalidate();
                         mainPanel.repaint();
+                        isLoading = false;
                     });
                 } catch (Exception e) {
                     loadingLabel.setText("Không lấy được dữ liệu");
+                    isLoading = false;
                 }
             }
         };
@@ -144,5 +152,9 @@ public class FavouriteScreen extends javax.swing.JFrame {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public void setCurPage(int curPage) {
+        this.curPage = curPage;
     }
 }
