@@ -16,7 +16,7 @@ public class ApiGet {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             responseBody = response.body();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return responseBody;
     }
