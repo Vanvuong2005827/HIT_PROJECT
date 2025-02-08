@@ -24,6 +24,7 @@ import java.util.concurrent.*;
 import static commons.ColorMain.*;
 import static utils.CustomBookGridPanel.resizeImage;
 import static utils.NetworkChecker.curFrame;
+import static utils.NetworkChecker.isConnected;
 
 public class ChapterScreen extends JFrame {
     private GetChapters getChapter = new GetChapters();
@@ -162,6 +163,12 @@ public class ChapterScreen extends JFrame {
                         try {
                             JLabel imageLabel = future.get();
                             SwingUtilities.invokeLater(() -> {
+                                if (!isConnected) {
+                                    chapterImgLabel.removeAll();
+                                    chapterImgLabel.revalidate();
+                                    chapterImgLabel.repaint();
+                                    return;
+                                }
                                 chapterImgLabel.add(imageLabel);
                                 chapterImgLabel.revalidate();
                                 chapterImgLabel.repaint();

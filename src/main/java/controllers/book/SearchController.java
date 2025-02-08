@@ -9,6 +9,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+import static utils.NetworkChecker.isConnected;
+
 public class SearchController {
     private SearchScreen searchScreen;
     private JFrame previousScreen;
@@ -65,6 +67,11 @@ public class SearchController {
 
             @Override
             protected void done() {
+                if (!isConnected){
+                    searchScreen.getMainPanel().removeAll();
+                    searchScreen.getMainPanel().revalidate();
+                    searchScreen.getMainPanel().repaint();
+                }
                 if (searchScreen.getTotalBooks() == 0) {
                     searchScreen.getSearchKeywordLabel().setText("Không tìm thấy kết quả");
                     searchScreen.getMainPanel().removeAll();
