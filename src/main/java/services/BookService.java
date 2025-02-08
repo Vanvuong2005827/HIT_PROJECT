@@ -133,7 +133,7 @@ public class BookService {
             } else {
                 collectionFavourite.updateOne(
                         filter,
-                        Updates.set("favorite", (level == Color.red)),
+                        Updates.set("favourite", (level == Color.red)),
                         new UpdateOptions().upsert(true)
                 );
             }
