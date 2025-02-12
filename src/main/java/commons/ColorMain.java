@@ -136,10 +136,10 @@ public class ColorMain {
         listColorGradient = colors;
     }
 
-    public static Color colorMain = new Color(176, 223, 251);
-    public static Color colorMain1 = colorMain;
-    public static Color colorMain2 = colorMain;
-    public static Color colorMain3 = colorMain;
-    public static Color colorFix = colorMain;
+    public static Color colorDefault = new Color(176, 223, 251);
+    public static Color colorMain1 = colorDefault;
+    public static Color colorMain2 = colorDefault;
+    public static Color colorMain3 = colorDefault;
+    public static Color colorFix = colorDefault;
     public static Color colorOpaque = new Color(0, 0, 0, 0);
 }

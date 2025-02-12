@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view.pages;
 
 import view.screens.auth_screens.LoginScreen;
@@ -18,7 +14,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import static commons.ColorMain.colorMain3;
+import static commons.ColorMain.colorDefault;
+import static commons.ColorMain.*;
 import static commons.CurrentUser.*;
 import static utils.NetworkChecker.curFrame;
 import static utils.NetworkChecker.isConnected;
@@ -96,6 +93,10 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     public void backToLogin() {
+        colorMain1 = colorDefault;
+        colorMain2 = colorDefault;
+        colorMain3 = colorDefault;
+        colorFix = colorDefault;
         loginScreen.setVisible(true);
         this.setVisible(false);
     }

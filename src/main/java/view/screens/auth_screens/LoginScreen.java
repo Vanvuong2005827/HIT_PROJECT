@@ -48,10 +48,10 @@ public class LoginScreen extends JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
-        setBackground(colorMain);
+        setBackground(colorDefault);
         setUndecorated(true);
 
-        loginMainPanel.setBackground(colorMain);
+        loginMainPanel.setBackground(colorDefault);
 
         loginLoginTabbed.setBackground(new Color(255, 255, 255));
         loginLoginTabbed.setToolTipText("");
@@ -77,7 +77,7 @@ public class LoginScreen extends JFrame {
         loginRememberCheckbox.setText("Nhớ tài khoản");
         loginRememberCheckbox.setBorder(null);
 
-        loginButton.setBackground(colorMain);
+        loginButton.setBackground(colorDefault);
         loginButton.setFont(new Font("Segoe UI", 1, 18));
         loginButton.setForeground(Color.black);
         loginButton.setText("ĐĂNG NHẬP");
@@ -148,7 +148,7 @@ public class LoginScreen extends JFrame {
         signUpPasswordLabel.setForeground(new Color(102, 102, 102));
         signUpPasswordLabel.setText("Mật khẩu");
 
-        signUpButton.setBackground(colorMain);
+        signUpButton.setBackground(colorDefault);
         signUpButton.setFont(new Font("Segoe UI", 1, 18));
         signUpButton.setForeground(Color.black);
         signUpButton.setText("ĐĂNG KÍ");

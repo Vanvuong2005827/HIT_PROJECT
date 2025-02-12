@@ -9,7 +9,7 @@ import view.screens.more_book_screens.StyleBookScreen;
 import javax.swing.*;
 import java.awt.*;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.colorDefault;
 import static commons.ColorMain.colorMain1;
 import static utils.NetworkChecker.curFrame;
 import static utils.NetworkChecker.isConnected;
@@ -68,7 +68,7 @@ public class MoreBookPage extends javax.swing.JFrame {
 
         mainPanel.setBackground(colorMain1);
 
-        jTabbedPane1.setBackground(colorMain);
+        jTabbedPane1.setBackground(colorDefault);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel1.setText("  <");

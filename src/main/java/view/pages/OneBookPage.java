@@ -6,18 +6,15 @@ import models.book.BookCategory;
 import models.chapter.AllChapters;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import static commons.ColorMain.colorMain;
+import static commons.ColorMain.colorDefault;
 import static commons.CurrentUser.bookService;
 import static utils.CustomBookGridPanel.customChapterPanel;
 import static utils.CustomBookGridPanel.resizeImage;
@@ -70,7 +67,7 @@ public class OneBookPage extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(450, 800));
 
-        oneBookMainPanel.setBackground(colorMain);
+        oneBookMainPanel.setBackground(colorDefault);
         oneBookMainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         ImageIO.setUseCache(false);
         try {
@@ -96,11 +93,11 @@ public class OneBookPage extends javax.swing.JFrame {
         }
         oneBookMainPanel.add(oneBookImgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -170, 450, 800));
 
-        oneBookInforPanel.setBackground(colorMain);
+        oneBookInforPanel.setBackground(colorDefault);
 
         JTextArea[] textAreas = {oneBookNameTextArea, oneBookAuthorTextArea, oneBookCategoryTextArea};
         for (JTextArea textArea : textAreas) {
-            textArea.setBackground(colorMain);
+            textArea.setBackground(colorDefault);
             textArea.setWrapStyleWord(true);
             textArea.setLineWrap(true);
             textArea.setEditable(false);
@@ -114,7 +111,7 @@ public class OneBookPage extends javax.swing.JFrame {
         oneBookStatusLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         oneBookStatusLabel.setForeground(new java.awt.Color(102, 102, 102));
 
-        oneBookStartReadButton.setBackground(colorMain);
+        oneBookStartReadButton.setBackground(colorDefault);
         oneBookStartReadButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
         oneBookStartReadButton.setText("Bắt đầu đọc");
         oneBookStartReadButton.setBorder(null);
@@ -136,14 +133,14 @@ public class OneBookPage extends javax.swing.JFrame {
 
         oneBookTabbed.addTab("Thông tin truyện", oneBookInforPanel);
 
-        oneBookChapterPanel.setBackground(colorMain);
+        oneBookChapterPanel.setBackground(colorDefault);
 
-        oneBookChapterScroll.setBackground(colorMain);
+        oneBookChapterScroll.setBackground(colorDefault);
         oneBookChapterScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         oneBookChapterScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         oneBookChapterScroll.setBorder(null);
 
-        oneBookChapterMainPanel.setBackground(colorMain);
+        oneBookChapterMainPanel.setBackground(colorDefault);
 
         javax.swing.GroupLayout oneBookChapterMainPanelLayout = new javax.swing.GroupLayout(oneBookChapterMainPanel);
         oneBookChapterMainPanel.setLayout(oneBookChapterMainPanelLayout);
