@@ -1,5 +1,7 @@
 package controllers.book;
 
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import utils.MouseDragCommon;
 import view.screens.WaitScreen;
 import view.screens.ChapterScreen;
@@ -12,6 +14,7 @@ import java.awt.event.MouseEvent;
 
 import static commons.CurrentUser.bookService;
 import static utils.NetworkChecker.isConnected;
+import static view.pages.OneBookPage.currentColor;
 
 public class OneBookController {
     private OneBookPage oneBookPage;
@@ -133,17 +136,17 @@ public class OneBookController {
     private void loveEvent() {
         oneBookPage.getjLabel1().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                if (oneBookPage.getOneBookFavou().getBackground() == Color.gray) {
-                    oneBookPage.getOneBookFavou().setBackground(Color.red);
-                    oneBookPage.getjLabel1().setForeground(Color.white);
+                if (currentColor == Color.gray) {
+                    oneBookPage.getjLabel1().setIcon(IconFontSwing.buildIcon(FontAwesome.HEART, 30, Color.RED));
+                    currentColor = Color.RED;
                     try {
                         bookService.toggleFavorite(oneBookPage.getCurBook().getId(), Color.red);
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    oneBookPage.getOneBookFavou().setBackground(Color.gray);
-                    oneBookPage.getjLabel1().setForeground(Color.black);
+                    oneBookPage.getjLabel1().setIcon(IconFontSwing.buildIcon(FontAwesome.HEART, 30, Color.GRAY));
+                    currentColor = Color.GRAY;
                     try {
                         bookService.toggleFavorite(oneBookPage.getCurBook().getId(), Color.gray);
                     } catch (Exception e) {

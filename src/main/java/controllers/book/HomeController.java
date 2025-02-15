@@ -1,5 +1,7 @@
 package controllers.book;
 
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import utils.MouseDragCommon;
 import view.screens.home_screens.HomeScreen;
 import view.screens.home_screens.SearchScreen;
@@ -11,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import static view.screens.home_screens.HomeScreen.curBell;
 
 public class HomeController {
     private HomeScreen homeScreen;
@@ -24,6 +28,7 @@ public class HomeController {
         more3();
         searchEvent();
         mouseDrag();
+        bellEvent();
     }
 
     private void more1() {
@@ -69,8 +74,22 @@ public class HomeController {
         });
     }
 
-    private void mouseDrag(){
-        MouseDragCommon mouseDragCommon = new MouseDragCommon(homeScreen.getHomeMainScrollPane(),1.5, 80, true);
+    private void bellEvent() {
+        homeScreen.getHomeBellNotifications().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                if (curBell == 0) {
+                    homeScreen.getHomeBellNotifications().setIcon(IconFontSwing.buildIcon(FontAwesome.BELL_O, 25, Color.YELLOW));
+                    curBell = 1;
+                } else {
+                    homeScreen.getHomeBellNotifications().setIcon(IconFontSwing.buildIcon(FontAwesome.BELL, 25, Color.YELLOW));
+                    curBell = 0;
+                }
+            }
+        });
+    }
+
+    private void mouseDrag() {
+        MouseDragCommon mouseDragCommon = new MouseDragCommon(homeScreen.getHomeMainScrollPane(), 1.5, 80, true);
         homeScreen.getHomeMainPanel().addMouseListener(mouseDragCommon);
         homeScreen.getHomeMainPanel().addMouseMotionListener(mouseDragCommon);
         homeScreen.getHomeNewBookGridPanel().addMouseListener(mouseDragCommon);
@@ -80,12 +99,15 @@ public class HomeController {
         homeScreen.getHomeStyleMainPanel().addMouseListener(dragScrollListenerStyleScroll);
         homeScreen.getHomeStyleMainPanel().addMouseMotionListener(dragScrollListenerStyleScroll);
     }
+
     private MouseAdapter dragScrollListenerStyleScroll = new MouseAdapter() {
         private Point origin;
+
         @Override
         public void mousePressed(MouseEvent e) {
             origin = e.getPoint();
         }
+
         @Override
         public void mouseDragged(MouseEvent e) {
             JViewport viewport = homeScreen.getHomeStyleScrollPane().getViewport();
@@ -93,7 +115,8 @@ public class HomeController {
             int deltaX = origin.x - e.getX();
             int newX = viewPosition.x + deltaX;
             int totalWidth = 130 * 100;
-            if (totalWidth < homeScreen.getHomeStyleScrollPane().getWidth()) totalWidth = homeScreen.getHomeStyleScrollPane().getWidth();
+            if (totalWidth < homeScreen.getHomeStyleScrollPane().getWidth())
+                totalWidth = homeScreen.getHomeStyleScrollPane().getWidth();
             int panelWidth = totalWidth;
             int viewportWidth = viewport.getWidth();
             if (newX < 0) {
