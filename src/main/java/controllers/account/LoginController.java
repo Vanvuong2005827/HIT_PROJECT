@@ -31,6 +31,7 @@ public class LoginController {
         forgotPassEvent();
         loginEvent();
         signUpEvent();
+        showPasswordEvent();
     }
 
     private void fixedTabbed() {
@@ -225,6 +226,37 @@ public class LoginController {
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Đăng kí không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+    }
+
+    private void showPasswordEvent(){
+        loginScreen.getLoginEyeLabel().addMouseListener(new MouseAdapter() {
+            private boolean isVisible = false;
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                isVisible = !isVisible;
+                if (isVisible){
+                    loginScreen.getLoginPasswordTextField().setEchoChar((char) 0);
+                }
+                else {
+                    loginScreen.getLoginPasswordTextField().setEchoChar('•');
+                }
+            }
+        });
+        loginScreen.getLoginEyeLabel2().addMouseListener(new MouseAdapter() {
+            private boolean isVisible = false;
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                isVisible = !isVisible;
+                if (isVisible){
+                    loginScreen.getSignUpPasswordTextField().setEchoChar((char) 0);
+                    loginScreen.getSignUpReEnterPasswordTextField().setEchoChar((char) 0);
+                }
+                else {
+                    loginScreen.getSignUpPasswordTextField().setEchoChar('•');
+                    loginScreen.getSignUpReEnterPasswordTextField().setEchoChar('•');
                 }
             }
         });
