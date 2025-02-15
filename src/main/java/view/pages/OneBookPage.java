@@ -1,6 +1,7 @@
 package view.pages;
 
 import controllers.book.OneBookController;
+import jiconfont.swing.IconFontSwing;
 import models.book.Book;
 import models.book.BookCategory;
 import models.chapter.AllChapters;
@@ -13,6 +14,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import jiconfont.icons.font_awesome.FontAwesome;
 
 import static commons.ColorMain.colorDefault;
 import static commons.CurrentUser.bookService;
@@ -30,6 +33,7 @@ public class OneBookPage extends javax.swing.JFrame {
     private String status;
     private StringBuilder categories = new StringBuilder();
     private StringBuilder authors = new StringBuilder();
+    public static Color currentColor = Color.GRAY;
 
     public OneBookPage(JFrame ps, Book book, ArrayList<AllChapters> chapter) throws Exception {
         previousScreen = ps;
@@ -116,11 +120,11 @@ public class OneBookPage extends javax.swing.JFrame {
         oneBookStartReadButton.setText("Bắt đầu đọc");
         oneBookStartReadButton.setBorder(null);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Yêu thích");
+        if (bookService.checkFavorite(curBook.getId()) == Color.red) currentColor = Color.RED;
+        else currentColor = Color.GRAY;
+        jLabel1 = new JLabel(IconFontSwing.buildIcon(FontAwesome.HEART, 30, currentColor));
 
-        oneBookFavou.setBackground(bookService.checkFavorite(curBook.getId()));
-        jLabel1.setForeground((oneBookFavou.getBackground() == Color.red) ? Color.WHITE : Color.BLACK);
+        oneBookFavou.setBackground(colorDefault);
         javax.swing.GroupLayout oneBookFavouLayout = new javax.swing.GroupLayout(oneBookFavou);
         oneBookFavou.setLayout(oneBookFavouLayout);
         oneBookFavouLayout.setHorizontalGroup(oneBookFavouLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, oneBookFavouLayout.createSequentialGroup().addContainerGap(21, Short.MAX_VALUE).addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(15, 15, 15)));

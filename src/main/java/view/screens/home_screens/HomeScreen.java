@@ -18,6 +18,8 @@ import javax.swing.*;
 
 import commons.ColorMain;
 import controllers.book.HomeController;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import models.book.Book;
 import models.book.BookCategory;
 import models.chapter.AllChapters;
@@ -35,6 +37,7 @@ import static utils.CustomBookGridPanel.*;
 
 public class HomeScreen extends javax.swing.JFrame {
     private HomePage homeScreen;
+    public static int curBell = 0;
     public HomeScreen(HomePage hs) {
         homeScreen = hs;
         initComponents();
@@ -121,6 +124,8 @@ public class HomeScreen extends javax.swing.JFrame {
 
         homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeCommingSoonBookLabel.setText("Sắp ra mắt");
+
+        homeBellNotifications = new JLabel(IconFontSwing.buildIcon(FontAwesome.BELL, 25, Color.YELLOW));
 
         javax.swing.GroupLayout homeMainPanelLayout = new javax.swing.GroupLayout(homeMainPanel);
         homeMainPanel.setLayout(homeMainPanelLayout);
@@ -630,5 +635,9 @@ public class HomeScreen extends javax.swing.JFrame {
 
     public JScrollPane getHomeStyleScrollPane() {
         return homeStyleScrollPane;
+    }
+
+    public JLabel getHomeBellNotifications() {
+        return homeBellNotifications;
     }
 }

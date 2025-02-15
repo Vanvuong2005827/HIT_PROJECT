@@ -1,3 +1,5 @@
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import utils.NetworkChecker;
 import view.screens.auth_screens.LoginScreen;
 import dao.ConnectDB;
@@ -8,6 +10,7 @@ import static commons.ColorMain.getColorGradient;
 public class main {
     public static void main(String[] args) {
         NetworkChecker.startNetworkMonitoring();
+        IconFontSwing.register(FontAwesome.getIconFont());
         new ConnectDB();
         try {
             UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatIntelliJLaf());

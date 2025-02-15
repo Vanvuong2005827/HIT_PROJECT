@@ -36,6 +36,19 @@
             <version>3.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.github.jiconfont/jiconfont -->
+        <dependency>
+            <groupId>com.github.jiconfont</groupId>
+            <artifactId>jiconfont</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.jiconfont/jiconfont-font_awesome -->
+        <dependency>
+            <groupId>com.github.jiconfont</groupId>
+            <artifactId>jiconfont-font_awesome</artifactId>
+            <version>4.7.0.1</version>
+        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/com.github.jiconfont/jiconfont-swing -->
