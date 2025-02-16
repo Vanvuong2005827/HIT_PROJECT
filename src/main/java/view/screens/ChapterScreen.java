@@ -114,10 +114,16 @@ public class ChapterScreen extends JFrame {
         chapterImgLabel.removeAll();
         SwingUtilities.invokeLater(() -> {
             SwingWorker<Void, Void> worker = new SwingWorker<>() {
-                Chapter chapter = getChapter.getChapter(chapters.get(indexChapter));
+                Chapter chapter;
 
                 @Override
                 protected Void doInBackground() {
+                    try {
+                        chapter = getChapter.getChapter(chapters.get(indexChapter));
+                    } catch (Exception e) {
+                        return null;
+                    }
+
                     chapterNameLabel.setText("Loading...");
                     chapterImgLabel.setLayout(new BoxLayout(chapterImgLabel, BoxLayout.Y_AXIS));
 
@@ -184,7 +190,11 @@ public class ChapterScreen extends JFrame {
 
                 @Override
                 protected void done() {
-                    chapterNameLabel.setText("Chapter: " + chapter.getChapter_name());
+                    try {
+                        chapterNameLabel.setText("Chapter: " + chapter.getChapter_name());
+                    } catch (Exception e) {
+
+                    }
                 }
             };
             worker.execute();
