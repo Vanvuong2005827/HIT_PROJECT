@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.*;
 
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import utils.IconUser;
 import models.user.UserInfo;
 import utils.Gradient;
@@ -78,14 +80,17 @@ public class AccountScreen extends javax.swing.JFrame {
 
         accountStatusAccountLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        jLabel5.setText("Gmail: ");
+        jLabel5.setText(" ");
+        jLabel5.setIcon(IconFontSwing.buildIcon(FontAwesome.ENVELOPE, 23, Color.black));
+        jLabel5.setHorizontalTextPosition(SwingConstants.LEFT);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        jLabel6.setText("Số điện thoại: ");
+        jLabel6.setText("  ");
+        jLabel6.setIcon(IconFontSwing.buildIcon(FontAwesome.PHONE, 23, Color.black));
+        jLabel6.setHorizontalTextPosition(SwingConstants.LEFT);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        jLabel7.setText("Tài khoản: ");
+        jLabel7.setText("  ");
+        jLabel7.setIcon(IconFontSwing.buildIcon(FontAwesome.USER, 23, Color.black));
+        jLabel7.setHorizontalTextPosition(SwingConstants.LEFT);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14));
         jLabel8.setText("Trạng thái: ");
@@ -134,8 +139,10 @@ public class AccountScreen extends javax.swing.JFrame {
 
         accountLogoutButton.setBackground(colorFix);
         accountLogoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
-        accountLogoutButton.setText("ĐĂNG XUẤT");
+        accountLogoutButton.setText("ĐĂNG XUẤT ");
         accountLogoutButton.setBorder(null);
+        accountLogoutButton.setIcon(IconFontSwing.buildIcon(FontAwesome.SIGN_OUT, 20, Color.black));
+        accountLogoutButton.setHorizontalTextPosition(SwingConstants.LEFT);
         accountLogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoutEvent(evt);

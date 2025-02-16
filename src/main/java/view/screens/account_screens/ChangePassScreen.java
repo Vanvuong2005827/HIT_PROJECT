@@ -1,9 +1,12 @@
 package view.screens.account_screens;
 
 import controllers.account.ChangePassController;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import utils.Gradient;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 import static commons.ColorMain.*;
@@ -78,9 +81,11 @@ public class ChangePassScreen extends javax.swing.JFrame {
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
 
         changePassConfirmButton.setBackground(colorFix);
-        changePassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        changePassConfirmButton.setText("Xác nhận");
+        changePassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 16));
+        changePassConfirmButton.setText("Xác nhận ");
         changePassConfirmButton.setBorder(null);
+        changePassConfirmButton.setIcon(IconFontSwing.buildIcon(FontAwesome.CHECK, 23, Color.black));
+        changePassConfirmButton.setHorizontalTextPosition(SwingConstants.LEFT);
 
         changePassForgotPassLabel.setForeground(new java.awt.Color(102, 102, 102));
         changePassForgotPassLabel.setText("Quên mật khẩu?");

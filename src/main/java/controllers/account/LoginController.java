@@ -1,5 +1,7 @@
 package controllers.account;
 
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import models.user.UserAccount;
 import models.user.UserIP;
 import view.screens.account_screens.ForgotPassScreen;
@@ -238,9 +240,11 @@ public class LoginController {
             public void mouseClicked(MouseEvent evt) {
                 isVisible = !isVisible;
                 if (isVisible){
+                    loginScreen.getLoginEyeLabel().setIcon(IconFontSwing.buildIcon(FontAwesome.EYE, 23, Color.black));
                     loginScreen.getLoginPasswordTextField().setEchoChar((char) 0);
                 }
                 else {
+                    loginScreen.getLoginEyeLabel().setIcon(IconFontSwing.buildIcon(FontAwesome.EYE_SLASH, 23, Color.black));
                     loginScreen.getLoginPasswordTextField().setEchoChar('•');
                 }
             }
@@ -251,10 +255,12 @@ public class LoginController {
             public void mouseClicked(MouseEvent evt) {
                 isVisible = !isVisible;
                 if (isVisible){
+                    loginScreen.getLoginEyeLabel2().setIcon(IconFontSwing.buildIcon(FontAwesome.EYE, 23, Color.black));
                     loginScreen.getSignUpPasswordTextField().setEchoChar((char) 0);
                     loginScreen.getSignUpReEnterPasswordTextField().setEchoChar((char) 0);
                 }
                 else {
+                    loginScreen.getLoginEyeLabel2().setIcon(IconFontSwing.buildIcon(FontAwesome.EYE_SLASH, 23, Color.black));
                     loginScreen.getSignUpPasswordTextField().setEchoChar('•');
                     loginScreen.getSignUpReEnterPasswordTextField().setEchoChar('•');
                 }

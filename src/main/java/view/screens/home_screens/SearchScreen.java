@@ -1,6 +1,8 @@
 package view.screens.home_screens;
 
 import controllers.book.SearchController;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import models.book.Book;
 import utils.Gradient;
 import data.GetAllBook;
@@ -51,8 +53,7 @@ public class SearchScreen extends JFrame {
         searchSearchTextField.setFont(new java.awt.Font("Segoe UI", 0, 14));
         searchMainPanel.add(searchSearchTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 330, 33));
 
-        searchSearchLabel.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        searchSearchLabel.setText("Tìm kiếm");
+        searchSearchLabel = new JLabel(IconFontSwing.buildIcon(FontAwesome.SEARCH, 27, Color.black));
         searchMainPanel.add(searchSearchLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 60, 30));
 
         mainPanel.setLayout(new java.awt.GridBagLayout());
