@@ -133,7 +133,10 @@ public class BookService {
             } else {
                 collectionFavourite.updateOne(
                         filter,
-                        Updates.set("favourite", (level == Color.red)),
+                        Updates.combine(
+                                Updates.set("favourite", (level == Color.red)),
+                                Updates.set("lastAddFavDate", LocalDateTime.now())
+                        ),
                         new UpdateOptions().upsert(true)
                 );
             }

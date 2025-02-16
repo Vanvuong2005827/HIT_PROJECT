@@ -5,6 +5,7 @@ import view.screens.auth_screens.LoginScreen;
 import dao.ConnectDB;
 import javax.swing.*;
 import static commons.ColorMain.getColorGradient;
+import static commons.CurrentUser.encryptorService;
 
 
 public class main {
