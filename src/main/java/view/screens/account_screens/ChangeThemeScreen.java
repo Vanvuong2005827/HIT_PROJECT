@@ -1,10 +1,14 @@
 package view.screens.account_screens;
 
 import dao.ConnectDB;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import utils.Gradient;
 import view.screens.auth_screens.LoginScreen;
 
 import javax.swing.*;
+
+import java.awt.*;
 
 import static commons.ColorMain.*;
 import static commons.CurrentUser.userServices;
@@ -319,7 +323,9 @@ public class ChangeThemeScreen extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Xác nhận");
+        jLabel3.setText("Xác nhận ");
+        jLabel3.setIcon(IconFontSwing.buildIcon(FontAwesome.CHECK, 23, Color.black));
+        jLabel3.setHorizontalTextPosition(SwingConstants.LEFT);
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 try {

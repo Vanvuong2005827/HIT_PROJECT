@@ -34,6 +34,7 @@ public class ChapterController {
         chapterScreen.getChapterNext().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 int chapterLastest = 0;
+                chapterScreen.processData();
                 try {
                     chapterLastest = bookService.getLastReadIndexChapter(chapterScreen.getCurBook().getId());
                 } catch (Exception e) {
@@ -52,7 +53,6 @@ public class ChapterController {
                 }
                 chapterScreen.getOneBookStartReadButton().setText("Tiếp tục đọc chapter " + chapterScreen.getChapters().get(bookService.getLastReadIndexChapter(chapterScreen.getCurBook().getId())).getChapter_name());
                 chapterScreen.setIndexChapter(chapterLastest);
-                chapterScreen.processData();
             }
         });
     }
@@ -61,6 +61,7 @@ public class ChapterController {
         chapterScreen.getChapterPrevious().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 int chapterLastest = 0;
+                chapterScreen.processData();
                 try {
                     chapterLastest = bookService.getLastReadIndexChapter(chapterScreen.getCurBook().getId());
                 } catch (Exception e) {
@@ -79,7 +80,6 @@ public class ChapterController {
                 }
                 chapterScreen.getOneBookStartReadButton().setText("Tiếp tục đọc chapter " + chapterScreen.getChapters().get(bookService.getLastReadIndexChapter(chapterScreen.getCurBook().getId())).getChapter_name());
                 chapterScreen.setIndexChapter(chapterLastest);
-                chapterScreen.processData();
             }
         });
     }

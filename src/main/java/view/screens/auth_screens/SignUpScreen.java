@@ -1,9 +1,12 @@
 package view.screens.auth_screens;
 
 import controllers.account.SignUpController;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import utils.Gradient;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 import static commons.ColorMain.*;
@@ -99,14 +102,10 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpYearOfBirth.setBorder(null);
 
         signUpMaleCheckBox.setBackground(colorMain2);
-        signUpMaleCheckBox.setForeground(new java.awt.Color(102, 102, 102));
-        signUpMaleCheckBox.setText("Nam");
-        signUpMaleCheckBox.setBorder(null);
+        signUpMaleCheckBox.setIcon(IconFontSwing.buildIcon(FontAwesome.MALE, 27, Color.black));
 
         signUpFemaleCheckBox.setBackground(colorMain2);
-        signUpFemaleCheckBox.setForeground(new java.awt.Color(102, 102, 102));
-        signUpFemaleCheckBox.setText("Nữ");
-        signUpFemaleCheckBox.setBorder(null);
+        signUpFemaleCheckBox.setIcon(IconFontSwing.buildIcon(FontAwesome.FEMALE, 27, Color.black));
 
         signUpConfirmButton.setBackground(colorFix);
         signUpConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 24));

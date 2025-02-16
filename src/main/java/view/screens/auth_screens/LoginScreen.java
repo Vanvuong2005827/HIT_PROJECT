@@ -1,6 +1,8 @@
 package view.screens.auth_screens;
 
 import controllers.account.LoginController;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -63,13 +65,9 @@ public class LoginScreen extends JFrame {
 
         loginLoginPanel.setBackground(new Color(255, 255, 255));
 
-        loginUsernameLabel.setFont(new Font("Segoe UI", 0, 14));
-        loginUsernameLabel.setForeground(new Color(102, 102, 102));
-        loginUsernameLabel.setText("Tài khoản");
+        loginUsernameLabel.setIcon(IconFontSwing.buildIcon(FontAwesome.USER_CIRCLE_O, 23, Color.GRAY));
 
-        loginPasswordLabel.setFont(new Font("Segoe UI", 0, 14));
-        loginPasswordLabel.setForeground(new Color(102, 102, 102));
-        loginPasswordLabel.setText("Mật khẩu");
+        loginPasswordLabel.setIcon(IconFontSwing.buildIcon(FontAwesome.KEY, 23, Color.GRAY));
 
         loginForgotPassLabel.setForeground(new Color(102, 102, 102));
         loginForgotPassLabel.setText("Quên mật khẩu");
@@ -82,13 +80,15 @@ public class LoginScreen extends JFrame {
         loginButton.setBackground(colorDefault);
         loginButton.setFont(new Font("Segoe UI", 1, 18));
         loginButton.setForeground(Color.black);
-        loginButton.setText("ĐĂNG NHẬP");
+        loginButton.setText("ĐĂNG NHẬP ");
         loginButton.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
+        loginButton.setIcon(IconFontSwing.buildIcon(FontAwesome.SIGN_IN, 20, Color.black));
+        loginButton.setHorizontalTextPosition(SwingConstants.LEFT);
 
         loginMessageLabel.setForeground(new Color(255, 51, 51));
 
-        loginEyeLabel.setIcon(new ImageIcon(basePath + "\\src\\main\\java\\assets\\eye.png"));
-        loginEyeLabel2.setIcon(new ImageIcon(basePath + "\\src\\main\\java\\assets\\eye.png"));
+        loginEyeLabel.setIcon(IconFontSwing.buildIcon(FontAwesome.EYE_SLASH, 23, Color.black));
+        loginEyeLabel2.setIcon(IconFontSwing.buildIcon(FontAwesome.EYE_SLASH, 23, Color.black));
 
         javax.swing.GroupLayout loginLoginPanelLayout = new javax.swing.GroupLayout(loginLoginPanel);
         loginLoginPanel.setLayout(loginLoginPanelLayout);
@@ -103,18 +103,23 @@ public class LoginScreen extends JFrame {
                                                         .addComponent(loginPasswordLabel))
                                                 .addGap(41, 41, 41)
                                                 .addGroup(loginLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(loginUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(loginMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(loginLoginPanelLayout.createSequentialGroup()
-                                                                .addComponent(loginPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(loginEyeLabel)))
-                                                .addContainerGap(35, Short.MAX_VALUE))
+                                                                .addComponent(loginMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLoginPanelLayout.createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addGroup(loginLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(loginUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(loginLoginPanelLayout.createSequentialGroup()
+                                                                                .addComponent(loginPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(loginEyeLabel)))))
+                                                .addGap(43, 43, 43))
                                         .addGroup(loginLoginPanelLayout.createSequentialGroup()
                                                 .addComponent(loginRememberCheckbox, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(loginForgotPassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(43, 43, 43))))
+                                                .addGap(56, 56, 56))))
                         .addGroup(loginLoginPanelLayout.createSequentialGroup()
                                 .addGap(84, 84, 84)
                                 .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,10 +140,13 @@ public class LoginScreen extends JFrame {
                                                 .addComponent(loginPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(loginPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(loginEyeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(21, 21, 21)
-                                .addGroup(loginLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(loginForgotPassLabel)
-                                        .addComponent(loginRememberCheckbox))
+                                .addGroup(loginLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(loginLoginPanelLayout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addComponent(loginRememberCheckbox))
+                                        .addGroup(loginLoginPanelLayout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(loginForgotPassLabel)))
                                 .addGap(53, 53, 53)
                                 .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(130, Short.MAX_VALUE))
@@ -148,13 +156,9 @@ public class LoginScreen extends JFrame {
 
         loginSignUpPanel.setBackground(new Color(255, 255, 255));
 
-        signUpUsernameLabel.setFont(new Font("Segoe UI", 0, 14));
-        signUpUsernameLabel.setForeground(new Color(102, 102, 102));
-        signUpUsernameLabel.setText("Tài khoản");
+        signUpUsernameLabel.setIcon(IconFontSwing.buildIcon(FontAwesome.USER_CIRCLE_O, 23, Color.GRAY));
 
-        signUpPasswordLabel.setFont(new Font("Segoe UI", 0, 14));
-        signUpPasswordLabel.setForeground(new Color(102, 102, 102));
-        signUpPasswordLabel.setText("Mật khẩu");
+        signUpPasswordLabel.setIcon(IconFontSwing.buildIcon(FontAwesome.KEY, 23, Color.GRAY));
 
         signUpButton.setBackground(colorDefault);
         signUpButton.setFont(new Font("Segoe UI", 1, 18));
@@ -231,7 +235,7 @@ public class LoginScreen extends JFrame {
 
         jLabel1.setFont(new Font("Segoe UI", 1, 24));
         jLabel1.setForeground(Color.black);
-        jLabel1.setText("Welcom to my comic");
+        jLabel1.setText("Welcom to our comic");
 
         jLabel2.setIcon(new ImageIcon(basePath + "\\src\\main\\java\\assets\\logoBrand.png"));
 

@@ -1,6 +1,8 @@
 package view.screens;
 
 import controllers.book.ChapterController;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import models.book.Book;
 import models.chapter.AllChapters;
 import models.chapter.Chapter;
@@ -88,12 +90,12 @@ public class ChapterScreen extends JFrame {
         chapterPanelLayeded.add(chapterNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 760, 90, 20));
 
         chapterNext.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        chapterNext.setText("Trang sau");
+        chapterNext.setIcon(IconFontSwing.buildIcon(FontAwesome.CARET_RIGHT, 27, Color.black));
 
         chapterPanelLayeded.add(chapterNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 740, 90, 60));
 
         chapterPrevious.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        chapterPrevious.setText("Trang trước");
+        chapterPrevious.setIcon(IconFontSwing.buildIcon(FontAwesome.CARET_LEFT, 27, Color.black));
 
         chapterPanelLayeded.add(chapterPrevious, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 740, 100, 60));
 

@@ -1,9 +1,12 @@
 package view.screens.account_screens;
 
 import controllers.account.ForgotPassController;
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import utils.Gradient;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 import static commons.ColorMain.*;
@@ -49,8 +52,9 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel1.setText("Quên mật khẩu");
 
-        forgotPassEmailLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        forgotPassEmailLabel.setText("Email liên kết:");
+        forgotPassEmailLabel.setText("     ");
+        forgotPassEmailLabel.setIcon(IconFontSwing.buildIcon(FontAwesome.ENVELOPE, 23, Color.black));
+        forgotPassEmailLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 
         forgotPassEmailTextField.setBackground(colorMain2);
         forgotPassEmailTextField.setFont(new java.awt.Font("Segoe UI", 0, 14));
@@ -74,8 +78,9 @@ public class ForgotPassScreen extends javax.swing.JFrame {
 
         forgotPassShowMessage.setForeground(new java.awt.Color(255, 0, 51));
 
-        forgotPassUsernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        forgotPassUsernameLabel.setText("Tài khoản");
+        forgotPassUsernameLabel.setText("     ");
+        forgotPassUsernameLabel.setIcon(IconFontSwing.buildIcon(FontAwesome.USER_CIRCLE_O, 23, Color.black));
+        forgotPassUsernameLabel.setHorizontalTextPosition(SwingConstants.LEFT);
 
         forgotPassUsernameTextField.setBackground(colorMain2);
         forgotPassUsernameTextField.setFont(new java.awt.Font("Segoe UI", 0, 14));
@@ -84,9 +89,11 @@ public class ForgotPassScreen extends javax.swing.JFrame {
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
 
         forgotPassConfirmButton.setBackground(colorFix);
-        forgotPassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        forgotPassConfirmButton.setText("Xác nhận");
+        forgotPassConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 16));
+        forgotPassConfirmButton.setText("Xác nhận ");
         forgotPassConfirmButton.setBorder(null);
+        forgotPassConfirmButton.setIcon(IconFontSwing.buildIcon(FontAwesome.CHECK, 23, Color.black));
+        forgotPassConfirmButton.setHorizontalTextPosition(SwingConstants.LEFT);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(basePath + "\\src\\main\\java\\assets\\christmas-tree-15498_256.gif"));
 
