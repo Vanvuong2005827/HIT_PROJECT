@@ -89,13 +89,15 @@ public class ChapterScreen extends JFrame {
         chapterNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         chapterPanelLayeded.add(chapterNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 760, 90, 20));
 
-        chapterNext.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        chapterNext.setText("       ");
         chapterNext.setIcon(IconFontSwing.buildIcon(FontAwesome.CARET_RIGHT, 27, Color.black));
+        chapterNext.setHorizontalTextPosition(SwingConstants.LEFT);
 
         chapterPanelLayeded.add(chapterNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 740, 90, 60));
 
-        chapterPrevious.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        chapterPrevious.setText("      ");
         chapterPrevious.setIcon(IconFontSwing.buildIcon(FontAwesome.CARET_LEFT, 27, Color.black));
+        chapterPrevious.setHorizontalTextPosition(SwingConstants.LEFT);
 
         chapterPanelLayeded.add(chapterPrevious, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 740, 100, 60));
 
