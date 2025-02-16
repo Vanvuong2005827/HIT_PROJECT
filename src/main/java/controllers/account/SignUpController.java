@@ -1,6 +1,7 @@
 package controllers.account;
 
 import view.screens.auth_screens.LoginScreen;
+import view.screens.auth_screens.PolicyScreen;
 import view.screens.auth_screens.SignUpScreen;
 import utils.RegexChecker;
 
@@ -26,6 +27,7 @@ public class SignUpController {
         sendCodeEvent();
         confirmEvent();
         setStateChange();
+        policyEvent();
     }
 
     private void backEvent() {
@@ -123,6 +125,10 @@ public class SignUpController {
                     signUpScreen.getSignUpMessageLabel().setText("Xin mời nhập năm sinh");
                     return;
                 }
+                if (gender.isEmpty()){
+                    signUpScreen.getSignUpMessageLabel().setText("Xin mời chọn giới tính");
+                    return;
+                }
                 if (phoneNumber.isEmpty()) {
                     signUpScreen.getSignUpMessageLabel().setText("Xin mời nhập số điện thoại");
                     return;
@@ -148,6 +154,10 @@ public class SignUpController {
 
                 if (!AnsCode.equals(signUpScreen.getSignUpGmailCodeTextField().getText().trim())) {
                     signUpScreen.getSignUpMessageLabel().setText("Mã xác thực không đúng");
+                    return;
+                }
+                if (!signUpScreen.getSignUpCheckPolicyCheckBox().isSelected()){
+                    signUpScreen.getSignUpMessageLabel().setText("Vui lòng đồng ý điều khoản");
                 }
 
                 try {
@@ -185,5 +195,15 @@ public class SignUpController {
                 signUpScreen.getSignUpFemaleCheckBox().setSelected(false);
             }
         }
+    }
+
+    private void policyEvent(){
+        signUpScreen.getSignUpPolicyLabel().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                PolicyScreen p = new PolicyScreen(signUpScreen);
+                p.setVisible(true);
+                signUpScreen.setVisible(false);
+            }
+        });
     }
 }
