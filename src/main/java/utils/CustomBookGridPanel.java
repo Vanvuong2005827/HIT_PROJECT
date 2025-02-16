@@ -126,7 +126,11 @@ public class CustomBookGridPanel {
                                 throw new RuntimeException(ex);
                             }
                             if (bookService.checkIfExitBookInUser(curBook.getId())) {
-                                oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
+                                try {
+                                    oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
+                                } catch (Exception e) {
+                                    oneBookScreen.oneBookStartReadButton.setText("Sách mới, vui lòng chờ");
+                                }
                             }
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);
@@ -307,8 +311,11 @@ public class CustomBookGridPanel {
                                 throw new RuntimeException(ex);
                             }
                             if (bookService.checkIfExitBookInUser(curBook.getId())) {
-
-                                oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
+                                try {
+                                    oneBookScreen.oneBookStartReadButton.setText("Tiếp tục đọc chapter " + chapters.get(bookService.getLastReadIndexChapter(curBook.getId())).getChapter_name());
+                                } catch (Exception e) {
+                                    oneBookScreen.oneBookStartReadButton.setText("Sách mới, vui lòng chờ");
+                                }
                             }
                             oneBookScreen.setVisible(true);
                             ws.setVisible(false);

@@ -82,8 +82,13 @@ public class OneBookController {
                                 } catch (Exception e) {
                                     JOptionPane.showMessageDialog(null, "Lưu dữ liệu không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                                 }
-                                oneBookPage.getOneBookStartReadButton().setText("Tiếp tục đọc chapter " + oneBookPage.getChapters().get(bookService.getLastReadIndexChapter(oneBookPage.getCurBook().getId())).getChapter_name());
-                                cs.setVisible(true);
+                                try {
+                                    oneBookPage.getOneBookStartReadButton().setText("Tiếp tục đọc chapter " + oneBookPage.getChapters().get(bookService.getLastReadIndexChapter(oneBookPage.getCurBook().getId())).getChapter_name());
+                                    cs.setVisible(true);
+                                } catch (Exception e) {
+                                    oneBookPage.setVisible(true);
+                                    JOptionPane.showMessageDialog(null, "Chưa có chapter");
+                                }
                                 ws.setVisible(false);
                             }
                         };
@@ -120,8 +125,13 @@ public class OneBookController {
                                 } catch (Exception e) {
                                     JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                                 }
-                                oneBookPage.getOneBookStartReadButton().setText("Tiếp tục đọc chapter " + oneBookPage.getChapters().get(bookService.getLastReadIndexChapter(oneBookPage.getCurBook().getId())).getChapter_name());
-                                cs.setVisible(true);
+                                try {
+                                    oneBookPage.getOneBookStartReadButton().setText("Tiếp tục đọc chapter " + oneBookPage.getChapters().get(bookService.getLastReadIndexChapter(oneBookPage.getCurBook().getId())).getChapter_name());
+                                    cs.setVisible(true);
+                                } catch (Exception e){
+                                    JOptionPane.showMessageDialog(null, "Chưa có chapter");
+                                    oneBookPage.setVisible(true);
+                                }
                                 ws.setVisible(false);
                             }
                         };
@@ -157,7 +167,7 @@ public class OneBookController {
         });
     }
 
-    private void mouseDrag(){
+    private void mouseDrag() {
         MouseDragCommon mouseDragCommon = new MouseDragCommon(oneBookPage.getOneBookChapterScroll(), 1.5, 80, false);
         oneBookPage.getOneBookChapterMainPanel().addMouseListener(mouseDragCommon);
         oneBookPage.getOneBookChapterMainPanel().addMouseMotionListener(mouseDragCommon);

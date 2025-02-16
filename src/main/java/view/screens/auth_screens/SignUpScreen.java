@@ -84,17 +84,8 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpGamailLabel.setForeground(new java.awt.Color(102, 102, 102));
         signUpGamailLabel.setText("Gmail : ");
 
-        signUpLine1.setForeground(new java.awt.Color(102, 102, 102));
-        signUpLine1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         signUpFullNameTextField.setBackground(colorMain2);
         signUpFullNameTextField.setBorder(null);
-
-        signUpLine2.setForeground(new java.awt.Color(102, 102, 102));
-        signUpLine2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        signUpLine3.setForeground(new java.awt.Color(102, 102, 102));
-        signUpLine3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         signUpGmailTextField.setBackground(colorMain2);
         signUpGmailTextField.setBorder(null);
@@ -137,9 +128,6 @@ public class SignUpScreen extends javax.swing.JFrame {
         signUpGmailCodeTextField.setBackground(colorFix);
         signUpGmailCodeTextField.setBorder(null);
 
-        signUpLine4.setBackground(new java.awt.Color(102, 102, 102));
-        signUpLine4.setForeground(new java.awt.Color(102, 102, 102));
-        signUpLine4.setBorder(null);
 
         signUpButtonSendCode.setBackground(new java.awt.Color(204, 255, 204));
         signUpButtonSendCode.setFont(new java.awt.Font("Segoe UI", 1, 14));
