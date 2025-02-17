@@ -1,11 +1,12 @@
-package services;
+package services.impl;
 
 import org.mindrot.jbcrypt.BCrypt;
+import services.IEncryptorService;
 
 import javax.swing.*;
 
-public class EncryptorService {
-    public String hasing(String plainText) {
+public class IEncryptorServiceImpl implements IEncryptorService {
+    public String hashing(String plainText) {
         return BCrypt.hashpw(plainText, BCrypt.gensalt());
     }
 

@@ -1,21 +1,22 @@
-package services;
+package services.impl;
 
 import models.user.UserAccount;
+import services.IRegisterService;
 
 import javax.swing.*;
 
 import static dao.ConnectDB.*;
 
-public class RegisterService {
-    private UserServices userServices;
+public class IRegisterServiceImpl implements IRegisterService {
+    private IUserServicesImpl IUserServicesImpl;
 
-    public RegisterService() {
-        userServices = new UserServices();
+    public IRegisterServiceImpl() {
+        IUserServicesImpl = new IUserServicesImpl();
     }
 
     public boolean register(UserAccount user) throws Exception {
         try {
-            if (!userServices.isUsernameExists(user.getUsername())) {
+            if (!IUserServicesImpl.isUsernameExists(user.getUsername())) {
                 collection.insertOne(user);
                 return true;
             } else {

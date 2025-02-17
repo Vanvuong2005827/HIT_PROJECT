@@ -1,13 +1,14 @@
-package services;
+package services.impl;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import services.IDelAccountService;
 
 import javax.swing.*;
 
 import static dao.ConnectDB.*;
 
-public class DelAccountService {
+public class IDelAccountServiceImpl implements IDelAccountService {
     public void delAccount(ObjectId idUser) {
         try {
             collection.deleteMany(new Document("_id", idUser));

@@ -6,7 +6,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -23,7 +22,7 @@ import jiconfont.swing.IconFontSwing;
 import models.book.Book;
 import models.book.BookCategory;
 import models.chapter.AllChapters;
-import services.BookService;
+import services.impl.IBookServiceImpl;
 import data.GetAllBook;
 import utils.Gradient;
 import data.GetChapters;
@@ -518,7 +517,7 @@ public class HomeScreen extends javax.swing.JFrame {
                                 Book curBook = new Book();
                                 ArrayList<AllChapters> chapters = new ArrayList<>();
                                 WaitScreen ws = new WaitScreen();
-                                BookService bookService = new BookService();
+                                IBookServiceImpl bookService = new IBookServiceImpl();
 
                                 @Override
                                 protected Void doInBackground() {
