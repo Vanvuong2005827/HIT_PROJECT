@@ -1,4 +1,4 @@
-package services;
+package services.impl;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
@@ -6,6 +6,7 @@ import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import models.user.UserAccount;
+import services.IForgetPasswordService;
 
 import javax.swing.*;
 import java.util.Properties;
@@ -14,7 +15,7 @@ import java.util.Random;
 import static dao.ConnectDB.collection;
 import static commons.CurrentUser.*;
 
-public class ForgetPasswordService {
+public class IForgetPasswordServiceImpl implements IForgetPasswordService {
 
     public String getCode(String gmail) {
         Random rand = new Random();
@@ -80,7 +81,7 @@ public class ForgetPasswordService {
 
             collection.updateOne(
                     Filters.eq("username", user.getUsername()),
-                    Updates.set("password", encryptorService.hasing(newPassword))
+                    Updates.set("password", encryptorService.hashing(newPassword))
             );
 
             userAccount = userServices.getUserByUsername(user.getUsername());

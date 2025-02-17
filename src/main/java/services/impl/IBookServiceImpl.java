@@ -1,4 +1,4 @@
-package services;
+package services.impl;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.model.Filters;
@@ -11,6 +11,7 @@ import models.book.Book;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
+import services.IBookService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import static commons.CurrentUser.userAccount;
 import static dao.ConnectDB.*;
 
-public class BookService {
+public class IBookServiceImpl implements IBookService {
     private UserFavouriteBook foundFav;
 
     public void storageBookToUser(ObjectId bookId) {
@@ -174,7 +175,7 @@ public class BookService {
     }
 
 
-    public Color checkFavorite(ObjectId bookId) throws Exception {
+    public Color checkFavorite(ObjectId bookId) {
      try {
          foundFav = collectionFavourite.find(Filters.and(Filters.eq("userId", userAccount.getId()), Filters.eq("bookId", bookId))).first();
          if (foundFav == null) {

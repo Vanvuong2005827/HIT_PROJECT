@@ -1,4 +1,4 @@
-package services;
+package services.impl;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
@@ -6,6 +6,7 @@ import models.user.UserAccount;
 import models.user.UserIP;
 import models.user.UserInfo;
 import org.bson.types.ObjectId;
+import services.IUserServices;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,7 @@ import static dao.ConnectDB.*;
 import static commons.CurrentUser.userAccount;
 
 
-public class UserServices {
+public class IUserServicesImpl implements IUserServices {
     public boolean isUsernameExists(String username){
         try {
             UserAccount found = collection.find(new org.bson.Document("username", username)).first();

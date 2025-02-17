@@ -2,16 +2,13 @@
 package view.screens.home_screens;
 
 import controllers.book.RecentController;
-import data.GetAllBook;
 import models.book.Book;
-import services.BookService;
+import services.impl.IBookServiceImpl;
 import utils.Gradient;
 import view.pages.HomePage;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
@@ -98,8 +95,8 @@ public class RecentScreen extends javax.swing.JFrame {
         SwingWorker<ArrayList<JPanel>, Void> worker = new SwingWorker<>() {
             @Override
             protected ArrayList<JPanel> doInBackground() throws Exception {
-                BookService bookService = new BookService();
-                ArrayList<Book> books = bookService.getBooksByPage(curPage, 4);
+                IBookServiceImpl IBookServiceImpl = new IBookServiceImpl();
+                ArrayList<Book> books = IBookServiceImpl.getBooksByPage(curPage, 4);
                 ArrayList<JPanel> bookPanels = new ArrayList<>();
                 String baseUrl = "https://img.otruyenapi.com/uploads/comics/";
                 Font customFont1 = new Font("Segoe UI", Font.BOLD, 13);

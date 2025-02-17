@@ -216,7 +216,7 @@ public class LoginController {
                     loginScreen.getSignUpMessageLabel().setText("Mật khẩu ít nhất 8 kí tự, 1 in hoa, 1 in thường, 1 số.");
                     return;
                 }
-                password = encryptorService.hasing(password);
+                password = encryptorService.hashing(password);
                 userAccount = new UserAccount(userName, password);
                 try {
                     if (!registerService.register(userAccount)) {

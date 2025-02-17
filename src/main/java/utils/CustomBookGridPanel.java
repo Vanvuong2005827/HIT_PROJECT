@@ -6,7 +6,7 @@ import models.chapter.AllChapters;
 import view.screens.ChapterScreen;
 import view.pages.OneBookPage;
 import view.screens.WaitScreen;
-import services.BookService;
+import services.impl.IBookServiceImpl;
 import data.GetAllBook;
 import data.GetChapters;
 
@@ -18,7 +18,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -106,7 +105,7 @@ public class CustomBookGridPanel {
                         Book curBook = new Book();
                         ArrayList<AllChapters> chapters = new ArrayList<>();
                         WaitScreen ws = new WaitScreen();
-                        BookService bookService = new BookService();
+                        IBookServiceImpl bookService = new IBookServiceImpl();
 
                         @Override
                         protected Void doInBackground() {
@@ -291,7 +290,7 @@ public class CustomBookGridPanel {
                         Book curBook = new Book();
                         ArrayList<AllChapters> chapters = new ArrayList<>();
                         WaitScreen ws = new WaitScreen();
-                        BookService bookService = new BookService();
+                        IBookServiceImpl bookService = new IBookServiceImpl();
 
                         @Override
                         protected Void doInBackground() {
