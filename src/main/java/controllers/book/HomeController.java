@@ -3,18 +3,18 @@ package controllers.book;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import utils.MouseDragCommon;
-import view.screens.home_screens.HomeScreen;
-import view.screens.home_screens.SearchScreen;
-import view.pages.HomePage;
-import view.pages.MoreBookPage;
-import view.screens.WaitScreen;
+import view.user_view.screens.home_screens.HomeScreen;
+import view.user_view.screens.home_screens.SearchScreen;
+import view.user_view.screens.pages.HomePage;
+import view.user_view.screens.pages.MoreBookPage;
+import view.WaitScreen;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import static view.screens.home_screens.HomeScreen.curBell;
+import static view.user_view.screens.home_screens.HomeScreen.curBell;
 
 public class HomeController {
     private HomeScreen homeScreen;

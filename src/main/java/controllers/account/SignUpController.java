@@ -1,8 +1,8 @@
 package controllers.account;
 
-import view.screens.auth_screens.LoginScreen;
-import view.screens.auth_screens.PolicyScreen;
-import view.screens.auth_screens.SignUpScreen;
+import view.user_view.screens.auth_screens.LoginScreen;
+import view.user_view.screens.auth_screens.PolicyScreen;
+import view.user_view.screens.auth_screens.SignUpScreen;
 import utils.RegexChecker;
 
 import javax.swing.*;

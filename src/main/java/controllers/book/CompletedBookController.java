@@ -1,7 +1,7 @@
 package controllers.book;
 
 import utils.MouseDragAdvanced;
-import view.screens.more_book_screens.CompletedBookScreen;
+import view.user_view.screens.more_book_screens.CompletedBookScreen;
 
 public class CompletedBookController {
     private CompletedBookScreen completedBookScreen;

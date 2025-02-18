@@ -1,7 +1,7 @@
 package controllers.book;
 
 import utils.MouseDragCommon;
-import view.screens.home_screens.SearchScreen;
+import view.user_view.screens.home_screens.SearchScreen;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

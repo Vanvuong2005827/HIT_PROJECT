@@ -1,9 +1,9 @@
 package controllers.account;
 
 import models.user.UserInfo;
-import view.pages.HomePage;
-import view.screens.account_screens.*;
-import view.screens.home_screens.AccountScreen;
+import view.user_view.screens.pages.HomePage;
+import view.user_view.screens.account_screens.*;
+import view.user_view.screens.home_screens.AccountScreen;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

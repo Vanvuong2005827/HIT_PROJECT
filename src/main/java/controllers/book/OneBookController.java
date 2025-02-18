@@ -3,9 +3,9 @@ package controllers.book;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import utils.MouseDragCommon;
-import view.screens.WaitScreen;
-import view.screens.ChapterScreen;
-import view.pages.OneBookPage;
+import view.WaitScreen;
+import view.user_view.screens.ChapterScreen;
+import view.user_view.screens.pages.OneBookPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ import java.awt.event.MouseEvent;
 
 import static commons.CurrentUser.bookService;
 import static utils.NetworkChecker.isConnected;
-import static view.pages.OneBookPage.currentColor;
+import static view.user_view.screens.pages.OneBookPage.currentColor;
 
 public class OneBookController {
     private OneBookPage oneBookPage;

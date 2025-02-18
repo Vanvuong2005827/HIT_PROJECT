@@ -2,13 +2,15 @@ package controllers.account;
 
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
+import models.user.Role;
 import models.user.UserAccount;
 import models.user.UserIP;
-import view.screens.account_screens.ForgotPassScreen;
-import view.screens.auth_screens.LoginScreen;
-import view.screens.auth_screens.SignUpScreen;
-import view.pages.HomePage;
-import view.screens.WaitScreen;
+import view.admin_view.AdminHomePage;
+import view.user_view.screens.account_screens.ForgotPassScreen;
+import view.user_view.screens.auth_screens.LoginScreen;
+import view.user_view.screens.auth_screens.SignUpScreen;
+import view.user_view.screens.pages.HomePage;
+import view.WaitScreen;
 import utils.RegexChecker;
 
 import javax.swing.*;
@@ -98,6 +100,7 @@ public class LoginController {
                 SwingWorker<Void, Void> worker = new SwingWorker<>() {
                     boolean isLogin = false;
                     WaitScreen ws = new WaitScreen();
+
                     @Override
                     protected Void doInBackground() {
                         ws.setVisible(true);
@@ -169,8 +172,13 @@ public class LoginController {
 
                     @Override
                     protected void done() {
-                        if (isLogin == true){
-                            HomePage hs = new HomePage(loginScreen, ws);
+                        if (isLogin == true) {
+                            if (userAccount.getRole() == Role.USER) {
+                                HomePage hs = new HomePage(loginScreen, ws);
+                            }
+                            else {
+                                AdminHomePage as = new AdminHomePage(loginScreen, ws);
+                            }
                         }
                     }
                 };
@@ -233,17 +241,17 @@ public class LoginController {
         });
     }
 
-    private void showPasswordEvent(){
+    private void showPasswordEvent() {
         loginScreen.getLoginEyeLabel().addMouseListener(new MouseAdapter() {
             private boolean isVisible = false;
+
             @Override
             public void mouseClicked(MouseEvent evt) {
                 isVisible = !isVisible;
-                if (isVisible){
+                if (isVisible) {
                     loginScreen.getLoginEyeLabel().setIcon(IconFontSwing.buildIcon(FontAwesome.EYE, 23, Color.black));
                     loginScreen.getLoginPasswordTextField().setEchoChar((char) 0);
-                }
-                else {
+                } else {
                     loginScreen.getLoginEyeLabel().setIcon(IconFontSwing.buildIcon(FontAwesome.EYE_SLASH, 23, Color.black));
                     loginScreen.getLoginPasswordTextField().setEchoChar('•');
                 }
@@ -251,15 +259,15 @@ public class LoginController {
         });
         loginScreen.getLoginEyeLabel2().addMouseListener(new MouseAdapter() {
             private boolean isVisible = false;
+
             @Override
             public void mouseClicked(MouseEvent evt) {
                 isVisible = !isVisible;
-                if (isVisible){
+                if (isVisible) {
                     loginScreen.getLoginEyeLabel2().setIcon(IconFontSwing.buildIcon(FontAwesome.EYE, 23, Color.black));
                     loginScreen.getSignUpPasswordTextField().setEchoChar((char) 0);
                     loginScreen.getSignUpReEnterPasswordTextField().setEchoChar((char) 0);
-                }
-                else {
+                } else {
                     loginScreen.getLoginEyeLabel2().setIcon(IconFontSwing.buildIcon(FontAwesome.EYE_SLASH, 23, Color.black));
                     loginScreen.getSignUpPasswordTextField().setEchoChar('•');
                     loginScreen.getSignUpReEnterPasswordTextField().setEchoChar('•');

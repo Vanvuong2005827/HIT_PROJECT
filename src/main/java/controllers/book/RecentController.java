@@ -1,8 +1,7 @@
 package controllers.book;
 
 import utils.MouseDragAdvanced;
-import utils.MouseDragCommon;
-import view.screens.home_screens.RecentScreen;
+import view.user_view.screens.home_screens.RecentScreen;
 
 public class RecentController {
     private RecentScreen recentScreen;

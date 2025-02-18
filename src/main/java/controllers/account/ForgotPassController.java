@@ -2,8 +2,8 @@ package controllers.account;
 
 import models.user.UserAccount;
 import models.user.UserInfo;
-import view.screens.account_screens.ChangePassSecondScreen;
-import view.screens.account_screens.ForgotPassScreen;
+import view.user_view.screens.account_screens.ChangePassSecondScreen;
+import view.user_view.screens.account_screens.ForgotPassScreen;
 import utils.RegexChecker;
 
 import javax.swing.*;

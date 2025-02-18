@@ -1,7 +1,7 @@
 package controllers.book;
 
 import utils.MouseDragAdvanced;
-import view.screens.more_book_screens.OneStyleBookScreen;
+import view.user_view.screens.more_book_screens.OneStyleBookScreen;
 
 public class OneStyleBookController {
     private OneStyleBookScreen oneStyleBookScreen;

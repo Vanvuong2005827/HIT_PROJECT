@@ -1,8 +1,8 @@
 package controllers.account;
 
-import view.screens.account_screens.ChangePassScreen;
-import view.screens.account_screens.ChangePassSecondScreen;
-import view.screens.account_screens.ForgotPassScreen;
+import view.user_view.screens.account_screens.ChangePassScreen;
+import view.user_view.screens.account_screens.ChangePassSecondScreen;
+import view.user_view.screens.account_screens.ForgotPassScreen;
 
 import javax.swing.*;
 
