@@ -16,6 +16,7 @@ public class UserAccount {
         password = "";
         role = Role.USER;
         status = "ACTIVE";
+
     }
 
     public UserAccount(String username, String password) {
@@ -23,6 +24,7 @@ public class UserAccount {
         this.password = password;
         this.role = Role.USER;
         status = "ACTIVE";
+
     }
 
     public UserAccount(String username, String password, String fullName, Role role) {
@@ -30,6 +32,7 @@ public class UserAccount {
         this.password = password;
         this.role = role;
         status = "ACTIVE";
+
     }
 
     public ObjectId getId() {
@@ -67,4 +70,5 @@ public class UserAccount {
     public String getStatus() { return status; }
 
     public void setStatus(String status) { this.status = status; }
+
 }

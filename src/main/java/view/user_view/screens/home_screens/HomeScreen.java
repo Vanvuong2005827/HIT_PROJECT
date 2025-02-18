@@ -32,6 +32,8 @@ import view.WaitScreen;
 import view.user_view.screens.more_book_screens.OneStyleBookScreen;
 
 import static commons.ColorMain.*;
+import static commons.CurrentUser.userAccount;
+import static commons.CurrentUser.userInfo;
 import static utils.CustomBookGridPanel.*;
 
 public class HomeScreen extends javax.swing.JFrame {
@@ -124,7 +126,7 @@ public class HomeScreen extends javax.swing.JFrame {
         homeCommingSoonBookLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         homeCommingSoonBookLabel.setText("Sắp ra mắt");
 
-        homeBellNotifications = new JLabel(IconFontSwing.buildIcon(FontAwesome.BELL, 25, Color.YELLOW));
+        homeBellNotifications = new JLabel(IconFontSwing.buildIcon((userInfo.getNotification() ? FontAwesome.BELL : FontAwesome.BELL_O), 25, Color.YELLOW));
 
         javax.swing.GroupLayout homeMainPanelLayout = new javax.swing.GroupLayout(homeMainPanel);
         homeMainPanel.setLayout(homeMainPanelLayout);

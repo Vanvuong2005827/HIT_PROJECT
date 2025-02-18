@@ -163,6 +163,7 @@ public class IUserServicesImpl implements IUserServices {
 
     public ArrayList<String> getAllDistinctEmails() {
         return collectionInfo.distinct("email", String.class)
+                .filter(Filters.eq("notification", true))
                 .into(new ArrayList<>());
     }
 
@@ -216,6 +217,14 @@ public class IUserServicesImpl implements IUserServices {
         }
 
         return true;
+    }
+
+    public void setNotification(ObjectId userId, boolean notification) {
+        try {
+            collectionInfo.updateOne(Filters.eq("_id", userId), Updates.set("notification", notification));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
