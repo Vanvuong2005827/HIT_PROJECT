@@ -1,24 +1,24 @@
 package controllers.admin;
 
-import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
+import services.impl.IUserServicesImpl;
+import view.admin_view.home_screens.ChangeStatus2Screen;
+import view.admin_view.home_screens.ChangeStatusScreen;
 import view.admin_view.home_screens.ListUserScreen;
 
 import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static commons.CurrentUser.userAccount;
+
 public class ListUserController {
     private ListUserScreen listUserScreen;
-    private DefaultTableModel model;
 
-    public ListUserController(ListUserScreen listUserScreen, DefaultTableModel model) {
+    public ListUserController(ListUserScreen listUserScreen) {
         this.listUserScreen = listUserScreen;
-        this.model = model;
         searchEvent();
         banEvent();
     }
@@ -47,31 +47,68 @@ public class ListUserController {
             if (cellValue.contains(searchText)) {
                 Rectangle rect = listUserScreen.getjTable1().getCellRect(row, 0, true);
                 listUserScreen.getjTable1().scrollRectToVisible(rect);
+
+                highlightRow(listUserScreen.getjTable1(), row);
                 break;
             }
         }
     }
 
     private void banEvent(){
-        listUserScreen.getjTable1().addMouseListener(new MouseInputAdapter() {
+        listUserScreen.getjTable1().addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent e) {
+            public void mouseClicked(MouseEvent e) {
                 int row = listUserScreen.getjTable1().rowAtPoint(e.getPoint());
                 int col = listUserScreen.getjTable1().columnAtPoint(e.getPoint());
 
-                if (col == 2) {
-                    Icon currentIcon = (Icon) listUserScreen.getjTable1().getValueAt(row, col);
-                    Icon newIcon = null;
-                    if (currentIcon == IconFontSwing.buildIcon(FontAwesome.CHECK, 23, Color.GREEN)) {
-                        newIcon = IconFontSwing.buildIcon(FontAwesome.BAN, 23, Color.RED);
-                    } else {
-                        newIcon = IconFontSwing.buildIcon(FontAwesome.CHECK, 23, Color.GREEN);
+                if (col >= 1) {
+                    IUserServicesImpl i = new IUserServicesImpl();
+                    String username = listUserScreen.getjTable1().getValueAt(row, 1).toString();
+                    userAccount = i.getUserByUsername(username);
+                    if (userAccount.getStatus().equals("BAN")){
+                        ChangeStatus2Screen changeStatus2Screen = new ChangeStatus2Screen(listUserScreen);
+                        changeStatus2Screen.setVisible(true);
                     }
-                    model.setValueAt(newIcon, row, col);
-
-                    model.fireTableCellUpdated(row, col);
+                    else
+                    {
+                        ChangeStatusScreen changeStatusScreen = new ChangeStatusScreen(listUserScreen);
+                        changeStatusScreen.setVisible(true);
+                    }
                 }
             }
         });
     }
+
+    private void highlightRow(JTable table, int row) {
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int rowIndex, int column) {
+                Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, rowIndex, column);
+                if (rowIndex == row && (column == 0 || column == 1)) {
+                    comp.setBackground(Color.YELLOW);
+                } else {
+                    comp.setBackground(Color.WHITE);
+                }
+                return comp;
+            }
+        };
+
+        for (int col = 0; col < 2; col++) {
+            table.getColumnModel().getColumn(col).setCellRenderer(renderer);
+        }
+
+        table.repaint();
+
+        new Timer(2000, e -> resetRowColor(table, row)).start();
+    }
+
+    private void resetRowColor(JTable table, int row) {
+        DefaultTableCellRenderer defaultRenderer = new DefaultTableCellRenderer();
+        for (int col = 0; col < 2; col++) {
+            table.getColumnModel().getColumn(col).setCellRenderer(defaultRenderer);
+        }
+        table.repaint();
+    }
+
+
 }

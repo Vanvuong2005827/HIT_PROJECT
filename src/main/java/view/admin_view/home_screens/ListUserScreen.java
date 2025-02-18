@@ -5,8 +5,7 @@ import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import models.user.UserAccount;
 import services.impl.IUserServicesImpl;
-import utils.FontAwesomeRenderer;
-import utils.Gradient;
+import utils.IconRenderer;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -15,12 +14,16 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static utils.IconRenderer.setIconRenderer;
+import static utils.NetworkChecker.curFrame;
+
 
 public class ListUserScreen extends JFrame {
     public ListUserScreen() {
         initComponents();
         addTable();
-        new ListUserController(this, model);
+        new ListUserController(this);
+        curFrame = this;
     }
 
     private void initComponents() {
@@ -56,7 +59,7 @@ public class ListUserScreen extends JFrame {
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(330);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(10);
-        jTable1.getColumnModel().getColumn(2).setCellRenderer(new FontAwesomeRenderer());
+        jTable1.getColumnModel().getColumn(2).setCellRenderer(new IconRenderer());
 
         jTable1.setRowHeight(30);
         jTable1.setIntercellSpacing(new Dimension(0, 10));
@@ -117,19 +120,22 @@ public class ListUserScreen extends JFrame {
     }
 
 
-    private void addTable() {
+    public void addTable() {
         IUserServicesImpl u = new IUserServicesImpl();
         ArrayList<UserAccount> users = u.getAllUsers();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int cnt = 1;
         for (UserAccount a : users) {
-            if (a.getStatus() == "BAN") {
-                model.addRow(new Object[]{cnt, a.getUsername(), IconFontSwing.buildIcon(FontAwesome.BAN, 23, Color.RED)});
+            Icon icon;
+            if (a.getStatus().equals("BAN")) {
+                icon = IconFontSwing.buildIcon(FontAwesome.BAN, 23, Color.RED);
             } else {
-                model.addRow(new Object[]{cnt, a.getUsername(), IconFontSwing.buildIcon(FontAwesome.CHECK, 23, Color.GREEN)});
+                icon = IconFontSwing.buildIcon(FontAwesome.CHECK, 23, Color.GREEN);
             }
+            model.addRow(new Object[]{cnt, a.getUsername(), icon});
             cnt++;
         }
+        setIconRenderer(jTable1, 2);
     }
 
 

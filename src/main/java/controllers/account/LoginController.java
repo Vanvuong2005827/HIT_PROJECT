@@ -144,6 +144,12 @@ public class LoginController {
 
                                 getGradientInUser();
 
+                                if (userAccount.getStatus().equals("BAN")){
+                                    isLogin = false;
+                                    loginScreen.getLoginMessageLabel().setText("Tài khoản đã bị khóa trong: ");
+                                    return null;
+                                }
+
                                 if (loginScreen.getLoginRememberCheckbox().isSelected()) {
                                     try {
                                         loginService.saveUser(userName, password);

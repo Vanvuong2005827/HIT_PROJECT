@@ -3,6 +3,7 @@ package services.impl;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 import models.user.UserAccount;
 import models.user.UserIP;
 import models.user.UserInfo;
@@ -152,6 +153,25 @@ public class IUserServicesImpl implements IUserServices {
 
     public ArrayList<UserAccount> getAllUsers() {
         return collection.find().into(new java.util.ArrayList<>());
+    }
+
+    public boolean updateUserStatus(String username, String newStatus) {
+        try {
+            // Tạo filter để tìm user theo username
+            org.bson.Document filter = new org.bson.Document("username", username);
+
+            // Tạo bản cập nhật (update status)
+            org.bson.Document update = new org.bson.Document("$set", new org.bson.Document("status", newStatus));
+
+            // Thực hiện updateOne
+            UpdateResult result = collection.updateOne(filter, update);
+
+            // Kiểm tra xem có user nào bị cập nhật không
+            return result.getModifiedCount() > 0;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Không thể cập nhật trạng thái. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 
 }

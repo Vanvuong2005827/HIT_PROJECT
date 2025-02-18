@@ -5,10 +5,12 @@ import utils.Gradient;
 import javax.swing.*;
 
 import static commons.ColorMain.*;
+import static utils.NetworkChecker.curFrame;
 
 public class NotificationScreen extends JFrame{
     public NotificationScreen() {
         initComponents();
+        curFrame = this;
     }
 
     private void initComponents() {
