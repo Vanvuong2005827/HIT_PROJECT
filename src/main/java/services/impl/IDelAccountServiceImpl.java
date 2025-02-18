@@ -15,6 +15,7 @@ public class IDelAccountServiceImpl implements IDelAccountService {
             collectionHistory.deleteMany(new Document("userId", idUser));
             collectionInfo.deleteMany(new Document("_id", idUser));
             collectionIp.deleteMany(new Document("_id", idUser));
+            collectionFavourite.deleteMany(new Document("_id", idUser));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
