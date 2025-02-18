@@ -6,6 +6,7 @@ import jiconfont.swing.IconFontSwing;
 import javax.swing.*;
 import java.awt.*;
 
+import static commons.ColorMain.colorFix;
 import static commons.ColorMain.colorMain1;
 
 public class CustomChatMessage {
@@ -18,6 +19,7 @@ public class CustomChatMessage {
 
         JLabel label = new JLabel(formattedMessage);
         label.setOpaque(true);
+        label.setBackground(colorFix);
         label.setForeground(Color.BLACK);
         label.setFont(new Font("Arial", Font.PLAIN, 14));
         label.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
