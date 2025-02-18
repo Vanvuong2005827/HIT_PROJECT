@@ -23,4 +23,5 @@ public interface IUserServices {
     ArrayList<UserAccount> getAllUsers();
     ArrayList<String> getAllDistinctEmails();
     boolean sentMessage(String gmail, String content) throws Exception;
+    void setNotification(ObjectId userId, boolean notification);
 }

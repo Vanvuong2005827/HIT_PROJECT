@@ -14,6 +14,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static commons.CurrentUser.userAccount;
+import static commons.CurrentUser.userServices;
 import static view.user_view.screens.home_screens.HomeScreen.curBell;
 
 public class HomeController {
@@ -80,9 +82,11 @@ public class HomeController {
                 if (curBell == 0) {
                     homeScreen.getHomeBellNotifications().setIcon(IconFontSwing.buildIcon(FontAwesome.BELL_O, 25, Color.YELLOW));
                     curBell = 1;
+                    userServices.setNotification(userAccount.getId(), false);
                 } else {
                     homeScreen.getHomeBellNotifications().setIcon(IconFontSwing.buildIcon(FontAwesome.BELL, 25, Color.YELLOW));
                     curBell = 0;
+                    userServices.setNotification(userAccount.getId(), true);
                 }
             }
         });

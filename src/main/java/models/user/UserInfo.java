@@ -34,12 +34,17 @@ public class UserInfo {
     @BsonProperty("colorMain3")
     private String colorMain3;
 
+    @BsonProperty("notification")
+    private boolean notification;
+
     // Constructor mặc định (bắt buộc)
     public UserInfo() {
+        this.notification = false;
     }
 
     public UserInfo(ObjectId id) {
         this.id = id;
+        this.notification = false;
     }
 
     // Constructor đầy đủ
@@ -54,6 +59,7 @@ public class UserInfo {
         this.colorMain1 = colorMain1;
         this.colorMain2 = colorMain2;
         this.colorMain3 = colorMain3;
+        this.notification = false;
     }
 
 
@@ -64,6 +70,7 @@ public class UserInfo {
         this.phoneNumber = phoneNumber;
         this.birthday = i;
         this.sex = gender;
+        this.notification = false;
     }
 
     // Getter & Setter
@@ -146,4 +153,8 @@ public class UserInfo {
     public void setColorMain3(String colorMain3) {
         this.colorMain3 = colorMain3;
     }
+
+    public boolean getNotification() { return notification; }
+
+    public void setNotification(boolean notification) { this.notification = notification; }
 }
