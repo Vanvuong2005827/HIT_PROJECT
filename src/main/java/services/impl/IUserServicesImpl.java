@@ -7,6 +7,7 @@ import com.mongodb.client.result.UpdateResult;
 import models.user.UserAccount;
 import models.user.UserIP;
 import models.user.UserInfo;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import services.IUserServices;
 
@@ -157,17 +158,9 @@ public class IUserServicesImpl implements IUserServices {
 
     public boolean updateUserStatus(String username, String newStatus) {
         try {
-            // Tạo filter để tìm user theo username
-            org.bson.Document filter = new org.bson.Document("username", username);
-
-            // Tạo bản cập nhật (update status)
-            org.bson.Document update = new org.bson.Document("$set", new org.bson.Document("status", newStatus));
-
-            // Thực hiện updateOne
-            UpdateResult result = collection.updateOne(filter, update);
-
-            // Kiểm tra xem có user nào bị cập nhật không
-            return result.getModifiedCount() > 0;
+            Bson filter = Filters.eq("username", username);
+            collection.updateOne(filter, Updates.set("status", newStatus));
+            return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Không thể cập nhật trạng thái. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return false;
