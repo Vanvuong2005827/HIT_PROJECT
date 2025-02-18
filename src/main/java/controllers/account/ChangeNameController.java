@@ -1,6 +1,6 @@
 package controllers.account;
 
-import view.screens.account_screens.ChangeNameScreen;
+import view.user_view.screens.account_screens.ChangeNameScreen;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

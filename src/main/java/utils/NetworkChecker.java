@@ -1,6 +1,6 @@
 package utils;
 
-import view.screens.DisconnectScreen;
+import view.DisconnectScreen;
 
 import javax.swing.*;
 import java.io.IOException;

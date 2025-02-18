@@ -60,7 +60,6 @@ public class IForgetPasswordServiceImpl implements IForgetPasswordService {
             message.setContent(htmlContent, "text/html; charset=UTF-8");
 
             Transport.send(message);
-            System.out.println("Email đã được gửi thành công.");
         } catch (MessagingException e) {
             JOptionPane.showMessageDialog(null, "Không gửi được email. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {

@@ -6,6 +6,7 @@ import models.user.UserInfo;
 import org.bson.types.ObjectId;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public interface IUserServices {
     boolean isUsernameExists(String username);
@@ -19,4 +20,7 @@ public interface IUserServices {
     String selectGender(boolean male, boolean female, boolean other) throws Exception;
     String colorToHex(Color color) throws Exception;
     void updateGradientColorToUser(Color one, Color two, Color three, Color fix) throws Exception;
+    ArrayList<UserAccount> getAllUsers();
+    ArrayList<String> getAllDistinctEmails();
+    boolean sentMessage(String gmail, String content) throws Exception;
 }

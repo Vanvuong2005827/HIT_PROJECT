@@ -1,7 +1,7 @@
 package controllers.book;
 
 import utils.MouseDragCommon;
-import view.screens.ChapterScreen;
+import view.user_view.screens.ChapterScreen;
 
 import javax.swing.*;
 import java.awt.*;

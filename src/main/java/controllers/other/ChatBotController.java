@@ -1,7 +1,7 @@
 package controllers.other;
 
 import utils.MouseDragCommon;
-import view.screens.home_screens.ChatBotScreen;
+import view.user_view.screens.home_screens.ChatBotScreen;
 
 import javax.swing.*;
 import java.awt.*;

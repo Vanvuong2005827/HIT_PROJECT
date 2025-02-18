@@ -1,7 +1,7 @@
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import utils.NetworkChecker;
-import view.screens.auth_screens.LoginScreen;
+import view.user_view.screens.auth_screens.LoginScreen;
 import dao.ConnectDB;
 import javax.swing.*;
 import static commons.ColorMain.getColorGradient;
@@ -9,6 +9,7 @@ import static commons.ColorMain.getColorGradient;
 
 public class main {
     public static void main(String[] args) {
+//        System.setProperty("sun.java2d.uiScale", "1");
         NetworkChecker.startNetworkMonitoring();
         IconFontSwing.register(FontAwesome.getIconFont());
         new ConnectDB();

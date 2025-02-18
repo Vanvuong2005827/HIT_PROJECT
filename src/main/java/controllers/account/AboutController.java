@@ -1,7 +1,7 @@
 package controllers.account;
 
-import view.screens.account_screens.AboutScreen;
-import view.screens.auth_screens.PolicyScreen;
+import view.user_view.screens.account_screens.AboutScreen;
+import view.user_view.screens.auth_screens.PolicyScreen;
 
 import javax.swing.*;
 import java.awt.*;
