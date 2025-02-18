@@ -35,8 +35,6 @@ public class ChangeStatusController {
         changeStatusScreen.getjLabel4().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                String time = changeStatusScreen.getjTextField1().getText();
-                if (time.isEmpty()) return;
                 clearTable();
                 IUserServicesImpl i = new IUserServicesImpl();
                 i.updateUserStatus(userAccount.getUsername(), "BAN");
@@ -63,6 +61,7 @@ public class ChangeStatusController {
                 IUserServicesImpl i = new IUserServicesImpl();
                 i.updateUserStatus(userAccount.getUsername(), "ACTIVE");
                 listUserScreen.addTable();
+                changeStatus2Screen.setVisible(false);
             }
         });
     }
@@ -71,7 +70,7 @@ public class ChangeStatusController {
         changeStatus2Screen.getjLabel5().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                changeStatusScreen.setVisible(false);
+                changeStatus2Screen.setVisible(false);
             }
         });
     }
