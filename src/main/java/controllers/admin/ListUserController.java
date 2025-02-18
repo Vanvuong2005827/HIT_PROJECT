@@ -1,6 +1,5 @@
 package controllers.admin;
 
-import services.impl.IUserServicesImpl;
 import view.admin_view.home_screens.ChangeStatus2Screen;
 import view.admin_view.home_screens.ChangeStatusScreen;
 import view.admin_view.home_screens.ListUserScreen;
@@ -13,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static commons.CurrentUser.userAccount;
+import static commons.CurrentUser.userServices;
 
 public class ListUserController {
     private ListUserScreen listUserScreen;
@@ -62,9 +62,8 @@ public class ListUserController {
                 int col = listUserScreen.getjTable1().columnAtPoint(e.getPoint());
 
                 if (col >= 1) {
-                    IUserServicesImpl i = new IUserServicesImpl();
                     String username = listUserScreen.getjTable1().getValueAt(row, 1).toString();
-                    userAccount = i.getUserByUsername(username);
+                    userAccount = userServices.getUserByUsername(username);
                     if (userAccount.getStatus().equals("BAN")){
                         ChangeStatus2Screen changeStatus2Screen = new ChangeStatus2Screen(listUserScreen);
                         changeStatus2Screen.setVisible(true);

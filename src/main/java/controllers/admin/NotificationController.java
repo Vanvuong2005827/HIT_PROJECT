@@ -1,15 +1,17 @@
 package controllers.admin;
 
+import models.user.UserAccount;
 import models.user.UserInfo;
+import services.impl.IUserServicesImpl;
 import view.admin_view.home_screens.NotificationScreen;
 import view.user_view.screens.auth_screens.LoginScreen;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-import static commons.CurrentUser.userAccount;
-import static commons.CurrentUser.userInfo;
+import static commons.CurrentUser.*;
 
 public class NotificationController {
     private NotificationScreen notificationScreen;
@@ -55,8 +57,24 @@ public class NotificationController {
                     JOptionPane.showMessageDialog(null, "Xin mời nhập thông báo", "Lỗi", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                notificationScreen.getNotificationTextArea().setText("");
-                JOptionPane.showMessageDialog(null, "Thông báo đã được gửi đi", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                SwingWorker<Void, Void> worker = new SwingWorker<>(){
+                    @Override
+                    protected Void doInBackground() {
+                        ArrayList<UserAccount> users = userServices.getAllUsers();
+                        for(UserAccount a : users){
+                            UserInfo userInfo = userServices.getUserInfoByUserAccount(a);
+                            String email = userInfo.getEmail();
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        notificationScreen.getNotificationTextArea().setText("");
+                        JOptionPane.showMessageDialog(null, "Thông báo đã được gửi đi", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                };
+                worker.execute();
             }
         });
     }

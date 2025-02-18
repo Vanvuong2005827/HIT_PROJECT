@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static commons.CurrentUser.userAccount;
+import static commons.CurrentUser.userServices;
 
 public class ChangeStatusController {
     private ChangeStatusScreen changeStatusScreen;
@@ -36,8 +37,7 @@ public class ChangeStatusController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 clearTable();
-                IUserServicesImpl i = new IUserServicesImpl();
-                i.updateUserStatus(userAccount.getUsername(), "BAN");
+                userServices.updateUserStatus(userAccount.getUsername(), "BAN");
                 listUserScreen.addTable();
                 changeStatusScreen.setVisible(false);
             }
@@ -58,8 +58,7 @@ public class ChangeStatusController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 clearTable();
-                IUserServicesImpl i = new IUserServicesImpl();
-                i.updateUserStatus(userAccount.getUsername(), "ACTIVE");
+                userServices.updateUserStatus(userAccount.getUsername(), "ACTIVE");
                 listUserScreen.addTable();
                 changeStatus2Screen.setVisible(false);
             }
