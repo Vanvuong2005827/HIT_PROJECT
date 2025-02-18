@@ -154,7 +154,7 @@ public class LoginController {
 
                                 if (userAccount.getStatus().equals("BAN")){
                                     isLogin = false;
-                                    loginScreen.getLoginMessageLabel().setText("Tài khoản đã bị khóa trong: ");
+                                    loginScreen.getLoginMessageLabel().setText("Tài khoản đã bị khóa");
                                     ws.setVisible(false);
                                     loginScreen.setVisible(true);
                                     return null;

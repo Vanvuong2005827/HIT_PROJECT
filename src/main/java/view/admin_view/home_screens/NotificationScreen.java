@@ -136,4 +136,8 @@ public class NotificationScreen extends JFrame{
     public JTextArea getNotificationTextArea() {
         return notificationTextArea;
     }
+
+    public void setNotificationConfirmLabel(String text) {
+        this.notificationConfirmLabel.setText(text);
+    }
 }

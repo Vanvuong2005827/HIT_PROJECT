@@ -205,9 +205,6 @@ public class IUserServicesImpl implements IUserServices {
             message.setContent(htmlContent, "text/html; charset=UTF-8");
 
             Transport.send(message);
-        } catch (MessagingException e) {
-            JOptionPane.showMessageDialog(null, "Không gửi được email. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return false;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return false;
