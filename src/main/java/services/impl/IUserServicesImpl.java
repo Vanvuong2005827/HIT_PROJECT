@@ -161,6 +161,11 @@ public class IUserServicesImpl implements IUserServices {
         return collection.find().into(new java.util.ArrayList<>());
     }
 
+    public ArrayList<String> getAllDistinctEmails() {
+        return collectionInfo.distinct("email", String.class)
+                .into(new ArrayList<>());
+    }
+
     public boolean updateUserStatus(String username, String newStatus) {
         try {
             Bson filter = Filters.eq("username", username);

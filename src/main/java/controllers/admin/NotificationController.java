@@ -61,11 +61,9 @@ public class NotificationController {
                     @Override
                     protected Void doInBackground() {
                         notificationScreen.setNotificationConfirmLabel("Đang gửi...");
-                        ArrayList<UserAccount> users = userServices.getAllUsers();
-                        for (UserAccount a : users) {
-                            UserInfo userInfo = userServices.getUserInfoByUserAccount(a);
+                        ArrayList<String> emails = userServices.getAllDistinctEmails();
+                        for (String email : emails) {
                             try {
-                                String email = userInfo.getEmail();
                                 if (!email.isEmpty())
                                     userServices.sentMessage(email, message);
                             } catch (Exception e) {
