@@ -2,10 +2,7 @@ package view.pages;
 
 import view.screens.auth_screens.LoginScreen;
 import view.screens.auth_screens.SignUpScreen;
-import view.screens.home_screens.AccountScreen;
-import view.screens.home_screens.FavouriteScreen;
-import view.screens.home_screens.HomeScreen;
-import view.screens.home_screens.RecentScreen;
+import view.screens.home_screens.*;
 import view.screens.WaitScreen;
 
 import java.awt.*;
@@ -28,6 +25,7 @@ public class HomePage extends javax.swing.JFrame {
     private RecentScreen rp = new RecentScreen(this);
     private FavouriteScreen fp = new FavouriteScreen(this);
     private AccountScreen ap = new AccountScreen(this);
+    private ChatBotScreen cb = new ChatBotScreen();
 
     public HomePage(LoginScreen ls, WaitScreen ws) {
         loginScreen = ls;
@@ -38,19 +36,22 @@ public class HomePage extends javax.swing.JFrame {
         jTabbedPane1.addTab("Trang chủ", hp.homePanel());
         jTabbedPane1.addTab("Lịch sử", rp.recentPanel());
         jTabbedPane1.addTab("Yêu thích", fp.favouritePanel());
+        jTabbedPane1.addTab("Chat Bot", cb.getChatPanel());
         jTabbedPane1.addTab("Tài khoản", ap.accountPanel());
         jTabbedPane1.setBackgroundAt(0, colorMain3);
         jTabbedPane1.setBackgroundAt(1, colorMain3);
         jTabbedPane1.setBackgroundAt(2, colorMain3);
         jTabbedPane1.setBackgroundAt(3, colorMain3);
+        jTabbedPane1.setBackgroundAt(4, colorMain3);
         // Thay đổi màu chữ của các tab
         jTabbedPane1.setForegroundAt(0, Color.BLACK);
         jTabbedPane1.setForegroundAt(1, Color.BLACK);
         jTabbedPane1.setForegroundAt(2, Color.BLACK);
         jTabbedPane1.setForegroundAt(3, Color.BLACK);
+        jTabbedPane1.setForegroundAt(4, Color.BLACK);
         changeTab();
 
-        int tabWidth = 88;
+        int tabWidth = 66;
         for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
             jTabbedPane1.setTabComponentAt(i, new JLabel(jTabbedPane1.getTitleAt(i)) {
                 {

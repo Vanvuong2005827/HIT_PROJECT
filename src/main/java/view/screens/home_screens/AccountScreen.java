@@ -114,7 +114,7 @@ public class AccountScreen extends javax.swing.JFrame {
 
         accountRemoveLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         accountRemoveLabel.setForeground(new java.awt.Color(102, 102, 102));
-        accountRemoveLabel.setText("Xóa tài khoản                                         ->");
+        accountRemoveLabel.setText("Xóa tài khoản                                        ->");
 
         accountLogoutButton.setBackground(colorFix);
         accountLogoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18));
@@ -125,13 +125,13 @@ public class AccountScreen extends javax.swing.JFrame {
 
         accountChangeNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14));
         accountChangeNameLabel.setForeground(new java.awt.Color(102, 102, 102));
-        accountChangeNameLabel.setText("Đổi tên hiện thị                                       ->");
+        accountChangeNameLabel.setText("Đổi tên hiện thị                                      ->");
 
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
 
         accountAuthorLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         accountAuthorLabel.setForeground(new java.awt.Color(102, 102, 102));
-        accountAuthorLabel.setText("Thông tin ứng dụng, hỗ trợ                   ->");
+        accountAuthorLabel.setText("Thông tin ứng dụng, hỗ trợ                  ->");
 
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
 
