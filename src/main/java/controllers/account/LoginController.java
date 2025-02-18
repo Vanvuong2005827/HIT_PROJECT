@@ -111,6 +111,8 @@ public class LoginController {
                             userIP = userServices.getUserIPByIP(localhost.getHostAddress());
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            ws.setVisible(false);
+                            loginScreen.setVisible(true);
                         }
 
                         try {
@@ -123,6 +125,8 @@ public class LoginController {
                             }
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                            ws.setVisible(false);
+                            loginScreen.setVisible(true);
                         }
 
 
@@ -134,12 +138,16 @@ public class LoginController {
                                 } catch (Exception e) {
                                     isLogin = false;
                                     JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                    ws.setVisible(false);
+                                    loginScreen.setVisible(true);
                                 }
                                 try {
                                     userInfo = userServices.getUserInfoByUserAccount(userAccount);
                                 } catch (Exception e) {
                                     isLogin = false;
                                     JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                    ws.setVisible(false);
+                                    loginScreen.setVisible(true);
                                 }
 
                                 getGradientInUser();
@@ -147,6 +155,8 @@ public class LoginController {
                                 if (userAccount.getStatus().equals("BAN")){
                                     isLogin = false;
                                     loginScreen.getLoginMessageLabel().setText("Tài khoản đã bị khóa trong: ");
+                                    ws.setVisible(false);
+                                    loginScreen.setVisible(true);
                                     return null;
                                 }
 
@@ -156,6 +166,8 @@ public class LoginController {
                                     } catch (Exception e) {
                                         isLogin = false;
                                         JOptionPane.showMessageDialog(null, "Lưu không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                                        ws.setVisible(false);
+                                        loginScreen.setVisible(true);
                                     }
                                 }
                             } else {
