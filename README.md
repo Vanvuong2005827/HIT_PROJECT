@@ -30,32 +30,37 @@ organize and track the books you have read or wish to read.
     <img src="app_image/img_19.png" width="250">
 </p>
 
-### Home Page
+### Home Screen
 
-- You can choose a book from the home page.
+- You can choose a book from the home screen.
     - View books in a list or grid layout.
     - Browse books by style.
 
 You can search for books using the search label.  
 You can view more books by clicking on the "Thêm >" label.
 <p>
-    <img src="app_image/img_29.png" width="250">
-    <img src="app_image/img_3.png" width="250">
+    <img src="app_image/img_31.png" width="250">
+    <img src="app_image/img_32.png" width="250">
 </p>
 
-### Recent Page
+### Recent Screen
 
 You can see a list of recently read books.  
-<img src="app_image/img_4.png" width="250">
+<img src="app_image/img_33.png" width="250">
 
-### Favorite Page
+### Favorite Screen
 
 This page displays the books you've marked as favorites.  
-<img src="app_image/img_5.png" width="250">
+<img src="app_image/img_34.png" width="250">
 
-### Account Page
+### Chat Bot Screen  
 
-You can see the information of your account in this page. Moreover, you can choose options in setting.
+This page can be help you answer your questions by AI (Gemini)  
+<img src="app_image/img_30.png" width="250">
+
+### Account Screen
+
+You can see the information of your account in this screen. Moreover, you can choose options in setting.
 
 - Change your name.
 - Change your password.
@@ -64,14 +69,14 @@ You can see the information of your account in this page. Moreover, you can choo
 - Remove your account.
 
 <p>
-    <img src="app_image/img_20.png" width="250">
-    <img src="app_image/img_21.png" width="250">  
+    <img src="app_image/img_35.png" width="250">
+    <img src="app_image/img_36.png" width="250">  
     <img src="app_image/img_22.png" width="250">
 </p>
 <p>
     <img src="app_image/img_23.png" width="250">
     <img src="app_image/img_24.png" width="250">
-    <img src="app_image/img_25.png" width="250">  
+    <img src="app_image/img_25.png" width="250">
 </p>
 
 ### More Book Screen
