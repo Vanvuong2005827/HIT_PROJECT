@@ -4,6 +4,9 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import models.user.UserAccount;
 import models.user.UserIP;
 import models.user.UserInfo;
@@ -15,6 +18,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Properties;
+import java.util.Random;
 
 import static dao.ConnectDB.*;
 import static commons.CurrentUser.userAccount;
@@ -165,6 +170,50 @@ public class IUserServicesImpl implements IUserServices {
             JOptionPane.showMessageDialog(null, "Không thể cập nhật trạng thái. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+    }
+
+    public boolean sentMessage(String gmail, String content) throws Exception {
+        String to = gmail;
+        String from = "wu.kongv1999@gmail.com";
+        final String username = "wu.kongv1999@gmail.com";
+
+        final String password = "jldp onmx roho qytx";
+
+        String host = "smtp.gmail.com";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject("Thông báo!");
+
+            // Nội dung email
+            String htmlContent = "<div style=\"font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; padding: 20px;\">" + content + "</div>";
+
+            message.setContent(htmlContent, "text/html; charset=UTF-8");
+
+            Transport.send(message);
+        } catch (MessagingException e) {
+            JOptionPane.showMessageDialog(null, "Không gửi được email. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
     }
 
 }

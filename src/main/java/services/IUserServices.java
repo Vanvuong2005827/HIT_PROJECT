@@ -21,4 +21,5 @@ public interface IUserServices {
     String colorToHex(Color color) throws Exception;
     void updateGradientColorToUser(Color one, Color two, Color three, Color fix) throws Exception;
     ArrayList<UserAccount> getAllUsers();
+    boolean sentMessage(String gmail, String content) throws Exception;
 }
