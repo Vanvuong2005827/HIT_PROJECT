@@ -12,15 +12,12 @@ import static commons.ColorMain.colorMain3;
 import static utils.NetworkChecker.curFrame;
 
 public class AdminHomePage extends JFrame {
-    private WaitScreen waitScreen;
-    private LoginScreen loginScreen;
     private ListUserScreen listUserScreen = new ListUserScreen();
-    private NotificationScreen notificationScreen = new NotificationScreen();
+    private NotificationScreen notificationScreen;
     public AdminHomePage(LoginScreen loginScreen, WaitScreen waitScreen) {
-        this.loginScreen = loginScreen;
-        this.waitScreen = waitScreen;
         initComponents();
         setLocationRelativeTo(null);
+        notificationScreen = new NotificationScreen(loginScreen, this);
         jTabbedPane1.addTab("Người dùng", listUserScreen.getListUserMainPanel());
         jTabbedPane1.addTab("Gửi thông báo", notificationScreen.getNotificationMainPanel());
         jTabbedPane1.setBackgroundAt(0, colorMain3);

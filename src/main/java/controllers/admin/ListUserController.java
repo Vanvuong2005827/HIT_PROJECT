@@ -41,10 +41,10 @@ public class ListUserController {
     }
 
     private void scrollToMatchingRow() {
-        String searchText = listUserScreen.getListUserSearchTextField().getText().toLowerCase();
+        String searchText = listUserScreen.getListUserSearchTextField().getText();
         for (int row = 0; row < listUserScreen.getjTable1().getRowCount(); row++) {
-            String cellValue = listUserScreen.getjTable1().getValueAt(row, 1).toString().toLowerCase();
-            if (cellValue.contains(searchText)) {
+            String cellValue = listUserScreen.getjTable1().getValueAt(row, 1).toString();
+            if (cellValue.equals(searchText)) {
                 Rectangle rect = listUserScreen.getjTable1().getCellRect(row, 0, true);
                 listUserScreen.getjTable1().scrollRectToVisible(rect);
 

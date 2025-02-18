@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static commons.ColorMain.colorFix;
 import static utils.IconRenderer.setIconRenderer;
 import static utils.NetworkChecker.curFrame;
 
@@ -36,6 +37,8 @@ public class ListUserScreen extends JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        listUserMainPanel.setBackground(colorFix);
 
         String[] columnNames = {"STT", "Tên tài khoản", ""};
         Object[][] data = {};
@@ -73,7 +76,7 @@ public class ListUserScreen extends JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16));
         jLabel1.setText("Tìm kiếm");
 
         javax.swing.GroupLayout listUserMainPanelLayout = new javax.swing.GroupLayout(listUserMainPanel);
@@ -114,7 +117,9 @@ public class ListUserScreen extends JFrame {
                         .addComponent(listUserMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel2.setIcon(IconFontSwing.buildIcon(FontAwesome.SEARCH, 24, Color.black));
+        jLabel2.setIcon(IconFontSwing.buildIcon(FontAwesome.SEARCH, 18, Color.black));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
 
         pack();
     }
