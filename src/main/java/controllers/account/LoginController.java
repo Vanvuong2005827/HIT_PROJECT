@@ -154,6 +154,8 @@ public class LoginController {
                                 }
                             } else {
                                 loginScreen.getLoginMessageLabel().setText("Sai tên đăng nhập hoặc mật khẩu");
+                                ws.setVisible(false);
+                                loginScreen.setVisible(true);
                                 cnt++;
                                 if (cnt == 5) {
                                     try {
