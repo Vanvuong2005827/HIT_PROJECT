@@ -1,5 +1,6 @@
 package services.impl;
 
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import models.user.UserAccount;
@@ -11,6 +12,7 @@ import services.IUserServices;
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import static dao.ConnectDB.*;
 import static commons.CurrentUser.userAccount;
@@ -146,6 +148,10 @@ public class IUserServicesImpl implements IUserServices {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Không cập nhật được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public ArrayList<UserAccount> getAllUsers() {
+        return collection.find().into(new java.util.ArrayList<>());
     }
 
 }

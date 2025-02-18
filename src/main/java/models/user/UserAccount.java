@@ -8,24 +8,28 @@ public class UserAccount {
     private String username;
     private String password;
     private Role role;
+    private String status;
 
     public UserAccount() {
         id = null;
         username = "";
         password = "";
         role = Role.USER;
+        status = "ACTIVE";
     }
 
     public UserAccount(String username, String password) {
         this.username = username;
         this.password = password;
         this.role = Role.USER;
+        status = "ACTIVE";
     }
 
     public UserAccount(String username, String password, String fullName, Role role) {
         this.username = username;
         this.password = password;
         this.role = role;
+        status = "ACTIVE";
     }
 
     public ObjectId getId() {
@@ -60,4 +64,7 @@ public class UserAccount {
         this.role = role;
     }
 
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
 }
