@@ -26,8 +26,8 @@ import services.impl.IBookServiceImpl;
 import data.GetAllBook;
 import utils.Gradient;
 import data.GetChapters;
-import view.user_view.screens.pages.HomePage;
-import view.user_view.screens.pages.OneBookPage;
+import view.user_view.pages.HomePage;
+import view.user_view.pages.OneBookPage;
 import view.WaitScreen;
 import view.user_view.screens.more_book_screens.OneStyleBookScreen;
 

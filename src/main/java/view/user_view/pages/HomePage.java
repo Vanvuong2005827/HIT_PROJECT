@@ -1,4 +1,4 @@
-package view.user_view.screens.pages;
+package view.user_view.pages;
 
 import view.user_view.screens.auth_screens.LoginScreen;
 import view.user_view.screens.auth_screens.SignUpScreen;

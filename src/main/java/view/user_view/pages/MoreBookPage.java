@@ -1,4 +1,4 @@
-package view.user_view.screens.pages;
+package view.user_view.pages;
 
 import view.WaitScreen;
 import view.user_view.screens.more_book_screens.CommingSoonBookScreen;

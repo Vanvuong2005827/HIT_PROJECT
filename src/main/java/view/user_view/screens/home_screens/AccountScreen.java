@@ -11,7 +11,7 @@ import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import utils.IconUser;
 import utils.Gradient;
-import view.user_view.screens.pages.HomePage;
+import view.user_view.pages.HomePage;
 
 import static commons.ColorMain.*;
 import static commons.CurrentUser.*;

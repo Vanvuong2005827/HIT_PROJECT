@@ -5,7 +5,7 @@ import jiconfont.swing.IconFontSwing;
 import utils.MouseDragCommon;
 import view.WaitScreen;
 import view.user_view.screens.ChapterScreen;
-import view.user_view.screens.pages.OneBookPage;
+import view.user_view.pages.OneBookPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ import java.awt.event.MouseEvent;
 
 import static commons.CurrentUser.bookService;
 import static utils.NetworkChecker.isConnected;
-import static view.user_view.screens.pages.OneBookPage.currentColor;
+import static view.user_view.pages.OneBookPage.currentColor;
 
 public class OneBookController {
     private OneBookPage oneBookPage;

@@ -9,7 +9,7 @@ import view.admin_view.AdminHomePage;
 import view.user_view.screens.account_screens.ForgotPassScreen;
 import view.user_view.screens.auth_screens.LoginScreen;
 import view.user_view.screens.auth_screens.SignUpScreen;
-import view.user_view.screens.pages.HomePage;
+import view.user_view.pages.HomePage;
 import view.WaitScreen;
 import utils.RegexChecker;
 

@@ -5,7 +5,7 @@ import controllers.book.RecentController;
 import models.book.Book;
 import services.impl.IBookServiceImpl;
 import utils.Gradient;
-import view.user_view.screens.pages.HomePage;
+import view.user_view.pages.HomePage;
 
 import javax.swing.*;
 import java.awt.*;

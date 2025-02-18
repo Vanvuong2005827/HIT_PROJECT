@@ -1,27 +1,45 @@
 package view.admin_view;
 
 import view.WaitScreen;
+import view.admin_view.home_screens.ListUserScreen;
+import view.admin_view.home_screens.NotificationScreen;
 import view.user_view.screens.auth_screens.LoginScreen;
 
 import javax.swing.*;
 import java.awt.*;
 
+import static commons.ColorMain.colorMain3;
+import static utils.NetworkChecker.curFrame;
+
 public class AdminHomePage extends JFrame {
     private WaitScreen waitScreen;
     private LoginScreen loginScreen;
+    private ListUserScreen listUserScreen = new ListUserScreen();
+    private NotificationScreen notificationScreen = new NotificationScreen();
     public AdminHomePage(LoginScreen loginScreen, WaitScreen waitScreen) {
         this.loginScreen = loginScreen;
         this.waitScreen = waitScreen;
         initComponents();
+        setLocationRelativeTo(null);
+        jTabbedPane1.addTab("Người dùng", listUserScreen.getListUserMainPanel());
+        jTabbedPane1.addTab("Gửi thông báo", notificationScreen.getNotificationMainPanel());
+        jTabbedPane1.setBackgroundAt(0, colorMain3);
+        jTabbedPane1.setBackgroundAt(1, colorMain3);
+        jTabbedPane1.setForegroundAt(0, Color.BLACK);
+        jTabbedPane1.setForegroundAt(1, Color.BLACK);
         fixedTabbed();
         waitScreen.setVisible(false);
         this.setVisible(true);
+        curFrame = this;
     }
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

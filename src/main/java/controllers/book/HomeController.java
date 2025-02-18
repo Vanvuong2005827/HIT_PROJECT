@@ -5,8 +5,8 @@ import jiconfont.swing.IconFontSwing;
 import utils.MouseDragCommon;
 import view.user_view.screens.home_screens.HomeScreen;
 import view.user_view.screens.home_screens.SearchScreen;
-import view.user_view.screens.pages.HomePage;
-import view.user_view.screens.pages.MoreBookPage;
+import view.user_view.pages.HomePage;
+import view.user_view.pages.MoreBookPage;
 import view.WaitScreen;
 
 import javax.swing.*;

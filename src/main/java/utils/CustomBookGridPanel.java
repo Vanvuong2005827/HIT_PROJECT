@@ -4,7 +4,7 @@ import models.book.Book;
 import models.book.BookCategory;
 import models.chapter.AllChapters;
 import view.user_view.screens.ChapterScreen;
-import view.user_view.screens.pages.OneBookPage;
+import view.user_view.pages.OneBookPage;
 import view.WaitScreen;
 import services.impl.IBookServiceImpl;
 import data.GetAllBook;

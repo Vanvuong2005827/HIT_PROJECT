@@ -1,7 +1,7 @@
 package controllers.account;
 
 import models.user.UserInfo;
-import view.user_view.screens.pages.HomePage;
+import view.user_view.pages.HomePage;
 import view.user_view.screens.account_screens.*;
 import view.user_view.screens.home_screens.AccountScreen;
 

@@ -1,4 +1,4 @@
-package view.user_view.screens.pages;
+package view.user_view.pages;
 
 import controllers.book.OneBookController;
 import jiconfont.swing.IconFontSwing;

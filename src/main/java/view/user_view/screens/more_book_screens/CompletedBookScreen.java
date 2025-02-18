@@ -4,7 +4,7 @@ import controllers.book.CompletedBookController;
 import models.book.Book;
 import data.GetAllBook;
 import utils.Gradient;
-import view.user_view.screens.pages.MoreBookPage;
+import view.user_view.pages.MoreBookPage;
 
 import javax.swing.*;
 import java.awt.*;
