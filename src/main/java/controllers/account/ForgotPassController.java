@@ -18,7 +18,7 @@ public class ForgotPassController {
     private ForgotPassScreen forgotPassScreen;
     private String AnsCode = "";
     private int Count = 60;
-
+    private int maxCode = 0;
     public ForgotPassController(JFrame jf, ForgotPassScreen forgotPassScreen) {
         this.previousFrame = jf;
         this.forgotPassScreen = forgotPassScreen;
@@ -90,6 +90,7 @@ public class ForgotPassController {
                             forgotPassScreen.getForgotPassWatingLabel().setForeground(Color.gray);
                             try {
                                 AnsCode = forgetPasswordService.getCode(email);
+                                maxCode = 0;
                             } catch (Exception e) {
                                 JOptionPane.showMessageDialog(null, "Gửi không thành công. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                             }
@@ -148,6 +149,11 @@ public class ForgotPassController {
                     return;
                 }
 
+                if (maxCode == 5) {
+                    forgotPassScreen.getForgotPassShowMessage().setText("Bạn đã nhập sai quá 5 lần, vui lòng gửi lại mã!");
+                    return;
+                }
+
                 if (AnsCode.equals(code)) {
                     try {
                         userAccount = userServices.getUserByUsername(username);
@@ -159,6 +165,7 @@ public class ForgotPassController {
                     forgotPassScreen.setVisible(false);
                 } else {
                     forgotPassScreen.getForgotPassShowMessage().setText("Mã không hợp lệ");
+                    maxCode++;
                 }
 
 

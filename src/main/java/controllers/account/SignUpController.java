@@ -20,7 +20,7 @@ public class SignUpController {
     private SignUpScreen signUpScreen;
     private String AnsCode = "";
     private int Count = 60;
-
+    private int maxCode = 0;
     public SignUpController(SignUpScreen signUpScreen) {
         this.signUpScreen = signUpScreen;
         backEvent();
@@ -68,6 +68,7 @@ public class SignUpController {
                             signUpScreen.getSignUpSendingLabel().setForeground(Color.gray);
                             try {
                                 AnsCode = forgetPasswordService.getCode(Gmail);
+                                maxCode = 0;
                             } catch (Exception e) {
                                 JOptionPane.showMessageDialog(null, "Không lấy được dữ liệu. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                             }
@@ -152,8 +153,14 @@ public class SignUpController {
                     return;
                 }
 
+                if (maxCode == 5) {
+                    signUpScreen.getSignUpMessageLabel().setText("Bạn đã nhập sai quá 5 lần, vui lòng gửi lại mã!");
+                    return;
+                }
+
                 if (!AnsCode.equals(signUpScreen.getSignUpGmailCodeTextField().getText().trim())) {
                     signUpScreen.getSignUpMessageLabel().setText("Mã xác thực không đúng");
+                    maxCode++;
                     return;
                 }
                 if (!signUpScreen.getSignUpCheckPolicyCheckBox().isSelected()){
