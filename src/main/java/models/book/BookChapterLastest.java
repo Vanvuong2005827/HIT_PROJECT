@@ -1,13 +1,10 @@
 package models.book;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class BookChapterLastest {
     private String filename;
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
 }

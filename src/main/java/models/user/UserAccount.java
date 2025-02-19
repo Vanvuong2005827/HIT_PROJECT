@@ -1,8 +1,11 @@
 package models.user;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 
-
+@Getter
+@Setter
 public class UserAccount {
     private ObjectId id;
     private String username;
@@ -34,41 +37,4 @@ public class UserAccount {
         status = "ACTIVE";
 
     }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public String getStatus() { return status; }
-
-    public void setStatus(String status) { this.status = status; }
-
 }
