@@ -1,11 +1,8 @@
 package services.impl;
-
 import okhttp3.*;
 import org.json.JSONObject;
 import services.IChatBotService;
-
 import java.io.IOException;
-import java.util.Scanner;
 
 public class IChatBotServiceImpl implements IChatBotService {
     private static final String API_KEY = "AIzaSyC53a7Hl-WqvIX2nJQr77JIA5ZeLtTwAZ4";
