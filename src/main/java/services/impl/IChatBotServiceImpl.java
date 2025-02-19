@@ -35,7 +35,8 @@ public class IChatBotServiceImpl implements IChatBotService {
                     .getJSONObject("content")
                     .getJSONArray("parts")
                     .getJSONObject(0)
-                    .getString("text");
+                    .getString("text")
+                    .replace("*","");
         }
     }
 }

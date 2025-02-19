@@ -24,7 +24,7 @@ public class ConnectDB {
 
     public static final CodecRegistry POJO_CODEC_REGISTRY = CodecRegistries.fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), CodecRegistries.fromProviders(POJO_CODEC_PROVIDER));
 
-    public static final MongoClientSettings SETTINGS = MongoClientSettings.builder().applyConnectionString(new ConnectionString(URI)).codecRegistry(POJO_CODEC_REGISTRY) // Đảm bảo sử dụng CodecRegistry đã được cấu hình
+    public static final MongoClientSettings SETTINGS = MongoClientSettings.builder().applyConnectionString(new ConnectionString(URI)).codecRegistry(POJO_CODEC_REGISTRY)
             .serverApi(SERVER_API).build();
 
     public static final MongoClient MONGO_CLIENT = MongoClients.create(SETTINGS);

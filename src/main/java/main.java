@@ -1,5 +1,4 @@
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
+
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 import utils.NetworkChecker;
@@ -7,8 +6,7 @@ import view.user_view.screens.auth_screens.LoginScreen;
 import dao.ConnectDB;
 import javax.swing.*;
 import static commons.ColorMain.getColorGradient;
-import static dao.ConnectDB.collection;
-import static dao.ConnectDB.collectionInfo;
+
 
 
 public class main {

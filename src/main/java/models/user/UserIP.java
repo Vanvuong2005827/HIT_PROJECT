@@ -1,7 +1,11 @@
 package models.user;
 
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.LocalDateTime;
+@Getter
+@Setter
 public class UserIP {
     private String ip;
     private LocalDateTime time;
@@ -16,22 +20,6 @@ public class UserIP {
 
     public UserIP(String ip, LocalDateTime time) {
         this.ip = ip;
-        this.time = time;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 }
