@@ -11,7 +11,7 @@ import static commons.ColorMain.getColorGradient;
 
 public class main {
     public static void main(String[] args) {
-//        System.setProperty("sun.java2d.uiScale", "1");
+        System.setProperty("sun.java2d.uiScale", "1");
         NetworkChecker.startNetworkMonitoring();
         IconFontSwing.register(FontAwesome.getIconFont());
         new ConnectDB();
