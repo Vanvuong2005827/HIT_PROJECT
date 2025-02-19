@@ -7,7 +7,7 @@ organize and track the books you have read or wish to read.
 
 ### Require
 
-- Java 11+
+- Java 17+
 - Maven.
 - IDE: IntelliJ or Netbeans.
 
